@@ -1,5 +1,7 @@
 #summary SDR Roadmap
+#sidebar TableOfContents
 
+<wiki:toc max_depth="3" />
 = Current as in contract =
  # Web (login, comments), Widget () & Editor (user editor for creating distributions)
  # Webservice API
