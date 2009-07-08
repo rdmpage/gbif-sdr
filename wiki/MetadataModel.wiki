@@ -8,9 +8,8 @@ This page is just capturing thoughts at this point
   # Resolution the data was captured to (what about multiple versions suitable for different resolutions?, intended use, fitness for use)
   # Accuracy of data
   # status (invasive, native etc)
-  
   # Confidence of data? (both "this is based on my best guess" and calculated confidence in a model output)
-  # Data provenance (citing sources accurately, capturing iterations of a modeling process? ) 
+  # Data provenance (citing sources accurately, capturing iterations of a modeling process? ) - Links to Registry?
   # Temporal (seasonal, and [need good term to describe] "changes over time", the time span this statement is valid for?)
   # Generator (human, machine?)
   #  ?
