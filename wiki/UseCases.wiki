@@ -64,3 +64,5 @@ describe ECAT mobilised DwC distribution extension (well known areas, such as "A
 - e.g. a raster
 
 === 3.5 Textual information (e.g. a paragraph about a single species) ===
+
+=== 3.6 Holder of presence and absence data ===
