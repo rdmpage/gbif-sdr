@@ -18,9 +18,13 @@ Visualise single, global species distribution based on a single data source.
 E.g. can be used for Fauna Europaea.
 
 === GBIF Portal ===
-Visualise all datasets for single .
-Needs to visualise merged distributions for higher taxa and proper taxa according to some classification (e.g. ITIS, EOL or the German National Flora using their synonymy)
+Visualise all datasets for single species distributions.
+Needs also to visualise merged distributions for higher taxa and proper taxa according to some, preferably multiple classifications (e.g. ITIS, EOL or the German National Flora using their synonymy)
 
+===Project Integration, e.g. EOL===
+Visualise single species distribution based on their own taxonomy.
+====Implementation====
+The project site will have to send 2 parameters: a) the unique species name or their local identifiers
 
 == API ==
 
