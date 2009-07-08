@@ -10,8 +10,7 @@
 == Widgets ==
 
 === Country ===
-Visualise single species distribution within a single country only (bounding box). Might be bounding box based, so more flexible than countries only.
-E.g. can be used for GBIF nodes. 
+An owner of a country specific website may include a widget to visualise a single species distribution within the country.  The visualisation will show multiple polygons (or grids if appropriate) for each of the sources of data providing the information and will be zoomed to an appropriate scale for the country.  A legend will be displayed providing citation to the data source and links back to the species distribution repository website.  This use case is targeted at offering services to the participant nodes of GBIF.   An extension to this use case is to offer the same for arbitrary locations, and possibly limited to bounding box searches. 
 
 === Source ===
 Visualise single, global species distribution based on a single data source.
