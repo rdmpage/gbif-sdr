@@ -1,4 +1,8 @@
 #summary The use cases covered by the project
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
+
 = Contents =
 
 ==Input Formats==
