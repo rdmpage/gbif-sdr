@@ -51,6 +51,8 @@ TODO - describe a mask
 
 === User with collection of shapefiles ===
 
+=== A spatial database owner with a collection of polygons ===
+
 === A collection of primary data ===
 
 === A collection of species with well known areas  ===
