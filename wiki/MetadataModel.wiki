@@ -10,7 +10,10 @@ This page is just capturing thoughts at this point
   # Taxon, Species, "Subject" identifier (links to ECAT?)
   # Resolution the data was captured to (what about multiple versions suitable for different resolutions?, intended use, fitness for use)
   # Accuracy of data
+  # breeding/wintering
   # status (invasive, native etc)
+  # present / absent / unknown
+  # life stage
   # Confidence of data? (both "this is based on my best guess" and calculated confidence in a model output)
   # Data provenance (citing sources accurately, capturing iterations of a modeling process? ) - Links to Registry?
   # Temporal (seasonal, and [need good term to describe] "changes over time", the time span this statement is valid for?)
