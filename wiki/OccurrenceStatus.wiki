@@ -1,16 +1,15 @@
 #summary Overview & recommendation for vocabulary to express species occurrences
 #sidebar TableOfContents
 
-<wiki:toc max_depth="2" />
+<wiki:toc max_depth="3" />
 
 = Introduction =
+There are lot of terms in use for describing the occurrence status of a species. Aim is to recommend a very simple basic vocabulary and to map existing standards to it.
 
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
+= Recommended Vocabulary =
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+= Existing Standards =
+== POSS ==
