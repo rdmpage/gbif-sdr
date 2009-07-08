@@ -14,10 +14,26 @@ ECAT webservice that resolves non NUB name usages from other taxonomies present 
  * checklist resourceKey from GBIF registry representing the taxonomy
 
 *Reponse*
- * JSON, XML & AMF ???
+ * list of ECAT NUB identifier (unique namestrings, maybe stable NameUsage IDs ???)
+ * JSON
 
 ==Taxonomic Navigation==
 for any checklist, not only the NUB.
 
 ===getChildren===
 ===getRoot===
+
+==Taxonomic Search==
+Like (Fuzzy?) search on namestrings, returning list of matching name usages.
+
+*Parameters*
+ * *q*: name query string, both common and scientific name string based
+ * *sn*: scientific name query string
+ * *cn*: common name query string
+ * *res*: optional checklist resourceKey to limit search to
+
+*Reponse*
+ * list of NameUsage identifiers + Namestring
+ * JSON
+
+
