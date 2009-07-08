@@ -2,31 +2,44 @@
 #sidebar TableOfContents
 
 <wiki:toc max_depth="3" />
+= Terminology =
+ * Species Distribution: The (merged) distribution of a "species" as defined by an ECAT NUB Name Usage, i.e. not taking into account subjective synonyms, only lexical and nomenclatural groups.
 
-= Contents =
 
+= Use Cases =
+== Widgets ==
+
+=== Country ===
+Visualise single species distribution within a single country only (bounding box). Might be bounding box based, so more flexible than countries only.
+E.g. can be used for GBIF nodes. 
+
+=== Source ===
+Visualise single, global species distribution based on a single data source.
+E.g. can be used for Fauna Europaea.
+
+=== GBIF Portal ===
+Visualise all datasets for single .
+Needs to visualise merged distributions for higher taxa and proper taxa according to some classification (e.g. ITIS, EOL or the German National Flora using their synonymy)
+
+
+== API ==
+
+
+=== List of species occurring from a query with spatial, temporal (change over time, seasonal) components (presence only) ===
+
+=== List of higher groups from a query (as above) ===
+=== List of species with conflicting distribution (e.g. have layers that conflict) ===
+=== Taxonomic query - where does this taxon live? (e.g. family...) ===
+=== Browsing the SDR using a specific taxonomy (E.g. ITIS) ===
+=== Spatial overview of biodiversity in area report - (endemic species etc) ===
+=== Species richness===
+=== Using a reference list (e.g. IUCN red list) get those that meet filter parameters (spatial, temporal etc)===
+ 
+
+= Requirements =
 ==Input Formats==
   # GBIF occurrence store, point presence data]
   # ECAT mobilised DwC distribution extension (well known areas, such as "Atlantic ocean")
   # Polygon sources (generic shapefiles, GROMS etc)
   # Gridded data (e.g. raster based) 
   # Textual information (e.g. a paragraph about a single species)
-
-==Output==
-  # List of species occurring from a query with spatial, temporal (change over time, seasonal) components (presence only)
-  # List of higher groups from a query (as above)
-  # List of species with conflicting distribution (e.g. have layers that conflict)
-  # Taxonomic query - where does this taxon live? (e.g. family...)
-  # Browsing the SDR using a specific taxonomy (E.g. ITIS)
-  # Spatial overview of biodiversity in area report - (endemic species etc)
-  # Species richness
-  # Using a reference list (e.g. IUCN red list) get those that meet filter parameters (spatial, temporal etc)
- 
-
-==Output formats==
-  # Raster
-  # Polygon
-  # Lists of defined areas (?)
-  # Images
-  # General lists  
-  # Formats
