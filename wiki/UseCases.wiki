@@ -7,6 +7,8 @@
 
 
 = Use Cases =
+*Note to authors:* Do not modify existing use case numbers as they are linked from elsewhere in the documentation
+
 == Widgets ==
 
 === 1.0 Country ===
