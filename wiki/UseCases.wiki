@@ -10,23 +10,52 @@
 == Widgets ==
 
 === Country ===
-An owner of a country specific website may include a widget to visualise a single species distribution within the country.  The visualisation will show multiple polygons (or grids if appropriate) for each of the sources of data providing the information and will be zoomed to an appropriate scale for the country.  A legend will be displayed providing citation to the data source and links back to the species distribution repository website.  This use case is targeted at offering services to the participant nodes of GBIF.   An extension to this use case is to offer the same for arbitrary locations, and possibly limited to bounding box searches. 
+An owner of a country specific website may include a widget to visualise a single distribution of a species or higher taxon within the country.  The visualisation will show multiple polygons (or grids if appropriate) for each of the sources of data providing the information and will be zoomed to an appropriate scale for the country.  A legend will be displayed providing citation to the data source and links back to the species distribution repository website.  This use case is targeted at offering services to the participant nodes of GBIF.   An extension to this use case is to offer the same for arbitrary locations, and possibly limited to bounding box searches. 
+TODO - add display of primary data
+TODO - writable access will require redirtect to the SDR website
+TODO - multilingual support
 
-=== Source ===
+=== Data source specific widget ===
+giving something back to provider
 Visualise single, global species distribution based on a single data source.
 E.g. can be used for Fauna Europaea.
 
-=== GBIF Portal ===
+=== Taxonomy / Species... ===
 Visualise all datasets for single species distributions.
 Needs also to visualise merged distributions for higher taxa and proper taxa according to some, preferably multiple classifications (e.g. ITIS, EOL or the German National Flora using their synonymy)
-
-===Project Integration, e.g. EOL===
 Visualise single species distribution based on their own taxonomy.
-====Implementation====
-The project site will have to send 2 parameters: a) the unique species name or their local identifiers
+
+== SDR Web site ==
+
+=== Home ===
+The user can find information about the project,see general stats (number stored), 
+TODO - multilingual support
+
+=== Browse ===
+Using a sceintific name taxonomic browsing tool, the user can navigate to the taxonomy.  
+
+=== Searching ===
+Users can search using scientific name or common name, datasets, 
+
+=== Making additions on the species pages ===
+While seeing a specific visualisation for a species or a higher taxa, a user can log in, and be offered the ability to make modifications.  The user chooses to add a country, and is presented with the ability to select a country on the map.  A confirmation of "do you want to confirm sprecies X lives in this country?", user selects yes and the data is saved.
+TODO - describe a mask    
+
+== Publishing data into the SDR ==
+
+=== User with collection of shapefiles ===
+
+=== A collection of primary data ===
+
+=== A collection of species with well known areas  ===
+describe ECAT mobilised DwC distribution extension (well known areas, such as "Atlantic ocean")
+
+=== A gridded data source ===
+- e.g. a raster
+
+=== Textual information (e.g. a paragraph about a single species) ===
 
 == API ==
-
 
 === List of species occurring from a query with spatial, temporal (change over time, seasonal) components (presence only) ===
 
@@ -38,11 +67,3 @@ The project site will have to send 2 parameters: a) the unique species name or t
 === Species richness===
 === Using a reference list (e.g. IUCN red list) get those that meet filter parameters (spatial, temporal etc)===
  
-
-= Requirements =
-==Input Formats==
-  # GBIF occurrence store, point presence data]
-  # ECAT mobilised DwC distribution extension (well known areas, such as "Atlantic ocean")
-  # Polygon sources (generic shapefiles, GROMS etc)
-  # Gridded data (e.g. raster based) 
-  # Textual information (e.g. a paragraph about a single species)
