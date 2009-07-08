@@ -1,4 +1,7 @@
 #summary The common data model for the metadata associated with an input object
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
 
 = Introduction =
 
