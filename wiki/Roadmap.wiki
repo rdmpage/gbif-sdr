@@ -1,0 +1,8 @@
+#summary SDR Roadmap
+
+= Current as in contract =
+ # Web (login, comments), Widget () & Editor (user editor for creating distributions)
+ # Webservice API
+ # Use Cases
+
+= Proposed =
