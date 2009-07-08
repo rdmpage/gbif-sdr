@@ -1,0 +1,7 @@
+= Contents =
+==Input Formats==
+  # [http://code.google.com/p/gbif-sdr/w/ GBIF occurrence store, point presence data]
+  # ECAT mobilised DwC distribution extension (well known areas, such as "Atlantic ocean")
+  # Polygon sources (generic shapefiles, GROMS etc)
+  # Gridded data (e.g. raster based) 
+  # Textual information (e.g. a paragraph about a single species)
