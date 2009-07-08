@@ -36,4 +36,25 @@ Like (Fuzzy?) search on namestrings, returning list of matching name usages.
  * list of NameUsage identifiers + Namestring
  * JSON
 
+==List Available Taxonomies==
+*Parameters*
+   * country
+   * tags ???
 
+*Reponse*
+ * list of checklists
+   * resourceKey
+   * title
+   * description
+   * country
+   * tags
+ * JSON
+
+==List/Autocomplete Used Terms==
+*Parameters*
+   * term type
+   * term query string for autocomplete
+
+*Reponse*
+ * list of terms (with number of usages)
+ * JSON
