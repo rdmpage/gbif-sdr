@@ -37,6 +37,12 @@ Using a sceintific name taxonomic browsing tool, the user can navigate to the ta
 === Searching ===
 Users can search using scientific name or common name, datasets, 
 
+=== Registration ===
+Users can search using scientific name or common name, datasets, 
+
+=== Log In ===
+Users can search using scientific name or common name, datasets, 
+
 === Making additions on the species pages ===
 While seeing a specific visualisation for a species or a higher taxa, a user can log in, and be offered the ability to make modifications.  The user chooses to add a country, and is presented with the ability to select a country on the map.  A confirmation of "do you want to confirm sprecies X lives in this country?", user selects yes and the data is saved.
 TODO - describe a mask    
@@ -54,16 +60,3 @@ describe ECAT mobilised DwC distribution extension (well known areas, such as "A
 - e.g. a raster
 
 === Textual information (e.g. a paragraph about a single species) ===
-
-== API ==
-
-=== List of species occurring from a query with spatial, temporal (change over time, seasonal) components (presence only) ===
-
-=== List of higher groups from a query (as above) ===
-=== List of species with conflicting distribution (e.g. have layers that conflict) ===
-=== Taxonomic query - where does this taxon live? (e.g. family...) ===
-=== Browsing the SDR using a specific taxonomy (E.g. ITIS) ===
-=== Spatial overview of biodiversity in area report - (endemic species etc) ===
-=== Species richness===
-=== Using a reference list (e.g. IUCN red list) get those that meet filter parameters (spatial, temporal etc)===
- 
