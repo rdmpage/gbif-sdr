@@ -1,8 +1,8 @@
 #summary Sidebar TOC
  * UseCases
- * Requirements
+ * [Requirements]
  * MetadataModel	
- * API
+ * [API]
  * OccurrenceStatus
  * [Roadmap]
  * EcatIntegration
