@@ -1,0 +1,23 @@
+#summary Taxonomic Integration with ECAT
+#sidebar TableOfContents
+<wiki:toc max_depth="3" />
+
+= Taxonomic Linking =
+  * Link to ECAT NUB taxonomy via the unique namestring incl authorship
+
+= ECAT Webservices=
+== Resolving Taxonomies ==
+ECAT webservice that resolves non NUB name usages from other taxonomies present in ECAT to a list of NUB name usages. 
+
+*Parameters*
+ * namestring or local sourceID
+ * checklist resourceKey from GBIF registry representing the taxonomy
+
+*Reponse*
+ * JSON, XML & AMF ???
+
+==Taxonomic Navigation==
+for any checklist, not only the NUB.
+
+===getChildren===
+===getRoot===
