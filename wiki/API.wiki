@@ -1,12 +1,12 @@
 #summary The API of the SDR
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
 
 = Introduction =
-
 This is the API that is derived from the requirements
 
-
 = API =
-
 List of species occurring from a query with spatial, temporal (change over time, seasonal) components (presence only)
 List of higher groups from a query (as above)
 List of species with conflicting distribution (e.g. have layers that conflict)
