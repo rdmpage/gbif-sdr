@@ -1,4 +1,4 @@
-#The common data model for the metadata associated with an input object
+#summary The common data model for the metadata associated with an input object
 
 = Introduction =
 
