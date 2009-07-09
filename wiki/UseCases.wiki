@@ -80,7 +80,10 @@ The user will register this data through ECAT.
 Named areas have to be existing in the Names Area Repository (NAR) beforehand and the supplied gbif:namedArea and gbif:namedAreaReference has to confirm to the IDs listed by the NAR.
 
 === 3.4 A gridded data source ===
-A user has a raster format of data.  The user follows the same as use case 3.0, although the shape files are some format of raster file.
+A user has a raster format of data.  The user follows the same as use case 3.0, although the shape files are some format of raster file.  The resolution of the raster file can be declared.
+
+=== 3.4.1 User has generated predicted distributed in a raster using e.g. a modeling approach ===
+User registers this data and can indicate that it is machine generated.  The user can define the resolution that the data was generated, and can optionally link to metadata about the modeling approach.  An indication of the confidence can be supplied.
 
 === 3.5 Textual information (e.g. a paragraph about a single species) ===
 
