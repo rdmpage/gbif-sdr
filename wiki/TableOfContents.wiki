@@ -3,6 +3,7 @@
  * [Requirements]
  * MetadataModel	
  * [API]
- * OccurrenceStatus
  * [Roadmap]
  * EcatIntegration
+*Vocabularies*
+ * OccurrenceStatus
