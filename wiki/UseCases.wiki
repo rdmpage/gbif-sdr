@@ -75,7 +75,8 @@ An export into the format described in 3.0.2 is recommended.
 === 3.2 A collection of primary data (e.g. GBIF portal index) ===
 A clustering algorithm *might* allow the point data to be synthesised into polygons, or a raster or various rasters for differing resolutions can be generated.  Potentially this could be registered as a source and loaded in to the distribution repository.  
 
-=== 3.3 A collection of species with well known areas  ===
+=== 3.3 A Darwin Core distribution extension with named areas is used with a Taxon Core  ===
+The user will register this data through ECAT.
 describe ECAT mobilised DwC distribution extension (well known areas, such as "Atlantic ocean")
 
 === 3.4 A gridded data source ===
