@@ -52,6 +52,11 @@ TODO - describe a mask
 === 2.6 Making comments ===
 User can supply free text comments on ?
 
+=== 2.7 User can discover layer of interest from an OGC catalogue service ===
+Publishing for example endangered species layer?
+Invasive species?
+Derived richness layer?
+
 == Publishing data into the SDR ==
 
 === 3.0 User with collection of shapefiles ===
