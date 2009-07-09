@@ -87,6 +87,9 @@ They can be calculated based on SDR data, but do not fit into the SDReposiotory.
 Allowing to determine % coverage of primary data with the distribution
 Ability to discover gaps in the primary data
 
+=== 4.1 Coverage statistics ===
+User can find land coverage, ecosystem coverage etc for a species.  
+
 == Web service users ==
 
 === 5.1 User can discover layer of interest from an OGC catalogue service ===
