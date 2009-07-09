@@ -22,10 +22,14 @@ giving something back to provider
 Visualise single, global species distribution based on a single data source.
 E.g. can be used for Fauna Europaea.
 
-=== 1.2 Taxonomy / Species... ===
+=== 1.2 Taxonomy specific... ===
 Visualise all datasets for single species distributions.
 Needs also to visualise merged distributions for higher taxa and proper taxa according to some, preferably multiple classifications (e.g. ITIS, EOL or the German National Flora using their synonymy)
 Visualise single species distribution based on their own taxonomy.
+TODO - add a note that the  configuration of the widget defines the taxonomy that is used - e.g. the user does not select it when using the widget
+
+=== 1.3 Visualise output of Niche models ===
+Modelers are generating predicted occurrence from the output of modeling using (for example) environmental niche models.  A widget will allow for visualising the model output together with data captured by hand.
 
 == SDR Web site ==
 
