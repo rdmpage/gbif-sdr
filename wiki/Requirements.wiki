@@ -21,6 +21,9 @@ Distributions need to be visualised in a way that users are informed about:
 Incoming shapefiles have scientific names attached to them which potentially are not covered by ECAT yet.
 SDR needs to resolve the ECAT NUB id for each name, in the case of already registered checklists with ECAT, e.g. birdlife, SDR will supply the resourceKey for it and ECAT will return the proper NameUsage ID.
 
+== Named Area Repository (NAR) ==
+ * website listing all named area source lists together with their identifier to be used
+   * for each named area source a list of all areas codes needs to be shown and downloadable as CSV
 
 == API ==
 see [API]
