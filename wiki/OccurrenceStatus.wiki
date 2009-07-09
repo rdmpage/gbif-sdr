@@ -7,9 +7,24 @@
 There are lot of terms in use for describing the occurrence status of a species. Aim is to recommend a very simple basic vocabulary and to map existing standards to it.
 
 = Recommended Vocabulary =
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+==Occurrence Status==
+ * *Present*: There is at least one well documented record of the taxons presence in the area
+ * *Doubtful*: The taxon is scored as being present in the area but there is some doubt over the evidence. The doubt may be of different kinds including taxonomic or geographic imprecision in the records
+ * *Absent*: There is evidence to document the absence of a taxon in the area
+ * *NULL*: No information about the occurrence within this area
+
+==Nativeness==
+ * *Native*: The organism either evolved in this region or arrived by non-anthropogenic means
+ * *Introduced*: The organism arrived in the region via an anthropogenic mechanism or mechanisms
+ * *Naturalised*: The organism reproduces naturally and forms part of the local ecology
+ * *Invasive*: The organism is having a deleterious impact on another organism, multiple organisms or the ecosystem as a whole
+ * *Managed*: The organism maintains its presence through intentional cultivation or husbandry
+
+==LifeStage==
+ * adult
+ * larve
+...
 
 = Existing Standards =
-== POSS ==
+ * http://www.bou.org.uk/reccats.html
+ * POSS
