@@ -15,3 +15,10 @@ Browsing the SDR using a specific taxonomy (E.g. ITIS)
 Spatial overview of biodiversity in area report - (endemic species etc)
 Species richness
 Using a reference list (e.g. IUCN red list) get those that meet filter parameters (spatial, temporal etc)
+
+==OGC Services==
+For biodiversity we have the problem that we have millions of species and thousands of datasets.
+Ideally each of them become a separate layer in OGC services (WMS/WFS), which is not doable.
+
+Each dataset could become a layer in oGC and clients will have to use a filter. This is not widely supported.
+An open problem. What can be registered with INSPIRE???
