@@ -2,9 +2,38 @@
 #sidebar TableOfContents
 
 <wiki:toc max_depth="3" />
-= Current as in contract =
- # Web (login, comments), Widget () & Editor (user editor for creating distributions)
- # Webservice API
- # Use Cases
 
-= Proposed =
+= Roadmap =
+Project started 15th of June 2009. It is devided in 3 phases and a list of use cases / features that are out of scope.
+
+== Phase 1 ==
+*Scheduled for 1. August 2009*
+=== Widget ===
+Covering Use Cases 1.0, 1.1 and 1.2
+
+Implemented features:
+ * Flex application called the widget
+ * Initialized/configured by
+   * either as a) country b) a resource (resourceKey) or c) all datasets
+   * taxonomy: optionally a checklist resourceKey
+   * species nameID defined by ECAT
+ * shows GBIF point data via "EOL" tiles
+ * shows separate layer for each resource
+   * dynamic legend thats shows some or all of the following: status, nativeness, lifestage and seasonal data
+ * export of map in several formats, at least including an image and KML
+
+=== Website===
+: user accounts/login, taxonomy browser & searches, comments
+=== Named Area Repository===
+ (user editor for creating distributions)
+
+== Phase 2 ==
+*Scheduled for 1. October 2009*
+
+ # Webservice API
+
+== Phase 3 ==
+*Scheduled for 16. October 2009*
+Uses
+
+== Out Of Scope ==
