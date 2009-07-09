@@ -1,7 +1,7 @@
 #summary The use cases covered by the project
 #sidebar TableOfContents
 
-<wiki:toc max_depth="3" />
+<wiki:toc max_depth="4" />
 = Terminology =
  * Species Distribution: The (merged) distribution of a "species" as defined by an ECAT NUB Name Usage, i.e. not taking into account subjective synonyms, only lexical and nomenclatural groups.
 
