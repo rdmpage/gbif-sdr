@@ -22,6 +22,9 @@ giving something back to provider
 Visualise single, global species distribution based on a single data source.
 E.g. can be used for Fauna Europaea.
 
+=== 1.1.1 Download ===
+User can download in formats (Image, KML, GML, PDF, PNG, JPEG)
+
 === 1.2 Taxonomy specific... ===
 Visualise all datasets for single species distributions.
 Needs also to visualise merged distributions for higher taxa and proper taxa according to some, preferably multiple classifications (e.g. ITIS, EOL or the German National Flora using their synonymy)
@@ -61,6 +64,8 @@ Publishing for example endangered species layer?
 Invasive species?
 Derived richness layer?
 INSPIRE?
+
+
 
 == Publishing data into the SDR ==
 
