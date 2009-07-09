@@ -102,7 +102,10 @@ User can find land coverage, ecosystem coverage etc for a species.
 
 === 4.2 Publishing derived layers ===
 Layers like endangered or invasive species, species richness etc are not linked to a single species.
-They can be calculated based on SDR data, but do not fit into the SDReposiotory.
+Analysis to produce potentially interesting layers like:
+ * country maps: only showing country areas
+ * tdwg area maps: only showing country areas
+ * species richness
 
 == Web service users ==
 
