@@ -16,6 +16,11 @@ Spatial overview of biodiversity in area report - (endemic species etc)
 Species richness
 Using a reference list (e.g. IUCN red list) get those that meet filter parameters (spatial, temporal etc)
 
+== REST services ==
+All services respond in JSON at least. Preferrably XML and AMF on top.
+
+
+
 ==OGC Services==
 For biodiversity we have the problem that we have millions of species and thousands of datasets.
 Ideally each of them become a separate layer in OGC services (WMS/WFS), which is not doable.
