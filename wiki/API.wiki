@@ -22,3 +22,10 @@ Ideally each of them become a separate layer in OGC services (WMS/WFS), which is
 
 Each dataset could become a layer in oGC and clients will have to use a filter. This is not widely supported.
 An open problem. What can be registered with INSPIRE???
+
+=== Specific Layers===
+For specific aggregated layers this is possible.
+Potential candidates for layers relevant to be published in INSPIRE:
+ * IUCN redlist species
+ * species richness layer
+   * specific by kingdom or orders/families
