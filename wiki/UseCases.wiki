@@ -80,7 +80,7 @@ The user will register this data through ECAT.
 Named areas have to be existing in the Names Area Repository (NAR) beforehand and the supplied gbif:namedArea and gbif:namedAreaReference has to confirm to the IDs listed by the NAR.
 
 === 3.4 A gridded data source ===
-- e.g. a raster
+A user has a raster format of data.  The user follows the same as use case 3.0, although the shape files are some format of raster file.
 
 === 3.5 Textual information (e.g. a paragraph about a single species) ===
 
