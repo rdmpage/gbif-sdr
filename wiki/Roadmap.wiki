@@ -39,16 +39,35 @@ Implemented features:
     * map with the areas
     * all area codes
     * CSV download for the codes
+ * WMS & WFS for areas via geoserver. Each reference becomes a layer
+
 
 == Phase 2 ==
 *Scheduled for 1. October 2009*
 
- # Webservice API
+=== Import===
+ * Covering Use Cases 3.0.1 (3.0.2, 3.1)
+    * python script to import shapefiles into postgis. Resolves name strings via ECAT webservice to nameIDs
+ * Covering Use Cases 3.3
+   * ECAT will create dwc-a for download with nameIDs and the distribution extension
+   * ECAT will push SDR import service passing a resourceKey and dwc-a URL for download
+
+
+===API===
+
 === Website v2===
  * taxonomic browser
 
+===Named Area Repository v2===
+ * additional with data from:
+   * catchment / fish areas
+   * known bird areas
+   * if available European states
+
 == Phase 3 ==
 *Scheduled for 16. October 2009*
-Uses
+ * Use cases & promotion material
+
 
 == Out Of Scope ==
+ * import of niche models
