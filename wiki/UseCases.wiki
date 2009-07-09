@@ -63,6 +63,12 @@ User can supply free text comments on the distribution for a taxon.
 
 === 3.0 User with collection of shapefiles ===
 
+==== 3.0.1 Shapefiles are in an unknown format ====
+The user contacts the helpdesk and negotiates the manual delivery of the shapefiles.  The metadata about this collection are authored, and a custom transformation of the data is done.  A load of these data are produced.  The scripts for the transformation and load of these data are stored and the same procedure can be run against the data repeatedly - e.g. should the input data be updated and a more up-to.date version is available.
+
+==== 3.0.2 Shapefiles are in a format known to the SDR ====
+The location (e.g. URL) of the shapefile collection is registered.  Metadata is authored about the collection and the shapefiles are harvested and loaded into the SDR.
+
 === 3.1 A spatial database owner with a collection of polygons ===
 
 === 3.2 A collection of primary data ===
