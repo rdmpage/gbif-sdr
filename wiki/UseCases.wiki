@@ -56,6 +56,7 @@ User can supply free text comments on ?
 Publishing for example endangered species layer?
 Invasive species?
 Derived richness layer?
+INSPIRE?
 
 == Publishing data into the SDR ==
 
@@ -74,3 +75,7 @@ describe ECAT mobilised DwC distribution extension (well known areas, such as "A
 === 3.5 Textual information (e.g. a paragraph about a single species) ===
 
 === 3.6 Holder of presence and absence data ===
+
+=== 3.7 Publishing derived layers ===
+Layers like endangered or invasive species, species richness etc are not linked to a single species.
+They can be calculated based on SDR data, but do not fit into the SDReposiotory.
