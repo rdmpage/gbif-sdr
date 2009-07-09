@@ -26,7 +26,7 @@ for any checklist, not only the NUB.
 ===getRoot===
 
 ==Taxonomic Search==
-Like (Fuzzy?) search on namestrings, returning list of matching name usages.
+Like search on namestrings, returning list of matching name usages.
 
 *Parameters*
  * *q*: name query string, both common and scientific name string based
