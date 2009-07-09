@@ -77,7 +77,7 @@ A clustering algorithm *might* allow the point data to be synthesised into polyg
 
 === 3.3 A Darwin Core distribution extension with named areas is used with a Taxon Core  ===
 The user will register this data through ECAT.
-describe ECAT mobilised DwC distribution extension (well known areas, such as "Atlantic ocean")
+Named areas have to be existing in the Names Area Repository (NAR) beforehand and the supplied gbif:namedArea and gbif:namedAreaReference has to confirm to the IDs listed by the NAR.
 
 === 3.4 A gridded data source ===
 - e.g. a raster
