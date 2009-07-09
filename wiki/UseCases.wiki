@@ -49,6 +49,9 @@ Users can search using scientific name or common name, datasets,
 While seeing a specific visualisation for a species or a higher taxa, a user can log in, and be offered the ability to make modifications.  The user chooses to add a country, and is presented with the ability to select a country on the map.  A confirmation of "do you want to confirm sprecies X lives in this country?", user selects yes and the data is saved.
 TODO - describe a mask    
 
+=== 2.6 Making comments ===
+User can supply free text comments on ?
+
 == Publishing data into the SDR ==
 
 === 3.0 User with collection of shapefiles ===
