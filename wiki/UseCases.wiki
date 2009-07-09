@@ -70,8 +70,10 @@ The user contacts the helpdesk and negotiates the manual delivery of the shapefi
 The location (e.g. URL) of the shapefile collection is registered.  Metadata is authored about the collection and the shapefiles are harvested and loaded into the SDR.
 
 === 3.1 A spatial database owner with a collection of polygons ===
+An export into the format described in 3.0.2 is recommended.
 
-=== 3.2 A collection of primary data ===
+=== 3.2 A collection of primary data (e.g. GBIF portal index) ===
+A clustering algorithm *might* allow the point data to be synthesised into polygons, or a raster or various rasters for differing resolutions can be generated.  Potentially this could be registered as a source and loaded in to the distribution repository.  
 
 === 3.3 A collection of species with well known areas  ===
 describe ECAT mobilised DwC distribution extension (well known areas, such as "Atlantic ocean")
