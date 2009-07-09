@@ -59,12 +59,6 @@ TODO - describe a mask
 === 2.6 Making comments ===
 User can supply free text comments on the distribution for a taxon.  
 
-=== 2.7 User can discover layer of interest from an OGC catalogue service ===
-Publishing for example endangered species layer?
-Invasive species?
-Derived richness layer?
-INSPIRE?
-
 == Publishing data into the SDR ==
 
 === 3.0 User with collection of shapefiles ===
@@ -92,3 +86,11 @@ They can be calculated based on SDR data, but do not fit into the SDReposiotory.
 === 4.0 Coverage of primary data ===
 Allowing to determine % coverage of primary data with the distribution
 Ability to discover gaps in the primary data
+
+== Web service users ==
+
+=== 5.1 User can discover layer of interest from an OGC catalogue service ===
+Publishing for example endangered species layer?
+Invasive species?
+Derived richness layer?
+INSPIRE?
