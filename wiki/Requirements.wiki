@@ -22,8 +22,11 @@ Incoming shapefiles have scientific names attached to them which potentially are
 SDR needs to resolve the ECAT NUB id for each name, in the case of already registered checklists with ECAT, e.g. birdlife, SDR will supply the resourceKey for it and ECAT will return the proper NameUsage ID.
 
 == Named Area Repository (NAR) ==
- * website listing all named area source lists together with their identifier to be used
-   * for each named area source a list of all areas codes needs to be shown and downloadable as CSV
+A place where named area codes can be registered with spatial polygons that describe them.
+A single Named Area code is not globally unique, so it requires the combination with the source where the named area is taken from to uniquely identify an area.
+
+ * website listing all available named area references together with their identifier to be used
+   * for each named area reference a list of available areas codes needs to be shown and downloadable as a CSV file
 
 == API ==
 see [API]
