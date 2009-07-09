@@ -48,6 +48,7 @@ Implemented features:
 === Import===
  * Covering Use Cases 3.0.1 (3.0.2, 3.1)
     * python script to import shapefiles into postgis. Resolves name strings via ECAT webservice to nameIDs
+    * known format of shapefile will be based on GROMS import
  * Covering Use Cases 3.3
    * ECAT will create dwc-a for download with nameIDs and the distribution extension
    * ECAT will push SDR import service passing a resourceKey and dwc-a URL for download
@@ -70,4 +71,17 @@ Implemented features:
 
 
 == Out Of Scope ==
+
+=== Import===
  * import of niche models
+ * Use Cases 3.3
+ * Use Cases 3.1: no import of GBIF point data yet, but visualisation of points via widget. Import could be done in the future via alpha shapes or alike
+ * Use Cases 3.4: raster import is out of scope
+ * Use Cases 3.5: no textual data import
+
+===API===
+
+===Analysis===
+ * Use Cases 4.2: derived maps are not created in this project. If GBIF or others are providing data like this, it can be visualised if its based on the known Named Areas:
+    * species count per named area
+    * list of species per named area
