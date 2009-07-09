@@ -6,16 +6,18 @@
   * Link to ECAT NUB taxonomy via the unique namestring incl authorship
 
 = ECAT Webservices=
+all services respond in JSON if not said otherwise.
+
 == Resolving Taxonomies ==
 ECAT webservice that resolves non NUB name usages from other taxonomies present in ECAT to a list of NUB name usages. 
 
 *Parameters*
- * namestring or local sourceID
- * checklist resourceKey from GBIF registry representing the taxonomy
+ * *sn*: the full scientific name to be resolved
+ * *k,o,f*: kingdom,order,family. Optional hierarchy parameters to better resolve names, especially homonyms
+ * *res*: optional identifier for the resource registered in GBIF, so names can be best resolved
 
 *Reponse*
- * list of ECAT NUB identifier (unique namestrings, maybe stable NameUsage IDs ???)
- * JSON
+ * list of ECAT NUB NameUsage ids
 
 ==Taxonomic Navigation==
 for any checklist, not only the NUB.
@@ -34,7 +36,6 @@ Like (Fuzzy?) search on namestrings, returning list of matching name usages.
 
 *Reponse*
  * list of NameUsage identifiers + Namestring
- * JSON
 
 ==List Available Taxonomies==
 *Parameters*
@@ -48,7 +49,6 @@ Like (Fuzzy?) search on namestrings, returning list of matching name usages.
    * description
    * country
    * tags
- * JSON
 
 ==List/Autocomplete Used Terms==
 *Parameters*
@@ -57,4 +57,3 @@ Like (Fuzzy?) search on namestrings, returning list of matching name usages.
 
 *Reponse*
  * list of terms (with number of usages)
- * JSON
