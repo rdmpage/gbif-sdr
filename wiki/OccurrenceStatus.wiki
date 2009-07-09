@@ -20,7 +20,7 @@ There are lot of terms in use for describing the occurrence status of a species.
  * *Invasive*: The organism is having a deleterious impact on another organism, multiple organisms or the ecosystem as a whole
  * *Managed*: The organism maintains its presence through intentional cultivation or husbandry
 
-==LifeStage==
+==Life Stage==
  * adult
  * larve
 ...
