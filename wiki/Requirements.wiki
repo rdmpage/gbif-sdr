@@ -6,6 +6,15 @@
 = Introduction =
 This page details the requirements that are derived from the use cases.  The use case is always linked to by it's number.
 
+== Visualisation of distributions ==
+Distributions need to be visualised in a way that users are informed about:
+ * resource/dataset
+ * absent/present
+ * nativeness
+ * lifestage
+ * seasonal data
 
-notes
+
+
+= Notes =
   * Publishing the layers in a spatial catalogue
