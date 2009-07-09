@@ -7,6 +7,10 @@
 This page details the requirements that are derived from the use cases.  The use case is always linked to by it's number.
 
 = Requirements =
+== 3.0.1==
+Incoming shapefiles have scientific names attached to them which potentially are not covered by ECAT yet.
+SDR needs to resolve the ECAT NUB id for each name, in the case of already registered checklists with ECAT, e.g. birdlife, SDR will supply the resourceKey for it and ECAT will return the proper NameUsage ID.
+
 == Visualisation of distributions ==
 Distributions need to be visualised in a way that users are informed about:
  * resource/dataset
