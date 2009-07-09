@@ -5,3 +5,7 @@
 
 = Introduction =
 This page details the requirements that are derived from the use cases.  The use case is always linked to by it's number.
+
+
+notes
+  * Publishing the layers in a spatial catalogue
