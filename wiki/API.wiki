@@ -29,3 +29,4 @@ Potential candidates for layers relevant to be published in INSPIRE:
  * IUCN redlist species
  * species richness layer
    * specific by kingdom or orders/families
+ * newly discovered species
