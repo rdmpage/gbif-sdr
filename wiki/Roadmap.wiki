@@ -23,14 +23,29 @@ Implemented features:
  * export of map in several formats, at least including an image and KML
 
 === Website===
-: user accounts/login, taxonomy browser & searches, comments
-=== Named Area Repository===
- (user editor for creating distributions)
+ * user accounts registration & login
+ * home page
+ * How to contribute explaining different ways
+ * taxonomic search
+ * user comments on species pages
+
+===Named Area Repository===
+ * database in place with data from:
+   * ISO2 codes
+   * ISO3 codes
+   * TDWG areas
+   * US 2 letter code, states
+ * website listing available reference systems. For each reference it also shows 1 page with
+    * map with the areas
+    * all area codes
+    * CSV download for the codes
 
 == Phase 2 ==
 *Scheduled for 1. October 2009*
 
  # Webservice API
+=== Website v2===
+ * taxonomic browser
 
 == Phase 3 ==
 *Scheduled for 16. October 2009*
