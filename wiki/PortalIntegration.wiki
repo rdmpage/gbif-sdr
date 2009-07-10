@@ -1,0 +1,11 @@
+#Notes on integration with the portal
+#sidebar TableOfContents
+<wiki:toc max_depth="3" />
+
+= Notes =
+
+ * Widget for display on species page to show the boundaries 
+ * Tile generated (same as per EOL) overlays are required only 
+ * Consider continuing research on alpha shapes for extracting polygon data
+
+ * Setup a geospatial portal to hold "interesting biodiversity layers".  Species richness, endangered species etc
