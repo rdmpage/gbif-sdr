@@ -1,4 +1,4 @@
-#Summary An example of data loading at different resolutions
+#summary An example of data loading at different resolutions
 <wiki:toc max_depth="3" />
 
 = Introduction =
