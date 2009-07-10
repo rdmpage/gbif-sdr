@@ -1,4 +1,4 @@
-#An example of data loading at different resolutions
+#Summary An example of data loading at different resolutions
 <wiki:toc max_depth="3" />
 
 = Introduction =
@@ -14,34 +14,3 @@ The following depicts 3 scenarios the data held in the SDR might depict when cap
 || *!LowRes* || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png]|| Countries of presence and absence ||
 || *!MedRes* ||  || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-us.png] || US States of presence and absence ||
 || *!HiRes* || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] ||  Polygon data covering parts *but not all of* New Hampshire, Connecticut, Massachusetts, Vermont, New Hamsphire, New Brunswick and Maine ||
-
-= Definitions =
-<dl>
-<dt>*Degrading resolution*</dt>
-<dd>This is the process of...</dd>
-
-<dt>*Spatial scope*</dt>
-<dd>This is the process of...</dd>
-
-<dt>*Confidence*</dt>
-<dd>This is related to the input data...</dd>
-
-<dt>*Spatial accuracy*</dt>
-<dd>...</dd>
-
-<dt>*Basis of record*</dt>
-<dd>...</dd>
-
-<dt>*Spatial resolution*</dt>
-<dd>...</dd>
-
-<dt>*Occurrence status*</dt>
-<dd>...</dd>
-
-<dt>*Life stage*</dt>
-<dd>...</dd>
-
-<dt>*Nativeness*</dt>
-<dd>...</dd>
-
-</dl>
