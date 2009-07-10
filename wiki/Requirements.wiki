@@ -34,3 +34,4 @@ see [API]
 
 = Notes =
   * Publishing the layers in a spatial catalogue
+  * Accuracy is not going to be captured along with resolution at this stage
