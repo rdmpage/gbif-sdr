@@ -1,0 +1,3 @@
+#summary Terminology used in the distribution project
+
+= Terms =
