@@ -4,7 +4,7 @@
 
 <dl>
 <dt>*Degrading resolution*</dt>
-<dd>The mechanism of taking Data captured to a very high resolution and making it appropriate to use at a lower resolution.  This may be for technical performance reasons for visualisation for example, or to take finely detailed information (e.g. the distribution of a species over a city) and derive that if it exists in the city, it also exists in the country to which that city belongs</dd>
+<dd>The process of taking data captured to a high resolution and making it appropriate to use at a lower resolution.  This may be for technical performance reasons for visualisation for example, or to take finely detailed information (e.g. the distribution of a species over a city) and derive statements on a lower resolution (e.g. if it exists in the city, it also exists in the country to which that city belongs)</dd>
 
 <dt>*Spatial scope*</dt>
 <dd>This is the process of...</dd>
