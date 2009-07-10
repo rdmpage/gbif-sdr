@@ -3,9 +3,10 @@
 *About*
   * [UseCases]
   * [Requirements]
+  * [Terminology]
   * ResolutionExample	
 *Technical*
- * [Terminology]
+ * [Model]
  * MetadataModel	
  * [API]
  * [Roadmap]
