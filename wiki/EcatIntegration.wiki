@@ -1,6 +1,5 @@
 #summary Taxonomic Integration with ECAT
 #sidebar TableOfContents
-<wiki:toc max_depth="3" />
 
 Please see http://code.google.com/p/gbif-ecat/wiki/WebserviceAPI for details.
 
