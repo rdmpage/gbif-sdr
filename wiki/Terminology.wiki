@@ -21,13 +21,6 @@
 <dt>*Spatial resolution*</dt>
 <dd>Effectively describes the level of detail described in the spatial data.  Data captured to describe the distribution around a city is of higher spatial resolution that simply stating that the species exists in a country</dd>
 
-<dt>*Occurrence status*</dt>
-<dd>...</dd>
-
-<dt>*Life stage*</dt>
-<dd>...</dd>
-
-<dt>*Nativeness*</dt>
-<dd>...</dd>
+See also [OccurrenceStatus] vocabulary
 
 </dl>
