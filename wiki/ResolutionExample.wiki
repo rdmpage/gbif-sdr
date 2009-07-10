@@ -13,7 +13,7 @@ The following depicts 3 scenarios the data held in the SDR might depict when cap
 ||  || *Scenario 0* || *Scenario 2* || *Scenario 3* || 
 || *!LowRes* || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png]|| Countries of presence and absence ||
 || *!MedRes* ||  || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-us.png] || US States of presence and absence ||
-|| *!HiRes* || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] ||  Polygon data covering parts *but not all of* New Hampshire, Connecticut, Massachusetts, Vermont, New Hamsphire and Maine ||
+|| *!HiRes* || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] ||  Polygon data covering parts *but not all of* New Hampshire, Connecticut, Massachusetts, Vermont, New Hamsphire, New Brunswick and Maine ||
 
 = Definitions =
 <dl>
