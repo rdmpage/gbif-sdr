@@ -1,6 +1,5 @@
 #summary Terminology used in the distribution project
 
-= Definitions =
 <dl>
 <dt>*Degrading resolution*</dt>
 <dd>This is the process of...</dd>
