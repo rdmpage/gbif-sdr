@@ -1,4 +1,4 @@
-#Notes on integration with the portal
+#summary Notes on integration with the portal.
 #sidebar TableOfContents
 <wiki:toc max_depth="3" />
 
