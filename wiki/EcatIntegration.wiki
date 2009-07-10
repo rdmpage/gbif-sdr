@@ -2,63 +2,14 @@
 #sidebar TableOfContents
 <wiki:toc max_depth="3" />
 
-=ECAT Taxonomy & Stable Identifiers =
-ECAT manages 2 kind of closely related entities that are of interest to link to.
-*Scientific Names* are collected in all different spellings and given a stable identifier, the *nameID*.
-*Name Usages* are names used in some taxonomy or other publication. The combination of a registered checklist of names, i.e. the *resourceKey*, with a _nameID_ identifies a stable name usage.
+Please see http://code.google.com/p/gbif-ecat/wiki/WebserviceAPI for details.
 
-ECAT generates a synthesised taxonomy that contains all known names, often referred to as the _"NUB"_ in GBIF.
-If no resourceKey for a specific taxonomy is provided, the synthesized taxonomy is being used.
+=Required Services by SDR=
 
-= ECAT Webservices=
-all services respond in JSON if not said otherwise.
-
-== Resolving Taxonomies ==
-ECAT webservice that resolves non NUB name usages from other taxonomies present in ECAT to a list of NUB name usages. 
-
-*Parameters*
- * *sn*: the full scientific name to be resolved
- * *k,o,f*: kingdom,order,family. Optional hierarchy parameters to better resolve names, especially homonyms
- * *res*: optional identifier for the resource registered in GBIF, so names can be best resolved
-
-*Reponse*
- * list of ECAT NUB NameUsage ids
-
-==Taxonomic Navigation==
-for any checklist, not only the NUB.
-
-===getChildren===
-===getRoot===
-
-==Taxonomic Search==
-Like search on namestrings, returning list of matching name usages.
-
-*Parameters*
- * *q*: name query string, both common and scientific name string based
- * *sn*: scientific name query string
- * *cn*: common name query string
- * *res*: optional checklist resourceKey to limit search to
-
-*Reponse*
- * list of NameUsage identifiers + Namestring
-
-==List Available Taxonomies==
-*Parameters*
-   * country
-   * tags ???
-
-*Reponse*
- * list of checklists
-   * resourceKey
-   * title
-   * description
-   * country
-   * tags
-
-==List/Autocomplete Used Terms==
-*Parameters*
-   * term type
-   * term query string for autocomplete
-
-*Reponse*
- * list of terms (with number of usages)
+ # Resolving Taxonomies
+ # NameUsage Navigation
+    # List<NameUsage> getChildren(resourceKey, nameID)
+    # List<NameUsage> getParents(resourceKey, nameID)
+ # NameUsage getDetails(resourceKey, nameID)
+ # NameUsage search(resourceKey, nameQueryString)
+ # List<Resource> listTaxonomies(country)
