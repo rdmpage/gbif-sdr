@@ -9,3 +9,12 @@ In this example, green indicates presence, and red indicates absence; no further
 = Input data =
 || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-us.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] ||
 || Low resolution: Res_0 || Medium resolution: Res_1 || High resolution: Res_2 ||
+
+{{{
+<table>
+<tr>
+  <td>1</td>
+  <td>1</td>
+</tr>
+</table>
+}}}
