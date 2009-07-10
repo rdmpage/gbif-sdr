@@ -19,4 +19,29 @@ The following depicts 3 scenarios the data held in the SDR might depict when cap
 <dl>
 <dt>*Degrading resolution*</dt>
 <dd>This is the process of...</dd>
+
+<dt>*Spatial scope*</dt>
+<dd>This is the process of...</dd>
+
+<dt>*Confidence*</dt>
+<dd>This is related to the input data...</dd>
+
+<dt>*Spatial accuracy*</dt>
+<dd>...</dd>
+
+<dt>*Basis of record*</dt>
+<dd>...</dd>
+
+<dt>*Spatial resolution*</dt>
+<dd>...</dd>
+
+<dt>*Occurrence status*</dt>
+<dd>...</dd>
+
+<dt>*Life stage*</dt>
+<dd>...</dd>
+
+<dt>*Nativeness*</dt>
+<dd>...</dd>
+
 </dl>
