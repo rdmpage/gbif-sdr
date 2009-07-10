@@ -2,8 +2,13 @@
 #sidebar TableOfContents
 <wiki:toc max_depth="3" />
 
-= Taxonomic Linking =
-  * Link to ECAT NUB taxonomy via the unique namestring incl authorship
+=ECAT Taxonomy & Stable Identifiers =
+ECAT manages 2 kind of closely related entities that are of interest to link to.
+*Scientific Names* are collected in all different spellings and given a stable identifier, the *nameID*.
+*Name Usages* are names used in some taxonomy or other publication. The combination of a registered checklist of names, i.e. the *resourceKey*, with a _nameID_ identifies a stable name usage.
+
+ECAT generates a synthesised taxonomy that contains all known names, often referred to as the _"NUB"_ in GBIF.
+If no resourceKey for a specific taxonomy is provided, the synthesized taxonomy is being used.
 
 = ECAT Webservices=
 all services respond in JSON if not said otherwise.
