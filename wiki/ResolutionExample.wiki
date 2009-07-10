@@ -1,0 +1,11 @@
+#An example of data loading at different resolutions
+<wiki:toc max_depth="3" />
+
+= Introduction =
+This is an example walkthrough of distribution data about a single species being loaded into the species distribution repository (SDR).
+3 arbitrary resolutions have been selected for the sake of this example, but are not indicative of any fixed resolutions the SDR may adopt.
+In this example, green indicates presence, and red indicates absence; no further metadata about the species or providers are given.
+
+= Input data =
+== Low Resolution (R0) ==
+[http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png]
