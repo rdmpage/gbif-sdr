@@ -10,16 +10,16 @@
 <dd>This defines the valid bounds to which a spatial statement is valid.  For example, a description of a species distribution across a State, but not mention neighboring States would define it's spatial scope as it's State only</dd>
 
 <dt>*Confidence*</dt>
-<dd>This is related to the input data...</dd>
+<dd>A qualifier to indicate how factual the statement is.  Distributions derived from a model _might_ have a lower confidence than those derived from factual occurrence data</dd>
 
 <dt>*Spatial accuracy*</dt>
-<dd>...</dd>
+<dd>The precision of the spatial data.</dd>
 
 <dt>*Basis of record*</dt>
-<dd>...</dd>
+<dd>A term to indicate how the distribution came to exist.  It might state that it was derived from occurrence data, or might indicate that it was gleaned through local expert opinion etc</dd>
 
 <dt>*Spatial resolution*</dt>
-<dd>...</dd>
+<dd>Effectively describes the level of detail described in the spatial data.  Data captured to describe the distribution around a city is of higher spatial resolution that simply stating that the species exists in a country</dd>
 
 <dt>*Occurrence status*</dt>
 <dd>...</dd>
