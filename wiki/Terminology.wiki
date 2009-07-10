@@ -1,4 +1,6 @@
 #summary Terminology used in the distribution project
+#sidebar TableOfContents
+<wiki:toc max_depth="3" />
 
 <dl>
 <dt>*Degrading resolution*</dt>
