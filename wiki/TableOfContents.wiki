@@ -7,7 +7,7 @@
  * MetadataModel	
  * [API]
  * [Roadmap]
-*Component Integration 
+*Component Integration*
  * EcatIntegration
  * PortalIntegration
 *Vocabularies*
