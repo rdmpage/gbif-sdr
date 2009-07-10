@@ -1,8 +1,9 @@
 #summary Sidebar TOC
 
 *About*
- * [UseCases]
- * [Requirements]
+  * [UseCases]
+  * [Requirements]
+  * ResolutionExample	
 *Technical*
  * [Terminology]
  * MetadataModel	
