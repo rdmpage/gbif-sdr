@@ -7,7 +7,7 @@
 <dd>The process of taking data captured to a high resolution and making it appropriate to use at a lower resolution.  This may be for technical performance reasons for visualisation for example, or to take finely detailed information (e.g. the distribution of a species over a city) and derive statements on a lower resolution (e.g. if it exists in the city, it also exists in the country to which that city belongs)</dd>
 
 <dt>*Spatial scope*</dt>
-<dd>This is the process of...</dd>
+<dd>This defines the valid bounds to which a spatial statement is valid.  For example, a description of a species distribution across a State, but not mention neighboring States would define it's spatial scope as it's State only</dd>
 
 <dt>*Confidence*</dt>
 <dd>This is related to the input data...</dd>
