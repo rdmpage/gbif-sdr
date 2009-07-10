@@ -6,10 +6,10 @@ Please see http://code.google.com/p/gbif-ecat/wiki/WebserviceAPI for details.
 
 =Required Services by SDR=
 
- # Resolving Taxonomies
- # NameUsage Navigation
-    # List<NameUsage> getChildren(resourceKey, nameID)
-    # List<NameUsage> getParents(resourceKey, nameID)
- # NameUsage getDetails(resourceKey, nameID)
- # NameUsage search(resourceKey, nameQueryString)
- # List<Resource> listTaxonomies(country)
+ # {{{Resolving Taxonomies}}}
+ # {{{NameUsage Navigation}}}
+    # {{{List<NameUsage> getChildren(resourceKey, nameID)}}}
+    # {{{List<NameUsage> getParents(resourceKey, nameID)}}}
+ # {{{NameUsage getDetails(resourceKey, nameID)}}}
+ # {{{NameUsage search(resourceKey, nameQueryString)}}}
+ # {{{List<Resource> listTaxonomies(country)}}}
