@@ -1,9 +1,9 @@
 #summary Sidebar TOC
 *About*
- * UseCases
+ * [UseCases]
  * [Requirements]
 *Technical*
- * [Terminology|
+ * [Terminology]
  * MetadataModel	
  * [API]
  * [Roadmap]
