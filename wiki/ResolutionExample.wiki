@@ -7,7 +7,10 @@ This is an example walkthrough of distribution data about a single species being
 In this example, green indicates presence, and red indicates absence; no further metadata about the species or providers are given.
 
 = Input data =
-|| || *Scenario 0* || *Scenario 2* || *Scenario 3* || 
-|| *Low* || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png]||
-|| *Medium* ||  || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-us.png] ||
-|| *High* || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] ||
+
+The following depicts 3 scenarios illustrating how data captured in 3 differing resolutions (LowRes, MedRes, HiRes) might be captured. These scenarios will be discussed with respect to the functionality of the API of the SDR.
+
+||  || *Scenario 0* || *Scenario 2* || *Scenario 3* || 
+|| *LowRes* || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png]||
+|| *MedRes* ||  || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-us.png] ||
+|| *HiRes* || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] ||
