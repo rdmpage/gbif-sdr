@@ -1,9 +1,14 @@
 #summary Sidebar TOC
+*About*
  * UseCases
  * [Requirements]
+*Technical*
+ * [Terminology|
  * MetadataModel	
  * [API]
  * [Roadmap]
+*Component Integration 
  * EcatIntegration
+ * PortalIntegration
 *Vocabularies*
  * OccurrenceStatus
