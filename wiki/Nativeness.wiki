@@ -1,6 +1,7 @@
 #summary Vocabulary expressing nativeness
+#sidebar TableOfContents
 
-=Nativeness=
+= Recommended Nativeness Vocabulary =
  * *Native*: The organism either evolved in this region or arrived by non-anthropogenic means
  * *Introduced*: The organism arrived in the region via an anthropogenic mechanism or mechanisms
  * *Naturalised*: The organism reproduces naturally and forms part of the local ecology
