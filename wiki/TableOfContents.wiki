@@ -15,3 +15,5 @@
  * PortalIntegration
 *Vocabularies*
  * OccurrenceStatus
+ * [Nativeness]
+ * LifeStage
