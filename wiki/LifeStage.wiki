@@ -1,7 +1,9 @@
 #summary Vocabulary expressing life stages
+#sidebar TableOfContents
 
 
-=Life Stage=
+= Recommended Life Stage Vocabulary =
+
  * *Zygote*: A zygote (or zygocyte) describes the first stage of a new unique organism when it consists of just a single cell. The term is also used more loosely to refer to the group of cells formed by the first few cell divisions, although this is properly referred to as a blastomere. A zygote is usually produced by a fertilization event between two haploid cells - an ovum from a female and a sperm cell from a male - which combine to form the single diploid cell. Thus the zygote contains DNA originating from both mother and father and this provides all the genetic information necessary to form a new individual.
  * *Emryo*: An embryo is a multicellular diploid eukaryote in its earliest stage of development, from the time of first cell division until birth, hatching, or germination.
  * *Larva*: A larva (Latin; plural larvae) is a young (juvenile) form of animal with indirect development, going through or undergoing metamorphosis (for example, insects, amphibians, or cnidarians). The larva can look completely different from the adult form, for example, a caterpillar differs from a butterfly. Larvae often have special (larval) organs which do not occur in the adult form. The larvae of some species can become pubescent and not further develop into the adult form (for example, in some newts). This is a type of neoteny. It is a misunderstanding that the larval form always reflects the group's evolutionary history. It could be the case, but often the larval stage has evolved secondarily, as in insects. In these cases the larval form might differ more from the group's common origin than the adult form. The early life stages of most fish species are considerably different from juveniles and adults of their species and are called larvae.
