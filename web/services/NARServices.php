@@ -25,7 +25,8 @@ class NARServices {
 	    $sth = $this->dbHandle->prepare("SELECT * FROM named_area_reference");
         $sth->execute();
         
-        return $sth->fetch(PDO::FETCH_ASSOC);
+        
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 
