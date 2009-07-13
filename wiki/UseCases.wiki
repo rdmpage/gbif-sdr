@@ -128,3 +128,9 @@ INSPIRE?
 === 5.2 List of species present ===
 TODO - move this to a better group.  It is not a web service alone.  
 At a certain point, polygon or bounding box, allowing for addition of certain additional filters (temporal, life stage sources, endangered species) 
+
+== Named Area Registry (NAR) ==
+
+=== 6.1 NAR web services===
+
+=== 6.2 NAR web site===
