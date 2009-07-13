@@ -66,8 +66,10 @@
 					<div class="title_campo">confirm password*</div>
 					<input class="span-8 text">
 				</div>
-				<div class="span-9 last columna1">
-					<input class="submit_button" value="submit">
+				<div class="span-18 column columna1">
+					<div class="span-3"><input class="submit_button" value="submit"></div>
+					<div class="span-1 check_container"><input type="checkbox"></div>
+					<div class="submit_14">I readed and accepted the terms and conditions</div>
 				</div>	
 			</div>
 		</div>
@@ -83,8 +85,8 @@
 <p class="register_12">Nulla vitae aliquam augue. Ut vel nisi nibh, non dictum orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus rhoncus.</p>
 			</div>
 		</div>
-
-		<div class="span-24 last footerContainer">
+		<div class="span-24 column separator40"></div>
+		<div class="span-24 column footerContainer">
 			<div class="span-24 last separator1"></div>
 			<div class="span-24 last footer_notices">
 				<div class="span-6 noti">
