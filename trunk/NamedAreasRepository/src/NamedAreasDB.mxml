@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/halo" 
+	xmlns:local="*" minWidth="800" minHeight="600" xmlns:maps="com.google.maps.*">
+	<fx:Style source="NamedAreasDB.css"/>
+	
+<fx:Declarations>
+	<mx:RemoteObject id="server" endpoint="http://ec2-174-129-85-138.compute-1.amazonaws.com/amfphp/gateway.php" source="NARServices" destination="NARServices">
+		<mx:method name="getReferences"/>
+		<mx:method name="getReferenceCodes"/>
+	</mx:RemoteObject>
+</fx:Declarations>
+
+<fx:Script>
+	<![CDATA[
+		import mx.rpc.events.FaultEvent;
+		import mx.rpc.remoting.mxml.RemoteObject;
+		import com.adobe.utils.StringUtil;
+		import flash.net.navigateToURL;
+		import com.google.maps.MapMouseEvent;
+		import com.google.maps.styles.StrokeStyle;
+		import com.google.maps.InfoWindowOptions;
+		import mx.effects.Tween;
+		import com.google.maps.controls.ControlPosition;
+		import com.google.maps.controls.ZoomControlOptions;
+		import mx.events.ResizeEvent;
+		import mx.events.FlexEvent;
+		import com.google.maps.overlays.MarkerOptions;
+		import com.google.maps.controls.MapTypeControl;
+		import com.google.maps.controls.ZoomControl;
+		import com.google.maps.LatLngBounds;
+		import com.google.maps.overlays.Marker;
+		import mx.controls.Text;
+		import mx.collections.ArrayCollection;
+		import com.adobe.serialization.json.JSON;
+		import mx.rpc.events.ResultEvent;
+		import mx.rpc.http.mxml.HTTPService;
+		import com.google.maps.MapType;
+		import com.google.maps.LatLng;
+		
+		[Bindable]public var namedAreasCollection:ArrayCollection = new ArrayCollection();
+		[Bindable]public var namedAreasList:ArrayCollection = new ArrayCollection();
+		
+		public var bbox:LatLngBounds;
+		private var i:int;
+		public var picturesInfoWindows:Dictionary = new Dictionary(true);
+		public var picturesIdInfoWindows:Dictionary = new Dictionary(true);
+		
+		
+		private function init():void {
+			
+			map.addControl(new ZoomControl());
+			map.addControl(new MapTypeControl());
+			map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
+			
+			
+			server.addEventListener(ResultEvent.RESULT,onGetNamedAreas);
+			server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
+			server.getReferences();
+			
+			
+
+
+/* 			Security.loadPolicyFile("http://flickr.com/crossdomain.xml");
+			map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
+			var zco:ZoomControlOptions=new ZoomControlOptions({
+                                position: new ControlPosition(ControlPosition.ANCHOR_TOP_LEFT, 12, 12)
+                        });
+			map.addControl(new ZoomControl(zco));
+			map.addControl(new MapTypeControl());
+			bbox= new LatLngBounds();
+			var srv:HTTPService = new HTTPService();
+			srv.resultFormat = "text";
+			srv.url="http://search.twitter.com/search.json?q=%23ebio+observation";
+			srv.addEventListener(ResultEvent.RESULT,onResult);			
+			srv.send(); */
+		}
+
+		
+		private function addOnMap(point: LatLng):void {
+			var options:MarkerOptions = new MarkerOptions({
+								icon: new CustomIconSprite(),
+								iconAlignment: MarkerOptions.ALIGN_BOTTOM,
+								clickable:false
+								});	    
+								
+			var m:Marker = new Marker(point,options);
+			bbox.extend(point);
+		    map.addOverlay(m);
+		}
+		
+		private function onGetNamedAreas(ev:ResultEvent):void {
+			server.removeEventListener(ResultEvent.RESULT,onGetNamedAreas);
+			namedAreasCollection.source = ev.result as Array;
+			
+		}
+		
+		
+		
+		private function createFlickrMarker(ev:Event):void {
+			/* var bmd:BitmapData = Bitmap(ev.currentTarget.content).bitmapData;
+			var bmd2:BitmapData = new BitmapData(34,34)
+			var m:Matrix = new Matrix();
+			m.scale(0.50,0.50);
+			bmd2.draw(bmd,m);	
+			var sp:Sprite= new Sprite();
+			           sp.graphics.lineStyle(4,0xffcc00);
+			           sp.graphics.beginFill(0xffcc00,0);
+			           sp.graphics.drawRect(0,0,34,34);
+			           sp.graphics.endFill();
+			           bmd2.draw(sp);
+			
+			var iconBitmap:Bitmap= new Bitmap(bmd2);
+			
+			var latlng: LatLng;
+			var tweet : Tweet = tweetsDictionary[ev.currentTarget] as Tweet;
+			latlng = tweet.position;
+		    
+		    
+		    var marker:Marker = new Marker(latlng, new MarkerOptions({draggable:false,icon: iconBitmap}));
+			var optionsMark:InfoWindowOptions = new InfoWindowOptions({
+                    customContent: ev.target.loader,
+                    strokeStyle: new StrokeStyle({thickness: 6, color:0xFFFFFF}),
+                    customOffset: new Point(0, 10),
+                    cornerRadius:0,
+                    hasShadow:false,
+                    width: bmd.width,
+                    height: bmd.height,
+                    drawDefaultFrame: true                                  
+            });		    
+            picturesInfoWindows[marker]=optionsMark;
+            picturesIdInfoWindows[tweet.id]=marker;
+            marker.addEventListener(MapMouseEvent.CLICK, function(e:MapMouseEvent):void {
+                    marker.openInfoWindow(optionsMark);  
+                    map.panTo(e.latLng);   
+            });  		    
+		    
+	   	 	map.addOverlay(marker);
+		    if (i==1) {
+		    	map.setCenter(latlng,5);
+		    } else {
+			    bbox.extend(latlng);
+			    map.setCenter(bbox.getCenter(),map.getBoundsZoomLevel(bbox));	
+		    }       */    
+		}
+		
+		private function updateListProviders():void {
+			namedAreasList.source = null;
+			server.addEventListener(ResultEvent.RESULT, onGetCountries);
+			server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
+			server.getReferenceCodes(combo.selectedIndex + 1);
+			
+			//Add Reference to the map
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			//End
+			
+			
+		}
+		
+		private function onGetCountries(event: ResultEvent):void {
+			namedAreasList.source = event.result as Array;
+			
+			
+			
+			
+		}
+
+	]]>
+</fx:Script>	
+
+
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+        	<s:LinearGradient rotation="90">
+            	<s:GradientEntry color="#FFFFFF" />
+            	<s:GradientEntry color="#FFFFF9" />
+        	</s:LinearGradient>
+    	</s:fill>
+	</s:Rect>
+	
+	<mx:Image source="@Embed('gbif.jpg')" right="0" left="0"/>
+	
+	<maps:Map id="map" height="100%" width="100%" key="lala"  left="250" mapevent_mapready="init()" top="120"/>
+	<mx:Image source="@Embed('/logoMapVizz.png')" bottom="5" left="320"/>
+	<s:Group width="250" left="0" top="120" bottom="0" fontFamily="Verdana" fontSize="11" contentBackgroundColor="#393939" baseColor="#393939" 
+		focusColor="#393939" selectionColor="#393939" symbolColor="#393939" rollOverColor="#393939">
+		
+		<s:TextArea text="References" top="0" height="25" contentBackgroundColor="#FFFFFF" baseColor="#FFFFFF" focusColor="#FFFFFF" symbolColor="#FFFFFF" 
+			selectionColor="#FFFFFF" textAlign="center" fontSize="16" fontFamily="Arial" left="0" right="0" color="#5DB135" fontWeight="bold"/>
+		
+		<mx:ComboBox id="combo" top="27" width="250" dataProvider="{namedAreasCollection}" labelField="title" change="updateListProviders()" styleName="ComboBoxNamedAreas"/>
+		
+		<s:List id="repeaterTweets" itemRenderer="AreasItem" top="50" bottom="0" width="100%"  focusColor="#393939" selectionColor="#393939"
+			 symbolColor="#393939" contentBackgroundColor="#FFFFFF" rollOverColor="#393939" baseColor="#393939" dataProvider="{namedAreasList}">
+			<s:layout>
+				<s:VerticalLayout id="verticalLayout" gap="0"/>				
+			</s:layout>
+		</s:List>
+	</s:Group>
+	<s:TextArea id="connectLabel" text="conecting server..." right="0" x="690" width="110" contentBackgroundColor="#ffffcc" height="20" fontSize="12" top="120"
+		fontFamily="Helvetica" color="#565656" textAlign="center"/>	
+</s:Application>

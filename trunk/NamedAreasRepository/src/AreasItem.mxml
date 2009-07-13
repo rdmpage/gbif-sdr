@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer 
+  xmlns:fx="http://ns.adobe.com/mxml/2009" 
+  xmlns:s="library://ns.adobe.com/flex/spark" 
+  xmlns:mx="library://ns.adobe.com/flex/halo" width="100%" height="55"
+   click="itemrenderer1_clickHandler(event)" >
+
+
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.remoting.RemoteObject;
+			import mx.core.FlexGlobals;
+			import com.google.maps.LatLng;
+			import com.google.maps.InfoWindowOptions;
+			import com.google.maps.overlays.Marker;
+			import mx.core.Application;
+			
+			
+			/* protected function itemrenderer1_clickHandler(event:MouseEvent):void {
+				var marker:Marker = FlexGlobals.topLevelApplication.picturesIdInfoWindows[data.id] as Marker;
+				if (marker!=null) {
+					marker.openInfoWindow(FlexGlobals.topLevelApplication.picturesInfoWindows[marker] as InfoWindowOptions);
+				}
+			} */
+			
+			private function itemrenderer1_clickHandler(event:MouseEvent):void {
+			
+			
+				//ESTO ES DE JATORRE
+				
+				
+				
+				
+				
+				
+				
+				//
+			
+			
+			
+ 			}
+
+		]]>
+	</fx:Script>
+	
+
+
+  
+  <s:states>
+    <s:State name="normal"/>
+    <s:State name="hovered"/>
+    <s:State name="selected"/>
+  </s:states>
+  
+     <s:Rect height="100%" width="100%">
+        <s:fill>
+            <s:LinearGradient rotation="90">
+                <s:GradientEntry color="#ffffff" />
+                <s:GradientEntry color="#e9e9e9" />
+            </s:LinearGradient>
+        </s:fill>
+        <s:fill.hovered>
+            <s:LinearGradient rotation="90">
+                <s:GradientEntry color="#fecc04" />
+                <s:GradientEntry color="#c9a206" />
+            </s:LinearGradient>
+        </s:fill.hovered>
+        <s:fill.selected>
+            <s:LinearGradient rotation="90">
+                <s:GradientEntry color="#fecc04" />
+                <s:GradientEntry color="#c9a206" />
+            </s:LinearGradient>
+        </s:fill.selected>
+    </s:Rect>
+  
+<!--  <s:Group width="57" height="57" left="7" verticalCenter="0">
+      <s:Rect height="100%" width="100%" >
+      	<s:fill>
+            <s:LinearGradient>
+                <s:entries>
+                    <mx:GradientEntry color="#FFFFFF"/>
+                </s:entries>
+            </s:LinearGradient>
+        </s:fill>
+      </s:Rect>
+	  <mx:Image source="{data.profile_image_url}" width="51" height="51" verticalCenter="0" horizontalCenter="0"/> 	
+  </s:Group>-->
+  
+  <s:VGroup y="10" height="25" x="10" left="10" right="5" gap="-1">
+	<s:SimpleText text="{'[' + data.area_code.toString() + '] ' + data.area_name.toString()}" verticalAlign="middle"
+		color.hovered="#FFFFFF" fontSize="14" fontFamily="Helvetica"  fontWeight="bold" height="30" width="100%" color.normal="#5DB135"/>
+  </s:VGroup>
+
+</s:ItemRenderer>
