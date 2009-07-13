@@ -21,6 +21,10 @@
 <dt>*Spatial resolution*</dt>
 <dd>Effectively describes the level of detail described in the spatial data.  Data captured to describe the distribution around a city is of higher spatial resolution that simply stating that the species exists in a country</dd>
 
+
+<dt>*Species Distribution*</dt>
+<dd>The (merged) distribution of a "species" as defined by an ECAT NUB Name Usage, i.e. not taking into account subjective synonyms, only lexical and nomenclatural groups.</dd>
+
 See also [OccurrenceStatus] vocabulary
 
 </dl>
