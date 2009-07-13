@@ -1,4 +1,4 @@
-#summary The use cases covered by the project
+#summary Use cases considered on the project. Includes the ones covered by the current project and others that are not covered.
 #sidebar TableOfContents
 
 <wiki:toc max_depth="4" />
