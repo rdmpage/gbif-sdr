@@ -65,11 +65,12 @@
 }
 
 .registerContainer{
-	height: 399px;
+	height: 422px;
+	background-color: silver;
 }
 
 .campos{
-	height: 370px;
+	height: 381px;
     border-top: #d6d6d6 1px dotted;
 }
 
@@ -87,6 +88,7 @@
 .columna1{
    height: 60px;
    margin-bottom: 2px;
+   background-color: yellow;
 }
 .columna2{
    height: 60px;
@@ -96,7 +98,7 @@
 /* right column */
 
 .rightColumn{
-	height: 616px;
+	height: 422px;
 }
 
 .register_info{
@@ -316,6 +318,15 @@
 	padding-left: 9px;
 }
 
+.submit_14{
+	color: gray;
+	letter-spacing: -1px;
+	font-family: "Arial";
+	font-size: 14px;
+	margin-top: 32px;
+	margin-left: -20px;
+}
+
 .register_12{
 	color: gray;
 	letter-spacing: -1px;
@@ -395,8 +406,8 @@
    width: 114px;
    height: 27px;
    padding: 0px 0px 0px 0px;
-   margin-left: 9px;
-   margin-top: 9px;
+   margin-left: 10px;
+   margin-top: 29px;
 }
 
 .search_title_container{
@@ -416,6 +427,11 @@
 	background-color: green;
     height: 36px;
     width: 98px;
+}
+
+.check_container{
+	margin-top: 32px;
+	margin-left: 10px;
 }
 
 input.text{
