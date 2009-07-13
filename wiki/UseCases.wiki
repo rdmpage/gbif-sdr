@@ -4,57 +4,68 @@
 <wiki:toc max_depth="4" />
 
 = Use Cases =
+In some parts of the document there is the word *NotCovered* to indicate that a particular use/case or functionality is not covered on the current contract but that it will be desirable.
+
 *Note to authors:* Do not modify existing use case numbers as they are linked from elsewhere in the documentation
 
 == Widgets ==
+The next use cases are split in Country,Provider and Global. The widget that will be developed is a single product that adapts to those different scenarios.
 
-=== 1.0 Country ===
-An owner of a country specific website may include a widget to visualise a single distribution of a species or higher taxon within the country.  The visualisation will show multiple polygons (or grids if appropriate) for each of the sources of data providing the information and will be zoomed to an appropriate scale for the country.  A legend will be displayed providing citation to the data source and links back to the species distribution repository website.  This use case is targeted at offering services to the participant nodes of GBIF.   An extension to this use case is to offer the same for arbitrary locations, and possibly limited to bounding box searches. 
-TODO - add display of primary data
-TODO - writable access will require redirtect to the SDR website
-TODO - multilingual support
+=== 0.0 Widget Basics ===
+The widget will support the next functionality (regardless of the context where it is used):
+-Display  different sources distributions in the project  FOR A PARTICULAR TAXON. This could be polygons, grids or whatever other format is considered necessary. The taxon could be in any taxonomic level, so that means higher taxonomy.<br>
+-Display of primary data within the GBIF network for the particular taxon.<br>
+-Creation of a dynamic legend to explain the different distribution sources and their different status within their units (feeding, wintering, present, absent, etc.) The legend will provide also required citation<br>
+-Possibility to change the visibility of the different layers on the map.<br>
+-User can download in formats (Image, KML, GML, PDF, PNG, JPEG)<br>
+-The widget provides information on the project and how to embed it on other websites<br>
+- NotCovered: writable access will require redirtect to the SDR website<br>
+- NotCovered: multilingual support<br>
+- The widget can be configured to be used with a specific taxonomy if the ECAT services provide that functionality.<br>
+- Visualizations of niche model: If a project provides their niche modeling based on OGC services it will be possible to configure the widget to display it together with the rest of the data.<br>
+- NotCovered: storage or interpretation of niche models as species distributions. It could be possible to analyze niche models and understand them using thresholds. A new set of metadata would need to be created to describe them and the widget should be able to activate and deactivate these layers.<br>
+
+=== 1.0 Country===
+An owner of a country specific website may include a widget to visualise a single distribution of a species or higher taxon within the country.  The widget will be loaded focused on the particular country. An extension to this use case is to offer the same for arbitrary locations, and possibly limited to bounding box searches.  This use case is targeted at offering services to the participant nodes of GBIF.  
+
+- NotCovered: provide country specific statistics on the GBIF data for the country.<br>
 
 === 1.1 Data source specific widget ===
-giving something back to provider
-Visualise single, global species distribution based on a single data source.
-E.g. can be used for Fauna Europaea.
+A source from the project, like the Fauna Europeae, could be interested in visualizing his dataset within his website. The widget will be then reconfigured to only display data from this specific provider. It will also include primary data.This use case is considered critical to motivate different projects to provide data for the SDR. 
 
-=== 1.1.1 Download ===
-User can download in formats (Image, KML, GML, PDF, PNG, JPEG)
-
-=== 1.2 Taxonomy specific... ===
-Visualise all datasets for single species distributions.
-Needs also to visualise merged distributions for higher taxa and proper taxa according to some, preferably multiple classifications (e.g. ITIS, EOL or the German National Flora using their synonymy)
-Visualise single species distribution based on their own taxonomy.
-TODO - add a note that the  configuration of the widget defines the taxonomy that is used - e.g. the user does not select it when using the widget
-
-=== 1.3 Visualise output of Niche models ===
-Modelers are generating predicted occurrence from the output of modeling using (for example) environmental niche models.  A widget will allow for visualising the model output together with data captured by hand.
+=== 1.2 Global widget ===
+If not loaded for a specific country or data source, the widget will be able to display worldwide and all sources together for a certain taxon. The typical use case for this is the GBIF data portal or the EOL website. It will allow the display of all the distributions data sources for a specific taxon and taxonomy.
 
 == SDR Web site ==
 
 === 2.0 Home ===
-The user can find information about the project,see general stats (number stored), 
-TODO - multilingual support
+The user can find information about the project,see general stats (number stored), <br>
+- NotCovered: multilingual support
 
 === 2.1 Browse ===
-Using a sceintific name taxonomic browsing tool, the user can navigate to the taxonomy.  
+Using a sceintific name taxonomic browsing tool, the user can navigate to the taxonomy.  The taxonomy browser will use a column view display with icons and common names if available from the ECAT services in GBIF.
 
 === 2.2 Searching ===
-Users can search using scientific name or common name, datasets, 
+Users can search using scientific name or common name, datasets, The service will be a google like search. Depends on the availability of the service by ECAT to provide this kind of search. Once the search is done a list with the different taxa is displayed and the user can get to the taxon page.
 
 === 2.3 Registration ===
-Users can search using scientific name or common name, datasets, 
+The registration allow the user to make comments in the taxon page.<br>
+- NotCovered: the user can make spatial comments to the distributions<br>
+- NotCovered: users are handled together with the GBIF infrastructure trough a Single Sign On Service.
+
 
 === 2.4 Log In ===
-Users can search using scientific name or common name, datasets, 
+Allow the user to log in to the system.
 
-=== 2.5 Making additions on the species pages ===
-While seeing a specific visualisation for a species or a higher taxa, a user can log in, and be offered the ability to make modifications.  The user chooses to add a country, and is presented with the ability to select a country on the map.  A confirmation of "do you want to confirm sprecies X lives in this country?", user selects yes and the data is saved.
-TODO - describe a mask    
-
-=== 2.6 Making comments ===
-User can supply free text comments on the distribution for a taxon.  
+=== 2.5 Taxon page ===
+The taxon or species page allows the user to visualize the widget described on 1.0. The widget ont he SDR website will be configured as global widget, as described in 1.2. The taxon page contains:<br>
+- Display the widget in global model for the particular taxon<br>
+- Display user comments for the distributions of this taxon.<br>
+- User can supply free text comments on the distribution for a taxon.  <br>
+- Display aditional information like text distributions taken from web services like ECAT. All this information depends on what data is available at the time of implementation.
+- NotCovered: the user can make spatial comments to the distributions<br>
+- NotCovered: describe a mask<br>
+- NotCovered: The user chooses to add a country, and is presented with the ability to select a country on the map.  A confirmation of "do you want to confirm sprecies X lives in this country?", user selects yes and the data is saved.
 
 == Publishing data into the SDR ==
 
