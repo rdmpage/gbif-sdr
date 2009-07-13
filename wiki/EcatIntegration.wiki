@@ -1,9 +1,11 @@
 #summary Taxonomic Integration with ECAT
 #sidebar TableOfContents
 
+The following has been identified as a possible link between the SDR project and the current ECAT program. If available   SDR will make use of the following services, if not it will rely on the current ones.
+
 Please see http://code.google.com/p/gbif-ecat/wiki/WebserviceAPI for details.
 
-=Required Services by SDR=
+=Possible Services used by SDR if available=
 
  # {{{Resolving Taxonomies}}}
  # {{{NameUsage Navigation}}}
