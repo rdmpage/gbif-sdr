@@ -4,12 +4,12 @@
 <wiki:toc max_depth="3" />
 
 = Roadmap =
-Project started 15th of June 2009. It is devided in 3 phases and a list of use cases / features that are out of scope.
+Project started 15th of June 2009. It is devided in 3 phases and a list of use cases. There is a 4th phase with uses cases/functionalities out of the scope of the current project.
 
 == Phase 1 ==
-*Scheduled for 1. August 2009*
+*Scheduled completition: 1. August 2009*
 === Widget ===
-Covering Use Cases 1.0, 1.1 and 1.2
+Covering Use Cases 0.0,1.0, 1.1 and 1.2
 
 Implemented features:
  * Flex application called the widget
@@ -26,7 +26,6 @@ Implemented features:
  * user accounts registration & login
  * home page
  * How to contribute explaining different ways
- * taxonomic search
  * user comments on species pages
 
 ===Named Area Repository===
@@ -43,7 +42,7 @@ Implemented features:
 
 
 == Phase 2 ==
-*Scheduled for 1. October 2009*
+*Scheduled completition 1. October 2009*
 
 === Import===
  * Covering Use Cases 3.0.1 (3.0.2, 3.1)
@@ -70,7 +69,7 @@ Implemented features:
  * Use cases & promotion material
 
 
-== Out Of Scope ==
+== Out Of Scope (not finished)==
 
 === Import===
  * import of niche models
