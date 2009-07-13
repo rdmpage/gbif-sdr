@@ -6,6 +6,12 @@
 = Introduction =
 There are lot of terms in use for describing the occurrence status of a species. Aim is to recommend a very simple basic vocabulary and to map existing standards to it.
 
+=Latest Version=
+*PLEASE SEE HERE FOR LATEST VERSION:*
+
+http://spreadsheets.google.com/pub?key=tVs-UWMXnkD3slwIE8T336w&gid=3
+
+
 = Recommended Occurrence Status Vocabulary =
  * *Present*: There is at least one well documented record of the taxons presence in the area
  * *Doubtful*: The taxon is scored as being present in the area but there is some doubt over the evidence. The doubt may be of different kinds including taxonomic or geographic imprecision in the records
