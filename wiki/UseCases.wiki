@@ -80,35 +80,35 @@ The location (e.g. URL) of the shapefile collection is registered.  Metadata is 
 === 3.1 A spatial database owner with a collection of polygons ===
 An export into the format described in 3.0.2 is recommended.
 
-=== 3.2 A collection of primary data (e.g. GBIF portal index) ===
+=== 3.2 NotCovered: A collection of primary data (e.g. GBIF portal index) ===
 A clustering algorithm *might* allow the point data to be synthesised into polygons, or a raster or various rasters for differing resolutions can be generated.  Potentially this could be registered as a source and loaded in to the distribution repository.  
 
 === 3.3 A Darwin Core distribution extension with named areas is used with a Taxon Core  ===
 The user will register this data through ECAT.
 Named areas have to be existing in the Names Area Repository (NAR) beforehand and the supplied gbif:namedArea and gbif:namedAreaReference has to confirm to the IDs listed by the NAR.
 
-=== 3.4 A gridded data source ===
+=== 3.4 NotCovered: A gridded data source ===
 A user has a raster format of data.  The user follows the same as use case 3.0, although the shape files are some format of raster file.  The resolution of the raster file can be declared.
 
-=== 3.4.1 User has generated predicted distributed in a raster using e.g. a modeling approach ===
+=== 3.4.1 NotCovered: User has generated predicted distributed in a raster using e.g. a modeling approach ===
 User registers this data and can indicate that it is machine generated.  The user can define the resolution that the data was generated, and can optionally link to metadata about the modeling approach.  An indication of the confidence can be supplied.
 
 === 3.5 Textual information (e.g. a paragraph about a single species) ===
-Users publishing natural language texts/paragraphs about distributions of species. The texts need to be registered as darwin core archives with ECAT. The text is visualised together with a map on species pages, but not converted to spatial maps.
+Users publishing natural language texts/paragraphs about distributions of species. The texts need to be registered as darwin core archives with ECAT. The text is visualised together with a map on species pages, but not converted to spatial maps. Described also on 2.5
 
 === 3.6 Holder of presence and absence data ===
 All above use cases can have presence and absence data, defined by the occurrence status
 
 == Analysis ==
 
-=== 4.0 Coverage of primary data ===
+=== 4.0  NotCovered: Coverage of primary data ===
 Allowing to determine % coverage of primary data with the distribution
 Ability to discover gaps in the primary data
 
-=== 4.1 Coverage statistics ===
+=== 4.1 NotCovered: Coverage statistics ===
 User can find land coverage, ecosystem coverage etc for a species.  
 
-=== 4.2 Publishing derived layers ===
+=== 4.2 NotCovered: Publishing derived layers ===
 Layers like endangered or invasive species, species richness etc are not linked to a single species.
 Analysis to produce potentially interesting layers like:
  * country maps: only showing country areas
@@ -118,6 +118,8 @@ Analysis to produce potentially interesting layers like:
 == Web service users ==
 
 === 5.1 User can discover layer of interest from an OGC catalogue service ===
+TODO.
+
 Publishing for example endangered species layer?
 Invasive species?
 Derived richness layer?
