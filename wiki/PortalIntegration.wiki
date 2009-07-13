@@ -2,10 +2,11 @@
 #sidebar TableOfContents
 <wiki:toc max_depth="3" />
 
-= Notes =
+The following section describes the possible connection between the SDR project and the GBIF data portal. This is only a list of possible interactions.
 
- * Widget for display on species page to show the boundaries 
- * Tile generated (same as per EOL) overlays are required only 
- * Consider continuing research on alpha shapes for extracting polygon data
+= Possible connections between SDR and the GBIF data portal =
 
- * Setup a geospatial portal to hold "interesting biodiversity layers".  Species richness, endangered species etc
+ * Widget for display on species page to show the range maps available for them. 
+ * Tile generated (same as per EOL) overlays are required only.
+ * Consider continuing research on alpha shapes for extracting polygon data.
+ * Setup a geospatial portal to hold "interesting biodiversity layers".  Species richness, endangered species etc: this could become an interesting way to present GBIF data to the world through a set of predefined layers registered on an OGC service.
