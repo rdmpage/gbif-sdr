@@ -12,6 +12,8 @@
 
 <fx:Script>
 	<![CDATA[
+		import com.google.maps.overlays.TileLayerOverlay;
+		import com.vizzuality.map.CustomWMSTileLayer;
 		import mx.rpc.events.FaultEvent;
 		import mx.rpc.remoting.mxml.RemoteObject;
 		import com.adobe.utils.StringUtil;
@@ -150,7 +152,10 @@
 			server.getReferenceCodes(combo.selectedIndex + 1);
 			
 			//Add Reference to the map
-			
+			map.clearOverlays();
+			var cWmsTile:CustomWMSTileLayer = new CustomWMSTileLayer(combo.selectedItem.code);
+			var tlo:TileLayerOverlay = new TileLayerOverlay(cWmsTile);
+			map.addOverlay(tlo);
 			
 			
 			
