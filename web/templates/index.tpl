@@ -122,8 +122,8 @@
 			<div class="span-24 last separator1"></div>
 			<div class="span-24 last footer">
 				<div class="span-24 last separator6"></div>
-				<div class=" span-22 last footer_info">Species distribution repository. GBIF.org 2009. <b>Legal terms  |  contact us</b></div>
-<!-- 			    <div class="span-2 last footer_logo"></div> -->
+				<div class="span-22 last footer_info">Species distribution repository. GBIF.org 2009. <b>Legal terms  |  contact us</b></div>
+			    <div class="footer_logo"></div>
 			</div>
 		</div>
 	</div>
