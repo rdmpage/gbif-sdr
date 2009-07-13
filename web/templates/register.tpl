@@ -39,38 +39,40 @@
 		<div class="span-24 last separator7"></div>		
 		<div class="span-24 last separator7"></div>		
 		<div class="span-18 registerContainer">
+		<form method="post">
 		 	<div class="title_blue">Register now in Species distribution repository, It’s easy and free</div>
 			<div class="campos">
 
 <div class="register_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eleifend convallis metus vitae scelerisque. 					Sed condimentum pellentesque nisi, ac lacinia felis sagittis bibendum. Cras tempus ipsum nec.</div>
 				<div class="span-9 last columna1">
 					<div class="title_campo">User name*</div>
-					<input class="span-8 text">
+					<input class="span-8 text" id="user_name" name="user_name">
 				</div>
 				<div class="span-9 last columna2">
 					<div class="title_campo">Project name</div>
-					<input class="span-8 text">
+					<input class="span-8 text" id="project_name" name="project_name">
 				</div>
 				<div class="span-9 last columna1">
 					<div class="title_campo">e-mail*</div>
-					<input class="span-8 text">
+					<input class="span-8 text" id="email" name="email">
 				</div>
 				<div class="span-18 last separator6"></div>
 				<div class="span-18 last separator6"></div>
 				<div class="span-18 last separator6"></div>				
 				<div class="span-9 last columna1">
 					<div class="title_campo">password*</div>
-					<input class="span-8 text">
+					<input class="span-8 text" id="password" name="password">
 				</div>
 				<div class="span-9 last columna2">
 					<div class="title_campo">confirm password*</div>
-					<input class="span-8 text">
+					<input class="span-8 text" id="password_confirm" name="password_confirm">
 				</div>
-				<div class="span-3"><input class="submit_button" value="submit"></div>
-				<div class="span-1 check_container"><input type="checkbox"></div>
+				<div class="span-3"><input class="submit_button" value="submit" id="submit" name="submit"></div>
+				<div class="span-1 check_container"><input type="checkbox" id="terms_conditions" name="terms_conditions"></div>
 				<div class="span-8 submit_14">I readed and accepted the terms and conditions</div>
 				<div class="span-17 required">* required fields</div>
 			</div>
+		</form>
 		</div>
 		
 		<div class="span-6 last rightColumn">
