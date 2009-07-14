@@ -1,0 +1,32 @@
+/* search */
+
+.searchContainer{
+	background-color: #f7f7f7;
+    border: #d6d6d6 1px solid;	
+	height: 37px;
+}
+
+.searchContainer p{
+	font-family: Georgia;
+	color: #8da3b8;
+	font-style: italic;
+	font-size: 21px;
+	padding-left: 8px;
+	padding-top: 1px;
+    text-decoration: none; 	
+}
+
+.searchContainer a.button { 
+    background:url(../images/search.jpg) repeat 0px 0px;
+	
+}
+
+.searchContainer a span { 
+	text-decoration: none;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.searchContainer a:hover { 
+    background:url(../images/search.jpg) repeat 0px 0px; 
+}
