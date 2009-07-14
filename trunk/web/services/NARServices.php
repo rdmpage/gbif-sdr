@@ -46,7 +46,7 @@ class NARServices {
         "ymax(nag.the_geom) as north, ".
         "x(centroid(nag.the_geom)) as center_lat, ".
         "y(centroid(nag.the_geom)) as center_lon ".
-        "from named_area as na inner join named_area_geom nag on na.named_area_geom_fk=nag.id where na.named_area_reference_fk =:reference_code and na.area_code=area_code");
+        "from named_area as na inner join named_area_geom nag on na.named_area_geom_fk=nag.id where na.named_area_reference_fk =:reference_code and na.area_code=:area_code");
         
         $stmt->bindParam(':reference_code', $referenceCode, PDO::PARAM_INT);
         $stmt->bindParam(':area_code', $areaCode, PDO::PARAM_STR);
