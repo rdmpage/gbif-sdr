@@ -39,7 +39,7 @@ class NARServices {
 	}
 	
 	public function getNamedAreaDetails($referenceCode,$areaCode) {
-	    $sth = $this->dbHandle->prepare("select na.id,na.area_code,na.area_name, ".
+	    $stmt = $this->dbHandle->prepare("select na.id,na.area_code,na.area_name, ".
         "ymin(nag.the_geom) as south,  ".
         "xmin(nag.the_geom) as west, ".
         "xmax(nag.the_geom) as east, ".
