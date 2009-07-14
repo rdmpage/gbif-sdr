@@ -1,10 +1,14 @@
 /* search */
 
 .searchContainer{
+	background-color: #f7f7f7;
+	height: 36px;
+}
+
+.searchsearchContainer{
     border: #d6d6d6 1px solid;
 	background-color: #f7f7f7;
 	height: 36px;
-	width: 948px;
 }
 
 .search_title_container{
@@ -247,6 +251,16 @@
 	padding-top: 6px;
 }
 
+.register_14{
+	color: gray;
+	letter-spacing: -1px;
+	font-family: "Arial";
+	font-size: 14px;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	line-height: 
+}
+
 .title_campo{
 	color: gray;
 	font-family: "Arial";
@@ -336,6 +350,10 @@ input.text{
 	margin: 0px 0px 0px 0px; 
 	height: 29px;
 	margin-left: 9px;
+}
+
+input.searchtext{
+	height: 25px;
 }
 
 input.comment{
