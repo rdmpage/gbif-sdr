@@ -300,7 +300,6 @@
 	font-size: 13px;
 	color: #d6d6d6;
 	padding-top: 8px;
-	float: left;
 }
 
 .title_comment_u{
@@ -309,9 +308,14 @@
 	line-height: 32px;
 	font-size: 15px;
 	color: #bfbfbf;
-	float: left;
-	padding-left: 4px;
-	padding-right: 2px;
+}
+
+.text_comment{
+	letter-spacing: -1px;
+	color: #a9a9a9;
+	font-family: "Arial";
+	font-size: 13px;
+	line-height: 14px;
 }
 
 .view_more{
@@ -323,16 +327,6 @@
 	color: green;
 	float: right;
 	padding-right: 8px;
-}
-
-.register_14{
-	padding-bottom: 19px;
-	color: gray;
-	letter-spacing: -1px;
-	font-family: "Arial";
-	font-size: 14px;
-	padding-top: 19px;
-	padding-left: 9px;
 }
 
 .submit_14{
@@ -386,7 +380,7 @@
    border-width: 1px;
    border-color: green;
    background-image: url(/css/images/comment_now.jpg);
-   margin-top: 6px;
+   margin-top: 9px;
 }
 
 .commentButtonPost{
@@ -402,9 +396,11 @@
    border-color: gray;
    margin-top: 6px;
    background-image: url(/css/images/comment_now_post.jpg);
+   margin-right: 10px;
+   display: block;
 }
 
-.search{
+.search_button{
    font-family: Georgia;
    font-style: italic;
    font-size:18px;
@@ -447,6 +443,12 @@ input.text{
 	padding: 0px 0px 0px 0px; 
 	margin: 0px 0px 0px 0px; 
 	height: 29px;
-	width: 349px;
 	margin-left: 9px;
+}
+
+input.comment{
+    border: 1px #d6d6d6 solid;
+	height: 57px;
+	width: 686px;
+	margin-left: 10px;
 }
