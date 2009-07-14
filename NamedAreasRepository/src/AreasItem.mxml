@@ -44,24 +44,18 @@
 				
 				var latlong: LatLng = new LatLng(ev.result.center_lon,ev.result.center_lat);
 			    var marker:Marker = new Marker(latlong);
-				/* var optionsMark:InfoWindowOptions = new InfoWindowOptions({
-	                    customContent: ev.target.loader,
-	                    strokeStyle: new StrokeStyle({thickness: 6, color:0xFFFFFF}),
-	                    customOffset: new Point(0, 10),
-	                    cornerRadius:0,
-	                    hasShadow:false,
-	                    width: bmd.width,
-	                    height: bmd.height,
-	                    drawDefaultFrame: true                                  
-	            });		    
-	            picturesInfoWindows[marker]=optionsMark;
-	            picturesIdInfoWindows[tweet.id]=marker;
-	            marker.addEventListener(MapMouseEvent.CLICK, function(e:MapMouseEvent):void {
-	                    marker.openInfoWindow(optionsMark);  
-	                    map.panTo(e.latLng);   
-	            }); */  		    
 			    
-		   	 	 FlexGlobals.topLevelApplication.map.addOverlay(marker);
+			    var infoWindow:InfoWindowOptions = new InfoWindowOptions();
+				infoWindow.title = "example";
+				/* infoWindow.customContent = imageLoader; */
+				infoWindow.drawDefaultFrame = true;
+				infoWindow.padding = 10;
+				infoWindow.width = 100;
+				infoWindow.height = 50;
+				/* infoWindow.width = (imageLoader.width + 10);
+				infoWindow.height = (imageLoader.height + 10); */
+
+				FlexGlobals.topLevelApplication.map.openInfoWindow(latlong,infoWindow);
 
 
 				FlexGlobals.topLevelApplication.mamufas.visible = false;

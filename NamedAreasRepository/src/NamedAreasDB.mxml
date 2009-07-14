@@ -17,6 +17,7 @@
 
 <fx:Script>
 	<![CDATA[
+		import mx.events.IndexChangedEvent;
 		import com.vizzuality.style.skin.CustomTextAreaSkin;
 		import spark.effects.animation.Animation;
 		import com.google.maps.overlays.TileLayerOverlay;
@@ -82,35 +83,39 @@
 		
 		private function onGetNamedAreas(ev:ResultEvent):void {
 			server.removeEventListener(ResultEvent.RESULT,onGetNamedAreas);
-			namedAreasCollection.source = ev.result as Array;		
+			namedAreasCollection = new ArrayCollection(ev.result as Array);	
 		}
 		
 		
 		
-		private function updateListProviders():void {			
+		private function updateListProviders(evt:IndexChangedEvent):void {			
 			
-			this.currentState = "AreaSelected";
+			if(evt.newIndex<0) {
+				descriptionText = namedAreasCollection[combo.selectedIndex].description;
+				areaText = namedAreasCollection[combo.selectedIndex].title;
+				codeAreaSelected = namedAreasCollection[combo.selectedIndex].code;
+							
+				loading.visible=true;
+				namedAreasList.source = null;
+				server.addEventListener(ResultEvent.RESULT, onGetCountries);
+				server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
+				server.getReferenceCodes(combo.selectedItem.code);
+				
+	            map.clearOverlays();
+				var cWmsTile:CustomWMSTileLayer = new CustomWMSTileLayer(combo.selectedItem.code);
+				trace(combo.selectedItem.code);
+				var tlo:TileLayerOverlay = new TileLayerOverlay(cWmsTile);
+				map.addOverlay(tlo);	
+			}
 			
-			descriptionText = namedAreasCollection[combo.selectedIndex].description;
-			areaText = namedAreasCollection[combo.selectedIndex].title;
-			codeAreaSelected = namedAreasCollection[combo.selectedIndex].code;
-						
-			loading.visible=true;
-			namedAreasList.source = null;
-			server.addEventListener(ResultEvent.RESULT, onGetCountries);
-			server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
-			server.getReferenceCodes(namedAreasCollection[combo.selectedIndex].code);
-			
-            map.clearOverlays();
-			var cWmsTile:CustomWMSTileLayer = new CustomWMSTileLayer(combo.selectedItem.code);
-			var tlo:TileLayerOverlay = new TileLayerOverlay(cWmsTile);
-			map.addOverlay(tlo);	
 		}
 		
 		private function onGetCountries(event: ResultEvent):void {
 			server.removeEventListener(ResultEvent.RESULT,onGetCountries);
 			loading.visible = false;
-			namedAreasList.source = event.result as Array;
+			namedAreasList = new ArrayCollection(event.result as Array);
+			
+			this.currentState = "AreaSelected";
 		}
 
 	]]>
@@ -137,23 +142,22 @@
 	<mx:Image source="@Embed('com/vizzuality/assets/gbif.jpg')" right="0" left="0"/>
 	
 	<maps:Map id="map" key="lala" mapevent_mapready="init()" 
-		top="120" left="0" bottom="0" right="250" top.AreaSelected="120" left.AreaSelected="0" bottom.AreaSelected="100" right.AreaSelected="250"/>
-	<mx:Image source="@Embed('com/vizzuality/assets/logoMapVizz.png')" left="70" bottom="5" left.AreaSelected="70" bottom.AreaSelected="105"/>
+		top="120" left="0" bottom="0" right="250" top.AreaSelected="165" left.AreaSelected="250" bottom.AreaSelected="100" right.AreaSelected="0" top.State1="165" left.State1="250" bottom.State1="0" right.State1="0"/>
+	<mx:Image source="@Embed('com/vizzuality/assets/logoMapVizz.png')" left="70" bottom="5" left.AreaSelected="320" bottom.AreaSelected="105" left.State1="320" bottom.State1="5"/>
 	<components:GeneralLoader id="mamufas" visible="false"
-		top="120" left="0" bottom="0" right="250" top.AreaSelected="120" left.AreaSelected="0" bottom.AreaSelected="100" right.AreaSelected="250"/>
-	<s:Group fontFamily="Verdana" fontSize="11" contentBackgroundColor="#393939" baseColor="#393939" 
-		focusColor="#393939" selectionColor="#393939" symbolColor="#393939" rollOverColor="#393939" top="120" bottom="0" right="0" width="250">
-		<s:HGroup width="100%"  height="32" verticalAlign="middle">
-			<mx:Label text="References" textAlign="right" height="100%" fontFamily="Verdana" color="#558B29" fontSize="20" fontWeight="bold" letterSpacing="-2" width="100%" paddingTop="4"/>
-			<mx:SWFLoader id="loading" source="@Embed('com/vizzuality/assets/tinyLoading.swf')" width="67" height="15" visible="false"/>
-		</s:HGroup>
-		
-		<s:DropDownList id="combo" dataProvider="{namedAreasCollection}" labelField="title"  selectionChanged="updateListProviders()" styleName="ComboBoxNamedAreas"  
+		top="120" left="0" bottom="0" right="250" top.AreaSelected="165" left.AreaSelected="250" bottom.AreaSelected="100" right.AreaSelected="0" top.State1="165" left.State1="250" bottom.State1="0" right.State1="0"/>
+	
+	<s:HGroup width="100%" y="118"  height="32" verticalAlign="middle" left="10">		
+		<s:DropDownList id="combo" dataProvider="{namedAreasCollection}" labelField="title" selectionChanged="updateListProviders(event)" styleName="ComboBoxNamedAreas"  
 			left="5" right="5" baseColor="0xFFFFFF" height="20" color="#6B6B6B" fontFamily="Arial" contentBackgroundColor="0xFFFFFF" selectionColor="#DFDFDF" focusColor="#FFFFFF" 
-			rollOverColor="#DFDFDF" symbolColor="#868686" top="42" prompt="Choose your area!"/>
+			rollOverColor="#DFDFDF" symbolColor="#868686" prompt="Choose your area!" width.AreaSelected="410" width.State1="410"/>
+		<mx:SWFLoader id="loading" source="@Embed('com/vizzuality/assets/tinyLoading.swf')" width="15" height="15" visible="false"/>
+	</s:HGroup>	
 		
+	<s:Group fontFamily="Verdana" fontSize="11" contentBackgroundColor="#393939" baseColor="#393939" 
+		focusColor="#393939" selectionColor="#393939" symbolColor="#393939" rollOverColor="#393939" top="120" bottom="0" top.State1="165" left.State1="0" bottom.State1="0" top.AreaSelected="165" left.AreaSelected="0" bottom.AreaSelected="0" width.AreaSelected="250" width.State1="250">
 		<s:List id="countriesList" itemRenderer="AreasItem" width="100%" skinClass="com.vizzuality.style.skin.CustomListSkin" baseColor="0xFFFFFF"
-			 contentBackgroundColor="#FFFFFF" dataProvider="{namedAreasList}" top="75" bottom="0" >
+			 contentBackgroundColor="#FFFFFF" dataProvider="{namedAreasList}" top="75" bottom="0"  top.AreaSelected="0" bottom.AreaSelected="0" top.State1="0" bottom.State1="0">
 			<s:layout>
 				<s:VerticalLayout id="verticalLayout" gap="0"/>				
 			</s:layout>
@@ -161,12 +165,13 @@
 	</s:Group>
 	
 	<mx:Box id="descriptionBox" bottom="0" right="250" left="0" height="75" backgroundColor="#898989" color="#FFFFFF" paddingLeft="10" paddingRight="10" paddingTop="5" 
-		paddingBottom="5" verticalGap="0" verticalScrollPolicy="off" borderColor="#898989" alpha="0.0" alpha.AreaSelected="1" height.AreaSelected="100">
+		paddingBottom="5" verticalGap="0" verticalScrollPolicy="off" borderColor="#898989" alpha="0.0" alpha.AreaSelected="1" height.AreaSelected="100" left.State1="250" bottom.State1="0" right.State1="0" left.AreaSelected="250" bottom.AreaSelected="0" right.AreaSelected="0">
 		<s:Group width.AreaSelected="100%" height.AreaSelected="100%">
 			<mx:Label text="{areaText}"  fontSize.AreaSelected="17" fontWeight.AreaSelected="bold" left.AreaSelected="0" right.AreaSelected="75"/>
 			<s:Button right="10" top="10" label.AreaSelected="CSV" color.AreaSelected="#393939" textAlign.AreaSelected="center" top.AreaSelected="20" right.AreaSelected="0"/>
 			<s:TextArea text="{descriptionText}"  height.AreaSelected="65" bottom.AreaSelected="0" right.AreaSelected="75" left.AreaSelected="0" editable.AreaSelected="false" 
-				verticalScrollPolicy="off" skinClass="com.vizzuality.style.skin.CustomTextAreaSkin"/>			
+				verticalScrollPolicy="off" skinClass="com.vizzuality.style.skin.CustomTextAreaSkin"/>		
+				<!--skinClass="com.vizzuality.style.skin.CustomTextAreaSkin"-->	
 			<mx:Label text="Download"  includeIn="AreaSelected" right="3"/>
 		</s:Group>
 	</mx:Box>
