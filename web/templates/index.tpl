@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Blueprint Grid Tests</title>
+	<title>Species distribution repository</title>
 
   <!-- Framework CSS -->
   	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection">
@@ -39,7 +39,7 @@
  		<div class="span-23 last searchContainer">
  			<div class="span-5 last search_title_container"><div class="title_blue_search">Search for species</div></div>
 			<div class="span-17 last search_text_container"></div>
-			<div class="span-2 last search_button_container"><input class="button search" value="search!"></div>
+			<div class="span-2 last search_button_container"><input class="search_button" value="search!"></div>
  		</div>
 	
 		<div class="span-24 last separator7"></div>		
@@ -51,23 +51,35 @@
 		<div class="span-24 last separator7"></div>		
 		
 		<div class="span-18 commentsContainer">
-		 	<div class="title_blue">Comments about this distribution map<input class="last commentButton" value="Comment now"></div>
-			<div class="comments">
-				<div class="avatar"></div>
-				<p class="title_comment">by </p><p class="title_comment_u"> jatorre, </p><p class="title_comment">2 hours ago</p>
+			<div class="span-18 column headerComments">
+				<div class="span-15 title_blue">Comments about this distribution map</div>
+				<div><input class="commentButton" value="Comment now"></div>
 			</div>
-			<div class="comments">
-				<div class="avatar"></div>
-				<p class="title_comment">by </p><p class="title_comment_u"> jatorre, </p><p class="title_comment">2 hours ago</p>
+			<div class="span-18 comments">
+				<div class="span-2 avatar"></div>
+				<div class="span-16 contenedor">
+					<span class="span-16 title_comment">by <span class="title_comment_u last"> jatorre,</span> 2 hours ago</span>
+					<div class="span-16 text_comment">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur id lacus. Duis et ante id risus ornare posuere. Etiam nec neque sit amet ante faucibus rutrum. Donec at lacus in nisl commodo pharetra. Nunc dictum, magna vel rutrum accumsan, ligula leo ultricies ante, vel eleifend est neque vitae turpis. Nulla ut sapien in tellus egestas  scelerisque.</div>
+				</div>
 			</div>
-			<div class="comments">
-				<div class="avatar"></div>
-				<p class="title_comment">by </p><p class="title_comment_u"> jatorre, </p><p class="title_comment">2 hours ago</p>
+			<div class="span-18 comments">
+				<div class="span-2 avatar"></div>
+				<div class="span-16 contenedor">
+					<span class="span-16 title_comment">by <span class="title_comment_u last"> jatorre,</span> 2 hours ago</span>
+					<div class="span-16 text_comment">Donec at lacus in nisl commodo pharetra. Nunc dictum, magna vel rutrum accumsan, ligula leo ultricies ante, vel eleifend est neque vitae turpise.</div>
+				</div>
+			</div>
+			<div class="span-18 comments">
+				<div class="span-2 avatar"></div>
+				<div class="span-16 contenedor">
+					<span class="span-16 title_comment">by <span class="title_comment_u last"> jatorre,</span> 2 hours ago</span>
+					<div class="span-16 text_comment">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur id lacus. Duis et ante id risus ornare posuere. Etiam nec neque sit amet ante faucibus rutrum. Donec at lacus in nisl commodo pharetra. Nunc dictum, magna vel rutrum accumsan, ligula leo ultricies ante, vel eleifend est neque vitae turpis. Nulla ut sapien in tellus egestas  scelerisque.</div>
+				</div>
 			</div>
 			<div class="span-18 post">
 			    <div class="title_gray">Post your comment now</div>
-			    <input class="span-10 text">
-			    <input class="last commentButtonPost" value="Comment now">
+			    <input class="comment">
+			    <div><input type="button" class="last commentButtonPost" value="Comment now"></div>
 			</div>
 		</div>
 		
