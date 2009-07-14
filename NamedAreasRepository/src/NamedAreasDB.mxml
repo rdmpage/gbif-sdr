@@ -48,7 +48,9 @@
 		
 		[Bindable]public var namedAreasCollection:ArrayCollection = new ArrayCollection();
 		[Bindable]public var namedAreasList:ArrayCollection = new ArrayCollection();
+		
 		[Bindable]private var descriptionText: String = "";
+		[Bindable]private var areaText: String= "";
 		
 		public var bbox:LatLngBounds;
 		private var i:int;
@@ -98,6 +100,8 @@
 			this.currentState = "AreaSelected";
 			
 			descriptionText = namedAreasCollection[combo.selectedIndex].description;
+			areaText = namedAreasCollection[combo.selectedIndex].title;
+			
 			descriptionBox.alpha = 1;
 			loading.visible=true;
 			namedAreasList.source = null;
@@ -169,9 +173,9 @@
 	<mx:Box id="descriptionBox" bottom="0" right="250" left="0" height="75" backgroundColor="#898989" color="#FFFFFF" paddingLeft="10" paddingRight="10" paddingTop="5" 
 		paddingBottom="5" verticalGap="0" verticalScrollPolicy="off" borderColor="#898989" alpha="0.0" alpha.AreaSelected="1">
 		<s:Group width.AreaSelected="100%" height.AreaSelected="100%">
-			<mx:Label text="Description:" />
+			<mx:Label text="{areaText}"  fontSize.AreaSelected="17" fontWeight.AreaSelected="bold" left.AreaSelected="0" right.AreaSelected="75"/>
 			<s:Button right="10" top="10" label.AreaSelected="CSV" color.AreaSelected="#393939" textAlign.AreaSelected="center" top.AreaSelected="20" right.AreaSelected="0"/>
-			<mx:Label text="{descriptionText}"  height.AreaSelected="45" bottom.AreaSelected="0" right.AreaSelected="83" left.AreaSelected="0" y.AreaSelected="17"/>			
+			<mx:Label text="{descriptionText}"  height.AreaSelected="42" bottom.AreaSelected="0" right.AreaSelected="83" left.AreaSelected="0" y.AreaSelected="17"/>			
 			<mx:Label text="Download"  includeIn="AreaSelected" right="3"/>
 		</s:Group>
 	</mx:Box>
