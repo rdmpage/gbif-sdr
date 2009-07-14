@@ -8,13 +8,14 @@
 
   <!-- Framework CSS -->
 
-  	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen, projection">
-  	<link rel="stylesheet" href="../css/typography.css" type="text/css" media="screen, projection">
-  	<link rel="stylesheet" href="../css/forms.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="../css/grid.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="../css/print.css" type="text/css" media="print">
+  	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="css/typography.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="css/forms.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="css/grid.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+	<link rel="stylesheet" href="css/style1.css" type="text/css" media="print">
 
-	<link rel="stylesheet" href="../css/tpl/header.css" type="text/css" media="screen, projection">	
+	<link rel="stylesheet" href="css/tpl/header.css" type="text/css" media="screen, projection">	
   <!--[if lt IE 8]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection"><![endif]-->
 </head>
 <body>
@@ -35,6 +36,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</body>
-</html>
+
