@@ -11,23 +11,6 @@
 	height: 36px;
 }
 
-.search_title_container{
-	height: 36px;
-	width: 188px;
-	line-height: 30px;
-}
-
-.search_text_container{
-    height: 36px;
-    width: 665px;
-    margin-left: -9px;
-}
-
-.search_button_container{
-    height: 36px;
-    width: 98px;
-}
-
 /* widget */
 
 .widgetContainer{
@@ -91,6 +74,8 @@
 	height: 111px;
 	padding-left: 9px;
     border: #d6d6d6 1px solid;
+    line-height: 0px;
+    padding-bottom: 9px;
 }
 
 .species_details{
@@ -131,7 +116,6 @@
 	width: 51px;
 	margin-right: 3px;
 	margin-top: 9px;
-	margin-bottom: 9px;
 	float: left;
 }
 
