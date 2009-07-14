@@ -1,5 +1,6 @@
 
 @namespace mx "library://ns.adobe.com/flex/halo";
+@namespace s "library://ns.adobe.com/flex/spark";
 mx|ComboBox.ComboBoxNamedAreas
 {
 	color: #FFFFFF;

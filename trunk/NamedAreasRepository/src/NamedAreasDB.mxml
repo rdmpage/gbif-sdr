@@ -6,8 +6,6 @@
 		<s:State name="AreaSelected"/>
 	</s:states>
 	
-	<fx:Style source="NamedAreasDB.css"/>
-	
 <fx:Declarations>
 	<mx:RemoteObject id="server" endpoint="http://ec2-174-129-85-138.compute-1.amazonaws.com/amfphp/gateway.php" source="NARServices" 
 		destination="NARServices">
@@ -18,6 +16,7 @@
 
 <fx:Script>
 	<![CDATA[
+		import com.vizzuality.style.skin.CustomTextAreaSkin;
 		import spark.effects.animation.Animation;
 		import com.google.maps.overlays.TileLayerOverlay;
 		import com.vizzuality.map.CustomWMSTileLayer;
@@ -150,7 +149,7 @@
 	
 	<maps:Map id="map" key="lala" mapevent_mapready="init()" 
 		top="120" left="0" bottom="0" right="250" top.AreaSelected="120" left.AreaSelected="0" bottom.AreaSelected="75" right.AreaSelected="250"/>
-	<mx:Image source="@Embed('com/vizzuality/assets/logoMapVizz.png')" left="70" bottom="5" left.AreaSelected="70" bottom.AreaSelected="80"/>
+	<mx:Image source="@Embed('com/vizzuality/assets/logoMapVizz.png')" left="70" bottom="5" left.AreaSelected="70" bottom.AreaSelected="105"/>
 	<s:Group fontFamily="Verdana" fontSize="11" contentBackgroundColor="#393939" baseColor="#393939" 
 		focusColor="#393939" selectionColor="#393939" symbolColor="#393939" rollOverColor="#393939" top="120" bottom="0" right="0" width="250">
 		<s:HGroup width="100%"  height="32" verticalAlign="middle">
@@ -171,11 +170,12 @@
 	</s:Group>
 	
 	<mx:Box id="descriptionBox" bottom="0" right="250" left="0" height="75" backgroundColor="#898989" color="#FFFFFF" paddingLeft="10" paddingRight="10" paddingTop="5" 
-		paddingBottom="5" verticalGap="0" verticalScrollPolicy="off" borderColor="#898989" alpha="0.0" alpha.AreaSelected="1">
+		paddingBottom="5" verticalGap="0" verticalScrollPolicy="off" borderColor="#898989" alpha="0.0" alpha.AreaSelected="1" height.AreaSelected="100">
 		<s:Group width.AreaSelected="100%" height.AreaSelected="100%">
 			<mx:Label text="{areaText}"  fontSize.AreaSelected="17" fontWeight.AreaSelected="bold" left.AreaSelected="0" right.AreaSelected="75"/>
 			<s:Button right="10" top="10" label.AreaSelected="CSV" color.AreaSelected="#393939" textAlign.AreaSelected="center" top.AreaSelected="20" right.AreaSelected="0"/>
-			<mx:Label text="{descriptionText}"  height.AreaSelected="42" bottom.AreaSelected="0" right.AreaSelected="83" left.AreaSelected="0" y.AreaSelected="17"/>			
+			<s:TextArea text="{descriptionText}"  height.AreaSelected="65" bottom.AreaSelected="0" right.AreaSelected="75" left.AreaSelected="0" editable.AreaSelected="false" 
+				verticalScrollPolicy="off" skinClass="com.vizzuality.style.skin.CustomTextAreaSkin"/>			
 			<mx:Label text="Download"  includeIn="AreaSelected" right="3"/>
 		</s:Group>
 	</mx:Box>
