@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Species distribution repository</title>
 
-  <!-- Framework CSS --> 
+  <!-- Framework CSS -->
 
   	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen, projection">
   	<link rel="stylesheet" href="css/typography.css" type="text/css" media="screen, projection">
@@ -16,7 +16,8 @@
 	<link rel="stylesheet" href="css/style1.css" type="text/css" media="screen, projection">
 
 	<link rel="stylesheet" href="css/tpl/header.css" type="text/css" media="screen, projection">	
-	<link rel="stylesheet" href="css/tpl/footer.css" type="text/css" media="screen, projection">		
+	<link rel="stylesheet" href="css/tpl/footer.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="css/tpl/searchHForm.css" type="text/css" media="screen, projection">		
   <!--[if lt IE 8]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection"><![endif]-->
 </head>
 <body>

@@ -1,17 +1,7 @@
 	<div class="span-24 last separator7"></div>
 	
-		<div class="span-24 column searchContainer">
-		<div class="searchsearchContainer">
-<!--
-			<div class="span-5 last search_title_container"><div class="title_blue_search">Search for species</div></div>
-			<div class="span-17 last search_text_container"><input class="span-12 text searchtext"></div>
-			<div class="span-2 last search_button_container"><input class="search_button" value="search!"></div>
--->
-		</div>
-		</div>
-
 	<div class="span-24 last separator7"></div>		
- 
+
 	<div class="span-24 last widgetContainer">
 		<img src="/css/images/widget.jpg">
 	</div>
@@ -70,7 +60,7 @@
 		    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 		    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 		    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			<a href="" class="span-5 last view_more">view more</a>
+			<a href="" class="view_more">view more</a>
 		</div>		
 	</div>
 
