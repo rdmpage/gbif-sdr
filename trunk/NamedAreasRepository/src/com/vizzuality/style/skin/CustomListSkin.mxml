@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkSkin name="CustomListSkin"
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        minWidth="112" minHeight="112"
+        alpha.disabled="0.5">
+    <s:states>
+        <s:State name="normal" />
+        <s:State name="disabled" />
+    </s:states>
+
+    <fx:Metadata>
+        <![CDATA[
+            [HostComponent("spark.components.List")]
+        ]]>
+    </fx:Metadata>
+
+    <fx:Script>
+        /* Define the skin elements that should not be colorized.
+           For list, the skin itself is colorized but the individual parts are not. */
+        static private const exclusions:Array = ["scroller", "background"];
+
+        override public function get colorizeExclusions():Array {return exclusions;}
+
+        static private const contentFill:Array = ["bgFill"];
+        override public function get contentItems():Array {return contentFill};
+    </fx:Script>
+
+    <!-- border -->
+    <s:Rect left="0" right="0" top="0" bottom="0">
+        <s:stroke>
+            <s:SolidColorStroke color="0xFFFFFF"/>
+        </s:stroke>
+    </s:Rect>
+
+    <!-- fill -->
+    <s:Rect id="background" left="1" right="1" top="1" bottom="1" >
+        <s:fill>
+            <s:SolidColor id="bgFill" color="0xFFFFFF" />
+        </s:fill>
+    </s:Rect>
+
+    <s:Scroller id="scroller"
+            focusEnabled="false"
+            horizontalScrollPolicy="off"
+            left="1" top="1" right="1" bottom="1"
+            baseColor="0xFFFFFF">
+        <s:DataGroup id="dataGroup"
+                itemRenderer="spark.skins.default.DefaultItemRenderer">
+            <s:layout>
+                <s:VerticalLayout gap="0"
+                        horizontalAlign="contentJustify"
+                        useVirtualLayout="true"
+                        requestedRowCount="6" />
+            </s:layout>
+        </s:DataGroup>
+    </s:Scroller>
+
+</s:SparkSkin>
