@@ -110,7 +110,8 @@
 		
 		<div class="span-24 last separator40"></div>
 
-		<div class="span-24 last footerContainer">
+		<!--
+<div class="span-24 last footerContainer">
 			<div class="span-24 last separator1"></div>
 			<div class="span-24 last footer_notices">
 				<div class="span-6 noti">
@@ -140,6 +141,7 @@
 			    <div class="footer_logo"></div>
 			</div>
 		</div>
+-->
 	</div>
 </body>
 </html>
