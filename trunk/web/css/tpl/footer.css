@@ -1,0 +1,29 @@
+/* footer */
+
+.footerContainer{
+	height: 166px;
+}
+
+.footer_notices{
+	border-top: #d6d6d6 1px solid;
+	height: 89px;
+}
+
+.footer{
+	border-top: #d6d6d6 1px solid;
+	height: 67px;	
+}
+
+.footer_logo{
+    background-image: url(/css/images/logo_footer.jpg);
+    background-repeat: no-repeat;
+	height: 67px;
+	width: 47px;
+	margin-top: 8px;
+	float: right;
+}
+
+.noti{
+	height: 90px;
+	width: 220px;
+}
