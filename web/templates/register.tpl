@@ -18,24 +18,6 @@
 
 <body>
 	<div class="container">
-		<!--
-<div class="span-24 last headerContainer">
-			<div class="span-1 last headerLogo"></div>
-			<div class="span-1 last headerList">
-				<ul>
-  					<li><a href="" class="lista">BROWSE</a></li>
-  					<li><a href="" class="lista">CREATE</a></li>
-  					<li><a href="" class="lista">ABOUT</a></li>
-				</ul>
-			</div>
-			<div class="span-1 last headerSign">
-				<div class="login_sign">
-					<a href="" class="login_sign_link">Login </a>or
-					<a href="" class="login_sign_link"> Sign up!</a>
-				</div>
-			</div>
-		</div>
--->
 		<div class="span-24 last separator1"></div>		
 		<div class="span-24 last separator1"></div>		
 		<div class="span-24 last separator7"></div>		
