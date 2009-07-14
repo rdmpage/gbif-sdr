@@ -2,7 +2,7 @@
 <s:ItemRenderer 
   xmlns:fx="http://ns.adobe.com/mxml/2009" 
   xmlns:s="library://ns.adobe.com/flex/spark" 
-  xmlns:mx="library://ns.adobe.com/flex/halo" width="100%" height="55"
+  xmlns:mx="library://ns.adobe.com/flex/halo" width="100%" height="50"
    click="itemrenderer1_clickHandler(event)" >
 
 
@@ -17,14 +17,6 @@
 			import com.google.maps.InfoWindowOptions;
 			import com.google.maps.overlays.Marker;
 			import mx.core.Application;
-			
-			
-			/* protected function itemrenderer1_clickHandler(event:MouseEvent):void {
-				var marker:Marker = FlexGlobals.topLevelApplication.picturesIdInfoWindows[data.id] as Marker;
-				if (marker!=null) {
-					marker.openInfoWindow(FlexGlobals.topLevelApplication.picturesInfoWindows[marker] as InfoWindowOptions);
-				}
-			} */
 			
 			private function itemrenderer1_clickHandler(event:MouseEvent):void {
 			
@@ -64,34 +56,21 @@
         </s:fill>
         <s:fill.hovered>
             <s:LinearGradient rotation="90">
-                <s:GradientEntry color="#fecc04" />
-                <s:GradientEntry color="#c9a206" />
+                <s:GradientEntry color="#78c96c" />
+                <s:GradientEntry color="#5eb236" />
             </s:LinearGradient>
         </s:fill.hovered>
         <s:fill.selected>
             <s:LinearGradient rotation="90">
-                <s:GradientEntry color="#fecc04" />
-                <s:GradientEntry color="#c9a206" />
+                <s:GradientEntry color="#78c96c" />
+                <s:GradientEntry color="#5eb236" />
             </s:LinearGradient>
         </s:fill.selected>
     </s:Rect>
-  
-<!--  <s:Group width="57" height="57" left="7" verticalCenter="0">
-      <s:Rect height="100%" width="100%" >
-      	<s:fill>
-            <s:LinearGradient>
-                <s:entries>
-                    <mx:GradientEntry color="#FFFFFF"/>
-                </s:entries>
-            </s:LinearGradient>
-        </s:fill>
-      </s:Rect>
-	  <mx:Image source="{data.profile_image_url}" width="51" height="51" verticalCenter="0" horizontalCenter="0"/> 	
-  </s:Group>-->
-  
+    
   <s:VGroup y="10" height="25" x="10" left="10" right="5" gap="-1">
-	<s:SimpleText text="{'[' + data.area_code.toString() + '] ' + data.area_name.toString()}" verticalAlign="middle"
-		color.hovered="#FFFFFF" fontSize="14" fontFamily="Helvetica"  fontWeight="bold" height="30" width="100%" color.normal="#5DB135"/>
+	<s:SimpleText text="{'[' + data.area_code.toString() + '] ' + data.area_name.toString()}" verticalAlign="middle" color.selected="0xFFFFFF"
+		color.hovered="#FFFFFF" fontSize="12" fontFamily="Helvetica" fontWeight="bold" height="30" width="100%" color.normal="#5DB135"/>
   </s:VGroup>
 
 </s:ItemRenderer>

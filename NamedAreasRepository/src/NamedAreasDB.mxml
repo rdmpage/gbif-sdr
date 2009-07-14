@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/halo" 
 	xmlns:local="*" minWidth="800" minHeight="600" xmlns:maps="com.google.maps.*">
+	<s:states>
+		<s:State name="State1"/>
+	</s:states>
+	
 	<fx:Style source="NamedAreasDB.css"/>
 	
 <fx:Declarations>
@@ -12,6 +16,7 @@
 
 <fx:Script>
 	<![CDATA[
+		import spark.effects.animation.Animation;
 		import com.google.maps.overlays.TileLayerOverlay;
 		import com.vizzuality.map.CustomWMSTileLayer;
 		import mx.rpc.events.FaultEvent;
@@ -41,6 +46,7 @@
 		
 		[Bindable]public var namedAreasCollection:ArrayCollection = new ArrayCollection();
 		[Bindable]public var namedAreasList:ArrayCollection = new ArrayCollection();
+		[Bindable]private var descriptionText: String = "";
 		
 		public var bbox:LatLngBounds;
 		private var i:int;
@@ -58,28 +64,11 @@
 			server.addEventListener(ResultEvent.RESULT,onGetNamedAreas);
 			server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
 			server.getReferences();
-			
-			
-
-
-/* 			Security.loadPolicyFile("http://flickr.com/crossdomain.xml");
-			map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
-			var zco:ZoomControlOptions=new ZoomControlOptions({
-                                position: new ControlPosition(ControlPosition.ANCHOR_TOP_LEFT, 12, 12)
-                        });
-			map.addControl(new ZoomControl(zco));
-			map.addControl(new MapTypeControl());
-			bbox= new LatLngBounds();
-			var srv:HTTPService = new HTTPService();
-			srv.resultFormat = "text";
-			srv.url="http://search.twitter.com/search.json?q=%23ebio+observation";
-			srv.addEventListener(ResultEvent.RESULT,onResult);			
-			srv.send(); */
 		}
 
 		
 		private function addOnMap(point: LatLng):void {
-			var options:MarkerOptions = new MarkerOptions({
+/* 			var options:MarkerOptions = new MarkerOptions({
 								icon: new CustomIconSprite(),
 								iconAlignment: MarkerOptions.ALIGN_BOTTOM,
 								clickable:false
@@ -87,7 +76,7 @@
 								
 			var m:Marker = new Marker(point,options);
 			bbox.extend(point);
-		    map.addOverlay(m);
+		    map.addOverlay(m); */
 		}
 		
 		private function onGetNamedAreas(ev:ResultEvent):void {
@@ -98,8 +87,8 @@
 		
 		
 		
-		private function createFlickrMarker(ev:Event):void {
-			/* var bmd:BitmapData = Bitmap(ev.currentTarget.content).bitmapData;
+		/*private function createFlickrMarker(ev:Event):void {
+			 var bmd:BitmapData = Bitmap(ev.currentTarget.content).bitmapData;
 			var bmd2:BitmapData = new BitmapData(34,34)
 			var m:Matrix = new Matrix();
 			m.scale(0.50,0.50);
@@ -142,17 +131,22 @@
 		    } else {
 			    bbox.extend(latlng);
 			    map.setCenter(bbox.getCenter(),map.getBoundsZoomLevel(bbox));	
-		    }       */    
-		}
+		    }          
+		}*/ 
 		
-		private function updateListProviders():void {
+		
+		private function updateListProviders():void {			
+			
+			descriptionText = namedAreasCollection[combo.selectedIndex].description;
+			descriptionBox.alpha = 1;
+			loading.visible=true;
 			namedAreasList.source = null;
 			server.addEventListener(ResultEvent.RESULT, onGetCountries);
 			server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
 			server.getReferenceCodes(combo.selectedIndex + 1);
 			
 			//Add Reference to the map
-			map.clearOverlays();
+            map.clearOverlays();
 			var cWmsTile:CustomWMSTileLayer = new CustomWMSTileLayer(combo.selectedItem.code);
 			var tlo:TileLayerOverlay = new TileLayerOverlay(cWmsTile);
 			map.addOverlay(tlo);
@@ -172,16 +166,21 @@
 		}
 		
 		private function onGetCountries(event: ResultEvent):void {
+			loading.visible = false;
+			descriptionBox.alpha = 0.0;
 			namedAreasList.source = event.result as Array;
-			
-			
-			
-			
 		}
 
 	]]>
 </fx:Script>	
-
+    
+    <fx:Declarations>
+        <mx:Fade id="fadeOut" duration="1000" alphaFrom="1.0" alphaTo="0.0"/>
+        <mx:Pause duration="1000" />
+        <mx:Fade id="fadeIn" duration="1000" alphaFrom="0.0" alphaTo="1.0"/>
+    </fx:Declarations>
+    
+    
 
 	
 	<s:Rect width="100%" height="100%">
@@ -193,25 +192,33 @@
     	</s:fill>
 	</s:Rect>
 	
-	<mx:Image source="@Embed('gbif.jpg')" right="0" left="0"/>
+	<mx:Image source="@Embed('com/vizzuality/assets/gbif.jpg')" right="0" left="0"/>
 	
-	<maps:Map id="map" height="100%" width="100%" key="lala"  left="250" mapevent_mapready="init()" top="120"/>
-	<mx:Image source="@Embed('/logoMapVizz.png')" bottom="5" left="320"/>
-	<s:Group width="250" left="0" top="120" bottom="0" fontFamily="Verdana" fontSize="11" contentBackgroundColor="#393939" baseColor="#393939" 
-		focusColor="#393939" selectionColor="#393939" symbolColor="#393939" rollOverColor="#393939">
+	<maps:Map id="map" key="lala" mapevent_mapready="init()" 
+		top="120" left="0" bottom="0" right="250"/>
+	<mx:Image source="@Embed('com/vizzuality/assets/logoMapVizz.png')" left="70" bottom="5"/>
+	<s:Group fontFamily="Verdana" fontSize="11" contentBackgroundColor="#393939" baseColor="#393939" 
+		focusColor="#393939" selectionColor="#393939" symbolColor="#393939" rollOverColor="#393939" top="120" bottom="0" right="0" width="250">
+		<s:HGroup width="100%"  height="32" verticalAlign="middle">
+			<mx:Label text="References" textAlign="right" height="100%" fontFamily="Verdana" color="#558B29" fontSize="20" fontWeight="bold" letterSpacing="-2" width="100%" paddingTop="4"/>
+			<mx:SWFLoader id="loading" source="@Embed('com/vizzuality/assets/tinyLoading.swf')" width="67" height="15" visible="false"/>
+		</s:HGroup>
 		
-		<s:TextArea text="References" top="0" height="25" contentBackgroundColor="#FFFFFF" baseColor="#FFFFFF" focusColor="#FFFFFF" symbolColor="#FFFFFF" 
-			selectionColor="#FFFFFF" textAlign="center" fontSize="16" fontFamily="Arial" left="0" right="0" color="#5DB135" fontWeight="bold"/>
+		<s:DropDownList id="combo" dataProvider="{namedAreasCollection}" labelField="title"  selectionChanged="updateListProviders()" styleName="ComboBoxNamedAreas"  
+			left="5" right="5" baseColor="0xFFFFFF" height="20" color="#6B6B6B" fontFamily="Arial" contentBackgroundColor="0xFFFFFF" selectionColor="#DFDFDF" focusColor="#FFFFFF" 
+			rollOverColor="#DFDFDF" symbolColor="#868686" top="42" prompt="Choose your area!"/>
 		
-		<mx:ComboBox id="combo" top="27" width="250" dataProvider="{namedAreasCollection}" labelField="title" change="updateListProviders()" styleName="ComboBoxNamedAreas"/>
-		
-		<s:List id="repeaterTweets" itemRenderer="AreasItem" top="50" bottom="0" width="100%"  focusColor="#393939" selectionColor="#393939"
-			 symbolColor="#393939" contentBackgroundColor="#FFFFFF" rollOverColor="#393939" baseColor="#393939" dataProvider="{namedAreasList}">
+		<s:List id="repeaterTweets" itemRenderer="AreasItem" width="100%" skinClass="com.vizzuality.style.skin.CustomListSkin" baseColor="0xFFFFFF"
+			 contentBackgroundColor="#FFFFFF" dataProvider="{namedAreasList}" top="75" bottom="0" >
 			<s:layout>
 				<s:VerticalLayout id="verticalLayout" gap="0"/>				
 			</s:layout>
 		</s:List>
 	</s:Group>
-	<s:TextArea id="connectLabel" text="conecting server..." right="0" x="690" width="110" contentBackgroundColor="#ffffcc" height="20" fontSize="12" top="120"
-		fontFamily="Helvetica" color="#565656" textAlign="center"/>	
+	
+	<mx:Box id="descriptionBox" bottom="0" right="250" left="0" height="75" backgroundColor="#898989" color="#FFFFFF" paddingLeft="10" paddingRight="10" paddingTop="5" 
+		paddingBottom="5" verticalGap="0" verticalScrollPolicy="off" borderColor="#898989" alpha="0.0">
+		<mx:Label text="Description:" />
+		<mx:Label text="{descriptionText}" />
+	</mx:Box>
 </s:Application>
