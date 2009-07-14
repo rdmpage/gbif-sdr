@@ -17,9 +17,9 @@
 </head>
 
 <body>
-	<!--
-<div class="container">
-		<div class="span-24 last headerContainer">
+	<div class="container">
+		<!--
+<div class="span-24 last headerContainer">
 			<div class="span-1 last headerLogo"></div>
 			<div class="span-1 last headerList">
 				<ul>
