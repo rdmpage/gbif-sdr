@@ -37,6 +37,23 @@ class NARServices {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
+	
+	public function getNamedAreaDetails($referenceCode,$areaCode) {
+	    $sth = $this->dbHandle->prepare("select na.id,na.area_code,na.area_name, ".
+        "ymin(nag.the_geom) as south,  ".
+        "xmin(nag.the_geom) as west, ".
+        "xmax(nag.the_geom) as east, ".
+        "ymax(nag.the_geom) as north, ".
+        "x(centroid(nag.the_geom)) as center_lat, ".
+        "y(centroid(nag.the_geom)) as center_lon ".
+        "from named_area as na inner join named_area_geom nag on na.named_area_geom_fk=nag.id where na.named_area_reference_fk =:reference_code and na.area_code=area_code");
+        
+        $stmt->bindParam(':reference_code', $referenceCode, PDO::PARAM_INT);
+        $stmt->bindParam(':area_code', $areaCode, PDO::PARAM_STR);
+        
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
 
 }
 ?>
