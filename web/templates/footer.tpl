@@ -4,7 +4,7 @@
 					<div class="title_notice"><a href="#">Do you need help?</a></div>
 					<div class="noti_sub">Visit our Frequently Asked Questions or contact us</div>
 				</div>
-				<div class="span-6 noti hasBorder">
+				<div class="span-6 noti hasBorder"> 
 					<div class="title_notice"><a href="#">About the project</a></div>
 					<div class="noti_sub">All the information about the Species Distribution Repository</div>
 				</div>
