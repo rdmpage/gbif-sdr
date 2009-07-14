@@ -14,6 +14,11 @@
 	height: 67px;	
 }
 
+.noti{
+	height: 90px;
+	width: 220px;
+}
+
 .footer_logo{
     background-image: url(/css/images/logo_footer.jpg);
     background-repeat: no-repeat;
@@ -23,7 +28,22 @@
 	float: right;
 }
 
-.noti{
-	height: 90px;
-	width: 220px;
+.title_notice{
+ 	font-family: "Arial";
+	font-size: 16px; 
+	padding-top: 19px;	
+	color: #99b3cc;
+}
+
+.noti_sub{
+ 	font-family: "Arial";
+  	line-height: 13px;
+	font-size: 13px; 
+	color: #999999;
+}
+
+.footer_info{
+ 	font-family: "Arial";
+	font-size: 13px; 
+	color: #999999;
 }
