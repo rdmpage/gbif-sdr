@@ -3,13 +3,16 @@ shp2pgsql -s 4326 -W LATIN1 level1.shp temp_na 2>/dev/null | psql -hlocalhost -d
 ALTER TABLE named_area_geom ADD COLUMN temp_id integer;
 insert into named_area_geom(the_geom,temp_id) select the_geom,gid from temp_na
 
-insert into named_area(area_code,area_name,named_area_reference_fk,named_area_geom_fk) select level_1_co as area_code, level_1_co as area_name, 6 as named_area_reference_fk, nag.id as named_area_geom_fk from temp_na as t inner join named_area_geom as nag on t.gid=nag.temp_id;
+insert into named_area(area_code,area_name,named_area_reference_fk,named_area_geom_fk) select level_1_co as area_code, continent_ as area_name, 6 as named_area_reference_fk, nag.id as named_area_geom_fk from temp_na as t inner join named_area_geom as nag on t.gid=nag.temp_id;
 
 DROP TABLE temp_na
 ALTER TABLE named_area_geom DROP COLUMN temp_id;
 
 
+create view named_area_tdgw_level_1 as 
+select na.id,area_code,area_name,the_geom from named_area as na inner join named_area_geom as nag on na.named_area_geom_fk=nag.id where na.named_area_reference_fk=6;
 
+insert into geometry_columns VALUES('','public','named_area_tdgw_level_1','the_geom',2,4326,'MULTIPOLYGON');
 
 
 
@@ -25,7 +28,10 @@ insert into named_area(area_code,area_name,named_area_reference_fk,named_area_ge
 DROP TABLE temp_na;
 ALTER TABLE named_area_geom DROP COLUMN temp_id;
 
+create view named_area_tdgw_level_2 as 
+select na.id,area_code,area_name,the_geom from named_area as na inner join named_area_geom as nag on na.named_area_geom_fk=nag.id where na.named_area_reference_fk=7;
 
+insert into geometry_columns VALUES('','public','named_area_tdgw_level_2','the_geom',2,4326,'MULTIPOLYGON');
 
 
 
@@ -41,7 +47,10 @@ insert into named_area(area_code,area_name,named_area_reference_fk,named_area_ge
 DROP TABLE temp_na;
 ALTER TABLE named_area_geom DROP COLUMN temp_id;
 
+create view named_area_tdgw_level_3 as 
+select na.id,area_code,area_name,the_geom from named_area as na inner join named_area_geom as nag on na.named_area_geom_fk=nag.id where na.named_area_reference_fk=8;
 
+insert into geometry_columns VALUES('','public','named_area_tdgw_level_3','the_geom',2,4326,'MULTIPOLYGON');
 
 
 
@@ -56,5 +65,8 @@ insert into named_area(area_code,area_name,named_area_reference_fk,named_area_ge
 DROP TABLE temp_na;
 ALTER TABLE named_area_geom DROP COLUMN temp_id;
 
+create view named_area_tdgw_level_4 as 
+select na.id,area_code,area_name,the_geom from named_area as na inner join named_area_geom as nag on na.named_area_geom_fk=nag.id where na.named_area_reference_fk=9;
 
+insert into geometry_columns VALUES('','public','named_area_tdgw_level_4','the_geom',2,4326,'MULTIPOLYGON');
 
