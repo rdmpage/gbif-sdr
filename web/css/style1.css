@@ -63,6 +63,8 @@
 	height: 111px;
 	padding-left: 9px;
     border: #d6d6d6 1px solid;
+    line-height: 0px;
+    padding-bottom: 9px;
 }
 
 .species_details{
@@ -103,7 +105,6 @@
 	width: 51px;
 	margin-right: 3px;
 	margin-top: 9px;
-	margin-bottom: 9px;
 	float: left;
 }
 
