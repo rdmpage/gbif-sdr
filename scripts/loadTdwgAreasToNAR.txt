@@ -1,0 +1,60 @@
+shp2pgsql -s 4326 -W LATIN1 level1.shp temp_na 2>/dev/null | psql -hlocalhost -dsdr -Upostgres 
+
+ALTER TABLE named_area_geom ADD COLUMN temp_id integer;
+insert into named_area_geom(the_geom,temp_id) select the_geom,gid from temp_na
+
+insert into named_area(area_code,area_name,named_area_reference_fk,named_area_geom_fk) select level_1_co as area_code, level_1_co as area_name, 6 as named_area_reference_fk, nag.id as named_area_geom_fk from temp_na as t inner join named_area_geom as nag on t.gid=nag.temp_id;
+
+DROP TABLE temp_na
+ALTER TABLE named_area_geom DROP COLUMN temp_id;
+
+
+
+
+
+
+
+
+shp2pgsql -s 4326 -W LATIN1 level2.shp temp_na 2>/dev/null | psql -hlocalhost -dsdr -Upostgres 
+
+ALTER TABLE named_area_geom ADD COLUMN temp_id integer;
+insert into named_area_geom(the_geom,temp_id) select the_geom,gid from temp_na
+
+insert into named_area(area_code,area_name,named_area_reference_fk,named_area_geom_fk) select level_2_re as area_code, region_nam as area_name, 7 as named_area_reference_fk, nag.id as named_area_geom_fk from temp_na as t inner join named_area_geom as nag on t.gid=nag.temp_id;
+
+DROP TABLE temp_na;
+ALTER TABLE named_area_geom DROP COLUMN temp_id;
+
+
+
+
+
+
+
+shp2pgsql -s 4326 -W LATIN1 level3.shp temp_na 2>/dev/null | psql -hlocalhost -dsdr -Upostgres 
+
+ALTER TABLE named_area_geom ADD COLUMN temp_id integer;
+insert into named_area_geom(the_geom,temp_id) select the_geom,gid from temp_na
+
+insert into named_area(area_code,area_name,named_area_reference_fk,named_area_geom_fk) select level_3_co as area_code, level_name as area_name, 8 as named_area_reference_fk, nag.id as named_area_geom_fk from temp_na as t inner join named_area_geom as nag on t.gid=nag.temp_id;
+
+DROP TABLE temp_na;
+ALTER TABLE named_area_geom DROP COLUMN temp_id;
+
+
+
+
+
+
+shp2pgsql -s 4326 -W LATIN1 level4.shp temp_na 2>/dev/null | psql -hlocalhost -dsdr -Upostgres 
+
+ALTER TABLE named_area_geom ADD COLUMN temp_id integer;
+insert into named_area_geom(the_geom,temp_id) select the_geom,gid from temp_na
+
+insert into named_area(area_code,area_name,named_area_reference_fk,named_area_geom_fk) select hit as area_code, level_4_na as area_name, 9 as named_area_reference_fk, nag.id as named_area_geom_fk from temp_na as t inner join named_area_geom as nag on t.gid=nag.temp_id;
+
+DROP TABLE temp_na;
+ALTER TABLE named_area_geom DROP COLUMN temp_id;
+
+
+
