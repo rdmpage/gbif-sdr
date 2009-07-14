@@ -8,6 +8,9 @@
 
 	<fx:Script>
 		<![CDATA[
+			import com.google.maps.MapMouseEvent;
+			import com.google.maps.LatLngBounds;
+			import mx.core.mx_internal;
 			import mx.collections.ArrayCollection;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.events.ResultEvent;
@@ -19,21 +22,52 @@
 			import mx.core.Application;
 			
 			private function itemrenderer1_clickHandler(event:MouseEvent):void {
-			
-			
-				//ESTO ES DE JATORRE
+				FlexGlobals.topLevelApplication.map.clearOverlays();
+				FlexGlobals.topLevelApplication.server.addEventListener(ResultEvent.RESULT,onGetNamedAreas);
+				FlexGlobals.topLevelApplication.server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
+				FlexGlobals.topLevelApplication.server.getNamedAreaDetails(FlexGlobals.topLevelApplication.codeAreaSelected,data.area_code);
+				trace(FlexGlobals.topLevelApplication.codeAreaSelected);
 				
-				
-				
-				
-				
-				
-				
-				//
-			
-			
-			
+				FlexGlobals.topLevelApplication.countriesList.enabled = false;
+				FlexGlobals.topLevelApplication.mamufas.visible = true;
  			}
+ 			
+	 		private function onGetNamedAreas(ev:ResultEvent):void {
+				FlexGlobals.topLevelApplication.server.removeEventListener(ResultEvent.RESULT,onGetNamedAreas);
+				
+				var bounds:LatLngBounds = new LatLngBounds(
+				new LatLng(ev.result.south, ev.result.west),
+				new LatLng(ev.result.north, ev.result.east)
+				);
+				
+				FlexGlobals.topLevelApplication.map.setCenter(bounds.getCenter(),FlexGlobals.topLevelApplication.map.getBoundsZoomLevel(bounds));
+				
+				var latlong: LatLng = new LatLng(ev.result.center_lon,ev.result.center_lat);
+			    var marker:Marker = new Marker(latlong);
+				/* var optionsMark:InfoWindowOptions = new InfoWindowOptions({
+	                    customContent: ev.target.loader,
+	                    strokeStyle: new StrokeStyle({thickness: 6, color:0xFFFFFF}),
+	                    customOffset: new Point(0, 10),
+	                    cornerRadius:0,
+	                    hasShadow:false,
+	                    width: bmd.width,
+	                    height: bmd.height,
+	                    drawDefaultFrame: true                                  
+	            });		    
+	            picturesInfoWindows[marker]=optionsMark;
+	            picturesIdInfoWindows[tweet.id]=marker;
+	            marker.addEventListener(MapMouseEvent.CLICK, function(e:MapMouseEvent):void {
+	                    marker.openInfoWindow(optionsMark);  
+	                    map.panTo(e.latLng);   
+	            }); */  		    
+			    
+		   	 	 FlexGlobals.topLevelApplication.map.addOverlay(marker);
+
+
+				FlexGlobals.topLevelApplication.mamufas.visible = false;
+				FlexGlobals.topLevelApplication.countriesList.enabled = true;
+				FlexGlobals.topLevelApplication.countriesList.visible = true;
+			}
 
 		]]>
 	</fx:Script>

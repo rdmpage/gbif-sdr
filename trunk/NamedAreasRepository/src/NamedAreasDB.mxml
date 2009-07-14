@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/halo" 
-	xmlns:local="*" minWidth="800" minHeight="600" xmlns:maps="com.google.maps.*">
+	xmlns:local="*" minWidth="800" minHeight="600" xmlns:maps="com.google.maps.*" xmlns:components="com.vizzuality.loader.*">
 	<s:states>
 		<s:State name="State1"/>
 		<s:State name="AreaSelected"/>
@@ -11,6 +11,7 @@
 		destination="NARServices">
 		<mx:method name="getReferences"/>
 		<mx:method name="getReferenceCodes"/>
+		<mx:method name="getNamedAreaDetails"/>
 	</mx:RemoteObject>
 </fx:Declarations>
 
@@ -50,11 +51,7 @@
 		
 		[Bindable]private var descriptionText: String = "";
 		[Bindable]private var areaText: String= "";
-		
-		public var bbox:LatLngBounds;
-		private var i:int;
-		public var picturesInfoWindows:Dictionary = new Dictionary(true);
-		public var picturesIdInfoWindows:Dictionary = new Dictionary(true);
+		public var codeAreaSelected: String = "";
 		
 		
 		private function init():void {
@@ -83,13 +80,9 @@
 		}
 
 		
-		private function addOnMap(point: LatLng):void {
-		}
-		
 		private function onGetNamedAreas(ev:ResultEvent):void {
 			server.removeEventListener(ResultEvent.RESULT,onGetNamedAreas);
-			namedAreasCollection.source = ev.result as Array;
-			
+			namedAreasCollection.source = ev.result as Array;		
 		}
 		
 		
@@ -100,26 +93,22 @@
 			
 			descriptionText = namedAreasCollection[combo.selectedIndex].description;
 			areaText = namedAreasCollection[combo.selectedIndex].title;
-			
-			descriptionBox.alpha = 1;
+			codeAreaSelected = namedAreasCollection[combo.selectedIndex].code;
+						
 			loading.visible=true;
 			namedAreasList.source = null;
 			server.addEventListener(ResultEvent.RESULT, onGetCountries);
 			server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
-			server.getReferenceCodes(combo.selectedIndex + 1);
+			server.getReferenceCodes(namedAreasCollection[combo.selectedIndex].code);
 			
-			//Add Reference to the map
             map.clearOverlays();
 			var cWmsTile:CustomWMSTileLayer = new CustomWMSTileLayer(combo.selectedItem.code);
 			var tlo:TileLayerOverlay = new TileLayerOverlay(cWmsTile);
-			map.addOverlay(tlo);
-			
-			//End
-			
-			
+			map.addOverlay(tlo);	
 		}
 		
 		private function onGetCountries(event: ResultEvent):void {
+			server.removeEventListener(ResultEvent.RESULT,onGetCountries);
 			loading.visible = false;
 			namedAreasList.source = event.result as Array;
 		}
@@ -148,8 +137,10 @@
 	<mx:Image source="@Embed('com/vizzuality/assets/gbif.jpg')" right="0" left="0"/>
 	
 	<maps:Map id="map" key="lala" mapevent_mapready="init()" 
-		top="120" left="0" bottom="0" right="250" top.AreaSelected="120" left.AreaSelected="0" bottom.AreaSelected="75" right.AreaSelected="250"/>
+		top="120" left="0" bottom="0" right="250" top.AreaSelected="120" left.AreaSelected="0" bottom.AreaSelected="100" right.AreaSelected="250"/>
 	<mx:Image source="@Embed('com/vizzuality/assets/logoMapVizz.png')" left="70" bottom="5" left.AreaSelected="70" bottom.AreaSelected="105"/>
+	<components:GeneralLoader id="mamufas" visible="false"
+		top="120" left="0" bottom="0" right="250" top.AreaSelected="120" left.AreaSelected="0" bottom.AreaSelected="100" right.AreaSelected="250"/>
 	<s:Group fontFamily="Verdana" fontSize="11" contentBackgroundColor="#393939" baseColor="#393939" 
 		focusColor="#393939" selectionColor="#393939" symbolColor="#393939" rollOverColor="#393939" top="120" bottom="0" right="0" width="250">
 		<s:HGroup width="100%"  height="32" verticalAlign="middle">
@@ -161,7 +152,7 @@
 			left="5" right="5" baseColor="0xFFFFFF" height="20" color="#6B6B6B" fontFamily="Arial" contentBackgroundColor="0xFFFFFF" selectionColor="#DFDFDF" focusColor="#FFFFFF" 
 			rollOverColor="#DFDFDF" symbolColor="#868686" top="42" prompt="Choose your area!"/>
 		
-		<s:List id="repeaterTweets" itemRenderer="AreasItem" width="100%" skinClass="com.vizzuality.style.skin.CustomListSkin" baseColor="0xFFFFFF"
+		<s:List id="countriesList" itemRenderer="AreasItem" width="100%" skinClass="com.vizzuality.style.skin.CustomListSkin" baseColor="0xFFFFFF"
 			 contentBackgroundColor="#FFFFFF" dataProvider="{namedAreasList}" top="75" bottom="0" >
 			<s:layout>
 				<s:VerticalLayout id="verticalLayout" gap="0"/>				
