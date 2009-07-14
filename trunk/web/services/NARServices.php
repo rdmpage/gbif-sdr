@@ -31,9 +31,9 @@ class NARServices {
 
 
 	public function getReferenceCodes($referenceCode) {
-	    $stmt = $this->dbHandle->prepare("select id,area_code,area_name,named_area_reference_fk ".
+	    $stmt = $this->dbHandle->prepare("select na.id,area_code,area_name ".
 	    "from named_area as na inner join named_area_reference as nar on na.named_area_reference_fk=nar.id ".
-	    "where nar.code=:reference_code");	        
+	    "where nar.code =:reference_code");	        
 	    
         $stmt->bindParam(':reference_code', $referenceCode, PDO::PARAM_STR, 255);
         $stmt->execute();
