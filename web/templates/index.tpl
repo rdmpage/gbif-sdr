@@ -79,7 +79,7 @@
 			<div class="span-18 post">
 			    <div class="title_gray">Post your comment now</div>
 			    <input class="comment">
-			    <div><input type="button" class="last commentButtonPost" value="Comment now"></div>
+			    <div><input class="last commentButtonPost" value="Comment now"></div>
 			</div>
 		</div>
 		
