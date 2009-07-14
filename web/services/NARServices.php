@@ -54,7 +54,7 @@ class NARServices {
         $stmt->bindParam(':area_code', $areaCode, PDO::PARAM_STR, 255);
         
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 
 }
