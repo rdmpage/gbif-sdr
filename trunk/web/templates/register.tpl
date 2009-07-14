@@ -17,7 +17,8 @@
 </head>
 
 <body>
-	<div class="container">
+	<!--
+<div class="container">
 		<div class="span-24 last headerContainer">
 			<div class="span-1 last headerLogo"></div>
 			<div class="span-1 last headerList">
@@ -34,6 +35,7 @@
 				</div>
 			</div>
 		</div>
+-->
 		<div class="span-24 last separator1"></div>		
 		<div class="span-24 last separator1"></div>		
 		<div class="span-24 last separator7"></div>		
@@ -88,7 +90,8 @@
 			</div>
 		</div>
 		<div class="span-24 column separator40"></div>
-		<div class="span-24 column footerContainer">
+		<!--
+<div class="span-24 column footerContainer">
 			<div class="span-24 last separator1"></div>
 			<div class="span-24 last footer_notices">
 				<div class="span-6 noti">
@@ -119,6 +122,7 @@
 			    <div class="footer_logo"></div>
 			</div>
 		</div>
+-->
 	</div>
 </body>
 </html>
