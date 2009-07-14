@@ -21,5 +21,6 @@ http://spreadsheets.google.com/pub?key=tVs-UWMXnkD3slwIE8T336w&gid=3
 
 
 = Existing Standards =
+ * [http://www.nhm.ac.uk/hosted_sites/tdwg/poss_standard.html PLANT OCCURRENCE AND STATUS SCHEME]
+ * [http://www.birdlife.org/datazone/species/terms/range.html Birdlife]
  * http://www.bou.org.uk/reccats.html
- * POSS
