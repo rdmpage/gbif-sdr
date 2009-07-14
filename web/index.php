@@ -10,7 +10,5 @@ $services = new SDRServices;
 //$smarty->assign('data', $data);
 $smarty->display('header.tpl');
 $smarty->display('index.tpl');
-/*
 $smarty->display('footer.tpl');
-*/
 ?>
