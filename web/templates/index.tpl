@@ -34,11 +34,13 @@
 				<div class="span-16 text_comment">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur id lacus. Duis et ante id risus ornare posuere. Etiam nec neque sit amet ante faucibus rutrum. Donec at lacus in nisl commodo pharetra. Nunc dictum, magna vel rutrum accumsan, ligula leo ultricies ante, vel eleifend est neque vitae turpis. Nulla ut sapien in tellus egestas  scelerisque.</div>
 			</div>
 		</div>
+		<form method="post">
 		<div class="span-18 post">
 		    <div class="title_gray">Post your comment now</div>
 		    <input class="comment">
-		    <div><input class="last commentButtonPost" value="Comment now"></div>
+		    <div><input class="last commentButtonPost" value="Comment now" name="comment_button" id="comment_button"></div>
 		</div>
+		</form>
 	</div>
 	
 	<div class="span-6 last rightColumn">
