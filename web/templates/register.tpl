@@ -10,7 +10,7 @@
 <div class="register_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eleifend convallis metus vitae scelerisque. 					Sed condimentum pellentesque nisi, ac lacinia felis sagittis bibendum. Cras tempus ipsum nec.</div>
 				<div class="span-9 last columna1">
 					<div class="title_campo">User name*</div>
-					<input class="span-8 text_reg" id="user_name" name="user_name" class="requerido">
+					<input class="span-8 text_reg" id="user_name" name="user_name">
 				</div>
 				<div class="span-9 last columna2">
 					<div class="title_campo">Project name</div>
@@ -18,18 +18,18 @@
 				</div>
 				<div class="span-9 last columna1">
 					<div class="title_campo">e-mail*</div>
-					<input class="span-8 text_reg" id="email" name="email" class="requerido email">
+					<input class="span-8 text_reg" id="email" name="email">
 				</div>
 				<div class="span-18 last separator6"></div>
 				<div class="span-18 last separator6"></div>
 				<div class="span-18 last separator6"></div>				
 				<div class="span-9 last columna1">
 					<div class="title_campo">password*</div>
-					<input class="span-8 text_reg" id="password" name="password" class="requerido">
+					<input class="span-8 text_reg" id="password" name="password">
 				</div>
 				<div class="span-9 last columna2">
 					<div class="title_campo">confirm password*</div>
-					<input class="span-8 text_reg" id="password_confirm" name="password_confirm" class="requerido">
+					<input class="span-8 text_reg" id="password_confirm" name="password_confirm">
 				</div>
 				<div class="span-3"><input type="submit" class="submit_button" value="submit" id="submit" name="submit"></div>
 				<div class="span-1 check_container"><input type="checkbox" id="terms_conditions" name="terms_conditions"></div>
