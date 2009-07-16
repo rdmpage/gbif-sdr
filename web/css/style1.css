@@ -1,5 +1,17 @@
 /* home */
 
+.texto1{
+	font-family: "Georgia";
+	font-size: 26px;
+	font-style: italic;
+	color: #99b3cc;
+}
+
+.texto2{}
+
+.texto3{}
+
+
 .homeContainer{
 	height: 550px;
 }
