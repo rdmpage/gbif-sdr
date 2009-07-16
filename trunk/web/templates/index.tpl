@@ -20,7 +20,7 @@
 			<div class="span-18 post">
 			    <div class="title_gray">Post your comment now</div>
 			    <textarea name="comment" id="comment"></textarea>
-			    <input class="last commentButtonPost" value="Comment now" onclick="commentAction()">
+			    <input type="button" class="last commentButtonPost" value="Comment now" onclick="commentAction()"/>
 			</div>
 		</form>
 	</div>
