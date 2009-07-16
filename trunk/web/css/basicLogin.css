@@ -1,0 +1,26 @@
+/* Overlay */
+#simplemodal-overlay {
+	background-color:#aaaaaa; 
+	cursor:wait;
+}
+
+/* Container */
+#simplemodal-container {
+	height:145px; 
+	width:437px; 
+	background-color:#ffffff; 
+	border:1px solid #999999; 
+	-moz-border-radius: 5px; 
+}
+#simplemodal-container a.modalCloseImg {
+	background:url('../images/x.jpg') no-repeat; 
+	width:25px; 
+	height:29px; 
+	display:inline; 
+	z-index:3200; 
+	position:absolute; 
+	top:-10px; right:15px; 
+	cursor:pointer;
+}
+#simplemodal-container #basicModalContent {
+}
