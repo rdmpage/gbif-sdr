@@ -1,10 +1,13 @@
+/* home */
 
-
-/* widget */
-
-.widgetContainer{
+.homeContainer{
 	background-color: silver;
-	height: 452px;
+	height: 622px;
+}
+
+.footer_homeContainer{
+	background-color: silver;
+	height: 622px;
 }
 
 /* comments */
@@ -18,13 +21,8 @@ ol.timeline li {
 	position:relative;
 }
 
-ol.timeline li:first-child{}
-
-#flash{
-}
-
 .commentsContainer{
-	height: 180px;
+	height: 600px;
 }
 
 textarea {
