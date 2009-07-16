@@ -21,7 +21,7 @@
 </head>
 <body>
 
-	<div class="container showgrid">
+	<div class="container">
 		<div class="span-24 column homeContainer">
 			<div class="span-5 first separator_lr"></div>
 			<div class="span-14 center_container">
