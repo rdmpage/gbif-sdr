@@ -3,7 +3,7 @@
 class NARServices {
 	
 	function __construct() {
-		$this->dbHandle = new PDO('pgsql:host=ec2-174-129-85-138.compute-1.amazonaws.com port=5432 dbname=sdr user=postgres password=atlas');
+		$this->dbHandle = new PDO('pgsql:host=localhost port=5432 dbname=postgres user=postgres password=postgres');
 	}
     
     public function login($user,$pass) {
@@ -58,6 +58,7 @@ class NARServices {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
 	}
+	
 
 }
 ?>
