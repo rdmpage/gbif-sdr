@@ -28,9 +28,9 @@
 			
 				<div class="span-14 search_cont">
 					<div class="span-14 searchContainer_2">
-						<div class="way"><p>Search</p></div>
-						<div class="wey"><input class="texto"></div>
-						<div class="woy"></div>
+						<div class=" way"><p>Search</p></div>
+						<div class=" wey"><input class="texto"></div>
+						<div class=" woy"><div class="boton" href="#">Search!</div></div>
 					</div>
 				</div>
 			
