@@ -89,7 +89,8 @@
 				</div>
 				<div class="span-10 submit">
 					<input class="span-1 last¡" type="checkbox"/>
-					<p class="submit"> keep me signed in | </p>
+					<p class="submit"> keep me signed in</p>
+					<p class="submit"> | </p>
 					<a class="last linkForgot" href="#">Forgot password?</a>
 					<input class="span-3 last submitButton" value="Sign in" name="Sign in" id="submit" type="submit" />
 				</div>
