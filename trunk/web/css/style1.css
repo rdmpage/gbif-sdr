@@ -118,6 +118,11 @@ textarea {
     margin-left: -18px;
 }
 
+
+.ppalContainer {
+	
+}
+
 .post{
     border-top: #d6d6d6 1px dotted;
 	background-color: #f2f7ef;
@@ -148,7 +153,6 @@ textarea {
 /* right column */
 
 .rightColumn{
-	height: 422px;
 }
 
 .register_info{
