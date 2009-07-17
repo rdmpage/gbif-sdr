@@ -1,53 +1,58 @@
-		<div class="span-24 last separator1"></div>		
-		<div class="span-24 last separator1"></div>		
-		<div class="span-24 last separator7"></div>		
-		<div class="span-24 last separator7"></div>		
-		<div class="span-24 last separator7"></div>		
-		<div class="span-18 registerContainer">
-		<form name="formulario" id="formulario" method="post" action="takedata.php" class="validable" action="javascript: alert('Todo OK!');">
-		 	<div class="title_blue">Register now in Species distribution repository, It’s easy and free</div>
-			<div class="campos">
-<div class="register_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eleifend convallis metus vitae scelerisque. 					Sed condimentum pellentesque nisi, ac lacinia felis sagittis bibendum. Cras tempus ipsum nec.</div>
-				<div class="span-9 last columna1">
-					<div class="title_campo">User name*</div>
-					<input class="span-8 text" id="user_name" name="user_name">
-				</div>
-				<div class="span-9 last columna2">
-					<div class="title_campo">Project name</div>
-					<input class="span-8 text" id="project_name" name="project_name">
-				</div>
-				<div class="span-9 last columna1">
-					<div class="title_campo">e-mail*</div>
-					<input class="span-8 text" id="email" name="email">
-				</div>
-				<div class="span-18 last separator6"></div>
-				<div class="span-18 last separator6"></div>
-				<div class="span-18 last separator6"></div>				
-				<div class="span-9 last columna1">
-					<div class="title_campo">password*</div>
-					<input class="span-8 text" id="password" name="password">
-				</div>
-				<div class="span-9 last columna2">
-					<div class="title_campo">confirm password*</div>
-					<input class="span-8 text" id="password_confirm" name="password_confirm">
-				</div>
-				<div class="span-3"><input type="submit" class="submit_button" value="submit" id="submit" name="submit"></div>
-				<div class="span-1 check_container"><input type="checkbox" id="terms_conditions" name="terms_conditions"></div>
-				<div class="span-8 submit_14">I readed and accepted the terms and conditions</div>
-				<div class="span-17 required">* required fields</div>
+	<div class="span-24 column ppalContainer">
+		<div class="span-18">
+			<div class="span-18 column headerComments">
+				<div class="span-15 title_blue">Search results for "pumu"</div>
 			</div>
-		</form>
+			<div class="span-18 result">
+				<div class="span-2 avatar2"></div>
+				<div class="span-16 last contenedor">
+					<div class="span-10 title_result">
+						<p>Pumu concolor</p>
+						
+					</div>
+				</div>
+			</div>
+			<div class="span-18 result2">
+				<div class="span-2 avatar2"></div>
+				<div class="span-16 last contenedor">
+					<div class="span-10 last title_result">Pumu concoloreo</div>
+				</div>
+			</div>
+			<div class="span-18 result_selected">
+				<div class="span-2 avatar2"></div>
+				<div class="span-16 last contenedor">
+					<div class="span-10 last title_result_selected">Pumu concolor</div>
+				</div>
+			</div>
+			<div class="span-18 result2">
+				<div class="span-2 avatar2"></div>
+				<div class="span-16 last contenedor">
+					<div class="span-10 last title_result">Pumu concolorin</div>
+				</div>
+			</div>
 		</div>
 		
 		<div class="span-6 last rightColumn">
-			<div class="register_info">
-			 	<div class="title_blue">Why I should to be registered?</div>
+			<div class="species_details">
+				<div class="title_blue">Most popular species</div>
 			    <div class="separator_small"></div>
-			    <p class="register_12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eleifend convallis metus vitae scelerisque. Sed condimentum pellentesque nisi, ac lacinia felis sagittis bibendum.</p> 
-
-<p class="register_12">Cras tempus ipsum nec urna condimentum vehicula. Nulla et nisl at nisi imperdiet fermentum ac sed arcu. Sed et ornare nulla. Pellentesque lobortis commodo ullamcorper.</p>
-
-<p class="register_12">Nulla vitae aliquam augue. Ut vel nisi nibh, non dictum orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus rhoncus.</p>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			</div>
+<!--
+			<div class="separator6"></div>
+			<div class="related_species">
+			<div class="title_blue">Related Species</div>
+			    <div class="separator_small"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+				<a href="" class="view_more">view more</a>
+			</div>	
+-->	
 		</div>
-		<div class="span-24 column separator40"></div>
+	</div>
+		
+
+	<div class="span-24 last separator40"></div>
