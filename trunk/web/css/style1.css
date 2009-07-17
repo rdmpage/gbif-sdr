@@ -1,96 +1,3 @@
-/* home */
-
-.texto1{
-	font-family: "Georgia";
-	font-size: 26px;
-	font-style: italic;
-	color: #99b3cc;
-}
-
-.texto2{}
-
-.texto3{}
-
-
-.homeContainer{
-	height: 550px;
-}
-
-.center_container{
-	height: 550px;
-}
-
-.search_cont{
-	background-color: yellow;
-	height: 138px;
-	margin-top: 180px;
-}
-
-.searchContainer_2{
-	background-color: #f7f7f7;
-    border: #d6d6d6 1px solid;	
-	height: 37px;
-	width: 548px;
-	margin-top: 80px;
-}
-
-.way{
-	height: 37px;
-	width: 82px;
-	float: left;
-}
-
-.way p{
-	font-family: Georgia;
-	color: #8da3b8;
-	font-style: italic;
-	font-size: 21px;
-	padding-left: 8px;
-	line-height: 36px;
-    text-decoration: none; 
-    display: inline;	
-}
-
-.wey{
-	height: 37px;
-	width: 362px;
-	float: left;
-}
-
-.texto{
-	height: 23px;
-	width: 360px;
-	border: #d6d6d6 1px solid;	
-	margin-top: 5px;
-	line-height: 24px;
-	float:left;
-}
-
-.woy{
-	height: 37px;
-	width: 96px;
-	float: left;
-}
-
-.boton{ 
-	height: 25px;
-	width: 94px;
-    background:url(images/search.jpg) repeat 0px 0px;
-    border: 1px gray solid; 
-	text-decoration: none;
-	margin-top: 5px; 
-	color: white;
-	line-height: 24px;
-	text-align: center;
-	font-family: "Georgia";
-	font-size: 18px;
-	font-style: italic;
-}
-
-.separator_lr{
-	height: 550px;
-}
-
 /* comments */
 			
 ol.timeline {
@@ -116,11 +23,6 @@ textarea {
     border-top: #d6d6d6 1px dotted;
     margin-top: 20px;
     margin-left: -18px;
-}
-
-
-.ppalContainer {
-	
 }
 
 .post{
