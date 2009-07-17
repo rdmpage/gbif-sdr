@@ -14,8 +14,6 @@ if($_REQUEST['method']=='getReferenceCodes') {
 	//Present the documentation of the web service
 	require 'libs/Smarty.class.php';
 	$smarty = new Smarty;
-	$smarty->display('NAR_API_Docs.html');
-	
-	
+	$smarty->display('NAR_API_Docs.html');		
 }
 ?>
