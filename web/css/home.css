@@ -1,41 +1,42 @@
 /* home */
 
-.texto1{
+.text1{
 	font-family: "Georgia";
 	font-size: 26px;
 	font-style: italic;
 	color: #99b3cc;
 }
 
-.texto2{
+.text2{
 	font-family: "Arial";
 	font-size: 16px;
 	color: #999999;
 	margin-top: -6px;
 }
 
-.texto3{
+.text3{
 	font-family: "Arial";
 	font-size: 13px;
 	font-weight: bold;
 	color: #999999;
 	margin-left: 310px;
+	text-decoration: none;
 }
 
 .homeContainer{
 	height: 550px;
 }
 
-.center_container{
+.centerContainer{
 	height: 550px;
 }
 
-.search_cont{
+.searchCont{
 	height: 138px;
 	margin-top: 180px;
 }
 
-.searchContainer_2{
+.searchContainer{
 	background-color: #f7f7f7;
     border: #d6d6d6 1px solid;	
 	height: 37px;
@@ -43,13 +44,13 @@
 	margin-top: 6px;
 }
 
-.way{
+.titleContainer{
 	height: 37px;
 	width: 82px;
 	float: left;
 }
 
-.way p{
+.titleContainer p{
 	font-family: Georgia;
 	color: #8da3b8;
 	font-style: italic;
@@ -60,13 +61,13 @@
     display: inline;	
 }
 
-.wey{
+.inputContainer{
 	height: 37px;
 	width: 362px;
 	float: left;
 }
 
-.texto{
+.searchText{
 	height: 23px;
 	width: 360px;
 	border: #d6d6d6 1px solid;	
@@ -75,13 +76,13 @@
 	float:left;
 }
 
-.woy{
+.buttonContainer{
 	height: 37px;
 	width: 96px;
 	float: left;
 }
 
-.boton{ 
+.searchButton{ 
 	height: 25px;
 	width: 95px;
     background:url(images/search.jpg) repeat 0px 0px;
@@ -98,4 +99,67 @@
 
 .separator_lr{
 	height: 550px;
+}
+
+/* index */
+
+.searchContainer_index{
+	background-color: #f7f7f7;
+    border: #d6d6d6 1px solid;	
+	height: 37px;
+	width: 948px;
+	margin-top: 6px;
+}
+
+.titleContainer_index{
+	height: 37px;
+	width: 188px;
+	float: left;
+}
+
+.titleContainer_index p{
+	font-family: Georgia;
+	color: #8da3b8;
+	font-style: italic;
+	font-size: 21px;
+	padding-left: 8px;
+	line-height: 36px;
+    text-decoration: none; 
+    display: inline;	
+}
+
+.inputContainer_index{
+	height: 37px;
+	width: 656px;
+	float: left;
+}
+
+.searchText_index{
+	height: 23px;
+	width: 654px;
+	border: #d6d6d6 1px solid;	
+	margin-top: 5px;
+	line-height: 24px;
+	float:left;
+}
+
+.buttonContainer_index{
+	height: 37px;
+	width: 96px;
+	float: left;
+}
+
+.searchButton_index{ 
+	height: 25px;
+	width: 94px;
+    background:url(images/search.jpg) repeat 0px 0px;
+    border: 1px #d6d6d6 solid; 
+	text-decoration: none;
+	margin-top: 5px; 
+	color: white;
+	line-height: 24px;
+	text-align: center;
+	font-family: "Georgia";
+	font-size: 18px;
+	font-style: italic;
 }
