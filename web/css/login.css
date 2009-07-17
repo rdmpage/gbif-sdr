@@ -33,8 +33,8 @@ div.login1 {
 	padding-right: 10px; 
 }
 
-div.submit {
-	margin-top: 5px;
+div.submitLogin {
+	margin-top: 10px;
 	padding-left:47px;
 }
 
@@ -71,8 +71,6 @@ a.linkForgot {
 }
 
 /* 'Submit' Button */
-
-
 input.submitButton{
    font-family: [DINOT] medium;
    font-size:16px;
@@ -83,8 +81,12 @@ input.submitButton{
    border-color: #8ab077;
    background-image: url(/css/images/submit.jpg);
    width: 110px;
-   height: 23px;
-   line-height: 23px;
-   margin-top: 6px;
-   margin-left: 28px;
+   height: 25px;
+   margin-left: 27px;
+}
+
+/*CheckBox Button*/
+
+input.checkbox {
+   margin-top: -2px;
 }
