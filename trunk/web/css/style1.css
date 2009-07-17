@@ -9,6 +9,10 @@ ol.timeline li {
 	position:relative;
 }
 
+.widgetContainer {
+	padding-top: 8px;
+}
+
 textarea {
 	color:#000000;
 	font-size:12px;
