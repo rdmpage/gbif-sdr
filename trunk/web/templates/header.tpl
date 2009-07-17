@@ -87,8 +87,8 @@
 						</div>
 					</form>
 				</div>
-				<div class="span-10 submit">
-					<input class="span-1 last¡" type="checkbox"/>
+				<div class="span-11 submitLogin">
+					<input class="checkbox" type="checkbox"/>
 					<p class="submit"> keep me signed in</p>
 					<p class="submit"> | </p>
 					<a class="last linkForgot" href="#">Forgot password?</a>
