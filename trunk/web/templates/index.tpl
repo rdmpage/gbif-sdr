@@ -1,8 +1,5 @@
-	<div class="span-24 last separator7"></div>
 	
-	<div class="span-24 last separator7"></div>		
-
-	<div class="span-24 last widgetContainer">
+	<div class="span-24 widgetContainer">
 		<img src="/css/images/widget.jpg">
 	</div>
 	
