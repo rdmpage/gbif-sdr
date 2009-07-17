@@ -1,0 +1,103 @@
+/* home */
+
+.texto1{
+	font-family: "Georgia";
+	font-size: 26px;
+	font-style: italic;
+	color: #99b3cc;
+}
+
+.texto2{
+	font-family: "Arial";
+	font-size: 16px;
+	color: #999999;
+	margin-top: -6px;
+}
+
+.texto3{
+	font-family: "Arial";
+	font-size: 13px;
+	font-weight: bold;
+	color: #999999;
+	margin-left: 310px;
+}
+
+.homeContainer{
+	height: 550px;
+}
+
+.center_container{
+	height: 550px;
+}
+
+.search_cont{
+	height: 138px;
+	margin-top: 180px;
+}
+
+.searchContainer_2{
+	background-color: #f7f7f7;
+    border: #d6d6d6 1px solid;	
+	height: 37px;
+	width: 548px;
+	margin-top: 6px;
+}
+
+.way{
+	height: 37px;
+	width: 82px;
+	float: left;
+}
+
+.way p{
+	font-family: Georgia;
+	color: #8da3b8;
+	font-style: italic;
+	font-size: 21px;
+	padding-left: 8px;
+	line-height: 36px;
+    text-decoration: none; 
+    display: inline;	
+}
+
+.wey{
+	height: 37px;
+	width: 362px;
+	float: left;
+}
+
+.texto{
+	height: 23px;
+	width: 360px;
+	border: #d6d6d6 1px solid;	
+	margin-top: 5px;
+	line-height: 24px;
+	float:left;
+}
+
+.woy{
+	height: 37px;
+	width: 96px;
+	float: left;
+}
+
+.boton{ 
+	height: 25px;
+	width: 95px;
+    background:url(images/search.jpg) repeat 0px 0px;
+    border-top: 1px #d6d6d6 solid; 
+    border-right: 1px #d6d6d6 solid; 
+    border-bottom: 1px #d6d6d6 solid; 
+	text-decoration: none;
+	margin-top: 5px; 
+	color: white;
+	line-height: 24px;
+	text-align: center;
+	font-family: "Georgia";
+	font-size: 18px;
+	font-style: italic;
+}
+
+.separator_lr{
+	height: 550px;
+}
