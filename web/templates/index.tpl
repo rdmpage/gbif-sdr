@@ -1,10 +1,7 @@
 	
 	<div class="span-24 widgetContainer">
 		<img src="/css/images/widget.jpg">
-	</div>
-	
-	<div class="span-24 last separator7"></div>	
-	
+	</div>	
 	
 	<div class="span-24 column ppalContainer">
 		<div class="span-18">
