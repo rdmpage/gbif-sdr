@@ -64,10 +64,6 @@ textarea {
 
 /* search results */
 
-.contenedor{
-    margin-left: -3px;
-}
-
 .result{
 	height: 50px;
     border-top: #d6d6d6 1px dotted;
@@ -93,8 +89,8 @@ textarea {
  	font-style: italic;
 	font-size: 23px; 
 	color: #79a760;
-	margin-top: 10px;
-	float: left;
+	display: inline;
+	margin-top: 9px;
 }
 
 .title_result_selected{
@@ -102,8 +98,8 @@ textarea {
  	font-style: italic;
 	font-size: 23px; 
 	color: #666666;
-	margin-top: 10px;
-	float: left;
+	display: inline;
+	margin-top: 9px;
 }
 
 .result_list{
