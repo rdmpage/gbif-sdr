@@ -19,18 +19,32 @@
 	<link rel="stylesheet" href="css/tpl/footer.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="css/tpl/searchHForm.css" type="text/css" media="screen, projection">	
 	<link type='text/css' href='css/login.css' rel='stylesheet' media='screen' />
-	<link type='text/css' href='css/basicLogin.css' rel='stylesheet' media='screen' />
-	
+	<link type='text/css' href='css/basicLogin.css' rel='stylesheet' media='screen' />	
 	<link rel="stylesheet" href="css/search.css" type="text/css" media="screen, projection">
 
-	
 	<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
-
 	
+	<script src="js/jquery.validate.js" type="text/javascript"></script>
+	
+	<script src="js/cmxforms.js" type="text/javascript"></script>
+	
+		
 	<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
 	<script type="text/javascript" src="js/init.js"></script>
-
+	
 	{literal}
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#registerForm").validate({
+			/*
+errorPlacement: function(error, element) {
+			error.insertBefore(element.siblings("label"));
+			}
+*/});
+		
+	});
+	</script>
+
 	<script type="text/javascript">
 	
 	
@@ -42,7 +56,7 @@
 			    var dataString ='&comment=' + comment;
 				
 				if(comment=='') {
-			    	alert('Error, invalid user data');
+			    	alert('Error, comment area empty');
 			    } else {
 					$("#flash").show();
 					$("#flash").fadeIn(400).html('<img src="ajax-loader.gif" align="absmiddle">&nbsp;<span class="loading">Loading Comment...</span>');
@@ -100,8 +114,6 @@
 			 </div>
 		</div>	
 	</div>
-
-
 
 
 	<div class="container">
