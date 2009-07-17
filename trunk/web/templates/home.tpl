@@ -24,17 +24,17 @@
 	<div class="container">
 		<div class="span-24 column homeContainer">
 			<div class="span-5 first separator_lr"></div>
-			<div class="span-14 center_container">
+			<div class="span-14 centerContainer">
 			
-				<div class="span-14 search_cont">
-					<div class="texto1">We are still developing SDR</div>
-					<div class="texto2">...but you can search for any species in our database</div>
+				<div class="span-14 searchCont">
+					<div class="text1">We are still developing SDR</div>
+					<div class="text2">...but you can search for any species in our database</div>
 					<div class="span-14 searchContainer_2">
-						<div class="way"><p>Search</p></div>
-						<div class="wey"><input class="texto"></div>
-						<div class="woy"><div class="boton" href="#">Search!</div></div>
+						<div class="titleContainer"><p>Search</p></div>
+						<div class="inputContainer"><input class="searchText"></div>
+						<div class="buttonContainer"><div class="searchButton" href="#">Search!</div></div>
 					</div>
-					<div class="texto3">e.g. European sturion</div>
+					<a href="" class="text3">e.g. European sturion</a>
 				</div>
 			
 			</div>
