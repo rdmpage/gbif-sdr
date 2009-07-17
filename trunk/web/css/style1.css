@@ -1,5 +1,5 @@
 /* comments */
-			
+
 ol.timeline {
 	list-style:none;
 }
@@ -9,9 +9,11 @@ ol.timeline li {
 	position:relative;
 }
 
+/*
 .widgetContainer {
 	padding-top: 8px;
 }
+*/
 
 textarea {
 	color:#000000;
@@ -58,6 +60,66 @@ textarea {
 .columna2{
    height: 60px;
    margin-bottom: 2px;
+}
+
+/* search results */
+
+.contenedor{
+    margin-left: -3px;
+}
+
+.result{
+	height: 50px;
+    border-top: #d6d6d6 1px dotted;
+    padding-bottom: 20px;
+}
+
+.result2{
+	background-color: #f5faf5;
+	height: 50px;
+    border-top: #d6d6d6 1px dotted;
+    padding-bottom: 20px;
+}
+
+.result_selected{
+	background-color: #d6ebd6;
+	height: 50px;
+    border-top: #d6d6d6 1px dotted;
+    padding-bottom: 20px;
+}
+
+.title_result{
+	font-family: "Georgia";
+ 	font-style: italic;
+	font-size: 23px; 
+	color: #79a760;
+	margin-top: 10px;
+	float: left;
+}
+
+.title_result_selected{
+	font-family: "Georgia";
+ 	font-style: italic;
+	font-size: 23px; 
+	color: #666666;
+	margin-top: 10px;
+	float: left;
+}
+
+.result_list{
+	font-family: "Arial";
+	font-weight: bold;
+	font-size: 13px; 
+	color: #999999;
+}
+
+.avatar2{
+	border: #d6d6d6 1px solid;
+	height: 52px;
+	width: 51px;
+	margin-right: 3px;
+	margin-top: 9px;
+	margin-left: 9px;
 }
 
 /* right column */
