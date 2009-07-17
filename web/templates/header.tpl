@@ -21,6 +21,9 @@
 	<link type='text/css' href='css/login.css' rel='stylesheet' media='screen' />
 	<link type='text/css' href='css/basicLogin.css' rel='stylesheet' media='screen' />
 	
+	<link rel="stylesheet" href="css/home.css" type="text/css" media="screen, projection">
+
+	
 	<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
 
 	
