@@ -5,29 +5,75 @@
 			</div>
 			<div class="span-18 result">
 				<div class="span-2 avatar2"></div>
-				<div class="span-16 last contenedor">
-					<div class="span-10 title_result">
-						<p>Pumu concolor</p>
-						
+				<div class="span-16 last contai">
+					<div class="span-10 textor">
+						<div class="span-6 title_result"><p>Pumu concolor</p></div>
+						<div class="span-11 result_list">
+							<ul>
+  								<li><a href="">Animalia</a></li>
+  								<li><a href="">Chordata</a></li>
+  								<li><a href="">Mammalia</a></li>
+  								<li><a href="">Carnivora</a></li>
+  								<li><a href="">Felidae</a></li>
+   								<li><a href="">Puma</a></li>
+							</ul>
+						</div>
+						<div class="span-1 sources"></div>
 					</div>
 				</div>
 			</div>
 			<div class="span-18 result2">
 				<div class="span-2 avatar2"></div>
-				<div class="span-16 last contenedor">
-					<div class="span-10 last title_result">Pumu concoloreo</div>
+				<div class="span-16 last contai">
+					<div class="span-10 textor">
+						<div class="span-6 title_result"><p>Pumu concolor</p></div>
+						<div class="span-11 result_list">
+							<ul>
+  								<li><a href="">Animalia</a></li>
+  								<li><a href="">Chordata</a></li>
+  								<li><a href="">Mammalia</a></li>
+  								<li><a href="">Carnivora</a></li>
+  								<li><a href="">Felidae</a></li>
+  								<li><a href="">Puma</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="span-18 result_selected">
 				<div class="span-2 avatar2"></div>
-				<div class="span-16 last contenedor">
-					<div class="span-10 last title_result_selected">Pumu concolor</div>
+				<div class="span-16 last contai">
+					<div class="span-10 textor">
+						<div class="span-6 title_result_selected"><p>Pumu concolor</p></div>
+						<div class="span-11 result_list">
+							<ul>
+  								<li><a href="">Animalia</a></li>
+  								<li><a href="">Chordata</a></li>
+  								<li><a href="">Mammalia</a></li>
+  								<li><a href="">Carnivora</a></li>
+  								<li><a href="">Felidae</a></li>
+  								<li><a href="">Puma</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="span-18 result2">
 				<div class="span-2 avatar2"></div>
-				<div class="span-16 last contenedor">
-					<div class="span-10 last title_result">Pumu concolorin</div>
+				<div class="span-16 last contai">
+					<div class="span-10 textor">
+						<div class="span-6 title_result"><p>Pumu concolor</p></div>
+						<div class="span-11 result_list">
+							<ul>
+  								<li><a href="">Animalia</a></li>
+  								<li><a href="">Chordata</a></li>
+  								<li><a href="">Mammalia</a></li>
+  								<li><a href="">Carnivora</a></li>
+  								<li><a href="">Felidae</a></li>
+   								<li><a href="">Puma</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
