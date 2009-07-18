@@ -84,12 +84,15 @@ textarea {
     padding-bottom: 20px;
 }
 
+.contai{
+	margin-left: -2px;
+}
+
 .title_result{
 	font-family: "Georgia";
  	font-style: italic;
 	font-size: 23px; 
 	color: #79a760;
-	display: inline;
 	margin-top: 9px;
 }
 
@@ -98,7 +101,6 @@ textarea {
  	font-style: italic;
 	font-size: 23px; 
 	color: #666666;
-	display: inline;
 	margin-top: 9px;
 }
 
@@ -106,7 +108,24 @@ textarea {
 	font-family: "Arial";
 	font-weight: bold;
 	font-size: 13px; 
+	margin-top: -40px;
+}
+
+.result_list ul li{
+	display: inline;
+	margin-left: -20px;
+	padding-right: 24px;
+}
+
+.result_list ul li a, .result_list ul li a:visited{
+	font-family: Arial;
+	font-weight: bold;
 	color: #999999;
+	display: inline;
+}
+
+.result_list li a:hover{
+	color: #666666;
 }
 
 .avatar2{
