@@ -105,8 +105,6 @@ textarea {
 }
 
 .result_list{
-	font-family: "Arial";
-	font-weight: bold;
 	font-size: 13px; 
 	margin-top: -40px;
 }
@@ -128,6 +126,13 @@ textarea {
 	color: #666666;
 }
 
+.ultimo{
+	font-family: "Arial";
+	text-decoration: none;
+	font-style: normal;
+	font-weight: normal;
+}
+
 .avatar2{
 	border: #d6d6d6 1px solid;
 	height: 52px;
@@ -135,6 +140,20 @@ textarea {
 	margin-right: 3px;
 	margin-top: 9px;
 	margin-left: 9px;
+}
+
+.sources{
+	margin-top: -70px;
+	margin-left: 399px;
+}
+
+.sources p{
+	font-family: "Georgia";
+	font-size: 23px;
+	font-style: italic; 
+	color: #999999;
+	margin-left: 30px;
+	display: inline;
 }
 
 /* right column */
