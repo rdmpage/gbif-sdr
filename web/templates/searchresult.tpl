@@ -15,10 +15,10 @@
   								<li><a href="">Mammalia</a></li>
   								<li><a href="">Carnivora</a></li>
   								<li><a href="">Felidae</a></li>
-   								<li><a href="">Puma</a></li>
+   								<li><a href="" class="ultimo">Puma</a></li>
 							</ul>
 						</div>
-						<div class="span-1 sources"></div>
+						<div class="span-2 last sources"><p>3</p></div>
 					</div>
 				</div>
 			</div>
@@ -34,9 +34,10 @@
   								<li><a href="">Mammalia</a></li>
   								<li><a href="">Carnivora</a></li>
   								<li><a href="">Felidae</a></li>
-  								<li><a href="">Puma</a></li>
+   								<li><a href="" class="ultimo">Puma</a></li>
 							</ul>
 						</div>
+						<div class="span-2 last sources"><p>3</p></div>
 					</div>
 				</div>
 			</div>
@@ -52,9 +53,10 @@
   								<li><a href="">Mammalia</a></li>
   								<li><a href="">Carnivora</a></li>
   								<li><a href="">Felidae</a></li>
-  								<li><a href="">Puma</a></li>
+   								<li><a href="" class="ultimo">Puma</a></li>
 							</ul>
 						</div>
+						<div class="span-2 last sources"><p>3</p></div>
 					</div>
 				</div>
 			</div>
@@ -70,9 +72,10 @@
   								<li><a href="">Mammalia</a></li>
   								<li><a href="">Carnivora</a></li>
   								<li><a href="">Felidae</a></li>
-   								<li><a href="">Puma</a></li>
+   								<li><a href="" class="ultimo">Puma</a></li>
 							</ul>
 						</div>
+						<div class="span-2 last sources"><p>3</p></div>
 					</div>
 				</div>
 			</div>
@@ -86,17 +89,6 @@
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			</div>
-<!--
-			<div class="separator6"></div>
-			<div class="related_species">
-			<div class="title_blue">Related Species</div>
-			    <div class="separator_small"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-				<a href="" class="view_more">view more</a>
-			</div>	
--->	
 		</div>
 	</div>
 		
