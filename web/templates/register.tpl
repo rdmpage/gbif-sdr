@@ -3,35 +3,42 @@
 			<div class="span-18 registerContainer">
 				<form name="registerForm" id="registerForm" method="post" action="takedata.php" class="validable" action="javascript: alert('Submit complete!');">
 				 	<div class="title_blue">Register now in Species distribution repository, It’s easy and free</div>
-					<div class="campos">
+					<div class="registerInputs">
 					<div class="register_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eleifend convallis metus vitae scelerisque. Sed condimentum pellentesque nisi, ac lacinia felis sagittis bibendum. Cras tempus ipsum nec.</div>
-						<div class="span-9 last columna1">
-							<div class="title_campo">User name*</div>
-							<input class="span-8 text required" id="username" name="username"minlength="5" maxlength="20" type="text" >
+						<div class="span-18 column1">
+							<div class="span-9 last">
+								<div class="title_campo">User name*</div>
+								<input class="span-8 text required" id="username" name="username"minlength="5" maxlength="20" type="text" >
+							</div>
+							<div class="span-9 last">
+								<div class="title_campo">Project name</div>
+								<input class="span-8 text" id="project_name" name="project_name">
+							</div>
 						</div>
-						<div class="span-9 last columna2">
-							<div class="title_campo">Project name</div>
-							<input class="span-8 text" id="project_name" name="project_name">
-						</div>
-						<div class="span-9 last columna1">
+						
+
+						<div class="span-9 last column2">
 							<div class="title_campo">e-mail*</div>
 							<input class="span-8 text required email" id="email" name="email" type="text">
 						</div>
-						<div class="span-18 last separator6"></div>
-						<div class="span-18 last separator6"></div>
-						<div class="span-18 last separator6"></div>				
-						<div class="span-9 last columna1">
-							<div class="title_campo">password*</div>
-							<input class="span-8 text required" name="password" type="password" id="password" minlength="5" maxlength="25" >
+						
+						<div class="span-18 column1">
+							<div class="span-9 ">
+								<div class="title_campo">password*</div>
+								<input class="span-8 text required" name="password" type="password" id="password" minlength="5" maxlength="25" >
+							</div>
+							<div class="span-9 last">
+								<div class="title_campo">confirm password*</div>
+								<input class="span-8 text required" name="confirmpassword" type="password" equalTo="#password" id="confirmpassword">
+							</div>
 						</div>
-						<div class="span-9 last columna2">
-							<div class="title_campo">confirm password*</div>
-							<input class="span-8 text required" name="confirmpassword" type="password" equalTo="#password" id="confirmpassword">
+						<div class="span-18">
+							<div class="span-4"><input type="submit" class="submit_button" value="submit" id="submit" name="submit"></div>
+							<div class="span-7 last submit_14">I readed and accepted the terms and conditions</div>
+							<div class="span-7 last check_container"><input type="checkbox" class="checkbox required" id="agree" name="agree"></div>
+
 						</div>
-						<div class="span-3"><input type="submit" class="submit_button" value="submit" id="submit" name="submit"></div>
-						<div class="span-1 check_container"><input type="checkbox" class="checkbox required" id="agree" name="agree"></div>
-						<div class="span-8 submit_14">I readed and accepted the terms and conditions</div>
-						<div class="span-17 requiredLabel">* required fields</div>
+						<div class="span-18 requiredLabel">* required fields</div>
 					</div>
 				</form>
 			</div>
