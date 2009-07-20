@@ -39,23 +39,34 @@ textarea {
 }
 
 .ppalContainer {
-	padding-top: 3px;
+	padding-top: 20px;
 }
 
-.campos{
+.registerInputs{
 	height: 381px;
     border-top: #d6d6d6 1px dotted;
 }
 
-.columna1{
-   height: 60px;
-   margin-bottom: 2px;
-}
-.columna2{
-   height: 60px;
-   margin-bottom: 2px;
+.column1{
+   margin-bottom: 8px;
 }
 
+.column2{
+	margin-bottom: 35px;
+}
+
+label.error {
+	background: none;
+	border:none;
+	padding-top: 50px;
+	padding-bottom: 30px;
+	color: red;	
+	font-weight: 400;
+}
+
+input.error {
+	color: red;
+}
 /* search results */
 
 .result{
