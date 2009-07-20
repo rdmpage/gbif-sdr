@@ -6,7 +6,7 @@
 	<div class="span-24 column ppalContainer">
 		<div class="span-18">
 			<div class="span-18 column headerComments">
-				<div class="span-15 title_blue">Comments about this distribution map</div>
+				<div class="span-15 title_blue">Comments about this distribution map<sub>(5)</sub></div>
 				<div><input class="commentButton" value="Comment now"></div>
 			</div>
 			<ol id="update" class="timeline">
