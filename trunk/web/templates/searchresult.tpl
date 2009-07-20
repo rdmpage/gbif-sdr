@@ -19,6 +19,7 @@
 							</ul>
 						</div>
 						<div class="span-2 last sources"><p>3</p></div>
+						<div class="span-2 sourcesTitle"><p>sources</p></div>
 					</div>
 				</div>
 			</div>
@@ -38,6 +39,7 @@
 							</ul>
 						</div>
 						<div class="span-2 last sources"><p>3</p></div>
+						<div class="span-2 sourcesTitle"><p>sources</p></div>
 					</div>
 				</div>
 			</div>
@@ -57,6 +59,7 @@
 							</ul>
 						</div>
 						<div class="span-2 last sources"><p>3</p></div>
+						<div class="span-2 sourcesTitle"><p>sources</p></div>
 					</div>
 				</div>
 			</div>
@@ -76,6 +79,7 @@
 							</ul>
 						</div>
 						<div class="span-2 last sources"><p>3</p></div>
+						<div class="span-2 sourcesTitle"><p>sources</p></div>
 					</div>
 				</div>
 			</div>
