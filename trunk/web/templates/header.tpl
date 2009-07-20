@@ -131,7 +131,7 @@ errorPlacement: function(error, element) {
     				<div class="login_sign">
     					{$username} | <a id="login_link" href="#">Sign out </a>or
     				</div>			    
-			    {elseif}
+			    {else}
     				<div class="login_sign">
     					<a id="login_link" href="#">Login </a>or
     					<a href="register.php"> Sign up!</a>
