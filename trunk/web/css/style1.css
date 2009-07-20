@@ -1,3 +1,8 @@
+body {
+	background-image: url(/images/repeat.jpg);
+	background-repeat: repeat-x;
+}
+
 /* comments */
 
 ol.timeline {
