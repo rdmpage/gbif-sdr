@@ -23,7 +23,7 @@
 						</div>
 						
 						<div class="span-18 column1">
-							<div class="span-9 ">
+							<div class="span-9 last">
 								<div class="title_campo">password*</div>
 								<input class="span-8 text required" name="password" type="password" id="password" minlength="5" maxlength="25" >
 							</div>
@@ -53,4 +53,5 @@
 				</div>
 			</div>
 		</div>
-		<div class="span-24 column separator40"></div>
+		
+		<div class="span-24 separator40"></div>
