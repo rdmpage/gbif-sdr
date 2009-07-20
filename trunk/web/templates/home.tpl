@@ -32,7 +32,7 @@
 					<div class="span-14 searchContainer_2">
 						<div class="titleContainer"><p>Search</p></div>
 						<div class="inputContainer"><input class="searchText"></div>
-						<div class="buttonContainer"><div class="searchButton" href="#">Search!</div></div>
+						<div class="buttonContainer"><div class="searchButton"><a href="searchresult.php">Search!</a></div></div>
 					</div>
 					<a href="" class="text3">e.g. European sturion</a>
 				</div>

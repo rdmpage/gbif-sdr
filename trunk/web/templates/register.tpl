@@ -1,10 +1,15 @@
 		
 		<div class="span-24 ppalContainer">
 			<div class="span-18 registerContainer">
-				<form name="registerForm" id="registerForm" method="post" action="takedata.php" class="validable" action="javascript: alert('Submit complete!');">
+				<form name="registerForm" id="registerForm" method="post" action="registerSubmit.php" class="validable" action="javascript: alert('Submit complete!');">
 				 	<div class="title_blue">Register now in Species distribution repository, It’s easy and free</div>
 					<div class="registerInputs">
 					<div class="register_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eleifend convallis metus vitae scelerisque. Sed condimentum pellentesque nisi, ac lacinia felis sagittis bibendum. Cras tempus ipsum nec.</div>
+				
+				{if $error ne ""}
+					There has been an error!
+					{$error}
+				{/if}	
 						<div class="span-18 column1">
 							<div class="span-9 last">
 								<div class="title_campo">User name*</div>

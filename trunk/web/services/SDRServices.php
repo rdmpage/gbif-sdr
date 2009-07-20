@@ -25,6 +25,59 @@ class SDRServices {
         }
 	}
 	
+	
+	public function registerUser($username,$projectname,$email,$password) {
+	    
+	    if(strlen($username)<5) {
+	        throw new Exception('Username with not enough characters',101);
+	    }
+	    if(strlen($password)<5) {
+	        throw new Exception('Password with not enough characters',102);
+	    }
+	    if(strlen($email)<5) {
+	        throw new Exception('Email with not enough characters',103);
+	    }	 
+	    
+	    //Check if username or password are in the DB
+	    $sql="SELECT id from users WHERE username=:username";
+		$stmt = $this->dbHandle->prepare($sql);
+	    $stmt->bindParam(':username', $username);	     
+	    $stmt->execute();
+	    if($stmt->rowCount>0) {
+	        throw new Exception('Username already registered',104);
+	    }	     
+	    
+	    //Check if username or password are in the DB
+	    $sql="SELECT id from users WHERE email=:email";
+		$stmt = $this->dbHandle->prepare($sql);
+	    $stmt->bindParam(':email', $email);	     
+	    $stmt->execute();
+	    if($stmt->rowCount>0) {
+	        throw new Exception('Email already registered',105);
+	    }	   
+	    
+	    $sql="INSERT INTO users(username,pass,project_name,email) VALUES(:username,:password,:projectname,:email)";
+	    $stmt->bindParam(':email', $email);	     
+	    $stmt->bindParam(':username', $username);	     
+	    $stmt->bindParam(':password', $password);	     
+	    $stmt->bindParam(':projectname', $projectname);	        	    
+		$stmt = $this->dbHandle->prepare($sql);
+	    $stmt->execute();	       
+	    
+	    //get last ID
+	    /* $sql = "SELECT currval('users_id_seq') AS last_value";
+	    $lastId = $this->dbHandle->query($sql)->fetchAll(PDO::FETCH_ASSOC);  */
+	    
+	    
+	    $user=array();
+	    //$user['id']=$lastId['last_value'];
+	     $user['id']=1;
+	    $user['username']=$username;
+	    $user['projectname']=$projectname;
+	    $user['email']=$email;
+	    return $user;
+	}
+	
 	public function getTaxonomy($parentType,$parentName) {
 	    if ($parentType=="animal_class") {
 	        $stmt = $this->dbHandle->prepare("select distinct animalgroup from accessexport where animal_class=:parent_name  order by animalgroup");	        

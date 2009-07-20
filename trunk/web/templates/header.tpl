@@ -127,10 +127,16 @@ errorPlacement: function(error, element) {
 				</ul>
 			</div>
 			<div class="span-1 last headerSign">
-				<div class="login_sign">
-					<a id="login_link" href="#">Login </a>or
-					<a href="#"> Sign up!</a>
-				</div>
+			    {if $username ne ""}
+    				<div class="login_sign">
+    					{$username} | <a id="login_link" href="#">Sign out </a>or
+    				</div>			    
+			    {elseif}
+    				<div class="login_sign">
+    					<a id="login_link" href="#">Login </a>or
+    					<a href="register.php"> Sign up!</a>
+    				</div>	    
+			    {/if}
 			</div>
 		</div>
 
