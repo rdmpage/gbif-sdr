@@ -1,9 +1,9 @@
 <?php
-$user_name=$_POST['user_name'];
+$user_name=$_POST['username'];
 $project_name=$_POST['project_name'];
 $email=$_POST['email'];
 $password=$_POST['password'];
-$password_confirm=$_POST['password_confirm'];
+$password_confirm=$_POST['confirmpassword'];
 
 echo $user_name;
 echo $project_name;
