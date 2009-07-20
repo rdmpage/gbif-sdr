@@ -1,6 +1,4 @@
 // Preload Images
-img1 = new Image(16, 16);  
-img1.src="images/spinner.gif";
 
 img2 = new Image(220, 19);  
 img2.src="images/ajax-loader.gif";
