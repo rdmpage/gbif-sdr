@@ -5,13 +5,9 @@
 }
 
 .headerLogo{
-	height: 68px;
-	width: 180px;
-/* 	background-color: #a8cd96; */
-	background-image: url(/css/images/headlogo.jpg);
-    border-bottom: green 1px solid;
-	border-left: green 1px solid;
-    border-right: green 1px solid;
+	height: 71px;
+	width: 182px;
+	background-image: url(/images/logo.jpg);
 }
 
 .headerList{
@@ -46,17 +42,14 @@
 }
 
 .headerSign{
-	background-color: #a8cd96;
-	height: 23px;
-	width: 104px;
-    border-bottom: green 1px solid;
-	border-left: green 1px solid;
-    border-right: green 1px solid;
+	height: 27px;
+	width: 106px;
+	background-image: url(/images/login.jpg);
 }
 
 .login_sign{
 	padding-left: 4px;
-	padding-top: 1px;
+	padding-top: 3px;
 	color: #FFF;
 }
 
