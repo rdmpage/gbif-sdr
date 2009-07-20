@@ -108,19 +108,19 @@ sub {
 
 .result_list{
 	font-size: 13px;
-	margin-left: -9px; 
+	margin-left: -6px; 
 	margin-top: -15px;
 }
 
 .result_list li{
 	display: inline;
-	padding-right: 4px;
 }
 
 .result_list a{
 	font-family: Arial;
 	font-weight: bold;
 	color: #999999;
+	margin-left: -4px;
 }
 
 .result_list li a:hover{
@@ -129,16 +129,16 @@ sub {
 
 .result_list_selected{
 	font-size: 13px;
-	margin-left: -9px; 
+	margin-left: -6px; 
 	margin-top: -15px;
 }
 
 .result_list_selected li{
 	display: inline;
-	padding-right: 4px;
 }
 
 .result_list_selected a{
+	margin-left: -4px;
 	font-family: Arial;
 	font-weight: bold;
 	color: #666666;
@@ -146,6 +146,11 @@ sub {
 
 .result_list_selected li a:hover{
 	color: white;
+}
+
+img.lista{
+	padding-left: 4px;
+	padding-right: 4px;
 }
 
 a.ultimo{
@@ -168,6 +173,7 @@ a.ultimo{
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
+	font-weight: bold;
 	color: #999999;
 	margin-left: 30px;
 	display: inline;
@@ -188,8 +194,10 @@ a.ultimo{
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
+	font-weight: bold;
 	color: #999999;
 	display: inline;
+	text-align: right;
 }
 
 .ocurrencesTitle{
@@ -199,6 +207,7 @@ a.ultimo{
 	font-size: 13px;
 	color: #999999;
 	display: inline;
+	text-align: right;
 }
 
 .sources_selected{
@@ -206,6 +215,7 @@ a.ultimo{
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
+	font-weight: bold;
 	color: #666666;
 	margin-left: 30px;
 	display: inline;
@@ -226,8 +236,10 @@ a.ultimo{
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
+	font-weight: bold;
 	color: #666666;
 	display: inline;
+	text-align: right;
 }
 
 .ocurrencesTitle_selected{
@@ -237,6 +249,7 @@ a.ultimo{
 	font-size: 13px;
 	color: #666666;
 	display: inline;
+	text-align: right;
 }
 
 /* right column */
