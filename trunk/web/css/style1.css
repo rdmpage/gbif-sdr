@@ -9,12 +9,6 @@ ol.timeline li {
 	position:relative;
 }
 
-/*
-.widgetContainer {
-	padding-top: 8px;
-}
-*/
-
 textarea {
 	color:#000000;
 	font-size:12px;
@@ -151,6 +145,19 @@ textarea {
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
+	color: #999999;
+	margin-left: 30px;
+	display: inline;
+}
+
+.sourcesTitle{
+	margin-top: -40px;
+	margin-left: 382px;
+}
+
+.sourcesTitle p{
+	font-family: "Arial";
+	font-size: 13px;
 	color: #999999;
 	margin-left: 30px;
 	display: inline;
