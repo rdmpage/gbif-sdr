@@ -143,11 +143,9 @@ input.error {
 	color: white;
 }
 
-.ultimo{
-	font-family: "Arial";
+a.ultimo{
 	text-decoration: none;
-	font-style: normal;
-	font-weight: normal;
+	font-weight: 300;
 }
 
 .avatar2{
