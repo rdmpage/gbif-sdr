@@ -70,23 +70,20 @@ input.error {
 /* search results */
 
 .result{
-	height: 50px;
     border-top: #d6d6d6 1px dotted;
-    padding-bottom: 20px;
+    padding-bottom: 9px;
 }
 
 .result2{
 	background-color: #f5faf5;
-	height: 50px;
     border-top: #d6d6d6 1px dotted;
-    padding-bottom: 20px;
+    padding-bottom: 9px;
 }
 
 .result_selected{
 	background-color: #d6ebd6;
-	height: 50px;
     border-top: #d6d6d6 1px dotted;
-    padding-bottom: 20px;
+    padding-bottom: 9px;
 }
 
 .contai{
@@ -124,7 +121,6 @@ input.error {
 	font-family: Arial;
 	font-weight: bold;
 	color: #999999;
-	display: inline;
 }
 
 .result_list li a:hover{
@@ -169,6 +165,20 @@ input.error {
 .sourcesTitle p{
 	font-family: "Arial";
 	font-size: 13px;
+	color: #999999;
+	margin-left: 30px;
+	display: inline;
+}
+
+.ocurrences{
+	margin-top: -70px;
+	margin-left: 500px;
+}
+
+.ocurrences p{
+	font-family: "Georgia";
+	font-size: 23px;
+	font-style: italic; 
 	color: #999999;
 	margin-left: 30px;
 	display: inline;
