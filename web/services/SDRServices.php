@@ -13,15 +13,16 @@ class SDRServices {
     public function login($user,$pass) {
 
         // create page view database table
-        $sql = "SELECT * FROM admin WHERE username='$user' AND password='$pass'";        
-        $result = $this->dbHandle->query($sql)->fetchAll(PDO::FETCH_COLUMN, 0);    
+        $sql = "SELECT * FROM users WHERE username='$user' AND pass='$pass'";        
+        $result = $this->dbHandle->query($sql)->fetch(PDO::FETCH_ASSOC);    
 
-        if (count($result)<1) {
+        if (strlen($result['username'])<1) {
             $_SESSION['logged']=false;
             throw new Exception("user not logged in");
         } else {
             $_SESSION['logged']=true;
-            return true;
+            $_SESSION['user']=$result;
+    	    return $result;            
         }
 	}
 	
