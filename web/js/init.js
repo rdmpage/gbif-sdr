@@ -18,17 +18,18 @@ $(document).ready(function(){
 
 
 
-
-
 // When the form is submitted
 function login(){  
 
     // Hide 'Submit' Button
-    $('#submit').hide();
+    //$('#submit').hide();
+    $('#submit').attr("disabled", "true");
+    $('#email').attr("disabled", "true");
+    $('#password').attr("disabled", "true");
 
     // Show Gif Spinning Rotator
     $('#ajax_loading').show();
-
+	$('#error_msg').hide();
 
     var email = $("#email").val();
     var password = $("#password").val();
@@ -45,13 +46,17 @@ function login(){
     	success: function(result){
             if(result=='invalid') {
                 //notify the user that the login was wrong
-                alert('error');
+                $("#error_msg").show();
+            	$('#ajax_loading').hide();
+                $('#submit').removeAttr("disabled");
+                $('#email').removeAttr("disabled");
+    			$('#password').removeAttr("disabled");
             } else {
-                //login ok. Close the popup and change the login menu in the header                
+                //login ok. Close the popup and change the login menu in the header 
+                $('#ajax_loading').hide();               
                 $.modal.close(); 
-                
                 $("#loginDiv").html(result + ' | <a onClick="logout()"> Sign out</a> ');
-                
+                $('#login').modal();
             }
         
     	},
