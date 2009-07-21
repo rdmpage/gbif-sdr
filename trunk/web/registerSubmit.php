@@ -1,7 +1,6 @@
 <?php
-require 'libs/Smarty.class.php';
+require 'controller.php';
 require 'services/SDRServices.php';
-$smarty = new Smarty;
 $services = new SDRServices;
 
 
