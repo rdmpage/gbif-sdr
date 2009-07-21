@@ -89,12 +89,16 @@
     border: 1px #d6d6d6 solid; 
 	text-decoration: none;
 	margin-top: 5px; 
-	color: white;
 	line-height: 24px;
 	text-align: center;
 	font-family: "Georgia";
 	font-size: 18px;
 	font-style: italic;
+}
+
+.searchButton a{ 
+	text-decoration: none; 
+	color: white;
 }
 
 .separator_lr{
@@ -157,10 +161,14 @@
     border: 1px #d6d6d6 solid; 
 	text-decoration: none;
 	margin-top: 5px; 
-	color: white;
 	line-height: 24px;
 	text-align: center;
 	font-family: "Georgia";
 	font-size: 18px;
 	font-style: italic;
+}
+
+.searchButton_index a{ 
+	text-decoration: none; 
+	color: white;
 }
