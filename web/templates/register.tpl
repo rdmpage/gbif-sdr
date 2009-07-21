@@ -1,3 +1,12 @@
+{literal}
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#registerForm").validate();
+		
+	});
+	</script>
+{/literal}
+
 		
 		<div class="span-24 ppalContainer">
 			<div class="span-18 registerContainer">

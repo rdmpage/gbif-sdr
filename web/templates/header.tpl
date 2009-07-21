@@ -32,57 +32,45 @@
 	<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
 	<script type="text/javascript" src="js/init.js"></script>
 	
-	{literal}
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#registerForm").validate({
-			/*
-errorPlacement: function(error, element) {
-			error.insertBefore(element.siblings("label"));
-			}
-*/});
-		
-	});
-	</script>
-
-	<script type="text/javascript">
-	
-	
-		function commentAction() {
-						
-				/*var name = $("#name").val();
-				var email = $("#email").val();*/
-				var comment = $("#comment").val();
-			    var dataString ='&comment=' + comment;
-				
-				if(comment=='') {
-			    	alert('Error, comment area empty');
-			    } else {
-					$("#flash").show();
-					$("#flash").fadeIn(400).html('<img src="ajax-loader.gif" align="absmiddle">&nbsp;<span class="loading">Loading Comment...</span>');
-					$.ajax({
-						type: "POST",
-			 	 		url: "commentajax.php",
-			   			data: dataString,
-			  			cache: false,
-			  			success: function(html){
-			  				$("ol#update").append(html);
-			  				$("ol#update li:last").fadeIn("slow");
-			  				/*document.getElementById('email').value='';
-			   				document.getElementById('name').value='';*/
-			    			document.getElementById('comment').value='';
-							/* $("#name").focus(); */
-			  				$("#flash").hide();
-			  			}
-			 		});
-				}
-				return false;
-		};
-			
-	</script>
-	{/literal}
 	
   <!--[if lt IE 8]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+{literal}
+  <script type="text/javascript">
+  	function login() {
+  			var email = $("#email").val();
+  			var password = $("#password").val();
+  		    var dataObj = ({email : email,
+  		        method: 'login',
+  		        password: password
+  		        });
+			//$("#flash").show();
+			//$("#flash").fadeIn(400).html('<img src="ajax-loader.gif" align="absmiddle">&nbsp;<span class="loading">Loading Comment...</span>');
+			$.ajax({
+				type: "POST",
+	 	 		url: "ajaxController.php",
+	   			data: dataObj,
+	  			cache: false,
+	  			success: function(result){
+                    if(result=='invalid') {
+                        //notify the user that the login was wrong
+                        alert('error');
+                    } else {
+                        //login ok. Close the popup and change the login menu in the header
+                        alert(result);
+                    }
+                    
+	  			},
+                error:function (xhr, ajaxOptions, thrownError){
+                        alert(xhr.status);
+                        alert(thrownError);
+                }
+	 		});
+  			return false;
+  	};
+
+  </script>
+  {/literal}
 
 
 </head>
@@ -96,11 +84,13 @@ errorPlacement: function(error, element) {
 					<form id="login">
 						<div class="span-4 login">
 							<label class="login">Email or username</label>
-							<input class="login" type="text" name="email">
+							<input id="email" class="login" type="text" name="email">
 						</div>
 						<div class="span-4  login1 last">
 							<label class="login">Password</label>
-							<input class="login" type="password" name="password">
+							<input id="password" class="login" type="password" name="password"
+							    onkeydown="if (event.keyCode == 13) login()"
+							>
 						</div>
 					</form>
 				</div>
@@ -109,7 +99,7 @@ errorPlacement: function(error, element) {
 					<p class="submit"> keep me signed in</p>
 					<p class="submit"> | </p>
 					<a class="last linkForgot" href="#">Forgot password?</a>
-					<input class="span-3 last submitButton" value="Sign in" name="Sign in" id="submit" type="submit" />
+					<input class="span-3 last submitButton" value="Sign in" name="Sign in" id="submit" type="submit"  onclick='login()' />
 				</div>
 			 </div>
 		</div>	

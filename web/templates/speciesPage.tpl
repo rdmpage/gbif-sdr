@@ -1,4 +1,45 @@
-	
+{include file="header.tpl"} 
+{include file="searchHForm.tpl"} 	
+
+{literal}
+<script type="text/javascript">
+
+
+	function commentAction() {
+					
+			var comment = $("#comment").val();
+		    var dataObj = ({comment : comment,
+		        method: 'addComment',
+		        speciesId: {/literal}{$speciesId}{literal}
+		        });
+			
+			if(comment=='') {
+		    	alert('Error, comment area empty');
+		    } else {
+				$("#flash").show();
+				$("#flash").fadeIn(400).html('<img src="ajax-loader.gif" align="absmiddle">&nbsp;<span class="loading">Loading Comment...</span>');
+				$.ajax({
+					type: "POST",
+		 	 		url: "ajaxController.php",
+		   			data: dataObj,
+		  			cache: false,
+		  			success: function(html){
+		  				$("ol#update").append(html);
+		  				$("ol#update li:last").fadeIn("slow");
+		  				/*document.getElementById('email').value='';
+		   				document.getElementById('name').value='';*/
+		    			document.getElementById('comment').value='';
+						/* $("#name").focus(); */
+		  				$("#flash").hide();
+		  			}
+		 		});
+			}
+			return false;
+	};
+		
+</script>
+{/literal}
+
 	<div class="span-24 widgetContainer">
 		<img src="/css/images/widget.jpg">
 	</div>	
@@ -48,3 +89,4 @@
 
 	<div class="span-24 last separator40"></div>
 
+{include file="footer.tpl"} 
