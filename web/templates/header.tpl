@@ -35,43 +35,6 @@
 	
   <!--[if lt IE 8]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection"><![endif]-->
 
-{literal}
-  <script type="text/javascript">
-  	function login() {
-  			var email = $("#email").val();
-  			var password = $("#password").val();
-  		    var dataObj = ({email : email,
-  		        method: 'login',
-  		        password: password
-  		        });
-			//$("#flash").show();
-			//$("#flash").fadeIn(400).html('<img src="ajax-loader.gif" align="absmiddle">&nbsp;<span class="loading">Loading Comment...</span>');
-			$.ajax({
-				type: "POST",
-	 	 		url: "ajaxController.php",
-	   			data: dataObj,
-	  			cache: false,
-	  			success: function(result){
-                    if(result=='invalid') {
-                        //notify the user that the login was wrong
-                        alert('error');
-                    } else {
-                        //login ok. Close the popup and change the login menu in the header
-                        alert(result);
-                    }
-                    
-	  			},
-                error:function (xhr, ajaxOptions, thrownError){
-                        alert(xhr.status);
-                        alert(thrownError);
-                }
-	 		});
-  			return false;
-  	};
-
-  </script>
-  {/literal}
-
 
 </head>
 <body>
@@ -119,10 +82,10 @@
 			<div class="span-1 last headerSign">
 			    {if $username ne ""}
     				<div class="login_sign">
-    					{$username} | <a id="login_link" href="#">Sign out </a>or
+    					{$username} | <a id="login_link" href="#">Sign out </a>
     				</div>			    
 			    {else}
-    				<div class="login_sign">
+    				<div id="loginDiv" class="login_sign">
     					<a id="login_link" href="#">Login </a>or
     					<a href="register.php"> Sign up!</a>
     				</div>	    
