@@ -34,7 +34,9 @@ class SDRServices {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);	    
 	}
 	
-	
+	public function getSpeciesData($speciesId) {
+	    
+	}
 	
 	public function registerUser($username,$projectname,$email,$password) {
 	    
@@ -88,18 +90,6 @@ class SDRServices {
 	    return $user;
 	}
 	
-	public function getTaxonomy($parentType,$parentName) {
-	    if ($parentType=="animal_class") {
-	        $stmt = $this->dbHandle->prepare("select distinct animalgroup from accessexport where animal_class=:parent_name  order by animalgroup");	        
-	    } 
-	    if ($parentType=="animalgroup") {
-	        $stmt = $this->dbHandle->prepare("select distinct scientifiname from accessexport where animalgroup=:parent_name  order by scientifiname");
-	    }
-	    
-        $stmt->bindParam(':parent_name', $parentName, PDO::PARAM_STR, 255);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-	}
 	
 	public function logout() {
 	    session_destroy();
@@ -206,7 +196,7 @@ class SDRServices {
 		
 	    $stmt = $this->dbHandle->prepare("select ns.*, n.scientific_name ".
 			"from name_summary as ns inner join scientific_name as n on ns.name_fk=n.id ".
-			"where n.scientific_name like :param order by n.scientific_name limit :limit offset :offset");
+			"where n.scientific_name like :param limit :limit offset :offset");
 	    $name = $name . "%";
 	    $stmt->bindParam(':param', $name); 
 		$stmt->bindParam(':limit', $limit); 
