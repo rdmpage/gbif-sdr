@@ -51,6 +51,19 @@
 <!-- 				<div><input class="commentButton" value="Comment now"></div> -->
 			</div>
 			<ol id="update" class="timeline">
+			    {foreach key=id item=comment from=$comments}
+			        <div class="span-18 comments">
+                		<div class="span-2 avatar">
+                		</div>
+                		<div class="span-16 contenedor">
+                			<span class="span-16 title_comment">by <span class="title_comment_u last"> {$comment.username} </span> {$comment.created_when} </span>
+                			<div class="span-16 text_comment">{$comment.commenttext}</div>
+                		</div>
+                	</div>
+			    {foreachelse}
+			        There are no comments to this species.
+			    {/foreach}
+                
 			</ol>
 			<div class="span-18" id="flash" align="left"></div>
 			<form method="post" action="#">

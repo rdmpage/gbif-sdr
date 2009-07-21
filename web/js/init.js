@@ -50,7 +50,7 @@ function login(){
                 //login ok. Close the popup and change the login menu in the header                
                 $.modal.close(); 
                 
-                $("#loginDiv").html(result + ' | <a href="register.php"> Sign out</a> ');
+                $("#loginDiv").html(result + ' | <a onClick="logout()"> Sign out</a> ');
                 
             }
         
@@ -65,3 +65,24 @@ function login(){
     return false;
 
 }
+
+function logout(){
+    
+    var dataObj = ({method: 'logout'});    
+    $.ajax({
+    	type: "POST",
+    	url: "ajaxController.php",
+    	data: dataObj,
+    	cache: false,
+    	success: function(result){
+            $("#loginDiv").html('<a id="login_link" href="#">Login</a> or <a href="register.php">Sign up!</a>');
+            $("#login_link").click(function(){
+                $('#login_form').modal();
+            });
+        
+    	},
+        error:function (xhr, ajaxOptions, thrownError){
+                alert(xhr.status + "\n" + thrownError);
+        }
+    });
+}  
