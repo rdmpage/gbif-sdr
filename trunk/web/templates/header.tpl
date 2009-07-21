@@ -88,7 +88,7 @@ errorPlacement: function(error, element) {
 </head>
 <body>
 	
-	<!-- Login modal window Display:none-->
+	<!-- Login modal window-->
 	<div id="login_form" style='display:none'>
 		<div class="loginContainer">
 			<div id="status" align="left">			
