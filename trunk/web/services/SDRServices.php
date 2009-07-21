@@ -55,7 +55,7 @@ class SDRServices {
 		$stmt = $this->dbHandle->prepare($sql);
 	    $stmt->bindParam(':username', $username);	     
 	    $stmt->execute();
-	    if($stmt->rowCount>0) {
+	    if (count($stmt->fetchAll()) > 0) {
 	        throw new Exception('Username already registered',104);
 	    }	     
 	    
@@ -64,26 +64,25 @@ class SDRServices {
 		$stmt = $this->dbHandle->prepare($sql);
 	    $stmt->bindParam(':email', $email);	     
 	    $stmt->execute();
-	    if($stmt->rowCount>0) {
+	    if (count($stmt->fetchAll()) > 0) {
 	        throw new Exception('Email already registered',105);
 	    }	   
 	    
 	    $sql="INSERT INTO users(username,pass,project_name,email) VALUES(:username,:password,:projectname,:email)";
-	    $stmt->bindParam(':email', $email);	     
+		$stmt = $this->dbHandle->prepare($sql);
+        $stmt->bindParam(':email', $email);	     
 	    $stmt->bindParam(':username', $username);	     
 	    $stmt->bindParam(':password', $password);	     
 	    $stmt->bindParam(':projectname', $projectname);	        	    
-		$stmt = $this->dbHandle->prepare($sql);
 	    $stmt->execute();	       
 	    
 	    //get last ID
-	    /* $sql = "SELECT currval('users_id_seq') AS last_value";
-	    $lastId = $this->dbHandle->query($sql)->fetchAll(PDO::FETCH_ASSOC);  */
+	    $sql = "SELECT currval('users_id_seq') AS last_value";
+	    $resultId = $this->dbHandle->query($sql)->fetch(PDO::FETCH_ASSOC); 
 	    
 	    
 	    $user=array();
-	    //$user['id']=$lastId['last_value'];
-	     $user['id']=1;
+	    $user['id']=$resultId['last_value'];
 	    $user['username']=$username;
 	    $user['projectname']=$projectname;
 	    $user['email']=$email;
