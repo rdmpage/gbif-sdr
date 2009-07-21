@@ -48,7 +48,7 @@
 		<div class="span-18">
 			<div class="span-18 column headerComments">
 				<div class="span-15 title_blue">Comments about this distribution map<sub>(5)</sub></div>
-				<div><input class="commentButton" value="Comment now"></div>
+<!-- 				<div><input class="commentButton" value="Comment now"></div> -->
 			</div>
 			<ol id="update" class="timeline">
 			</ol>
@@ -64,8 +64,10 @@
 		
 		<div class="span-6 last rightColumn">
 	        <div class="contributors">
-					<div class="title_blue">Contributors</div>
+				<div class="title_blue">Contributors</div>
 				<div class="separator_small"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			</div>
@@ -78,6 +80,7 @@
 			<div class="related_species">
 			<div class="title_blue">Related Species</div>
 			    <div class="separator_small"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
