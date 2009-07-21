@@ -26,6 +26,15 @@ class SDRServices {
         }
 	}
 	
+	public function getComments($speciesId) {
+	    $sql="SELECT c.id,commenttext,c.created_when,username from comments as c INNER JOIN users as u ON c.user_fk=u.id  WHERE comment_on_id=:speciesId";
+        $stmt = $this->dbHandle->prepare($sql);
+        $stmt->bindParam(':speciesId', $speciesId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);	    
+	}
+	
+	
 	
 	public function registerUser($username,$projectname,$email,$password) {
 	    

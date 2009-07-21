@@ -1,6 +1,7 @@
 <?php
 require 'services/SDRServices.php';
 $services = new SDRServices;
+session_start();
 
 if ($_REQUEST['method'] == 'addComment') {
     

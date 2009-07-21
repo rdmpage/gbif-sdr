@@ -71,7 +71,7 @@
 
 	<div class="container">
 		<div class="span-24 last headerContainer">
-			<div class="span-1 last headerLogo"></div>
+			<a href="/"><div class="span-1 last headerLogo"></div></a>
 			<div class="span-1 last headerList">
 				<ul>
   					<li><a href="">BROWSE</a></li>
@@ -80,16 +80,14 @@
 				</ul>
 			</div>
 			<div class="span-1 last headerSign">
-			    {if $username ne ""}
-    				<div class="login_sign">
-    					{$username} | <a id="login_link" href="#">Sign out </a>
-    				</div>			    
-			    {else}
-    				<div id="loginDiv" class="login_sign">
-    					<a id="login_link" href="#">Login </a>or
-    					<a href="register.php"> Sign up!</a>
-    				</div>	    
-			    {/if}
+			    <div id="loginDiv" class="login_sign">
+    			    {if $username ne ""}
+        				{$username} | <a onClick="logout()" href="#">Sign out </a>  
+    			    {else}
+        				<a id="login_link" href="#">Login </a>or
+        				<a href="register.php"> Sign up!</a>
+    			    {/if}
+			    </div>	 
 			</div>
 		</div>
 
