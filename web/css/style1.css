@@ -19,8 +19,8 @@ textarea {
 	font-size:12px;
 	border:#999999 solid 1px;
 	height:40px;
+	max-height: 45px;
 	margin-left: 10px;
-	width:500px;
 }
 
 .comments{
@@ -71,6 +71,10 @@ label.error {
 
 input.error {
 	color: red;
+}
+
+input.text {
+	font-size: 15px;
 }
 /* search results */
 
@@ -489,9 +493,9 @@ a.ultimo{
 }
 
 .commentButtonPost{
-   text-align: center;
-   width: 103px;
-   height: 17px;
+   text-align: left;
+   width: 105px;
+   height: 21px;
    float: right;
    font-size:13px;
    font-family: [DINOT] medium;
@@ -499,9 +503,8 @@ a.ultimo{
    border-style: solid;
    border-width: 1px;
    border-color: gray;
-   margin-top: 6px;
    background-image: url(/css/images/comment_now_post.jpg);
-   margin-right: 10px;
+   margin-right: 30px;
 }
 
 .search_button{

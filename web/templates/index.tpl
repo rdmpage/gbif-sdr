@@ -15,7 +15,7 @@
 			<form method="post" action="#">
 				<div class="span-18 post">
 				    <div class="title_gray">Post your comment now</div>
-				    <textarea name="comment" id="comment"></textarea>
+				    <textarea class="span-17" name="comment" id="comment"></textarea>
 				    <input type="button" class="last commentButtonPost" value="Comment now" onclick="commentAction()"/>
 				</div>
 			</form>

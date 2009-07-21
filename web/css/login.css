@@ -6,6 +6,8 @@ input.login {
 	background-color: white;  
 	width: 160px; 
 	height: 26px;
+	font-size: 14px;
+	padding-left: 3px;
 }
   
 
@@ -20,7 +22,7 @@ input.login {
 
 div.login { 
 	font-family: Helvetica; 
-	font-size: 11px; 
+	font-size: 12px; 
 	margin-top: 40px; 
 	padding-right: 10px; 
 	padding-left: 52px;
@@ -28,7 +30,7 @@ div.login {
 
 div.login1 { 
 	font-family: Helvetica; 
-	font-size: 11px; 
+	font-size: 12px; 
 	margin-top: 40px; 
 	padding-right: 10px; 
 }
