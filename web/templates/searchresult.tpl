@@ -135,7 +135,7 @@
 						</div>
 				</div>
 			</div>
-<div class="span-18 result2">
+			<div class="span-18 result2">
 				<div class="span-2 last avatar2"></div>
 					<div class="span-16 last">
 						<div class="span-11 column">
@@ -161,7 +161,7 @@
 						</div>
 				</div>
 			</div>
-<div class="span-18 result1">
+			<div class="span-18 result1">
 				<div class="span-2 last avatar2"></div>
 					<div class="span-16 last">
 						<div class="span-11 column">
@@ -187,7 +187,7 @@
 						</div>
 				</div>
 			</div>
-<div class="span-18 result2">
+			<div class="span-18 result2">
 				<div class="span-2 last avatar2"></div>
 					<div class="span-16 last">
 						<div class="span-11 column">
@@ -213,7 +213,7 @@
 						</div>
 				</div>
 			</div>
-<div class="span-18 result1">
+			<div class="span-18 result1">
 				<div class="span-2 last avatar2"></div>
 					<div class="span-16 last">
 						<div class="span-11 column">
