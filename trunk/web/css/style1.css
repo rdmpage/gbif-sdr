@@ -314,6 +314,7 @@ a.ultimo{
 	height: 129px;
 	padding-left: 5px;
 	border: #d6d6d6 1px solid;
+    padding-bottom: 9px;
 }
 
 /* others */
@@ -424,7 +425,7 @@ a.ultimo{
 	font-size: 11px;
 	color: green;
 	float: right;
-	padding-right: 8px;
+	padding-right: 5px;
 }
 
 .submit_14{
