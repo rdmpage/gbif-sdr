@@ -276,6 +276,13 @@ a.ultimo{
 	color: #666666;
 }
 
+.popular_species{
+	background-color: #f7f7f7;
+	height: 276px;
+	padding-left: 5px;
+	border: #d6d6d6 1px solid;
+}
+
 /* right column */
 
 .register_info{
@@ -325,7 +332,7 @@ a.ultimo{
 	height: 52px;
 	width: 51px;
 	margin-right: 2px;
-	margin-top: 9px;
+	margin-top: 3px;
 	float: left;
 }
 
