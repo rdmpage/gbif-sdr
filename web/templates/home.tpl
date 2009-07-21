@@ -10,7 +10,7 @@
 						<div class="inputContainer"><input class="searchText"></div>
 						<div class="buttonContainer"><div class="searchButton"><a href="searchresult.php">Search!</a></div></div>
 					</div>
-					<a href="" class="text3">e.g. European sturion</a>
+					<a href="speciesPage?species=1" class="text3">e.g. European sturion</a>
 				</div>
 			
 			</div>
