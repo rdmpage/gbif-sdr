@@ -1,6 +1,4 @@
 {include file="header.tpl"} 
-	<div class="container">
-		<div class="span-24 column homeContainer">
 			<div class="span-5 first separator_lr"></div>
 			<div class="span-14 centerContainer">
 			
@@ -16,6 +14,5 @@
 				</div>
 			
 			</div>
-			<div class="span-5 last separator_lr"</div>
-		</div>
+			<div class="span-5 last separator_lr"></div>
 {include file="footer.tpl"} 
