@@ -6,11 +6,13 @@
 					<div class="text1">We are still developing SDR</div>
 					<div class="text2">...but you can search for any species in our database</div>
 					<div class="span-14 searchContainer">
-						<div class="titleContainer"><p>Search</p></div>
-						<div class="inputContainer"><input class="searchText"></div>
-						<div class="buttonContainer"><div class="searchButton"><a href="searchresult.php">Search!</a></div></div>
+					    <form id="searchForm" action="searchresult.php" method="GET">
+    						<div class="titleContainer"><p>Search</p></div>
+    						<div class="inputContainer"><input class="searchText" name="q"></div>
+    						<div class="buttonContainer"><div class="searchButton"><a href="#" onClick="$('#searchForm').submit()">Search!</a></div></div>
+						</form>
 					</div>
-					<a href="speciesPage?species=1" class="text3">e.g. European sturion</a>
+					<a href="speciesPage?species=13815711" class="text3">e.g. Puma concolor</a>
 				</div>
 			
 			</div>
