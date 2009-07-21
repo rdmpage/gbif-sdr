@@ -112,9 +112,22 @@
 		</div>
 		
 		<div class="span-6 last rightColumn">
-			<div class="species_details">
+			<div class="popular_species">
 				<div class="title_blue">Most popular species</div>
 			    <div class="separator_small"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
 			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
