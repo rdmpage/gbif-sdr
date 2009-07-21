@@ -16,5 +16,3 @@
 			</div>
 			<div class="span-5 last separator_lr"></div>
 {include file="footer.tpl"} 
-
-<!-- yei -->
