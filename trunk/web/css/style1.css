@@ -289,7 +289,7 @@ a.ultimo{
 .contributors{
 	background-color: #f7f7f7;
 	height: 111px;
-	padding-left: 9px;
+	padding-left: 5px;
     border: #d6d6d6 1px solid;
     line-height: 0px;
     padding-bottom: 9px;
@@ -298,14 +298,14 @@ a.ultimo{
 .species_details{
 	background-color: #f7f7f7;
 	height: 360px;
-	padding-left: 9px;
+	padding-left: 5px;
 	border: #d6d6d6 1px solid;
 }
 
 .related_species{
 	background-color: #f7f7f7;
 	height: 129px;
-	padding-left: 9px;
+	padding-left: 5px;
 	border: #d6d6d6 1px solid;
 }
 
@@ -315,23 +315,16 @@ a.ultimo{
     border-top: #d6d6d6 1px dotted;
 	height: 1px;
 	width: 1px repeat-x;
-	margin-right: 9px;
+	margin-right: 5px;
 }
 
-.separator_vertical{
-    border-left: #d6d6d6 1px dotted;
-    height: 67px;
-    width: 1px;
-    float: left;
-    margin-top: 12px;
-    padding-right: 7px;
-}
+
 
 .avatar{
 	border: #d6d6d6 1px solid;
 	height: 52px;
 	width: 51px;
-	margin-right: 3px;
+	margin-right: 2px;
 	margin-top: 9px;
 	float: left;
 }
