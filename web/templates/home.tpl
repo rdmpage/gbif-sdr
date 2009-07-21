@@ -5,7 +5,7 @@
 				<div class="span-14 searchCont">
 					<div class="text1">We are still developing SDR</div>
 					<div class="text2">...but you can search for any species in our database</div>
-					<div class="span-14 searchContainer_2">
+					<div class="span-14 searchContainer">
 						<div class="titleContainer"><p>Search</p></div>
 						<div class="inputContainer"><input class="searchText"></div>
 						<div class="buttonContainer"><div class="searchButton"><a href="searchresult.php">Search!</a></div></div>
