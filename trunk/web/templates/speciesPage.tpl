@@ -71,8 +71,8 @@
 					    <input type="button" class="last commentButtonPost" value="Comment now" onclick="commentAction()"/>	
     			    {else}
         				<div class="title_gray">Login now for post your comment</div>
-					    <textarea class="span-17" name="comment" id="comment" disabled="disabled"></textarea>
-					    <input type="button" class="last commentButtonPost" value="Login first!" disabled="disabled"/>	 
+					    <textarea class="span-17" name="comment" id="comment" disabled="true"></textarea>
+					    <input type="button" class="last commentButtonPost" value="Login first!" disabled="true"/>	 
     			    {/if}
 				</div>
 			</form>

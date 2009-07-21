@@ -43,6 +43,7 @@
 	<div id="login_form" style='display:none'>
 		<div class="loginContainer">
 			<div id="status" align="left">			
+				<div class="span-10 error_msg" id="error_msg">Incorrect username/password combination</div>
 				<div class="span-10">
 					<form id="login">
 						<div class="span-4 login">
@@ -52,18 +53,27 @@
 						<div class="span-4  login1 last">
 							<label class="login">Password</label>
 							<input id="password" class="login" type="password" name="password"
-							    onkeydown="if (event.keyCode == 13) login()"
-							>
+							    onkeydown="if (event.keyCode == 13) login()">
 						</div>
 					</form>
 				</div>
 				<div class="span-11 submitLogin">
-					<input class="checkbox" type="checkbox"/>
+					<!--<input class="checkbox" type="checkbox"/>
 					<p class="submit"> keep me signed in</p>
 					<p class="submit"> | </p>
-					<a class="last linkForgot" href="#">Forgot password?</a>
-					<input class="span-3 last submitButton" value="Sign in" name="Sign in" id="submit" type="submit"  onclick='login()' />
+					<a class="last linkForgot" href="#">Forgot password?</a>-->
+					<input class="span-3 submitButton" value="Sign in" name="Sign in" id="submit" type="submit"  onclick='login()' />
+					<img class="ajax_loading" id="ajax_loading" src="/images/ajax-loader.gif" style="display:none">
 				</div>
+			 </div>
+		</div>	
+	</div>
+	
+	<!-- Logging modal window-->
+	<div id="login" style='display:none'>
+		<div class="loginContainer">
+			<div id="status" align="left">			
+				Login Complete Champion!
 			 </div>
 		</div>	
 	</div>
