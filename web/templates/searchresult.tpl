@@ -1,3 +1,5 @@
+{include file="header.tpl"} 
+{include file="searchHForm.tpl"} 
 	<div class="span-24 column ppalContainer">
 		<div class="span-18">
 			<div class="span-18 column headerComments">
@@ -122,3 +124,4 @@
 		
 
 	<div class="span-24 last separator40"></div>
+{include file="footer.tpl"} 
