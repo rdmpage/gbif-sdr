@@ -10,10 +10,10 @@ class SDRServices {
 		
 	}
     
-    public function login($user,$pass) {
+    public function login($email,$pass) {
 
         // create page view database table
-        $sql = "SELECT * FROM users WHERE username='$user' AND pass='$pass'";        
+        $sql = "SELECT * FROM users WHERE email='$email' AND pass='$pass'";        
         $result = $this->dbHandle->query($sql)->fetch(PDO::FETCH_ASSOC);    
 
         if (strlen($result['username'])<1) {
@@ -96,6 +96,21 @@ class SDRServices {
 	    session_destroy();
 	}	    
 	
+	public function addComment($userId,$comment,$speciesId) {
+	    try {
+	        $sql="INSERT INTO comments(user_fk,commenttext,comment_type_fk,comment_on_id) VALUES(:user_fk,:comment,1,:comment_on_id)";
+    		$stmt = $this->dbHandle->prepare($sql);    
+    	    $stmt->bindParam(':user_fk', $userId);	     
+    	    $stmt->bindParam(':comment', $comment);	        
+    	    $stmt->bindParam(':comment_on_id', $speciesId);	        	    
+    	    $stmt->execute();
+    	    return true;
+	    } catch(Exception $e) {
+	        return false;
+	    }
+
+	    
+	}
 	
 	public function getNameById($nameId) {
 		$sql="select d.id,resourcename, scientific_name, year_start, year_end, spatial_resolution_fk, record_base_fk, ". 

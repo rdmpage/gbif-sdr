@@ -7,9 +7,7 @@ $smarty = new Smarty;
 $services = new SDRServices;
 
 //$data =$services->getItemList(10);
-//$smarty->assign('data', $data);
-$smarty->display('header.tpl');
-$smarty->display('searchHForm.tpl');
-$smarty->display('index.tpl');
-$smarty->display('footer.tpl');
+$smarty->assign('speciesId', 10);
+$smarty->display('speciesPage.tpl');
+
 ?>
