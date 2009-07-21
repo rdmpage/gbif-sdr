@@ -51,6 +51,7 @@ div.loginContainer {
 	background-color: #f1f1f1;
 	border:1px solid #999999; 
 	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	height:137px; 
 	width:429px;
 	margin-left: 3px;
