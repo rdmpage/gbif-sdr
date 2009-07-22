@@ -1,0 +1,1079 @@
+/* BASIC LOGIN */
+
+/* Overlay */
+#simplemodal-overlay {
+	background-color:#aaaaaa; 
+}
+
+/* Container */
+#simplemodal-container {
+	height:145px; 
+	width:437px; 
+	background-color:#ffffff; 
+	border:1px solid #999999; 
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#simplemodal-container a.modalCloseImg {
+	background:url('../images/x.jpg') no-repeat; 
+	width:25px; 
+	height:29px; 
+	display:inline; 
+	z-index:3200; 
+	position:absolute; 
+	top:-10px; right:15px; 
+	cursor:pointer;
+}
+#simplemodal-container #basicModalContent {
+}
+
+
+
+
+/* LOGIN */
+
+input.login { 
+	margin: 0px; 
+	padding: 0px; 
+	float: left; 
+	border: 1px solid #cdcdcd; 
+	background-color: white;  
+	width: 160px; 
+	height: 26px;
+	font-size: 14px;
+	padding-left: 3px;
+}
+  
+
+.textbox {
+	border: 1px solid #999999;  
+	border-top-color: #CCCCCC;  
+	border-left-color: #CCCCCC; 
+	color: #333333;  
+	font: 90% Verdana, Helvetica, Arial, sans-serif; 
+	font-size: 11px; 
+}
+
+div.login { 
+	font-family: Helvetica; 
+	font-size: 12px; 
+	margin-top: 22px; 
+	padding-right: 10px; 
+	padding-left: 52px;
+}
+
+div.login1 { 
+	font-family: Helvetica; 
+	font-size: 12px; 
+	margin-top: 22px; 
+	padding-right: 10px; 
+}
+
+div.submitLogin {
+	margin-top: 5px;
+	padding-left:47px;
+}
+
+div.error_msg {
+	color: red;
+	text-align: center;
+	padding-top: 5px;
+	margin-left: 20px;
+	display:none;
+}
+
+label.login {
+	font-family: Helvetica;
+	font-size: 12px;
+	color: #666666;
+	font-weight:  lighter;
+}
+
+div.loginContainer {
+	background-color: #f1f1f1;
+	border:1px solid #999999; 
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	height:137px; 
+	width:429px;
+	margin-left: 3px;
+	margin-top: 3px; 
+}
+
+div.confirmationDialog {
+	font-family: Helvetica;
+	font-size: 17px;
+	color: #666666;
+	font-weight:  lighter;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 50px;
+	height: 20px;
+}
+
+div.logoutDialog {
+	font-family: Helvetica;
+	font-size: 17px;
+	color: #666666;
+	font-weight:  lighter;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 30px;
+	margin-left: 10px;
+	height: 20px;
+}
+
+div.confirmationButtons {
+	margin-top: 20px;
+	text-align: center;
+	margin-left: 100px;
+}
+
+img.ajax_loading {
+	width: 25px;
+	height: 25px;
+	padding-left: 5px;
+	display:none;
+}
+
+p.submit {
+	font-family: Arial;
+	font-size: 12px;
+	color: #666666;
+	display: inline;
+	letter-spacing: -1px;
+}
+
+p.confirmationText {
+	font-family: Helvetica;
+	font-size: 10px;
+	color: #666666;
+	font-weight:  lighter;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+}
+
+a.linkForgot {
+	font-family: Arial;
+	font-size: 12px;
+	color: #666666;
+	letter-spacing: 0px;
+}
+
+/* 'Submit' Button */
+input.submitButton{
+   font-family: [DINOT] medium;
+   font-size:16px;
+   color:white;
+   text-align: center;
+   border-style: solid;
+   border-width: 1px;
+   border-color: #8ab077;
+   background-image: url(/css/images/submit.jpg);
+   height: 25px;
+   margin-left: 5px;
+   float:left;
+}
+
+/*CheckBox Button*/
+
+input.checkbox {
+   margin-top: -2px;
+}
+
+
+/* SEARCH */
+
+/* home */
+
+.text1{
+	font-family: "Georgia";
+	font-size: 26px;
+	font-style: italic;
+	color: #99b3cc;
+}
+
+.text2{
+	font-family: "Arial";
+	font-size: 16px;
+	color: #999999;
+	margin-top: -6px;
+}
+
+.text3{
+	font-family: "Arial";
+	font-size: 13px;
+	font-weight: bold;
+	color: #999999;
+	margin-left: 310px;
+	text-decoration: none;
+} 
+
+.homeContainer{
+	height: 550px;
+}
+
+.centerContainer{
+	height: 550px;
+}
+
+.searchCont{
+	height: 138px;
+	margin-top: 180px;
+}
+
+.searchContainer{
+	background-color: #f7f7f7;
+    border: #d6d6d6 1px solid;	
+	height: 37px;
+	width: 548px;
+	margin-top: 6px;
+}
+
+.titleContainer{
+	height: 37px;
+	width: 82px;
+	float: left;
+}
+
+.titleContainer p{
+	font-family: Georgia;
+	color: #8da3b8;
+	font-style: italic;
+	font-size: 21px;
+	padding-left: 8px;
+	line-height: 36px;
+    text-decoration: none; 
+    display: inline;	
+}
+
+.inputContainer{
+	height: 37px;
+	width: 362px;
+	float: left;
+}
+
+.searchText{
+	height: 23px;
+	width: 360px;
+	border: #d6d6d6 1px solid;	
+	margin-top: 5px;
+	line-height: 24px;
+	float:left;
+	font-size: 15px;
+	padding-left: 5px;
+}
+
+.buttonContainer{
+	height: 37px;
+	width: 96px;
+	float: left;
+}
+
+.searchButton{ 
+	height: 25px;
+	width: 95px;
+    background:url(images/search.jpg) repeat 0px 0px;
+    border: 1px #d6d6d6 solid; 
+	text-decoration: none;
+	margin-top: 5px; 
+	line-height: 24px;
+	text-align: center;
+	font-family: "Georgia";
+	font-size: 18px;
+	font-style: italic;
+}
+
+.searchButton a{ 
+	text-decoration: none; 
+	color: white;
+}
+
+.separator_lr{
+	height: 550px;
+}
+
+/* index */
+
+.searchContainer_index{
+	background-color: #f7f7f7;
+    border: #d6d6d6 1px solid;	
+	height: 37px;
+	width: 948px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.titleContainer_index{
+	height: 37px;
+	width: 188px;
+	float: left;
+}
+
+.titleContainer_index p{
+	font-family: Georgia;
+	color: #8da3b8;
+	font-style: italic;
+	font-size: 21px;
+	padding-left: 8px;
+	line-height: 36px;
+    text-decoration: none; 
+    display: inline;	
+}
+
+.inputContainer_index{
+	height: 37px;
+	width: 656px;
+	float: left;
+}
+
+.searchText_index{
+	height: 23px;
+	width: 654px;
+	border: #d6d6d6 1px solid;	
+	margin-top: 5px;
+	line-height: 24px;
+	float:left;
+	font-size: 15px;
+}
+
+.buttonContainer_index{
+	height: 37px;
+	width: 96px;
+	float: left;
+}
+
+.searchButton_index{ 
+	height: 25px;
+	width: 94px;
+    background:url(images/search.jpg) repeat 0px 0px;
+    border: 1px #d6d6d6 solid; 
+	text-decoration: none;
+	margin-top: 5px; 
+	line-height: 24px;
+	text-align: center;
+	font-family: "Georgia";
+	font-size: 18px;
+	font-style: italic;
+}
+
+.searchButton_index a{ 
+	text-decoration: none; 
+	color: white;
+}
+
+
+
+/* STYLE CSS */
+
+body {
+	background-image: url(/images/repeat.jpg);
+	background-repeat: repeat-x;
+}
+
+/* comments */
+
+ol.timeline {
+	list-style:none;
+}
+
+ol.timeline li { 
+	display:none;
+	position:relative;
+}
+
+textarea {
+	color:#000000;
+	font-size:12px;
+	border:#999999 solid 1px;
+	height:40px;
+	max-height: 45px;
+	margin-left: 10px;
+}
+
+.comments{
+	height: 50px;
+    border-top: #d6d6d6 1px dotted;
+    margin-left: -18px;
+    margin-bottom: 20px;
+}
+
+.post{
+    border-top: #d6d6d6 1px dotted;
+	background-color: #f2f7ef;
+	height: 131px;
+	margin-top: 20px;
+}
+
+/* register */
+
+.registerContainer{
+	height: 422px;
+}
+
+.ppalContainer {
+	padding-top: 20px;
+}
+
+.registerInputs{
+	height: 381px;
+    border-top: #d6d6d6 1px dotted;
+}
+
+.column1{
+   margin-bottom: 8px;
+}
+
+.column2{
+	margin-bottom: 35px;
+}
+
+label.error {
+	background: none;
+	border:none;
+	padding-top: 50px;
+	padding-bottom: 30px;
+	color: red;	
+	font-weight: 400;
+}
+
+input.error {
+	color: red;
+}
+
+input.text {
+	font-size: 15px;
+}
+/* search results */
+
+sub {
+	color: #cccccc;
+	font-size: 14px;
+}
+
+.result{
+    border-top: #d6d6d6 1px dotted;
+}
+
+.result2{
+	background-color: #f5faf5;
+    border-top: #d6d6d6 1px dotted;
+}
+
+.result_selected{
+	background-color: #d6ebd6;
+    border-top: #d6d6d6 1px dotted;
+}
+
+.title_result{
+	margin-top: 9px;
+	padding-left: 9px;
+	padding-bottom: 0px;
+}
+
+.title_result a{
+	font-family: "Georgia";
+ 	font-style: italic;
+ 	font-weight: bold;
+	font-size: 23px; 
+	text-decoration: none;
+	color: #79a760;
+}
+
+.title_result a:hover{
+	color: green;
+}
+
+.title_result_selected{
+	margin-top: 9px;
+	padding-left: 9px;
+	padding-bottom: 0px;
+}
+
+.title_result_selected a{
+	font-family: "Georgia";
+ 	font-style: italic;
+ 	font-weight: bold;
+	font-size: 23px; 
+	text-decoration: none;
+	color: #666666;
+}
+
+.title_result_selected a:hover{
+	color: black;
+}
+
+.result_list{
+	font-size: 13px;
+	margin-top: -6px;
+	height: 26px;
+}
+
+.result_list ul{
+	margin-left: 9px;	
+}
+
+.result_list li{
+	display: inline;
+}
+
+.result_list a{
+	font-family: Arial;
+	font-weight: bold;
+	color: #999999;
+}
+
+.result_list li a:hover{
+	color: #666666;
+}
+
+.result_list_selected{
+	font-size: 13px;
+	margin-top: -6px;
+	height: 26px;
+}
+
+.result_list_selected ul{
+	margin-left: 9px;	
+}
+
+.result_list_selected li{
+	display: inline;
+}
+
+.result_list_selected a{
+	font-family: Arial;
+	font-weight: bold;
+	color: #666666;
+}
+
+.result_list_selected li a:hover{
+	color: black;
+}
+
+img.lista{
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+a.ultimo{
+	text-decoration: none;
+	font-weight: 300;
+}
+
+.avatar2{
+	border: #d6d6d6 1px solid;
+	height: 52px;
+	width: 51px;
+	margin-top: 9px;
+	margin-left: 9px;
+	margin-bottom: 9px;
+}
+
+.sources{
+	font-family: "Georgia";
+	font-size: 23px;
+	font-style: italic; 
+	font-weight: bold;
+	padding-left: 20px;
+	margin-left: 5px;
+	margin-top: 6px;
+	color: #999999;
+}
+
+.sourcesTitle{
+	font-family: "Arial";
+	font-size: 13px;
+	margin-left: 10px;
+	margin-top: -3px;
+	color: #999999;
+}
+
+.ocurrences{
+	font-family: "Georgia";
+	font-size: 23px;
+	font-style: italic; 
+	font-weight: bold;
+	text-align: right;
+	margin-top: 6px;
+	color: #999999;
+}
+
+.ocurrencesTitle{
+	font-family: "Arial";
+	font-size: 13px;
+	text-align: right;
+	margin-top: -3px;
+	color: #999999;
+}
+
+.sources_selected{
+	font-family: "Georgia";
+	font-size: 23px;
+	font-style: italic; 
+	font-weight: bold;
+	padding-left: 20px;
+	margin-left: 5px;
+	margin-top: 6px;
+	color: #666666;
+}
+
+.sourcesTitle_selected{
+	font-family: "Arial";
+	font-size: 13px;
+	margin-left: 10px;
+	margin-top: -3px;
+	color: #666666;
+}
+
+.ocurrences_selected{
+	font-family: "Georgia";
+	font-size: 23px;
+	font-style: italic; 
+	font-weight: bold;
+	text-align: right;
+	margin-top: 6px;
+	color: #666666;
+}
+
+.ocurrencesTitle_selected{
+	font-family: "Arial";
+	font-size: 13px;
+	text-align: right;
+	margin-top: -3px;
+	color: #666666;
+}
+
+.popular_species{
+	background-color: #f7f7f7;
+	height: 276px;
+	padding-left: 5px;
+	border: #d6d6d6 1px solid;
+}
+
+/* right column */
+
+.register_info{
+	background-color: #f7f7f7;
+	height: 420px;
+    border: #d6d6d6 1px solid;
+	padding-left: 9px;
+	padding-right: 9px;
+}
+
+.contributors{
+	background-color: #f7f7f7;
+	height: 111px;
+	padding-left: 5px;
+    border: #d6d6d6 1px solid;
+    line-height: 0px;
+    padding-bottom: 9px;
+}
+
+.species_details{
+	background-color: #f7f7f7;
+	height: 360px;
+	padding-left: 5px;
+	border: #d6d6d6 1px solid;
+}
+
+.related_species{
+	background-color: #f7f7f7;
+	height: 129px;
+	padding-left: 5px;
+	border: #d6d6d6 1px solid;
+    padding-bottom: 9px;
+}
+
+/* others */
+
+.separator_small{
+    border-top: #d6d6d6 1px dotted;
+	height: 1px;
+	width: 1px repeat-x;
+	margin-right: 5px;
+}
+
+
+
+.avatar{
+	border: #d6d6d6 1px solid;
+	height: 52px;
+	width: 51px;
+	margin-right: 2px;
+	margin-top: 3px;
+	float: left;
+}
+
+/* separators */
+
+.separator40{
+	height: 40px;
+	line-height: 0px;
+}
+
+.separator9{
+	height: 9px;
+	line-height: 0px;
+}
+
+.separator7{
+	height: 7px;
+	line-height: 0px;
+}
+
+.separator6{
+	height: 6px;
+	line-height: 0px;
+}
+
+.separator1{
+	height: 1px;
+	line-height: 0px;
+}
+
+/* typography */
+
+.title_blue{
+ 	line-height: 22px;
+ 	padding-bottom: 9px;
+ 	padding-top: 9px;
+ 	font-family: "Georgia";
+ 	font-style: italic;
+	font-size: 20px; 
+	color: #9db7d2;
+}
+
+.title_blue_search{
+ 	font-family: "Georgia";
+ 	font-style: italic;
+	font-size: 20px; 
+	color: #9db7d2;
+	margin-left: 9px;
+	margin-top: 2px;
+}
+
+.title_gray{
+ 	font-family: "Georgia";
+ 	font-style: italic;
+	font-size: 20px; 
+	margin-left: 10px;
+	color: #a9a9a9;	
+}
+
+.title_logout{
+ 	font-family: "Georgia";
+ 	font-style: italic;
+	font-size: 20px; 
+	margin-left: 150px;
+	margin-top: 50px;
+	color: #a9a9a9;	
+}
+
+.title_comment{
+	font-style: italic;
+	font-family: "Georgia";
+	font-size: 13px;
+	color: #d6d6d6;
+	padding-top: 8px;
+}
+
+.title_comment_u{
+	text-decoration: underline;
+	font-style: italic;
+	line-height: 32px;
+	font-size: 15px;
+	color: #bfbfbf;
+}
+
+.text_comment{
+	letter-spacing: -1px;
+	color: #a9a9a9;
+	font-family: "Arial";
+	font-size: 13px;
+	line-height: 14px;
+}
+
+.view_more{
+	text-decoration: none;
+	text-align: right;
+	font-weight: bold;
+	font-family: "Arial";
+	font-size: 11px;
+	color: green;
+	float: right;
+	padding-right: 5px;
+}
+
+.submit_14{
+	color: gray;
+	letter-spacing: -1px;
+	font-family: "Arial";
+	font-size: 14px;
+	margin-top: 32px;
+	margin-left: -17px;
+}
+
+.requiredLabel{
+	color: red;
+	font-family: "Arial";
+	font-size: 11px;
+	margin-left: 10px;
+	margin-top: 2px;
+}
+
+.register_12{
+	color: gray;
+	letter-spacing: -1px;
+	font-family: "Arial";
+	font-size: 12px;
+	padding-top: 6px;
+}
+
+.register_14{
+	color: gray;
+	letter-spacing: -1px;
+	font-family: "Arial";
+	font-size: 14px;
+	padding-top: 19px;
+	padding-bottom: 19px;
+	line-height: 
+}
+
+.title_campo{
+	color: gray;
+	font-family: "Arial";
+	font-size: 14px;
+	padding-left: 9px;
+	font-weight: bold;
+}
+
+.lista{
+	color: gray;
+	text-decoration: none;
+}
+
+/* botones */ 
+
+.commentButton{
+   text-align: center;
+   width: 94px;
+   height: 17px;
+   float: right;
+   font-size:13px;
+   font-family: [DINOT] medium;
+   color:#FFFFFF;
+   border-style: solid;
+   border-width: 1px;
+   border-color: green;
+   background-image: url(/css/images/comment_now.jpg);
+   margin-top: 9px;
+}
+
+.commentButtonPost{
+   text-align: center;
+   width: 105px;
+   height: 21px;
+   float: right;
+   font-size:13px;
+   font-family: [DINOT] medium;
+   color:#797979;
+   border-style: solid;
+   border-width: 1px;
+   border-color: gray;
+   background-image: url(/css/images/comment_now_post.jpg);
+   margin-right: 30px;
+}
+
+.search_button{
+   font-family: Georgia;
+   font-style: italic;
+   font-size:18px;
+   color:white;
+   text-align: center;
+   border-style: solid;
+   border-width: 1px;
+   border-color: gray;
+   background-image: url(/css/images/search.jpg);
+   width: 96px;
+   height: 25px;
+   padding: 0px 0px 0px 0px;
+}
+
+.submit_button{
+   font-family: [DINOT] medium;
+   font-size:18px;
+   color:white;
+   text-align: center;
+   border-style: solid;
+   border-width: 1px;
+   border-color: green;
+   background-image: url(/css/images/submit.jpg);
+   width: 114px;
+   height: 27px;
+   padding: 0px 0px 0px 0px;
+   margin-left: 10px;
+   margin-top: 29px;
+   line-height: 23px;
+}
+
+/* inputs */
+
+.check_container{
+	margin-top: 32px;
+	margin-left: 11px;
+}
+
+input.text{
+	padding: 0px 0px 0px 0px; 
+	margin: 0px 0px 0px 0px; 
+	height: 29px;
+	margin-left: 9px;
+}
+
+input.searchtext{
+	height: 25px;
+}
+
+input.comment{
+    border: 1px #d6d6d6 solid;
+	height: 57px;
+	width: 686px;
+	margin-left: 10px;
+}
+
+
+/* HEADER */
+
+
+/* header */
+
+.headerContainer{
+	height: 71px;
+}
+
+.headerLogo{
+	height: 71px;
+	width: 182px;
+	background-image: url(/images/logo.jpg);
+}
+
+.headerList{
+	width: 662px;
+	font-family: "Arial";
+	font-size: 14px;
+}
+
+.headerList ul{
+    padding-top: 30px;
+   	margin-left: 5px;
+}
+
+.headerList ul li{
+	display: inline;
+	padding-left: 22px;
+	padding-right: 28px;
+    border-right: #dcdcdc 1px solid;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.headerList ul li a, .headerList ul li a:visited{
+	font-family: Arial;
+	font-weight: bold;
+	color: #999999;
+    text-decoration: none;    
+}
+
+.headerList li a:hover{
+	color: #666666;
+}
+
+.headerSign{
+	height: 27px;
+	width: 106px;
+	background-image: url(/images/login.jpg);
+}
+
+.login_sign{
+	padding-left: 4px;
+	padding-top: 3px;
+	color: #FFF;
+}
+
+.login_sign a, .login_sign a:visited{
+	font-family: Arial;
+	font-size: 13px;
+	color: #336600;
+}
+
+.login_sign a:hover{
+	font-family: Arial;
+	font-size: 13px;
+	color: #333333;
+}
+
+
+/* FOOTER */
+
+
+/* footer */
+
+.footer_notices{
+	border-top: #d6d6d6 1px solid;
+}
+
+.footer{
+	border-top: #d6d6d6 1px solid;
+ 	font-family: "Arial";
+	font-size: 13px; 
+	color: #999999;
+	padding-top: 6px;
+}
+
+.noti{
+	width: 229px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding-top: 5px;
+	padding-bottom: 10px;	
+}
+
+.noti.hasBorder{
+	border-right: #d6d6d6 1px dotted;
+}
+
+.noti a, .noti a:visited, .footer a, .footer a:visited{
+	font-weight: bold;
+	color: #8da3b8;
+	text-decoration: none;
+}
+
+.noti a:hover, .footer a:hover{
+	color: #496279;
+}
+
+.title_notice{
+ 	font-family: "Arial";
+	font-size: 16px; 
+	color: #99b3cc;
+}
+
+.noti_sub{
+ 	font-family: "Arial";
+  	line-height: 13px;
+	font-size: 13px; 
+	color: #999999;
+}
+
+.footer_logo{
+    background-image: url(/css/images/logo_footer.jpg);
+    background-repeat: no-repeat;
+	height: 67px;
+	width: 47px;
+	margin-top: 8px;
+	float: right;
+}
+
+
