@@ -12,7 +12,7 @@
 				<div class="span-2 last avatar2"></div>
 					<div class="span-16 last">
 						<div class="span-11 column">
-							<div class="span-11 last title_result"><a href="speciesPage.php?species={$result.name_fk}">{$result.scientific_name}</a></div>
+							<div class="span-11 last title_result"><a href="speciesPage.php?id={$result.name_fk}&n={$result.scientific_name|escape:"url"}">{$result.scientific_name}</a></div>
 							<div class="span-11 last result_list">
 								<ul>
 								    <li></li>
