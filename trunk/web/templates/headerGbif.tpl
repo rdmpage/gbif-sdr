@@ -83,7 +83,7 @@
 	</div>
 
 
-	<div class="container">
+	<div class="span-24 container">
 	<div class="span-24" id="wrapper">
 		<div class="span-24" id="header">
 			<div class="span-20">

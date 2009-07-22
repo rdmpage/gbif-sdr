@@ -1,4 +1,6 @@
-{include file="header.tpl"} 
+{* {include file="header.tpl"}  *}
+{include file="headerGbif.tpl"} 
+
 <script type="text/javascript" src="js/swfobject.js" ></script>
 {include file="searchHForm.tpl"} 
 
@@ -115,4 +117,5 @@
 	</script>
 	{/literal}
 
-{include file="footer.tpl"} 
+{* {include file="footer.tpl"}  *}
+{include file="footerGbif.tpl"}
