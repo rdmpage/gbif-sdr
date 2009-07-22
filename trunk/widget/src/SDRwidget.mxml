@@ -3,6 +3,9 @@
 
 <mx:Script>
 	<![CDATA[
+		import com.google.maps.interfaces.IPane;
+		import org.gbif.maps.CustomTileLayerOverlay;
+		import org.gbif.maps.CustomTileLayer;
 		import mx.rpc.events.ResultEvent;
 		import mx.rpc.events.FaultEvent;
 		import mx.rpc.http.mxml.HTTPService;
@@ -53,6 +56,20 @@
 			
 			map.addControl(new MapTypeControl());
 			map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
+			
+			
+			
+			//Add GBIF layer
+			var ctlgbif:CustomTileLayer= new CustomTileLayer("http://maps3.eol.org/php/map/getEolTile.php?tile=|X|_|Y|_|Z|_"+parameters.nub_concept_id,"",23);
+			var ctlo:CustomTileLayerOverlay = new CustomTileLayerOverlay(ctlgbif);
+			ctlgbif.ctlo=ctlo;
+			ctlo.foreground.alpha=0.7;
+//			BindingUtils.bindProperty(mapCanvas.discretLoading,"visible",ctlo,"numRunningRequest");
+			map.addOverlay(ctlo);			
+			
+			
+			
+			
 		}
 	]]>
 </mx:Script>
