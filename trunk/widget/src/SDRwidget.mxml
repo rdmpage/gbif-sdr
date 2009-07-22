@@ -3,6 +3,9 @@
 
 <mx:Script>
 	<![CDATA[
+		import mx.rpc.events.ResultEvent;
+		import mx.rpc.events.FaultEvent;
+		import mx.rpc.http.mxml.HTTPService;
 		import com.google.maps.controls.ControlPosition;
 		import com.google.maps.controls.ZoomControlOptions;
 		import com.google.maps.MapType;
@@ -12,9 +15,31 @@
 		
 		[Bindable]
 		public var scientificName:String;
+		[Bindable]
+		public var numOccurrences:String;
 		
 		private function preInit():void {
 			scientificName=parameters.scientificName;
+
+
+			//Get the number of records in GBIF for this taxonId
+			var httpSrv:HTTPService=new HTTPService();
+			httpSrv.resultFormat="text";
+			httpSrv.url = "http://es.mirror.gbif.org/ws/rest/occurrence/count?taxonConceptKey="+parameters.speciesId;
+			httpSrv.addEventListener(FaultEvent.FAULT,function(event:FaultEvent):void {
+				trace(event.message);
+			});
+			httpSrv.addEventListener(ResultEvent.RESULT,function(event:ResultEvent):void {
+				try {
+					var start:Number = String(event.result).indexOf("totalMatched=\"") + (("totalMatched=\"").length);
+					var end:Number = String(event.result).indexOf("\"",start);	
+					numOccurrences=nf.format(Number(String(event.result).slice(start,end)));
+				} catch(e:Error) {
+					
+				}
+			});
+			httpSrv.send();			
+			
 		}
 		
 		
@@ -39,9 +64,17 @@
 	<mx:Button label="sources" fontWeight="normal" right="11" width="79" bottom="4"/>
 	<mx:Button label="export" fontWeight="normal" bottom="5" left="10" width="79"/>
 	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="97" width="114"/>
-	<mx:Image source="@Embed('/assets/pumaConcolor.png')" left="7" top="5"/>
+	<mx:Image source="@Embed('assets/pumaConcolor.png')" left="7" top="5"/>
 	<mx:HBox y="6" left="56" right="97" verticalAlign="bottom" horizontalGap="3">
 		<mx:Label text="{scientificName}" fontFamily="Georgia" fontStyle="italic" fontSize="20" fontWeight="normal" color="#393939"/>
 		<mx:Label text="updated 2 months ago" color="#878787"/>
+	</mx:HBox>
+	<mx:NumberFormatter id="nf" useThousandsSeparator="true" />
+	<mx:HBox y="31" left="56" right="97" horizontalGap="1">
+		<mx:Label text="3"/>
+		<mx:Label text="sources"/>
+		<mx:Label text="|"/>
+		<mx:Label text="{numOccurrences}"/>
+		<mx:Label text="occurrences in GBIF"/>
 	</mx:HBox>
 </mx:Application>
