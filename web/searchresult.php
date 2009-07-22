@@ -9,6 +9,8 @@ $searchName=$_REQUEST['q'];
 if(strlen($searchName)>3) {
     $smarty->assign('results', $services->searchForName($searchName,10,0));
     $smarty->assign('queryString',$searchName);
+    $smarty->assign('popularSpecies', $services->getMostPopularSpecies());
+    
 } else {
     echo("sorry, not enough strings to search for");
     die();
