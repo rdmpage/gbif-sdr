@@ -60,7 +60,7 @@ function login(){
                 $("#commentArea").html('<div class="title_gray">Post your comment now</div><textarea class="span-17" name="comment" id="comment"></textarea><input type="button" class="last commentButtonPost" value="Comment now" onclick="commentAction()"/>');
                 $('#confirmation').html('Thank for your logging '+result+'.');
                 $('#login').modal();
-                timerID = setTimeout("timerHide()", 4000);
+                timerID = setTimeout("timerHide()", 2000);
             }
         
     	},
@@ -87,7 +87,7 @@ function logout(){
     	data: dataObj,
     	cache: false,
     	success: function(result){
-    		$("#commentArea").html('<div class="title_gray">Login now for post your comment</div><textarea class="span-17" name="comment" id="comment" disabled="true"></textarea><input type="button" class="last commentButtonPost" value="Login first!" disabled="true"/>');
+    		$("#commentArea").html('<div class="span-12 title_logout">Login or register now for post your comment</div>');
             $("#loginDiv").html('<a id="login_link" href="#">Login</a> or <a href="register.php">Sign up!</a>');
             $("#login_link").click(function(){
                 $('#login_form').modal();
@@ -110,5 +110,5 @@ function timerHide() {
 }
 
 function enterLogin(e) {
-if(e.which == 10 || e.which == 13) login();
+	if(e.which == 10 || e.which == 13) login();
 }
