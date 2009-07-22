@@ -65,7 +65,7 @@ function login(){
         
     	},
         error:function (xhr, ajaxOptions, thrownError){
-                alert(xhr.status + "\n" + thrownError);
+                alert('SDR' + xhr.status + "\n" + thrownError);
         }
     });
   
@@ -110,5 +110,9 @@ function timerHide() {
 }
 
 function enterLogin(e) {
-	if(e.which == 10 || e.which == 13) login();
+	e = e || window.event;
+	var unicode=e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+	if (unicode == 13){
+ 		login();
+ 	}
 }
