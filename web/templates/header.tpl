@@ -73,7 +73,7 @@
 	<div id="login" style='display:none'>
 		<div class="loginContainer">
 			<div id="confirmation" class="span-10 confirmationDialog"></div>
-			<p class="confirmationText">Redirect to Species Distribution, only 4 seconds.</p>
+			<p class="confirmationText">Wellcome to Species Distribution, only 2 seconds.</p>
 		</div>	
 	</div>
 	

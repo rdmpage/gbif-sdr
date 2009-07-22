@@ -393,6 +393,15 @@ a.ultimo{
 	color: #a9a9a9;	
 }
 
+.title_logout{
+ 	font-family: "Georgia";
+ 	font-style: italic;
+	font-size: 20px; 
+	margin-left: 150px;
+	margin-top: 50px;
+	color: #a9a9a9;	
+}
+
 .title_comment{
 	font-style: italic;
 	font-family: "Georgia";

@@ -48,9 +48,8 @@
 						</div>
 						<div class="span-18">
 							<div class="span-4"><input type="submit" class="submit_button" value="submit" id="submit" name="submit"></div>
-							<div class="span-7 last submit_14">I readed and accepted the terms and conditions</div>
-							<div class="span-7 last check_container"><input type="checkbox" class="checkbox required" id="agree" name="agree"></div>
-
+							<!--<div class="span-7 last submit_14">I readed and accepted the terms and conditions</div>
+							<div class="span-7 last check_container"><input type="checkbox" class="checkbox required" id="agree" name="agree"></div>-->
 						</div> 
 						<div class="span-18 requiredLabel">* required fields</div>
 					</div>
