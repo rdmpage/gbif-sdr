@@ -53,7 +53,7 @@
 						<div class="span-4  login1 last">
 							<label class="login">Password</label>
 							<input id="password" class="login" type="password" name="password"
-							    onkeydown="if (event.keyCode == 13) login()">
+							    onkeypress="enterLogin(event)">
 						</div>
 					</form>
 				</div>
@@ -69,12 +69,22 @@
 		</div>	
 	</div>
 	
-	<!-- Logging modal window-->
+	<!-- Complete login modal window-->
 	<div id="login" style='display:none'>
 		<div class="loginContainer">
-			<div id="status" align="left">			
-				Login Complete Champion!
-			 </div>
+			<div id="confirmation" class="span-10 confirmationDialog"></div>
+			<p class="confirmationText">Redirect to Species Distribution, only 4 seconds.</p>
+		</div>	
+	</div>
+	
+	<!-- Logout confirmation modal window-->
+	<div id="logout" style='display:none'>
+		<div class="loginContainer">
+			<div id="logoutConfirmation" class="span-10 logoutDialog" align="center">Are you sure you want to log out {$username}?</div>
+			<div class="span-10 confirmationButtons">
+				<input class="span-3 submitButton" value="Yes" onClick="logout()" type="submit"/>
+				<input class="span-3 submitButton" value="No"  onClick="$.modal.close()" type="submit"/>
+			</div>	
 		</div>	
 	</div>
 
@@ -92,7 +102,7 @@
 			<div class="span-1 last headerSign">
 			    <div id="loginDiv" class="login_sign">
     			    {if $username ne ""}
-        				{$username} | <a onClick="logout()" href="#">Sign out </a>  
+        				{$username} | <a id="logoutRef" onClick="$('#logout').modal()" href="#">Sign out </a>  
     			    {else}
         				<a id="login_link" href="#">Login </a>or
         				<a href="register.php"> Sign up!</a>
