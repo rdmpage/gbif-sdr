@@ -16,8 +16,6 @@ $(document).ready(function(){
 });
 
 
-
-
 // When the form is submitted
 function login(){  
 
@@ -52,11 +50,17 @@ function login(){
                 $('#email').removeAttr("disabled");
     			$('#password').removeAttr("disabled");
             } else {
-                //login ok. Close the popup and change the login menu in the header 
+                //login ok. Close the popup and change the login menu in the header
                 $('#ajax_loading').hide();               
                 $.modal.close(); 
-                $("#loginDiv").html(result + ' | <a onClick="logout()"> Sign out</a> ');
+                $("#loginDiv").html(result + ' | <a id="logoutRef" href="#"> Sign out</a> ');
+                $("#logoutRef").click(function(){
+	                $('#logout').modal();
+	            });
+                $("#commentArea").html('<div class="title_gray">Post your comment now</div><textarea class="span-17" name="comment" id="comment"></textarea><input type="button" class="last commentButtonPost" value="Comment now" onclick="commentAction()"/>');
+                $('#confirmation').html('Thank for your logging '+result+'.');
                 $('#login').modal();
+                timerID = setTimeout("timerHide()", 4000);
             }
         
     	},
@@ -71,6 +75,9 @@ function login(){
 
 }
 
+
+
+//logout function
 function logout(){
     
     var dataObj = ({method: 'logout'});    
@@ -80,6 +87,7 @@ function logout(){
     	data: dataObj,
     	cache: false,
     	success: function(result){
+    		$("#commentArea").html('<div class="title_gray">Login now for post your comment</div><textarea class="span-17" name="comment" id="comment" disabled="true"></textarea><input type="button" class="last commentButtonPost" value="Login first!" disabled="true"/>');
             $("#loginDiv").html('<a id="login_link" href="#">Login</a> or <a href="register.php">Sign up!</a>');
             $("#login_link").click(function(){
                 $('#login_form').modal();
@@ -90,4 +98,17 @@ function logout(){
                 alert(xhr.status + "\n" + thrownError);
         }
     });
+    $.modal.close();
+
 }  
+
+
+function timerHide() {
+     $.modal.close();
+     //document.getElementById("login").style.display = "none";
+     clearTimeout(timerID);
+}
+
+function enterLogin(e) {
+if(e.which == 10 || e.which == 13) login();
+}
