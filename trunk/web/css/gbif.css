@@ -1,0 +1,130 @@
+body {
+	background-color: #cccccc;
+	background-image: none;
+}
+
+
+img.logoImg{
+	margin-left: 10px;		
+}
+
+.headerSign{
+	float: right;
+	background-image: none;
+	border: none;
+}
+
+div.login_sign {
+	color: black;
+}
+
+.footer{
+	background-color: #e6e6e6;
+	color: #999999;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	height: 30px;
+	width: 930px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+div#wrapper {
+	background-color: #ffffff;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+div.separator{
+	margin-top: 20px;	
+}
+
+.explainingText{
+	margin-left: 13px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+
+div#menu {
+	margin:10px;
+	height: 50px;
+	background-color: #eeeeee;
+}
+
+div#menu ul {
+	margin-left:5px;
+}
+
+div#menu li {
+	width: 144px;
+    float: left;
+    display: inline;
+    list-style: none;
+    margin-left: 5px;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1em;
+    margin-top:8px;
+    height: 40px;
+    text-align:center;
+    font-family: arial, helvetica, verdana, sans-serif;
+    background: transparent url(/images/bkgButton_up.gif) no-repeat;
+}
+
+div#menu a,
+div#menu a:link,
+div#menu a:active,
+div#menu a:visited {
+	background: transparent;
+    display: inline-block;
+    /* hide from ie/mac \*/
+    display: block;
+    /* end hide */
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0;
+    padding: 5px 15px 5px 15px;
+    padding-top: 12px;
+	color: #FFF;
+	height: 26px;
+	width: 114px;
+}
+div#menu a:hover {
+    text-decoration: none;
+    width: 114px;
+	background: transparent url(/images/bkgButton.gif) no-repeat;
+}
+div#menu a.current {
+    display: inline-block;
+    /* hide from ie/mac \*/
+    display: block;
+    /* end hide */
+    color: #FFF;
+    font-size: 12px !important;
+}
+div#menu a.current,
+div#menu a.current:link,
+div#menu a.current:active,
+div#menu a.current:visited,
+div#menu a.current:hover {
+/*        background-color: #019f2e; */
+		background: transparent url(/images/bkgButton.gif) no-repeat; 
+}
+
+div.menuContainer {
+	width: 930px;
+	
+}
+
+table.log div.hide {
+	display:none;
+}
+
+	
+.buttonEditContainer{
+	text-align: right;
+	width: 440px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
