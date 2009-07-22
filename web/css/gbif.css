@@ -15,7 +15,7 @@ img.logoImg{
 }
 
 div.login_sign {
-	color: black;
+	color: #999999;
 }
 
 .footer{
@@ -128,3 +128,33 @@ table.log div.hide {
 	margin-top: 10px;
 	margin-bottom: 0px;
 }
+
+
+.noti{
+	width: 219px;
+	margin-top: 10px;
+	padding-top: 5px;
+	padding-bottom: 10px;	
+	margin-left: 10px;
+}
+
+.noti.hasBorder{
+	border-right: #d6d6d6 1px dotted;
+}
+
+.noti a, .noti a:visited, .footer a, .footer a:visited{
+	color: green;
+}
+
+.noti a:hover, .footer a:hover{
+	color: black;
+}
+
+.text1{
+	color: green;
+}
+
+.titleContainer p{
+	color: green;
+}
+
