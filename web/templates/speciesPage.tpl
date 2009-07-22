@@ -29,7 +29,7 @@
 			</ol>
 			<div class="span-18" id="flash" align="left"></div>
 			<form method="post" action="#">
-				<div class="span-18 post">
+				<div id="commentArea" class="span-18 post">
 				    {if $username ne ""}
 				    	<div class="title_gray">Post your comment now</div>
 					    <textarea class="span-17" name="comment" id="comment"></textarea>
