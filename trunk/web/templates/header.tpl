@@ -45,15 +45,14 @@
 			<div id="status" align="left">			
 				<div class="span-10 error_msg" id="error_msg">Incorrect username/password combination</div>
 				<div class="span-10">
-					<form id="login">
+					<form id="login" onkeypress="enterLogin(event)">
 						<div class="span-4 login">
 							<label class="login">Email or username</label>
 							<input id="email" class="login" type="text" name="email">
 						</div>
 						<div class="span-4  login1 last">
 							<label class="login">Password</label>
-							<input id="password" class="login" type="password" name="password"
-							    onkeypress="enterLogin(event)">
+							<input id="password" class="login" type="password" name="password">
 						</div>
 					</form>
 				</div>
