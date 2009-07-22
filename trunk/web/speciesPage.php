@@ -18,6 +18,7 @@ $services = new SDRServices;
 
 //$data =$services->getItemList(10);
 $smarty->assign('speciesId', $speciesId);
+$smarty->assign('scientificName', "Puma concolor");
 $smarty->assign('comments',$services->getComments($speciesId));
 
 
