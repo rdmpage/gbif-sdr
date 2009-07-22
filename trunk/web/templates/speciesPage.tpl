@@ -111,6 +111,7 @@
 		so.addVariable("swf", "");
 		so.addVariable("api_key", "ABQIAAAAtDJGVn6RztUmxjnX5hMzjRTb-vLQlFZmc2N8bgWI8YDPp5FEVBTeJc72_716EfYqx-s8UGt88XqC9w");
 		so.addVariable("scientificName", "{/literal}{$scientificName}{literal}");
+		so.addVariable("speciesId", "{/literal}{$speciesId}{literal}");
 		so.write("widgetContainer");
 
 	</script>
