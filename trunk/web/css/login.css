@@ -23,7 +23,7 @@ input.login {
 div.login { 
 	font-family: Helvetica; 
 	font-size: 12px; 
-	margin-top: 40px; 
+	margin-top: 22px; 
 	padding-right: 10px; 
 	padding-left: 52px;
 }
@@ -31,13 +31,21 @@ div.login {
 div.login1 { 
 	font-family: Helvetica; 
 	font-size: 12px; 
-	margin-top: 40px; 
+	margin-top: 22px; 
 	padding-right: 10px; 
 }
 
 div.submitLogin {
-	margin-top: 10px;
+	margin-top: 5px;
 	padding-left:47px;
+}
+
+div.error_msg {
+	color: red;
+	text-align: center;
+	padding-top: 5px;
+	margin-left: 20px;
+	display:none;
 }
 
 label.login {
@@ -58,12 +66,58 @@ div.loginContainer {
 	margin-top: 3px; 
 }
 
+div.confirmationDialog {
+	font-family: Helvetica;
+	font-size: 17px;
+	color: #666666;
+	font-weight:  lighter;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 50px;
+	height: 20px;
+}
+
+div.logoutDialog {
+	font-family: Helvetica;
+	font-size: 17px;
+	color: #666666;
+	font-weight:  lighter;
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 30px;
+	margin-left: 10px;
+	height: 20px;
+}
+
+div.confirmationButtons {
+	margin-top: 20px;
+	text-align: center;
+	margin-left: 100px;
+}
+
+img.ajax_loading {
+	width: 25px;
+	height: 25px;
+	padding-left: 5px;
+	display:none;
+}
+
 p.submit {
 	font-family: Arial;
 	font-size: 12px;
 	color: #666666;
 	display: inline;
 	letter-spacing: -1px;
+}
+
+p.confirmationText {
+	font-family: Helvetica;
+	font-size: 10px;
+	color: #666666;
+	font-weight:  lighter;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
 }
 
 a.linkForgot {
@@ -83,9 +137,9 @@ input.submitButton{
    border-width: 1px;
    border-color: #8ab077;
    background-image: url(/css/images/submit.jpg);
-   width: 110px;
    height: 25px;
-   margin-left: 27px;
+   margin-left: 5px;
+   float:left;
 }
 
 /*CheckBox Button*/
