@@ -13,14 +13,15 @@
   	<link rel="stylesheet" href="css/forms.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="css/grid.css" type="text/css" media="screen, projection">
 	<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
-	<link rel="stylesheet" href="css/style1.css" type="text/css" media="screen, projection">
+<!-- 	<link rel="stylesheet" href="css/style1.css" type="text/css" media="screen, projection"> -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection">
 
-	<link rel="stylesheet" href="css/tpl/header.css" type="text/css" media="screen, projection">	
-	<link rel="stylesheet" href="css/tpl/footer.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="css/tpl/searchHForm.css" type="text/css" media="screen, projection">	
-	<link type='text/css' href='css/login.css' rel='stylesheet' media='screen' />
-	<link type='text/css' href='css/basicLogin.css' rel='stylesheet' media='screen' />	
-	<link rel="stylesheet" href="css/search.css" type="text/css" media="screen, projection">
+	<!--<link rel="stylesheet" href="css/tpl/header.css" type="text/css" media="screen, projection">	
+	<link rel="stylesheet" href="css/tpl/footer.css" type="text/css" media="screen, projection">-->
+<!-- 	<link rel="stylesheet" href="css/tpl/searchHForm.css" type="text/css" media="screen, projection">	 -->
+<!-- 	<link type='text/css' href='css/login.css' rel='stylesheet' media='screen' /> -->
+<!-- 	<link type='text/css' href='css/basicLogin.css' rel='stylesheet' media='screen' />	 -->
+<!-- 	<link rel="stylesheet" href="css/search.css" type="text/css" media="screen, projection"> -->
 
 	<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
 	
@@ -88,7 +89,7 @@
 	</div>
 
 
-	<div class="container">
+	<div class="container showgrid">
 		<div class="span-24 last headerContainer">
 			<a href="/"><div class="span-1 last headerLogo"></div></a>
 			<div class="span-1 last headerList">
