@@ -5,7 +5,7 @@ include("PolylineEncoder.php");
 class SDRServices {
 	
 	function __construct() {
-		$this->dbHandle = new PDO('pgsql:host=ec2-174-129-85-138.compute-1.amazonaws.com port=5432 dbname=sdr user=postgres password=atlas');
+		$this->dbHandle = new PDOTester('pgsql:host=ec2-174-129-85-138.compute-1.amazonaws.com port=5432 dbname=sdr user=postgres password=atlas');
 		//$this->dbHandle = new PDO('pgsql:host=localhost port=5432 dbname=postgres user=postgres password=postgres');
 		
 	}
@@ -190,20 +190,32 @@ class SDRServices {
 	
 	
 	public function searchForName($name,$limit=10,$offset=0) {
+		//$time_start = microtime_float();
+		$conn = pg_pconnect("host=ec2-174-129-85-138.compute-1.amazonaws.com port=5432 dbname=sdr user=postgres password=atlas");
+		$result = pg_query_params($conn, "select ns.*, n.scientific_name ".
+			"from name_summary as ns inner join scientific_name as n on ns.name_fk=n.id ".
+			"where n.scientific_name like $1  order by n.scientific_name limit $2 offset $3",array($name.'%',$limit,$offset));
 		
+		return pg_fetch_all($result);
 
+		
 		
 	    $stmt = $this->dbHandle->prepare("select ns.*, n.scientific_name ".
 			"from name_summary as ns inner join scientific_name as n on ns.name_fk=n.id ".
-			"where n.scientific_name like :param limit :limit offset :offset");
-	    $name = $name . "%";
-	    $stmt->bindParam(':param', $name); 
-		$stmt->bindParam(':limit', $limit); 
-		$stmt->bindParam(':offset', $offset); 
-	    $stmt->execute();
+			"where n.scientific_name like :param  order by n.scientific_name limit 10 offset 0");
+	    //$name = $name . "%";
+	    $stmt->bindParam(':param', $name, PDO::PARAM_STR,255); 
+		//$stmt->bindParam(':limit', $limit2, PDO::PARAM_INT); 
+		//$stmt->bindParam(':offset', $offset2, PDO::PARAM_INT); 
+		
+		//return($stmt->getSQL(array(':param' => $name.'%')) );
+		
+	    $stmt->execute(array(':param' => $name.'%'));
 	    
 	    
-	    return $stmt->fetchAll(PDO::FETCH_ASSOC);		
+	    $lala= $stmt->fetchAll(PDO::FETCH_ASSOC);		
+	    $time_end = microtime_float();
+        return($time_end - $time_start);
 	}
 	
 	
@@ -232,4 +244,105 @@ class SDRServices {
 	}	*/	
 
 }
+
+
+
+
+
+
+
+class PDOTester extends PDO {
+	public function __construct($dsn, $username = null, $password = null, $driver_options = array())
+	{
+		parent::__construct($dsn, $username, $password, $driver_options);
+		$this->setAttribute(PDO::ATTR_STATEMENT_CLASS, array('PDOStatementTester', array($this)));
+	}
+}
+
+class PDOStatementTester extends PDOStatement {
+	const NO_MAX_LENGTH = -1;
+
+	protected $connection;
+	protected $bound_params = array();
+
+	protected function __construct(PDO $connection)
+	{
+		$this->connection = $connection;
+	}
+
+	public function bindParam($paramno, &$param, $type = PDO::PARAM_STR, $maxlen = null, $driverdata = null)
+	{
+		$this->bound_params[$paramno] = array(
+			'value' => &$param,
+			'type' => $type,
+			'maxlen' => (is_null($maxlen)) ? self::NO_MAX_LENGTH : $maxlen,
+			// ignore driver data
+		);
+
+		$result = parent::bindParam($paramno, $param, $type, $maxlen, $driverdata);
+	}
+
+	public function bindValue($parameter, $value, $data_type = PDO::PARAM_STR)
+	{
+		$this->bound_params[$parameter] = array(
+			'value' => $value,
+			'type' => $data_type,
+			'maxlen' => self::NO_MAX_LENGTH
+		);
+		parent::bindValue($parameter, $value, $data_type);
+	}
+
+	public function getSQL($values = array())
+	{
+		$sql = $this->queryString;
+
+		if (sizeof($values) > 0) {
+			foreach ($values as $key => $value) {
+				$sql = str_replace($key, $this->connection->quote($value), $sql);
+			}
+		}
+
+		if (sizeof($this->bound_params)) {
+			foreach ($this->bound_params as $key => $param) {
+				$value = $param['value'];
+				if (!is_null($param['type'])) {
+					$value = self::cast($value, $param['type']);
+				}
+				if ($param['maxlen'] && $param['maxlen'] != self::NO_MAX_LENGTH) {
+					$value = self::truncate($value, $param['maxlen']);
+				}
+				if (!is_null($value)) {
+					$sql = str_replace($key, $this->connection->quote($value), $sql);
+				} else {
+					$sql = str_replace($key, 'NULL', $sql);
+				}
+			}
+		}
+		return $sql;
+	}
+
+	static protected function cast($value, $type)
+	{
+		switch ($type) {
+			case PDO::PARAM_BOOL:
+				return (bool) $value;
+				break;
+			case PDO::PARAM_NULL:
+				return null;
+				break;
+			case PDO::PARAM_INT:
+				return (int) $value;
+			case PDO::PARAM_STR:
+			default:
+				return $value;
+		}
+	}
+
+	static protected function truncate($value, $length)
+	{
+		return substr($value, 0, $length);
+	}
+}
+
+
 ?>
