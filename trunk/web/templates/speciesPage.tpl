@@ -37,7 +37,7 @@
 					    <textarea class="span-17" name="comment" id="comment"></textarea>
 					    <input type="button" class="last commentButtonPost" value="Comment now" onclick="commentAction()"/>	
     			    {else}
-        				<div class="span-12 title_logout">Login or register now for post your comment</div>
+        				<div class="span-12 title_logout"><a href="#" onclick="$('#login_form').modal();return false;">Login</a> or <a href="register.php">register</a> to post your comment</div>
     			    {/if}
 				</div>
 			</form>
@@ -56,6 +56,7 @@
 			<div class="species_details">
 				<div class="title_blue">Species Details</div>
 			    <div class="separator_small"></div>
+			    <div class="text_comment">Sorry, there is still no data available</div>
 			</div>
 			<div class="separator6"></div>
 			<div class="related_species">
@@ -112,6 +113,7 @@
 		so.addVariable("api_key", "ABQIAAAAtDJGVn6RztUmxjnX5hMzjRTb-vLQlFZmc2N8bgWI8YDPp5FEVBTeJc72_716EfYqx-s8UGt88XqC9w");
 		so.addVariable("scientificName", "{/literal}{$scientificName}{literal}");
 		so.addVariable("speciesId", "{/literal}{$speciesId}{literal}");
+		so.addVariable("nub_concept_id", "{/literal}{$nub_concept_id}{literal}");
 		so.write("widgetContainer");
 
 	</script>

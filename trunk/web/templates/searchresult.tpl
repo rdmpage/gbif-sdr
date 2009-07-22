@@ -46,22 +46,10 @@
 			<div class="popular_species">
 				<div class="title_blue">Most popular species</div>
 			    <div class="separator_small"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    {foreach key=id item=species from=$popularSpecies}
+			        <div class="avatar"><a href="speciesPage.php?id={$species.id}&n={$result.scientific_name|escape:"url"}"><img src="/css/images/avatar1.jpg" alt="{$species.scientific_name}" title="{$species.scientific_name}"></a></div>
+			    {/foreach}
+
 			</div>
 		</div>
 	</div>

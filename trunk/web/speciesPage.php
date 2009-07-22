@@ -12,14 +12,15 @@ if (!isset($_REQUEST['id'])) {
 $speciesId=$_REQUEST['id'];
 $speciesName=$_REQUEST['n'];
 
-
-
-
 $services = new SDRServices;
+
+$speciesData = $services->getGbifDetailsByNameId($speciesId);
+
 
 //$data =$services->getItemList(10);
 $smarty->assign('speciesId', $speciesId);
-$smarty->assign('scientificName', $speciesName);
+$smarty->assign('nub_concept_id', $speciesData['nub_concept_id']);
+$smarty->assign('scientificName', $speciesData['scientific_name']);
 $smarty->assign('comments',$services->getComments($speciesId));
 
 

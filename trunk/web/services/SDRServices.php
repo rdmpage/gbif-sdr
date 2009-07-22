@@ -110,8 +110,37 @@ class SDRServices {
 	    
 	}
 	
+	public function getMostPopularSpecies() {
+	    $sql="select num_views,nub_concept_id, scientific_name,id from species_view_stats as svs inner join scientific_name as s on svs.species_fk=s.id order by num_views DESC limit 16";
+		$stmt = $this->dbHandle->prepare($sql);
+	    $stmt->execute(); 
+		return $stmt->fetchAll(PDO::FETCH_ASSOC);	    
+	    
+	    
+	}
+	
+	public function getGbifDetailsByNameId($nameId) {
+	    
+	    //update the species_view_stats
+	    $sql="select update_species_view_stats(:nameId)";
+	    $stmt = $this->dbHandle->prepare($sql);
+	    $stmt->bindParam(':nameId', $nameId);	     
+	    $stmt->execute();
+	    
+	    $sql="select nub_concept_id,scientific_name from scientific_name where id=:nameId";
+		$stmt = $this->dbHandle->prepare($sql);
+	    $stmt->bindParam(':nameId', $nameId); 
+	    $stmt->execute();
+	    
+
+	    
+	    
+		return $stmt->fetch(PDO::FETCH_ASSOC);	    
+	    
+	}
+	
 	public function getNameById($nameId) {
-		$sql="select d.id,resourcename, scientific_name, year_start, year_end, spatial_resolution_fk, record_base_fk, ". 
+		$sql="select d.id,resourcename, scientific_name,nub_concept_id, year_start, year_end, spatial_resolution_fk, record_base_fk, ". 
 		"spatial_accuracy,confidence_by_source,distribution_type_fk ".
 		"from (distribution as d inner join scientific_name as sn on d.name_fk=sn.id) inner join resource as r on d.resource_fk=r.id ".
 		"where name_fk=:nameId";
@@ -138,56 +167,9 @@ class SDRServices {
 		return $sources;
 	}
 	
-	
-	public function getTaxonById($id) {
+	public function getSpeciesDetailsByNameId($speciesId) {
 	    
-	    
-	$sql="select DISTINCT accessexport.redlist_id,accessexport.cms_status_2,accessexport.cms_description,accessexport.external_url,accessexport.scientifiname as name, accessexport.species_id as id,gbif_id,mapsource as source,english, german,spanish,french, null as genus,animalgroup as group, animal_class as classname,migration as migrationtype, cms_status as cms, cms as cms_link, redlist_codes.description as red_list, cites from accessexport left join redlist_codes on accessexport.rl2k_code=redlist_codes.rl2k_id left join species_names on accessexport.species_id=species_names.species_id where accessexport.species_id=:param";	    
-	    $stmt = $this->dbHandle->prepare($sql);
-	    $stmt->bindParam(':param', $id); 
-	    $stmt->execute();	    
-	    
-	    $res= $stmt->fetch(PDO::FETCH_ASSOC);
-	    
-	    $taxon=array();
-	    $taxon['name'] = $res['name'];
-	    $taxon['id'] = (int)$id;
-	    $taxon['gbif_id'] = $res['gbif_id'];
-	    $taxon['source'] = $res['source'];
-	    $taxon['commonNameEnglish'] =$res['english'];
-	    $taxon['commonNameGerman'] = $res['german'];
-	    $taxon['commonNameSpanish'] = $res['spanish'];
-	    $taxon['commonNameFrench'] =$res['french'];
-	    $taxon['genus'] = $res['genus'];
-	    $taxon['group'] = $res['group'];
-	    $taxon['className'] = $res['classname'];
-	    $taxon['migrationType'] =$res['migrationtype'];
-	    $taxon['cms'] =$res['cms'];
-	    $taxon['cms_link'] = $res['cms_link'];
-	    $taxon['red_list'] = $res['red_list'];
-	    $taxon['cites'] =$res['cites'];
-	$taxon['redlist_id'] =$res['redlist_id'];
-	$taxon['cms_status_2'] =$res['cms_status_2'];
-	$taxon['cms_description'] =$res['cms_description'];
-	$taxon['external_url'] =$res['external_url'];	    
-	    $taxon['charts']=array();
-	    
-	    
-	    //$stmt = $this->dbHandle->prepare("select gid,s.monthstart,s.monthend,status, astext((ST_Dump(the_geom)).geom) as the_geom from accessexport as a inner join shapefiles as s on a.shape_id=s.shapefile_id where species_id=:param order by gid");
-	    
-	    $stmt = $this->dbHandle->prepare("select distinct s.monthstart,s.monthend,status from accessexport as a inner join shapefiles as s on a.shape_id=s.shapefile_id where a.species_id=:param");	    
-	    
-	    $stmt->bindParam(':param', $id); 
-	    $stmt->execute();
-	    
-	    
-	    $taxon['charts']= $stmt->fetchAll(PDO::FETCH_ASSOC); 	    
-	    
-	    return $taxon;
-	    
-        
 	}
-	
 	
 	public function searchForName($name,$limit=10,$offset=0) {
 		//$time_start = microtime_float();
@@ -199,7 +181,7 @@ class SDRServices {
 		return pg_fetch_all($result);
 
 		
-		
+		/*
 	    $stmt = $this->dbHandle->prepare("select ns.*, n.scientific_name ".
 			"from name_summary as ns inner join scientific_name as n on ns.name_fk=n.id ".
 			"where n.scientific_name like :param  order by n.scientific_name limit 10 offset 0");
@@ -215,7 +197,7 @@ class SDRServices {
 	    
 	    $lala= $stmt->fetchAll(PDO::FETCH_ASSOC);		
 	    $time_end = microtime_float();
-        return($time_end - $time_start);
+        return($time_end - $time_start); */
 	}
 	
 	
