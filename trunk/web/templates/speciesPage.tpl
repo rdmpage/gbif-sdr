@@ -35,9 +35,7 @@
 					    <textarea class="span-17" name="comment" id="comment"></textarea>
 					    <input type="button" class="last commentButtonPost" value="Comment now" onclick="commentAction()"/>	
     			    {else}
-        				<div class="title_gray">Login now for post your comment</div>
-					    <textarea class="span-17" name="comment" id="comment" disabled="true"></textarea>
-					    <input type="button" class="last commentButtonPost" value="Login first!" disabled="true"/>	 
+        				<div class="span-12 title_logout">Login or register now for post your comment</div>
     			    {/if}
 				</div>
 			</form>
