@@ -1,4 +1,6 @@
-{include file="header.tpl"} 
+{* {include file="header.tpl"}  *}
+{include file="headerGbif.tpl"} 
+
 			<div class="span-5 first separator_lr"></div>
 			<div class="span-14 centerContainer">
 			
@@ -17,4 +19,5 @@
 			
 			</div>
 			<div class="span-5 last separator_lr"></div>
-{include file="footer.tpl"} 
+{* {include file="footer.tpl"}  *}
+{include file="footerGbif.tpl"} 
