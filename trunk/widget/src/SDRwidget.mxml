@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:maps="com.google.maps.*" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#F3F3F3, #DEDEDE]" creationComplete="preInit()">
+
+<mx:Script>
+	<![CDATA[
+		import com.google.maps.controls.ControlPosition;
+		import com.google.maps.controls.ZoomControlOptions;
+		import com.google.maps.MapType;
+		import com.google.maps.LatLng;
+		import com.google.maps.controls.MapTypeControl;
+		import com.google.maps.controls.ZoomControl;
+		
+		[Bindable]
+		public var scientificName:String;
+		
+		private function preInit():void {
+			scientificName=parameters.scientificName;
+		}
+		
+		
+		private function init():void {
+			var zco:ZoomControlOptions=new ZoomControlOptions({
+				position: new ControlPosition(ControlPosition.ANCHOR_TOP_LEFT, 12, 12),
+				hasScrollTrack: false
+			});
+			var zc:ZoomControl = new ZoomControl(zco);
+			map.addControl(zc);
+			
+			map.addControl(new MapTypeControl());
+			map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
+		}
+	]]>
+</mx:Script>
+
+	<mx:Canvas left="7" right="7" bottom="30" top="55" borderColor="#6D6D6D" borderStyle="solid">
+		<maps:Map id="map" key="{parameters.api_key}" width="100%" height="100%" mapevent_mapready="init()" />
+	</mx:Canvas>
+	<mx:Button y="15" label="fullscreen" fontWeight="normal" right="10" width="79"/>
+	<mx:Button label="sources" fontWeight="normal" right="11" width="79" bottom="4"/>
+	<mx:Button label="export" fontWeight="normal" bottom="5" left="10" width="79"/>
+	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="97" width="114"/>
+	<mx:Image source="@Embed('/assets/pumaConcolor.png')" left="7" top="5"/>
+	<mx:HBox y="6" left="56" right="97" verticalAlign="bottom" horizontalGap="3">
+		<mx:Label text="{scientificName}" fontFamily="Georgia" fontStyle="italic" fontSize="20" fontWeight="normal" color="#393939"/>
+		<mx:Label text="updated 2 months ago" color="#878787"/>
+	</mx:HBox>
+</mx:Application>
