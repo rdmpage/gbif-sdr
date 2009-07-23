@@ -1,6 +1,12 @@
 body {
-	background-color: #cccccc;
-	background-image: none;
+	background-image: url(/images/marginhack.jpg);
+	background-repeat: repeat-y;
+	background-position: center;
+}
+
+
+#gbif{
+
 }
 
 
@@ -127,19 +133,6 @@ table.log div.hide {
 	width: 440px;
 	margin-top: 10px;
 	margin-bottom: 0px;
-}
-
-
-.noti{
-	width: 219px;
-	margin-top: 10px;
-	padding-top: 5px;
-	padding-bottom: 10px;	
-	margin-left: 10px;
-}
-
-.noti.hasBorder{
-	border-right: #d6d6d6 1px dotted;
 }
 
 .noti a, .noti a:visited, .footer a, .footer a:visited{
