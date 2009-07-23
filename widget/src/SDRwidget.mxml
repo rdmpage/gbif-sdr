@@ -13,6 +13,9 @@
 
 <mx:Script>
 	<![CDATA[
+		import com.google.maps.Color;
+		import org.gbif.maps.CustomWMSTileLayerOverlay;
+		import org.gbif.maps.CustomWMSTileLayer;
 		import com.google.maps.MapEvent;
 		import mx.collections.ArrayCollection;
 		import com.google.maps.interfaces.IPane;
@@ -107,12 +110,26 @@
 			
 			
 			//Add GBIF layer
-			var ctlgbif:CustomTileLayer= new CustomTileLayer("http://maps3.eol.org/php/map/getEolTile.php?tile=|X|_|Y|_|Z|_"+parameters.nub_concept_id,"",23);
+			var ctlgbif:CustomTileLayer= new CustomTileLayer("http://maps|N|.eol.org/php/map/getEolTile.php?tile=|X|_|Y|_|Z|_"+parameters.nub_concept_id,"",23);
 			var ctlo:CustomTileLayerOverlay = new CustomTileLayerOverlay(ctlgbif);
 			ctlgbif.ctlo=ctlo;
 			ctlo.foreground.alpha=0.7;
 			//BindingUtils.bindProperty(mapCanvas.discretLoading,"visible",ctlo,"numRunningRequest");
 			map.addOverlay(ctlo);			
+			
+			
+			//add one fake layer
+			var ctlwms:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,2,Color.RED);		
+			var ctlo2:CustomWMSTileLayerOverlay = new CustomWMSTileLayerOverlay(ctlwms);
+			ctlwms.ctlo = ctlo2;
+			ctlo2.foreground.alpha=0.9;
+			
+			//BindingUtils.bindProperty(mapCanvas.discretLoading,"visible",ctlo,"numRunningRequest");
+			
+			//ctloDic[speciesId]=ctlo;
+			map.addOverlay(ctlo2);	
+			
+			
 			
 		}
 		

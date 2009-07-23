@@ -21,14 +21,16 @@ package org.gbif.maps
 	    private var offset:Number=16777216;
 	    private var radius:Number=offset / Math.PI; 		
 		private var speciesId:Number;
+		private var resource_id:Number;
 		private var colorizeColor:Number;
 		
 		
 		public var ctlo:CustomWMSTileLayerOverlay;
 		
-		public function CustomWMSTileLayer(speciesId:Number,colorizeColor:Number=NaN)
+		public function CustomWMSTileLayer(speciesId:Number,resource_id:Number,colorizeColor:Number=NaN)
 		{
 				this.speciesId=speciesId;
+				this.resource_id=resource_id;
 				this.colorizeColor= colorizeColor;
 			
 			var copyrightCollection:CopyrightCollection = new CopyrightCollection();
@@ -67,7 +69,7 @@ package org.gbif.maps
            	var UR:LatLng = new LatLng(YToL(zoomLevel,tileIndexUR.y),XToL(zoomLevel,tileIndexUR.x));
            	bbox =  dd2MercMetersLng(LL.lngRadians())+","+dd2MercMetersLat(LL.latRadians()) + "," + dd2MercMetersLng(UR.lngRadians())+","+dd2MercMetersLat(UR.latRadians());
           	
-           	tileUrl = "http://ec2-67-202-26-58.compute-1.amazonaws.com/groms/wmsproxy.php?species_id="+speciesId+"&x=|X|&y=|Y|&z=|Z|&bbox=" + bbox;
+           	tileUrl = "http://ec2-174-129-85-138.compute-1.amazonaws.com/wmsproxy.php?resource_id="+resource_id+"&species_id="+speciesId+"&x=|X|&y=|Y|&z=|Z|&bbox=" + bbox;
            	
            	tileUrl = tileUrl.replace("|X|",tile.x);	
            	tileUrl = tileUrl.replace("|Y|",tile.y);	
