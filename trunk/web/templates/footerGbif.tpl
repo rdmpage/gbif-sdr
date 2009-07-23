@@ -1,11 +1,11 @@
 		<div class="span-24 last">
 			<div class="span-24 last footer_notices">
 				<div class="span-6 noti hasBorder">
-					<div class="title_notice"><a href="#">Do you need help?</a></div>
-					<div class="noti_sub">Visit our Frequently Asked Questions or contact us</div>
+					<div class="title_notice"><a href="/faq.php">Do you need help?</a></div>
+					<div class="noti_sub">Visit our Frequently Asked Questions or <a href="mailto:sdr@gbif.org">contact us</a></div>
 				</div>
 				<div class="span-6 noti hasBorder"> 
-					<div class="title_notice"><a href="#">About the project</a></div>
+					<div class="title_notice"><a href="/about.php">About the project</a></div>
 					<div class="noti_sub">All the information about the Species Distribution Repository</div>
 				</div>
 				<div class="span-6 noti hasBorder">					
