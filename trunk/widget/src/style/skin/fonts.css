@@ -1,0 +1,12 @@
+/* CSS file */
+@font-face {
+    src:url("DINOT-Medium.swf");
+    fontFamily: "DINOT-Medium";
+    font-weight: normal;
+}   
+
+@font-face {
+    src:url("DINOT-Bold.swf");
+    fontFamily: "DINOT-Bold";
+    font-weight: normal;
+}   

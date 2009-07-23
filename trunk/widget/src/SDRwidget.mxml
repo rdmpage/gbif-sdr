@@ -3,6 +3,7 @@
 
 <mx:Script>
 	<![CDATA[
+		import mx.collections.ArrayCollection;
 		import com.google.maps.interfaces.IPane;
 		import org.gbif.maps.CustomTileLayerOverlay;
 		import org.gbif.maps.CustomTileLayer;
@@ -21,9 +22,14 @@
 		[Bindable]
 		public var numOccurrences:String;
 		
+		[Bindable]public var mapTypes:ArrayCollection = new ArrayCollection([ {label:"TERRAIN"}, 
+															                  {label:"MAP"}, 
+															                  {label:"SATELLITE"},
+															                  {label:"HYBRID"} ]);
+
+		
 		private function preInit():void {
 			scientificName=parameters.scientificName;
-
 
 			//Get the number of records in GBIF for this taxonId
 			var httpSrv:HTTPService=new HTTPService();
@@ -51,10 +57,10 @@
 				position: new ControlPosition(ControlPosition.ANCHOR_TOP_LEFT, 12, 12),
 				hasScrollTrack: false
 			});
-			var zc:ZoomControl = new ZoomControl(zco);
-			map.addControl(zc);
+			/* var zc:ZoomControl = new ZoomControl(zco);
+			map.addControl(zc); */
 			
-			map.addControl(new MapTypeControl());
+			/* map.addControl(new MapTypeControl()); */
 			map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
 			
 			
@@ -68,29 +74,73 @@
 			map.addOverlay(ctlo);			
 			
 		}
+		
+		private function onZoomSliderChange():void {
+			map.setZoom(zoomSlider.value);
+		}
+		private function zoomIn():void {
+			zoomSlider.value++;
+			map.setZoom(map.getZoom()+1);
+		}
+		private function zoomOut():void {
+			zoomSlider.value--; 
+			map.setZoom(map.getZoom()-1);
+		}
+		
+		private function onChangeMapType(ev: Event):void {
+			
+			switch ( ev.currentTarget.selectedItem.label ) {
+				case 'MAP':
+					map.setMapType(MapType.NORMAL_MAP_TYPE);
+				break; 
+				case 'TERRAIN':
+					map.setMapType(MapType.PHYSICAL_MAP_TYPE);
+				break; 
+				case 'HYBRID':
+					map.setMapType(MapType.HYBRID_MAP_TYPE);
+				break;
+				case 'SATELLITE':
+					map.setMapType(MapType.SATELLITE_MAP_TYPE);
+				break;
+			} 
+		}
+		
 	]]>
 </mx:Script>
 
-	<mx:Canvas left="7" right="7" bottom="30" top="55" borderColor="#6D6D6D" borderStyle="solid">
+	<mx:Style source="style/skin/widget.css"/>
+	<mx:Style source="style/skin/ui.css"/>
+
+	<mx:Canvas left="7" right="7" bottom="35" top="55" borderColor="#6D6D6D" borderStyle="solid">
 		<maps:Map id="map" key="{parameters.api_key}" width="100%" height="100%" mapevent_mapready="init()" />
+		<mx:HBox left="10" horizontalGap="0" top="10" verticalAlign="middle" paddingLeft="3" paddingRight="6" height="21" horizontalAlign="center"
+			backgroundColor="#9BBD88" cornerRadius="3" borderStyle="solid" backgroundAlpha="0.75" borderColor="#86898B">
+			<mx:Label text="zoom" width="35" fontFamily="Arial" color="#393939" fontSize="11" height="19"/>
+			<mx:Button styleName="btnZoomMinus" click="zoomOut()" height="14" width="14"
+				mouseChildren="false" buttonMode="true" useHandCursor="true"/>
+			<mx:HSlider id="zoomSlider" minimum="0" maximum="16" snapInterval="1" tickInterval="1" 
+				liveDragging="true" value="2" styleName="zoomSlider" change="onZoomSliderChange()"/>
+			<mx:Button styleName="btnZoomMore" click="zoomIn()" height="14" width="14"
+				mouseChildren="false" buttonMode="true" useHandCursor="true"/>
+		</mx:HBox>
+		<mx:ComboBox id="mapType" left="250" top="10" height="21" dataProvider="{mapTypes}" change="onChangeMapType(event)"/>
 	</mx:Canvas>
-	<mx:Button label="fullscreen" right="7" width="79" top="5"/>
-	<mx:Button label="sources" fontWeight="normal" right="7" width="79" bottom="5"/>
-	<mx:Button label="Follow this distribution" bottom="5" left="7"/>
-	<mx:Button label="export" fontWeight="normal" bottom="5" left="172" width="79"/>
-	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="267" width="114"/>
+	<mx:Button label="view fullscreen" right="7" top="5" fontSize="12"/>
+	<mx:Button label="sources" fontWeight="normal" right="7" width="79" bottom="5" fontSize="12"/>
+	<mx:Button label="follow this distribution2" bottom="5" left="7" fontSize="12"/>
+	<mx:Button label="export" fontWeight="normal" bottom="5" left="185" width="79" fontSize="12"/>
+	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="270" width="121" fontSize="12"/>
 	<mx:Image source="@Embed('assets/pumaConcolor.png')" left="7" top="5"/>
-	<mx:HBox y="6" left="56" right="97" verticalAlign="bottom" horizontalGap="3">
+	<mx:HBox y="6" left="56" right="134" verticalAlign="bottom" horizontalGap="3">
 		<mx:Label text="{scientificName}" fontFamily="Georgia" fontStyle="italic" fontSize="20" fontWeight="normal" color="#393939"/>
 		<mx:Label text="updated 2 months ago" color="#878787"/>
 	</mx:HBox>
 	<mx:NumberFormatter id="nf" useThousandsSeparator="true" />
-	<mx:HBox y="31" left="56" right="97" horizontalGap="1" color="#585858">
+	<mx:HBox y="31" left="56" right="134" horizontalGap="1" color="#585858">
 		<mx:Label text="3" width="38" color="#595959" textAlign="right"/>
 		<mx:Label text="sources" color="#595959"/>
 		<mx:Label text="|" width="16" color="#595959"/>
 		<mx:Label text="{numOccurrences}" color="#595959"/>
 		<mx:Label text="occurrences in GBIF" color="#595959"/>
 	</mx:HBox>
-	<mx:Style source="style/widget.css"/>
 </mx:Application>
