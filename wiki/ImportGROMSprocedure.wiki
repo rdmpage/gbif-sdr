@@ -7,7 +7,7 @@ The following page describe the process used to import the data from the GROMS D
 
 In GROMS DB
 {{{
-create table temp as select gbif_id as temp_gbif_name_id from species_names as sn inner join accessexport as a on sn.species_id=a.species_id where gbif_id is not null;
+create table temp as select gbif_id as temp_gbif_name_id,sn.scientifiname as scientific_name from species_names as sn inner join accessexport as a on sn.species_id=a.species_id where gbif_id is not null;
 
 COPY temp TO '/tmp/groms_nub_concepts_ids.txt';
 
@@ -31,7 +31,8 @@ psql -hlocalhost -dsdr -Upostgres < temp_dist_units.sql
 
 CREATE TABLE temp_groms_gbif_names_ids
 (
-   nub_concept_id integer
+   nub_concept_id integer,
+   scientific_name character varying(255)
 ) WITH (OIDS=FALSE)
 ;
 COPY temp_groms_gbif_names_ids FROM '/tmp/groms_nub_concepts_ids.txt';
