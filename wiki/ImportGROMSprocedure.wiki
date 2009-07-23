@@ -1,0 +1,21 @@
+= Introduction =
+
+The following page describe the process used to import the data from the GROMS DB into SDR. This procedure will need to be automated through the use of scripts, so this will be the basis for something like this.
+
+
+1. Generate a list of nub_concept_ids fro which GROMS has distribution data. This will be used to import into the distribution table:
+
+In GROMS DB
+{{{
+create table temp as select gbif_id as temp_gbif_name_id from species_names as sn inner join accessexport as a on sn.species_id=a.species_id where gbif_id is not null;
+
+COPY temp TO '/tmp/groms_nub_concepts_ids.txt';
+
+drop table temp;
+}}}
+
+2. Export the geometries table with related metadata into a dump, creating first a temp table.
+
+{{{
+
+}}}
