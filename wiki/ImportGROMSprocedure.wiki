@@ -49,3 +49,17 @@ null as spatial_accuracy, null as confidence_by_source, 2 as distribution_type_f
  from temp_groms_gbif_names_ids as t inner join scientific_name as s on t.nub_concept_id=s.nub_concept_id
 
 }}}
+
+5. Import the distribution units 
+{{{
+insert into distribution_unit(occurrence_status_fk,start_day_in_year,end_day_in_year,distribution_fk,nativeness_fk,life_stage_fk,interpreted_geom)
+select occurrence_status_fk,start_day_in_year,end_day_in_year, d.id as distribution_fk,nativeness_fk,null as life_stage_fk,interpreted_geom from temp_dist_units as tdu inner join scientific_name as sn on tdu.temp_gbif_name_id=sn.nub_concept_id inner join distribution as d on sn.id=d.name_fk and d.resource_fk=2
+
+}}}
+
+6. Clean tables
+
+{{{
+drop table temp_dist_units;
+drop table temp_groms_gbif_names_ids;
+}}}
