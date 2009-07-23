@@ -5,7 +5,7 @@
 	<div class="span-18">
 		<div class="span-18 column headerComments">
 			<div class="span-15 title_blue">About</div>
-			We are currently working on this page. Come back soon for updates.
+			<div class="span-24 column textgbif">We are currently working on this page. Come back soon for updates.</div>
 		</div>
 	</div>
 </div>
