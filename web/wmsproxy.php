@@ -37,6 +37,10 @@ header( "content-length:" .strlen($data) );
 
 echo $data;	
 
-file_put_contents("cache/$savefile", $data);
+//only cache if the zoom level is smaller than 7
+if ($_REQUEST['z']<7) {
+    file_put_contents("cache/$savefile", $data);
+}
+
 
 ?>
