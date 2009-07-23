@@ -89,7 +89,7 @@
 	</div>
 
 
-	<div class="container showgrid">
+	<div class="container">
 		<div class="span-24 last headerContainer">
 			<a href="/"><div class="span-1 last headerLogo"></div></a>
 			<div class="span-1 last headerList">
