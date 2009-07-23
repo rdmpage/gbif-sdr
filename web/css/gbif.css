@@ -4,14 +4,7 @@ body {
 	background-position: center;
 }
 
-
-#gbif{
-
-}
-
-
 img.logoImg{
-	margin-left: 10px;		
 }
 
 .headerSign{
@@ -27,18 +20,15 @@ div.login_sign {
 .footer{
 	background-color: #e6e6e6;
 	color: #999999;
-	margin-top: 10px;
-	margin-left: 10px;
 	margin-bottom: 10px;
 	height: 30px;
-	width: 930px;
+	width: 950px;
 	text-align: center;
 	padding-top: 20px;
 }
 
 div#wrapper {
 	background-color: #ffffff;
-	margin-top: 20px;
 	margin-bottom: 30px;
 }
 
@@ -53,9 +43,10 @@ div.separator{
 }
 
 div#menu {
-	margin:10px;
+	margin-top: 10px;
 	height: 50px;
 	background-color: #eeeeee;
+	width: 950px;
 }
 
 div#menu ul {
