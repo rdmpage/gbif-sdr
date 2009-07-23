@@ -189,23 +189,6 @@ Button.breadCrumbButton{
 	paddingBottom: 1; 	
 }
 
-Button.breadCrumbButtonClose{
-	up-skin: Embed(source="ui.swf",symbol="breadCrumbClose_up");	
-	over-skin: Embed(source="ui.swf",symbol="breadCrumbClose_over");	
-	down-skin: Embed(source="ui.swf",symbol="breadCrumbClose_over");	
-	disabled-skin: Embed(source="ui.swf",symbol="breadCrumb_actual_up");	
-	color: #375381;
-	text-roll-over-color: #FFFFFF;
-	text-selected-color: #FFFFFF;
-	font-family: "DINOT-Medium";
-	font-size: 12;
-	font-weight: normal;
-	padding-top: 4;
-	disabledColor: #6C88B6;
-	paddingRight: 24;
-	paddingLeft: 15;
-	paddingBottom: 1; 	
-}
 
 Button.invisibleButton{
 	skin: ClassReference(null);	
@@ -222,14 +205,7 @@ Button.invisibleButton{
 	paddingBottom: 0; 	
 }
 
-Button.invisibleButtonDos{
-	up-skin: Embed(source="ui.swf",symbol="invisibleButtonDos");	
-	over-skin: Embed(source="ui.swf",symbol="invisibleButtonDos");	
-	down-skin: Embed(source="ui.swf",symbol="invisibleButtonDos");	
-	selected-up-skin: Embed(source="ui.swf",symbol="invisibleButtonDos");	
-	selected-over-skin: Embed(source="ui.swf",symbol="invisibleButtonDos");	
-	selected-down-skin: Embed(source="ui.swf",symbol="invisibleButtonDos");	
-}
+
 
 Button.btnMiniTab{
 	up-skin: Embed(source="ui.swf",symbol="miniTab_up");	

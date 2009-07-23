@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="none" borderThickness="0" xmlns:components="org.gbif.components.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			[Bindable] public var legend: Array = new Array();
+			[Bindable] public var sourceData: Object = new Object();
+		]]>
+	</mx:Script>
+	
+	
+	<mx:Canvas width="54" height="54" backgroundColor="0xFFFFFF" borderStyle="solid" borderColor="#C8C8C8">
+		<mx:Image width="52" height="52" source="@Embed('/assets/2.jpg')" verticalCenter="0" horizontalCenter="0"/>
+	</mx:Canvas>	
+	<mx:Label text="{sourceData.name}" x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
+	<mx:Label x="60" y="19" text="{sourceData.numPolygons} polygons" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
+	<mx:CheckBox x="64" y="42" label="Showing" fontSize="10" fontStyle="normal" selected="true" enabled="true"/>
+	
+	<!--LEGEND-->
+	<mx:VBox y="70" x="7" paddingBottom="10">
+		<mx:HBox horizontalGap="12">
+			<mx:Label text="LEGEND" width="50" fontFamily="DINOT-Medium" color="#999999" textAlign="right" height="20"/>
+			<mx:VBox verticalGap="-5" verticalAlign="top">
+				<mx:Repeater id="legendRepeater" dataProvider="{legend}">
+					<mx:HBox verticalAlign="middle" horizontalGap="-1">
+						<components:Circle data="{legendRepeater.currentItem.statusID}" />		
+						<mx:Label text="{(legendRepeater.currentItem.statusName=='none')?'unknown':legendRepeater.currentItem.statusName}" fontFamily="DINOT-Medium" fontSize="12" color="#999999"/>				
+					</mx:HBox>
+				</mx:Repeater>
+			</mx:VBox>		
+		</mx:HBox>		
+		<mx:HBox horizontalGap="12">
+			<mx:Label text="CITATION" fontFamily="DINOT-Medium" color="#999999" textAlign="right" width="50"/>
+			<mx:Label text="view citation"  textDecoration="underline" color="#464646" fontSize="10" fontFamily="DINOT-Medium"/>
+		</mx:HBox>
+	</mx:VBox>
+	<mx:Image scaleContent="false" bottom="0" source="@Embed('/assets/hRuleDashed500.png')" width="100%"/>
+</mx:Canvas>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="5" height="5">
+	<mx:Script>
+		<![CDATA[
+			
+			public var colorizeNum:Number; 
+			
+			public override function set data (value: Object):void {
+				graphics.clear();
+                graphics.beginFill(0xFF8800);
+                graphics.drawCircle(0, 2.7, 3.5);
+			}
+		]]>
+	</mx:Script>
+</mx:Canvas>
