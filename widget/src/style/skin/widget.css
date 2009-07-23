@@ -1,0 +1,36 @@
+/* CSS file */
+
+Button {
+	fontWeight: normal;
+	cornerRadius: 0;
+	color: #797979;
+	themeColor: #000000;
+}
+ComboBox {
+	cornerRadius: 3;
+	fillAlphas: 0.75, 0.75, 0.75, 0.75;
+	dropdownStyleName: comboBoxDropdown;
+	themeColor: #A3A3A3;
+	fillColors: #9BBD88, #9BBD88;
+	color: #FFFFFF;
+	textSelectedColor: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+	borderColor: #A3A3A3;
+	iconColor: #FFFFFF;
+	selectionColor: #9BBD88;
+}
+.comboBoxDropdown {
+	color: #FFFFFF;
+	borderColor: #A3A3A3;
+	backgroundAlpha: 0.75;
+	backgroundDisabledColor: #E4E4E4;
+	backgroundSelectedColor: #9BBD88;
+	alternatingItemColors: #9BBD88, #9BBD88;
+	rollOverColor: #9BBD88;
+	selectionColor: #9BBD88;
+	verticalScrollBarStyleName: listBaseVerticalScrollBar;
+	selectionDisabledColor: #838080;
+	cornerRadius: 0;
+	textRollOverColor: #FFFFFF;
+	textSelectedColor: #FFFFFF;
+}
