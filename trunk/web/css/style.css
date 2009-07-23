@@ -27,9 +27,6 @@
 #simplemodal-container #basicModalContent {
 }
 
-
-
-
 /* LOGIN */
 
 input.login { 
@@ -854,6 +851,14 @@ a.ultimo{
 .lista{
 	color: gray;
 	text-decoration: none;
+}
+
+.textgbif{
+	font-family: "Arial";
+	font-size: 14px;
+	color: #999999;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 /* botones */ 
