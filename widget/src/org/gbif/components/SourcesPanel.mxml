@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="250" height="100%" backgroundColor="#F0F0F0">
+	
+	
+	<!--HEADER-->
+	<mx:Label text="Select your" top="10" left="10" fontFamily="DINOT-Bold" color="#999999" fontSize="13"/>
+	<mx:Label text="preferred data sources" top="25" left="10" fontSize="17" fontFamily="Georgia" fontStyle="italic" fontWeight="bold" color="#9DB7D2"/>
+	<mx:Button label="x" right="5" top="5" fontSize="10" width="18" height="18"/>
+	<mx:Image scaleContent="false" left="10" right="10" y="60">
+		<mx:source>@Embed('/assets/hRuleDashed500.png')</mx:source>
+	</mx:Image>
+	
+	<!--GBIF-->
+	<mx:Canvas left="10" right="10" y="70" height="64" borderStyle="none" borderThickness="0">
+		<mx:Canvas width="54" height="54" backgroundColor="0xFFFFFF" borderStyle="solid" borderColor="#C8C8C8">
+			<mx:Image width="52" height="52" source="@Embed('/assets/1.jpg')" verticalCenter="0" horizontalCenter="0"/>
+		</mx:Canvas>	
+		<mx:Label text="GBIF.org"  x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
+		<mx:Label x="60" y="19" text="123.123 registers" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
+		<mx:CheckBox x="64" y="41" label="Showing" fontSize="10" fontStyle="normal" selected="true" enabled="true"/>
+		<mx:Image scaleContent="false" bottom="0" source="@Embed('/assets/hRuleDashed500.png')" right="0" left="0"/>
+		<mx:Image x="125.35" y="43" height="10" width="26" source="@Embed('/assets/gbifSources.jpg')"/>
+	</mx:Canvas>
+	
+	<!--OTHERS-->
+	<!--Create one repeater with real data-->
+	<mx:Canvas left="10" right="10" y="144" height="177" borderStyle="none" borderThickness="0">
+		<mx:Canvas width="54" height="54" backgroundColor="0xFFFFFF" borderStyle="solid" borderColor="#C8C8C8">
+			<mx:Image width="52" height="52" source="@Embed('/assets/2.jpg')" verticalCenter="0" horizontalCenter="0"/>
+		</mx:Canvas>	
+		<mx:Label text="GROMS.de" x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
+		<mx:Label x="60" y="19" text="26 polygons" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
+		<mx:CheckBox x="64" y="41" label="Showing" fontSize="10" fontStyle="normal" selected="true" enabled="true"/>
+		
+		<!--LEGEND-->
+		<mx:Label text="LEGEND" x="10" y="62" fontFamily="DINOT-Medium" color="#999999" textAlign="right"/>
+		
+		
+		<mx:Image scaleContent="false" bottom="0" source="@Embed('/assets/hRuleDashed500.png')" right="0" left="0"/>
+		<mx:Label text="CITATION" x="5" y="103" fontFamily="DINOT-Medium" color="#999999" textAlign="right"/>
+	</mx:Canvas>
+	
+	
+	
+</mx:Canvas>
