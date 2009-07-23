@@ -101,11 +101,11 @@
 			</div>
 			<div class="span-24 menuContainer" id="menu">
 				<ul>
-					<li><a href="/">Home</a></li>
-  					<li><a href="browse.php">Browse</a></li>
-  					<li><a href="contribute.php">Contribute</a></li>
-  					<li><a href="api.php">API/Developers</a></li>
-  					<li><a href="about.php">About</a></li>
+					<li><a {if $section eq "home"} class="current"{/if} href="/">Home</a></li>
+  					<li><a {if $section eq "browse"} class="current"{/if} href="browse.php">Browse</a></li>
+  					<li><a {if $section eq "contribute"} class="current"{/if} href="contribute.php">Contribute</a></li>
+  					<li><a {if $section eq "api"} class="current"{/if} href="api.php">API/Developers</a></li>
+  					<li><a {if $section eq "about"} class="current"{/if} href="about.php">About</a></li>
 				</ul>
 			</div>
 		</div>
