@@ -17,7 +17,8 @@ $services = new SDRServices;
 $speciesData = $services->getGbifDetailsByNameId($speciesId);
 
 
-//$data =$services->getItemList(10);
+
+$smarty->assign('popularSpecies', $services->getMostPopularSpecies(4));
 $smarty->assign('speciesId', $speciesId);
 $smarty->assign('nub_concept_id', $speciesData['nub_concept_id']);
 $smarty->assign('scientificName', $speciesData['scientific_name']);

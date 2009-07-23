@@ -47,10 +47,7 @@
 	        <div class="contributors">
 				<div class="title_blue">Contributors</div>
 				<div class="separator_small"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    <div class="avatar"><img src="/images/sources/1.jpg"></div>
 			</div>
 			<div class="separator6"></div>		
 			<div class="species_details">
@@ -60,12 +57,11 @@
 			</div>
 			<div class="separator6"></div>
 			<div class="related_species">
-			<div class="title_blue">Related Species</div>
+			<div class="title_blue">Popular Species</div>
 			    <div class="separator_small"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
-			    <div class="avatar"><img src="/css/images/avatar1.jpg"></div>
+			    {foreach key=id item=species from=$popularSpecies}
+			        <div class="avatar"><a href="speciesPage.php?id={$species.id}&n={$species.scientific_name|escape:"url"}"><img src="/flickrImage.php?q={$species.scientific_name|escape:"url"}" alt="{$species.scientific_name}" title="{$species.scientific_name}" width="51" height="52"></a></div>
+			    {/foreach}
 				<a href="" class="view_more">view more</a>
 			</div>		
 		</div>

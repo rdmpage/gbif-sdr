@@ -87,7 +87,7 @@
 	<div class="span-24" id="wrapper">
 		<div class="span-24" id="header">
 			<div class="span-20">
-				<img class="logoImg" src="/images/logogbif.jpg">
+				<a href="/"><img class="logoImg" src="/images/logogbif.jpg"></a>
 			</div>
 			<div class="headerSign">
 			    <div id="loginDiv" class="login_sign">
@@ -101,6 +101,7 @@
 			</div>
 			<div class="span-24 menuContainer" id="menu">
 				<ul>
+					<li><a href="/">Home</a></li>
   					<li><a href="browse.php">Browse</a></li>
   					<li><a href="contribute.php">Contribute</a></li>
   					<li><a href="api.php">API/Developers</a></li>

@@ -110,9 +110,10 @@ class SDRServices {
 	    
 	}
 	
-	public function getMostPopularSpecies() {
-	    $sql="select num_views,nub_concept_id, scientific_name,id from species_view_stats as svs inner join scientific_name as s on svs.species_fk=s.id order by num_views DESC limit 16";
+	public function getMostPopularSpecies($limit) {
+	    $sql="select num_views,nub_concept_id, scientific_name,id from species_view_stats as svs inner join scientific_name as s on svs.species_fk=s.id order by num_views DESC limit :limit";
 		$stmt = $this->dbHandle->prepare($sql);
+		$stmt->bindParam(':limit', $limit);	  
 	    $stmt->execute(); 
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);	    
 	    
