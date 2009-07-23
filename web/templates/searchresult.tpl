@@ -10,7 +10,7 @@
 			
 			{foreach key=name_fk item=result from=$results}
 			<div class="span-18 result">
-				<div class="span-2 last avatar2"></div>
+				<div class="span-2 last avatar2"><img src="/flickrImage.php?q={$result.scientific_name|escape:"url"}" width="51" height="52" /></div>
 					<div class="span-16 last">
 						<div class="span-11 column">
 							<div class="span-11 last title_result"><a href="speciesPage.php?id={$result.name_fk}&n={$result.scientific_name|escape:"url"}">{$result.scientific_name}</a></div>
@@ -47,7 +47,7 @@
 				<div class="title_blue">Most popular species</div>
 			    <div class="separator_small"></div>
 			    {foreach key=id item=species from=$popularSpecies}
-			        <div class="avatar"><a href="speciesPage.php?id={$species.id}&n={$result.scientific_name|escape:"url"}"><img src="/css/images/avatar1.jpg" alt="{$species.scientific_name}" title="{$species.scientific_name}"></a></div>
+			        <div class="avatar"><a href="speciesPage.php?id={$species.id}&n={$species.scientific_name|escape:"url"}"><img src="/flickrImage.php?q={$species.scientific_name|escape:"url"}" alt="{$species.scientific_name}" title="{$species.scientific_name}" width="51" height="52"></a></div>
 			    {/foreach}
 
 			</div>
