@@ -17,7 +17,7 @@
 	<!--HEADER-->
 	<mx:Label text="Select your" top="10" left="10" fontFamily="DINOT-Bold" color="#999999" fontSize="13"/>
 	<mx:Label text="preferred data sources" top="25" left="10" fontSize="17" fontFamily="Georgia" fontStyle="italic" fontWeight="bold" color="#9DB7D2"/>
-	<mx:Button label="x" right="10" top="10" fontSize="10" width="18" height="18" click="{Application.application.currentState = ''}"/>
+	<mx:Button label="x" top="10" fontSize="10" height="18" click="{Application.application.currentState = ''}" left="200" width="20"/>
 	<mx:Image scaleContent="false" left="10" right="10" y="60">
 		<mx:source>@Embed('/assets/hRuleDashed500.png')</mx:source>
 	</mx:Image>
