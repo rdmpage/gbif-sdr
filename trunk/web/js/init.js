@@ -87,7 +87,7 @@ function logout(){
     	data: dataObj,
     	cache: false,
     	success: function(result){
-    		$("#commentArea").html('<div class="span-12 title_logout">Login or register now for post your comment</div>');
+    		$("#commentArea").html('<div class="span-12 title_logout"><a href="#" onclick="$('#login_form').modal();return false;">Login</a> or <a href="register.php">register</a> to post your comment</div>');
             $("#loginDiv").html('<a id="login_link" href="#">Login</a> or <a href="register.php">Sign up!</a>');
             $("#login_link").click(function(){
                 $('#login_form').modal();
