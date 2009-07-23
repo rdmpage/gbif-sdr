@@ -4,9 +4,6 @@ body {
 	background-position: center;
 }
 
-img.logoImg{
-}
-
 .headerSign{
 	float: right;
 	background-image: none;
@@ -148,4 +145,13 @@ table.log div.hide {
 
 .title_blue{ 
 	color: green;
+}
+
+.title_logout a{ 
+	color: green;
+	text-decoration: none;
+}
+
+.title_logout a:hover{ 
+	color: black;
 }
