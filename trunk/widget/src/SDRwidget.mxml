@@ -3,6 +3,7 @@
 
 <mx:Script>
 	<![CDATA[
+		import com.google.maps.MapEvent;
 		import mx.collections.ArrayCollection;
 		import com.google.maps.interfaces.IPane;
 		import org.gbif.maps.CustomTileLayerOverlay;
@@ -30,6 +31,7 @@
 		
 		private function preInit():void {
 			scientificName=parameters.scientificName;
+			map.addEventListener(MapEvent.MAP_READY,onMapLoadingComplete);
 
 			//Get the number of records in GBIF for this taxonId
 			var httpSrv:HTTPService=new HTTPService();
@@ -105,11 +107,16 @@
 			} 
 		}
 		
+		private function onMapLoadingComplete(ev: MapEvent): void {
+			loading.visible=false;
+		}
+		
 	]]>
 </mx:Script>
 
 	<mx:Style source="style/skin/widget.css"/>
 	<mx:Style source="style/skin/ui.css"/>
+	<mx:Style source="style/skin/fonts.css"/>
 
 	<mx:Canvas left="7" right="7" bottom="35" top="55" borderColor="#6D6D6D" borderStyle="solid">
 		<maps:Map id="map" key="{parameters.api_key}" width="100%" height="100%" mapevent_mapready="init()" />
@@ -124,6 +131,10 @@
 				mouseChildren="false" buttonMode="true" useHandCursor="true"/>
 		</mx:HBox>
 		<mx:ComboBox id="mapType" left="250" top="10" height="21" dataProvider="{mapTypes}" change="onChangeMapType(event)"/>
+		<mx:Canvas id="loading" width="120" height="20" styleName="softYellowContainerRounded" top="10" horizontalCenter="0">
+			<mx:SWFLoader x="4" y="1" source="@Embed('assets/tinyLoading.swf')" width="12" height="12"/>
+			<mx:Label y="1" text="Loading data..." color="#5E5E5E" fontSize="11" fontFamily="DINOT-Medium" left="22"/>
+		</mx:Canvas>
 	</mx:Canvas>
 	<mx:Button label="view fullscreen" right="7" top="5" fontSize="12"/>
 	<mx:Button label="sources" fontWeight="normal" right="7" width="79" bottom="5" fontSize="12"/>
