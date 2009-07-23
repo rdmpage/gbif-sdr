@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			<div class="span-23 last footer">
-				<div class="span-24 last">Species distribution repository. GBIF.org 2009. <a href="#">Legal terms</a>  |  <a href="#">Contact us</a></div>
+				<div class="span-24 last">Species distribution repository Version 0.1 | <a href="/">Project Home</a> | <a href="http://code.google.com/p/gbif-sdr/issues/list">Bug Report</a> | © 2009 <a href="http://www.gbif.org">GBIF</a></div>
 			</div>
 		</div>
 	</div>
