@@ -24,8 +24,6 @@
 	top:-10px; right:15px; 
 	cursor:pointer;
 }
-#simplemodal-container #basicModalContent {
-}
 
 /* LOGIN */
 
@@ -208,11 +206,11 @@ input.checkbox {
 } 
 
 .homeContainer{
-	height: 550px;
+	height: 500px;
 }
 
 .centerContainer{
-	height: 550px;
+	height: 500px;
 }
 
 .searchCont{
@@ -247,19 +245,18 @@ input.checkbox {
 
 .inputContainer{
 	height: 37px;
-	width: 362px;
+	width: 360px;
 	float: left;
 }
 
 .searchText{
 	height: 23px;
 	width: 360px;
-	border: #d6d6d6 1px solid;	
+    border: 1px #d6d6d6 solid; 
 	margin-top: 5px;
 	line-height: 24px;
 	float:left;
 	font-size: 15px;
-	padding-left: 5px;
 }
 
 .buttonContainer{
@@ -269,9 +266,9 @@ input.checkbox {
 }
 
 .searchButton{ 
-	height: 25px;
-	width: 95px;
-    background:url(images/search.jpg) repeat 0px 0px;
+	height: 27px;
+	width: 96px;
+    background:url(images/search.jpg) repeat-x;
     border: 1px #d6d6d6 solid; 
 	text-decoration: none;
 	margin-top: 5px; 
@@ -280,15 +277,11 @@ input.checkbox {
 	font-family: "Georgia";
 	font-size: 18px;
 	font-style: italic;
-}
-
-.searchButton a{ 
-	text-decoration: none; 
 	color: white;
 }
 
 .separator_lr{
-	height: 550px;
+	height: 500px;
 }
 
 /* index */
@@ -342,9 +335,9 @@ input.checkbox {
 }
 
 .searchButton_index{ 
-	height: 25px;
-	width: 94px;
-    background:url(images/search.jpg) repeat 0px 0px;
+	height: 29px;
+	width: 96px;
+    background:url(images/search.jpg) repeat-x;
     border: 1px #d6d6d6 solid; 
 	text-decoration: none;
 	margin-top: 5px; 
@@ -353,14 +346,8 @@ input.checkbox {
 	font-family: "Georgia";
 	font-size: 18px;
 	font-style: italic;
-}
-
-.searchButton_index a{ 
-	text-decoration: none; 
 	color: white;
 }
-
-
 
 /* STYLE CSS */
 
@@ -439,9 +426,6 @@ input.error {
 	color: red;
 }
 
-input.text {
-	font-size: 15px;
-}
 /* search results */
 
 sub {
@@ -893,21 +877,6 @@ a.ultimo{
    margin-right: 30px;
 }
 
-.search_button{
-   font-family: Georgia;
-   font-style: italic;
-   font-size:18px;
-   color:white;
-   text-align: center;
-   border-style: solid;
-   border-width: 1px;
-   border-color: gray;
-   background-image: url(/css/images/search.jpg);
-   width: 96px;
-   height: 25px;
-   padding: 0px 0px 0px 0px;
-}
-
 .submit_button{
    font-family: [DINOT] medium;
    font-size:18px;
@@ -935,11 +904,6 @@ a.ultimo{
 input.text{
 	padding: 0px 0px 0px 0px; 
 	margin: 0px 0px 0px 0px; 
-	height: 29px;
-	margin-left: 9px;
-}
-
-input.searchtext{
 	height: 25px;
 }
 
