@@ -34,7 +34,7 @@ $color = sprintf("%02X%02X%02X", mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 25
           <Title><?php echo($l)?></Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>status</ogc:PropertyName>
+                <ogc:PropertyName>tag</ogc:PropertyName>
                 <ogc:Literal><?php echo($l)?></ogc:Literal>
            </ogc:PropertyIsEqualTo>
          </ogc:Filter>
@@ -57,7 +57,7 @@ $color = sprintf("%02X%02X%02X", mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 25
           <Title>no data</Title>
           <ogc:Filter>
             <ogc:PropertyIsNull>
-                <ogc:PropertyName>status</ogc:PropertyName>
+                <ogc:PropertyName>tag</ogc:PropertyName>
                 <ogc:Literal></ogc:Literal>
            </ogc:PropertyIsNull>
          </ogc:Filter>
