@@ -5,7 +5,7 @@
 	<div class="span-18">
 		<div class="span-18 column headerComments">
 			<div class="span-15 title_blue">Contribute</div>
-			
+			<div class="textcontainer">	
 			<div class="span-23 column textgbif">Glad you ask!</div>
 
         	<div class="span-23 column textgbif">There are 2 ways you can contribute your species distribution data into the project.</div>
@@ -20,7 +20,8 @@
 
         	<div class="span-23 column textgbif">Ok, lets do it!</div>
         	<div class="span-23 column textgbif">Contact us at sdr@gbif.org. Describe us your dataset, send us a URL of your exsting website, etc. We are looking forward to work with you!</div>
-        	
+        			</div>
+
 		</div>
 	</div>
 </div>
