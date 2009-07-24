@@ -260,18 +260,19 @@ input.checkbox {
 }
 
 .buttonContainer{
-	height: 37px;
+	margin-top: 5px; 
+    border: 1px #d6d6d6 solid; 
+	height: 25px;
 	width: 96px;
 	float: left;
 }
 
 .searchButton{ 
-	height: 27px;
+	border:none;
+	height: 25px;
 	width: 96px;
     background:url(images/search.jpg) repeat-x;
-    border: 1px #d6d6d6 solid; 
 	text-decoration: none;
-	margin-top: 5px; 
 	line-height: 24px;
 	text-align: center;
 	font-family: "Georgia";
@@ -329,18 +330,19 @@ input.checkbox {
 }
 
 .buttonContainer_index{
-	height: 37px;
+	margin-top: 5px; 
+    border: 1px #d6d6d6 solid; 
+	height: 25px;
 	width: 96px;
 	float: left;
 }
 
 .searchButton_index{ 
-	height: 29px;
+	border:none;
+	height: 25px;
 	width: 96px;
     background:url(images/search.jpg) repeat-x;
-    border: 1px #d6d6d6 solid; 
 	text-decoration: none;
-	margin-top: 5px; 
 	line-height: 24px;
 	text-align: center;
 	font-family: "Georgia";
