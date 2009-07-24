@@ -42,11 +42,9 @@ COPY temp_groms_gbif_names_ids FROM '/tmp/groms_nub_concepts_ids.txt';
 4. Create the distribution records from the names by linking to the scientific_name table.
 {{{
 
-insert into distribution(name_fk,resource_fk,year_start,year_end,created_when,spatial_resolution_fk,spatial_scope_named_area_fk,record_base_fk,spatial_accuracy,confidence_by_source,distribution_type_fk,is_public)
+insert into distribution_unit(occurrence_status_fk,status_tags_fk,start_day_in_year,end_day_in_year,distribution_fk,nativeness_fk,interpreted_geom)
 
-select id as name_fk, 2 as resource_fk,null as year_start,null as year_end, null as created_when, 1 as spatial_resolution_fk, null as spatial_scope_named_area_fk, 2 as record_base_fk,
-null as spatial_accuracy, null as confidence_by_source, 2 as distribution_type_fk, true as is_public
- from temp_groms_gbif_names_ids as t inner join scientific_name as s on t.nub_concept_id=s.nub_concept_id
+select tdu.occurrence_status_fk,st.id as status_tags_fk,start_day_in_year,end_day_in_year, d.id as distribution_fk,nativeness_fk,interpreted_geom from temp_dist_units as tdu inner join scientific_name as sn on tdu.temp_gbif_name_id=sn.nub_concept_id inner join distribution as d on sn.id=d.name_fk and d.resource_fk=2 right join status_tags as st on tdu.status=st.tag;
 
 }}}
 
