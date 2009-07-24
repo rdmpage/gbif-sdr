@@ -14,9 +14,15 @@ if (file_exists("cache/".$savefile)) {
 	exit;		
 }
 
-$url="http://localhost:8080/geoserver/wms?transparent=true&WIDTH=256&SRS=EPSG%3A900913&LAYERS=sdr%3Adistributions&HEIGHT=256&STYLES=&FORMAT=image%2Fpng&TILED=
-true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=
-application%2Fvnd.ogc.se_inimage";"
+$url="http://localhost:8080/geoserver/wms?transparent=true&WIDTH=256&SRS=EPSG%3A900913&HEIGHT=256&STYLES=&FORMAT=image%2Fpng&TILED=true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage";
+
+
+if ($_REQUEST['resource_id']==1) {
+	$url.="&LAYERS=sdr%3Anamed_areas";
+} else {
+	$url.="&LAYERS=sdr%3Adistributions";
+}
+
 
 //&SLD=http%3A%2F%2Flocalhost%2FdynamicSLD.php%3Fresource%3D".$_REQUEST['resource_id']."%26species_id%3D".$_REQUEST['species_id'];
 
