@@ -10,7 +10,6 @@ $stmt->execute();
 $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $numelements=count($tags) +1;
 $step = floor(255/$numelements);
-$color = sprintf("%02X%02X%02X", mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255))
 
 ?>
 <StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc"
@@ -58,7 +57,6 @@ $color = sprintf("%02X%02X%02X", mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 25
           <ogc:Filter>
             <ogc:PropertyIsNull>
                 <ogc:PropertyName>tag</ogc:PropertyName>
-                <ogc:Literal></ogc:Literal>
            </ogc:PropertyIsNull>
          </ogc:Filter>
           <PolygonSymbolizer>
