@@ -18,7 +18,7 @@ $url="http://localhost:8080/geoserver/wms?transparent=true&WIDTH=256&SRS=EPSG%3A
 
 
 if ($_REQUEST['resource_id']==1) {
-	$url.="&LAYERS=sdr%3Anamed_areas";
+	$url.="&LAYERS=sdr%3Ana_distribution";
 } else {
 	$url.="&LAYERS=sdr%3Adistributions";
 }
