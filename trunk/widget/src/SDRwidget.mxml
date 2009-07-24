@@ -34,7 +34,7 @@
 		[Bindable]
 		public var scientificName:String;
 		[Bindable]
-		public var numOccurrences:String;
+		public var numOccurrences:String="-";
 			
 		[Bindable]public var sourcesAc:ArrayCollection=new ArrayCollection();
 		
@@ -78,7 +78,7 @@
 			//Get the number of records in GBIF for this taxonId
 			var httpSrv:HTTPService=new HTTPService();
 			httpSrv.resultFormat="text";
-			httpSrv.url = "http://es.mirror.gbif.org/ws/rest/occurrence/count?taxonConceptKey="+parameters.speciesId;
+			httpSrv.url = "http://de.mirror.gbif.org/ws/rest/occurrence/count?taxonConceptKey="+parameters.speciesId;
 			httpSrv.addEventListener(FaultEvent.FAULT,function(event:FaultEvent):void {
 				trace(event.message);
 			});
@@ -122,13 +122,21 @@
 			var ctlwms:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,2,Color.RED);		
 			var ctlo2:CustomWMSTileLayerOverlay = new CustomWMSTileLayerOverlay(ctlwms);
 			ctlwms.ctlo = ctlo2;
-			ctlo2.foreground.alpha=0.9;
+			ctlo2.foreground.alpha=0.82;
 			
 			//BindingUtils.bindProperty(mapCanvas.discretLoading,"visible",ctlo,"numRunningRequest");
 			
 			//ctloDic[speciesId]=ctlo;
 			map.addOverlay(ctlo2);	
 			
+			
+			
+			//add second fake layer
+			var ctlwms2:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,1,Color.GREEN);		
+			var ctlo3:CustomWMSTileLayerOverlay = new CustomWMSTileLayerOverlay(ctlwms2);
+			ctlwms2.ctlo = ctlo3;
+			ctlo3.foreground.alpha=0.4;
+			map.addOverlay(ctlo3);	
 			
 			
 		}
@@ -169,12 +177,11 @@
 		
 	]]>
 </mx:Script>
-
 	<mx:Style source="style/skin/widget.css"/>
 	<mx:Style source="style/skin/ui.css"/>
 	<mx:Style source="style/skin/fonts.css"/>
 
-	<mx:Canvas left="7" right="7" bottom="35" top="55" borderColor="#6D6D6D" borderStyle="solid" id="canvas1">
+	<mx:Canvas left="7" right="7" bottom="35" top="65" borderColor="#6D6D6D" borderStyle="solid" id="canvas1">
 		<maps:Map id="map" key="{parameters.api_key}" width="100%" height="100%" mapevent_mapready="init()" />
 		<mx:HBox left="10" horizontalGap="0" top="10" verticalAlign="middle" paddingLeft="3" paddingRight="6" height="21" horizontalAlign="center"
 			backgroundColor="#9BBD88" cornerRadius="3" borderStyle="solid" backgroundAlpha="0.75" borderColor="#86898B">
@@ -197,17 +204,18 @@
 	<mx:Button label="follow this distribution2" bottom="5" left="7" fontSize="12"/>
 	<mx:Button label="export" fontWeight="normal" bottom="5" left="185" width="79" fontSize="12"/>
 	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="270" width="121" fontSize="12"/>
-	<mx:Image source="@Embed('assets/pumaConcolor.png')" left="7" top="5"/>
-	<mx:HBox y="6" left="56" right="134" verticalAlign="bottom" horizontalGap="3">
+	<mx:Image source="{'/flickrImage.php?q='+scientificName}" left="7" top="5" width="52" height="52" />
+	<mx:HBox y="6" left="67" right="97" verticalAlign="bottom" horizontalGap="3">
 		<mx:Label text="{scientificName}" fontFamily="Georgia" fontStyle="italic" fontSize="20" fontWeight="normal" color="#393939"/>
 		<mx:Label text="updated 2 months ago" color="#878787"/>
 	</mx:HBox>
-	<mx:NumberFormatter id="nf" useThousandsSeparator="true" />
-	<mx:HBox y="31" left="56" right="134" horizontalGap="1" color="#585858">
-		<mx:Label text="3" width="38" color="#595959" textAlign="right"/>
-		<mx:Label text="sources" color="#595959"/>
-		<mx:Label text="|" width="16" color="#595959"/>
-		<mx:Label text="{numOccurrences}" color="#595959"/>
-		<mx:Label text="occurrences in GBIF" color="#595959"/>
+
+	<mx:HBox y="31" left="67" right="97" horizontalGap="1">
+		<mx:Label text="3"/>
+		<mx:Label text="sources"/>
+		<mx:Label text="|"/>
+		<mx:Label text="{numOccurrences}"/>
+		<mx:Label text="occurrences in GBIF"/>
 	</mx:HBox>
+	<mx:NumberFormatter id="nf" useThousandsSeparator="true" />
 </mx:Application>
