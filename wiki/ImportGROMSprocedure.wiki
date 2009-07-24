@@ -17,7 +17,7 @@ drop table temp;
 2. Export the geometries table with related metadata into a dump, creating first a temp table.
 
 {{{
-create table temp_dist_units as select gbif_id as temp_gbif_name_id, ("start" *30) as start_day_in_year, ("end"*30) as end_day_in_year, 6 as nativeness_fk,1 as occurrence_status_fk, null as life_stage_fk, the_geom as interpreted_geom from shapefiles as s inner join species_names as sn on s.species_id=sn.species_id;
+create table temp_dist_units as select gbif_id as temp_gbif_name_id, status,("start" *30) as start_day_in_year, ("end"*30) as end_day_in_year, 6 as nativeness_fk,1 as occurrence_status_fk, null as life_stage_fk, the_geom as interpreted_geom from shapefiles as s inner join species_names as sn on s.species_id=sn.species_id;
 
 pg_dump -hlocalhost -Upostgres -ttemp_dist_units groms > temp_dist_units.sql
 
