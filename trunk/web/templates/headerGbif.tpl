@@ -82,7 +82,7 @@
 		</div>	
 	</div>
 
-
+	<div class="separatorTop"></div>
 	<div class="container">
 	<div class="span-24" id="wrapper">
 		<div class="span-24" id="header">
