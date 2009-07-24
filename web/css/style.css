@@ -92,7 +92,7 @@ div.loginContainer {
 	height:137px; 
 	width:429px;
 	margin-left: 3px;
-	margin-top: 3px; 
+	margin-top: -300px; 
 }
 
 div.confirmationDialog {
