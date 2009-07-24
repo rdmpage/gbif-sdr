@@ -14,7 +14,7 @@
     						<div class="buttonContainer"><div class="searchButton"><a href="#" onClick="$('#searchForm').submit()">Search!</a></div></div>
 						</form>
 					</div>
-					<a href="/speciesPage.php?id=861925&n=Puma%20concolor" class="text3">e.g. Puma concolor</a>
+					<a href="/speciesPage.php?id=856027&n=Anas%20penelope" class="text3">e.g. Anas penelope</a>
 				</div>
 			
 			</div>
