@@ -16,7 +16,9 @@ if (file_exists("cache/".$savefile)) {
 
 $url="http://localhost:8080/geoserver/wms?transparent=true&WIDTH=256&SRS=EPSG%3A900913&LAYERS=sdr%3Adistributions&HEIGHT=256&STYLES=&FORMAT=image%2Fpng&TILED=
 true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=
-application%2Fvnd.ogc.se_inimage&SLD=http%3A%2F%2Flocalhost%2FdynamicSLD.php%3Fresource%3D".$_REQUEST['resource_id']."%26species_id%3D".$_REQUEST['species_id'];
+application%2Fvnd.ogc.se_inimage";"
+
+//&SLD=http%3A%2F%2Flocalhost%2FdynamicSLD.php%3Fresource%3D".$_REQUEST['resource_id']."%26species_id%3D".$_REQUEST['species_id'];
 
 $url.="&CQL_FILTER=gbif_id%3D".$_REQUEST['species_id']."%20and%20resource_id%3D".$_REQUEST['resource_id'];
 $url.="&BBOX=".$_REQUEST['bbox'];
