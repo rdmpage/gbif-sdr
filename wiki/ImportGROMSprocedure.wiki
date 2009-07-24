@@ -43,7 +43,6 @@ COPY temp_groms_gbif_names_ids FROM '/tmp/groms_nub_concepts_ids.txt';
 {{{
 
 insert into distribution_unit(occurrence_status_fk,status_tags_fk,start_day_in_year,end_day_in_year,distribution_fk,nativeness_fk,interpreted_geom)
-
 select tdu.occurrence_status_fk,st.id as status_tags_fk,start_day_in_year,end_day_in_year, d.id as distribution_fk,nativeness_fk,interpreted_geom from temp_dist_units as tdu inner join scientific_name as sn on tdu.temp_gbif_name_id=sn.nub_concept_id inner join distribution as d on sn.id=d.name_fk and d.resource_fk=2 right join status_tags as st on tdu.status=st.tag;
 
 }}}
