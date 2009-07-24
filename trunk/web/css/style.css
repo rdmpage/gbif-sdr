@@ -1012,13 +1012,13 @@ input.comment{
 .login_sign a, .login_sign a:visited{
 	font-family: Arial;
 	font-size: 13px;
-	color: #336600;
+	color: green;
 }
 
 .login_sign a:hover{
 	font-family: Arial;
 	font-size: 13px;
-	color: #333333;
+	color: black;
 }
 
 
