@@ -1,3 +1,10 @@
+.separatorTop{
+  	margin: 0 auto;
+	height: 30px;
+	background-image: url(/images/separatorhack.jpg);
+	width: 980px;	
+}
+
 body {
 	background-image: url(/images/marginhack.jpg);
 	background-repeat: repeat-y;
@@ -8,6 +15,9 @@ body {
 	float: right;
 	background-image: none;
 	border: none;
+	border-bottom: 1px silver solid;
+	border-left: 1px silver solid;
+	border-right: 1px silver solid;
 }
 
 div.login_sign {
