@@ -94,7 +94,7 @@
 			<a href="/"><div class="span-1 last headerLogo"></div></a>
 			<div class="span-1 last headerList">
 				<ul>
-  					<li><a href="browse.php">BROWSE2</a></li>
+  					<li><a href="browse.php">BROWSE</a></li>
   					<li><a href="contribute.php">CONTRIBUTE</a></li>
   					<li><a href="api.php">API/Developers</a></li>
   					<li><a href="about.php">ABOUT</a></li>
