@@ -169,7 +169,26 @@ class SDRServices {
 	}
 	
 	public function getSpeciesDetailsByNameId($speciesId) {
-	    
+	    $sql="SELECT d.id,code, resourcename,resource_fk as resource_id, (select count(id) from distribution_unit where distribution_fk=d.id) as num_units from distribution as d inner join resource as r on d.resource_fk=r.id where d.name_fk=:speciesId and d.resource_fk=2";
+		$stmt = $this->dbHandle->prepare($sql);
+	    $stmt->bindParam(':speciesId', $speciesId); 
+	    $stmt->execute();
+		$res= $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$sources=array();	    
+		foreach($res as $data) {	    
+			$source=array();
+			$source = $data;
+			//Add the distribution units
+			$sql2="select distinct s.id as id, tag,color from distribution_unit as du inner join status_tags as s on du.status_tags_fk=s.id where distribution_fk=:distributionId";			
+			$stmt2 = $this->dbHandle->prepare($sql2);
+		    $stmt2->bindParam(':distributionId', $data['id']); 
+		    $stmt2->execute();
+			$res2= $stmt2->fetchAll(PDO::FETCH_ASSOC);		
+			$source['legend'] = $res2;
+			$sources[]=$source;					    
+		}
+		
+		return $sources;	    
 	}
 	
 	public function searchForName($name,$limit=10,$offset=0) {
