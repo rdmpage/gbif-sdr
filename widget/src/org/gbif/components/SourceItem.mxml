@@ -15,7 +15,7 @@
 		<mx:Image width="52" height="52" source="{'/images/sources/'+sourceData.resource_id+'.jpg'}" verticalCenter="0" horizontalCenter="0"/>
 	</mx:Canvas>	
 	<mx:Label text="{sourceData.code}" x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
-	<mx:Label x="60" y="19" text="{sourceData.num_units} polygons" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
+	<mx:Label x="60" y="19" text="{sourceData.num_units} units" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
 	<mx:CheckBox x="64" y="42" label="Show/Hide" fontSize="10" fontStyle="normal" selected="true" enabled="true" click="Application.application.toggleSourceVisibility(sourceData.resource_id)"/>
 	
 	<!--LEGEND-->
@@ -31,9 +31,9 @@
 				</mx:Repeater>
 			</mx:VBox>		
 		</mx:HBox>		
-		<mx:HBox horizontalGap="12">
+		<mx:HBox horizontalGap="12" toolTip="{sourceData.resourcename}" >
 			<mx:Label text="CITATION" fontFamily="DINOT-Medium" color="#999999" textAlign="right" width="50"/>
-			<mx:Label text="view citation"  textDecoration="underline" color="#464646" fontSize="10" fontFamily="DINOT-Medium"/>
+			<mx:Label text="view citation" textDecoration="underline" color="#464646" fontSize="10" fontFamily="DINOT-Medium"/>
 		</mx:HBox>
 	</mx:VBox>
 	<mx:Image scaleContent="false" bottom="0" source="@Embed('/assets/hRuleDashed500.png')" width="100%"/>
