@@ -13,6 +13,9 @@
 
 <mx:Script>
 	<![CDATA[
+		import flash.net.navigateToURL;
+		import com.google.maps.LatLngBounds;
+		import mx.managers.ToolTipManager;
 		import gs.TweenMax;
 		import mx.utils.ObjectProxy;
 		import com.google.maps.MapZoomEvent;
@@ -54,33 +57,8 @@
 		private var sourcesColors:Array = [Color.GREEN,Color.RED,Color.BLUE,Color.YELLOW];
 		
 		private function preInit():void {
-			
-			//create a fake sourcesAc for development
-			
-			var source1:Object= {
-					id:1,
-					name:"GROMS.de",
-					numPolygons:6,
-					legend:[{statusId:1,statusName:"breeding"},
-							{statusId:2,statusName:"wintering"},
-							{statusId:3,statusName:"unknown"}
-							]
-				};
-			var source2:Object= {
-					id:2,
-					name:"BirdLife.com",
-					numPolygons:3,
-					legend:[{statusId:1,statusName:"status1"},
-							{statusId:2,statusName:"statsu2"},
-							{statusId:3,statusName:"statu3"}
-							]
-				};			
-					
-			//sourcesAc.addItem(source1);
-			//sourcesAc.addItem(source2);
-			roSdr.getSpeciesDetailsByNameId(parameters.speciesId);
-			
-			
+			//get data
+			roSdr.getSpeciesDetailsByNameId(parameters.speciesId);			
 			scientificName=parameters.scientificName;
 
 			//Get the number of records in GBIF for this taxonId
@@ -100,6 +78,13 @@
 				}
 			});
 			httpSrv.send();			
+			
+			
+			
+			//Modify Tooltip behaviour so that it show inmediately
+			ToolTipManager.showDelay = 0;
+			ToolTipManager.hideDelay = 4000;	
+			
 			
 		}
 		
@@ -178,6 +163,55 @@
 			} else {
 				TweenMax.to(ctloGbif.foreground,0.6, {alpha:0});
 			}	
+		}
+		
+		private var geoserverUrl:String ="http://ec2-174-129-85-138.compute-1.amazonaws.com:8080/geoserver/";
+		private function getDownloadUrl(format:String):String {
+				
+			var distributionsFilter:Array = [];
+			for each(var source:Object in sourcesAc) {
+				distributionsFilter.push("id=" + source.id);
+			}	
+			
+			var distributionsFilterStr:String = distributionsFilter.join("%20or%20");
+			
+			var url:String;
+			switch (format) {
+				case "PNG":
+					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
+				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
+				"&LAYERS=sdr%3Adistributions&FORMAT=image%2FpngL&"+
+				"CQL_FILTER="+distributionsFilterStr+"&BBOX=-180,-90,180,90";
+					break;							
+				case "KML":
+					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
+				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
+				"&LAYERS=sdr%3Adistributions&FORMAT=application%2Fvnd.google-earth.kml+XML&"+
+				"CQL_FILTER="+distributionsFilterStr+"&BBOX=-180,-90,180,90";
+					break;					
+				case "SHP":
+					url = geoserverUrl + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=sdr%3Adistributions" + 
+				"&outputformat=SHAPE-ZIP&REQUEST=GetFeature&CQL_FILTER=id%3D"+distributionsFilterStr;
+					break;			
+				case "GML":
+					url = geoserverUrl + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=sdr%3Adistributions" + 
+				"&REQUEST=GetFeature&CQL_FILTER=id%3D"+distributionsFilterStr;
+					break;
+				case "PDF":
+					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
+				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
+				"&LAYERS=sdr%3Adistributions&FORMAT=application%2Fpdf&"+
+				"CQL_FILTER="+distributionsFilterStr+"&BBOX=-180,-90,180,90";
+					break;
+			}	
+			
+			return url;
+		}
+		
+		private function downloadData(event:Event) {
+			var url:String= getDownloadUrl(ComboBox(event.target).selectedItem.data);
+			navigateToURL(new URLRequest(url));
+			
 		}
 		
 		private function onZoomSliderChange():void {
@@ -266,16 +300,26 @@
 	</mx:Canvas>
 	<mx:Button label="view fullscreen" right="7" top="5" fontSize="12" click="toggleFullScreen()"/>
 	<mx:Button label="sources" fontWeight="normal" right="7" width="79" bottom="5" fontSize="12" click="(currentState=='Sources')?currentState='':currentState='Sources';"/>
-	<mx:Button label="export" fontWeight="normal" bottom="5" left="7" width="79" fontSize="12"/>
-	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="92" width="121" fontSize="12"/>
+	<mx:ComboBox id="exportCombo" left="10" bottom="6" width="85" close="downloadData(event)">
+		<mx:dataProvider>
+			<mx:ArrayCollection>
+				<mx:Object label="KML" data="KML" />
+				<mx:Object label="PNG" data="PNG" />
+				<mx:Object label="SHP" data="SHP" />
+				<mx:Object label="GML" data="GML" />
+				<mx:Object label="PDF" data="PDF" />
+			</mx:ArrayCollection>
+		</mx:dataProvider>
+	</mx:ComboBox>
+	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="103" width="121" fontSize="12"/>
 	<mx:Image source="{'/flickrImage.php?q='+scientificName}" left="7" top="5" width="52" height="52" />
 	<mx:HBox y="6" left="67" right="97" verticalAlign="bottom" horizontalGap="3">
 		<mx:Label text="{scientificName}" fontFamily="Georgia" fontStyle="italic" fontSize="20" fontWeight="normal" color="#393939"/>
-		<mx:Label text="updated 2 months ago" color="#878787"/>
+		<mx:Label text="updated days ago" color="#878787"/>
 	</mx:HBox>
 
 	<mx:HBox y="31" left="67" right="97" horizontalGap="1">
-		<mx:Label text="3"/>
+		<mx:Label text="{sourcesAc.length +1}"/>
 		<mx:Label text="sources"/>
 		<mx:Label text="|"/>
 		<mx:Label text="{numOccurrences}"/>
@@ -284,4 +328,5 @@
 	<mx:NumberFormatter id="nf" useThousandsSeparator="true" />
 	<mx:RemoteObject id="roSdr" endpoint="../amfphp/gateway.php" destination="SDRServices" source="SDRServices"
 	 result="onSdrServiceResult(event)" fault="trace(event.fault)" />
+
 </mx:Application>
