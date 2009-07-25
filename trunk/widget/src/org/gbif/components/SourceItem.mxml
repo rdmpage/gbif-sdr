@@ -3,6 +3,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.core.Application;
 			import mx.collections.ArrayCollection;
 			[Bindable] public var legend: Array = new Array();
 			[Bindable] public var sourceData: Object = new Object();
@@ -11,11 +12,11 @@
 	
 	
 	<mx:Canvas width="54" height="54" backgroundColor="0xFFFFFF" borderStyle="solid" borderColor="#C8C8C8">
-		<mx:Image width="52" height="52" source="@Embed('/assets/2.jpg')" verticalCenter="0" horizontalCenter="0"/>
+		<mx:Image width="52" height="52" source="{'/images/sources/'+sourceData.resource_id+'.jpg'}" verticalCenter="0" horizontalCenter="0"/>
 	</mx:Canvas>	
-	<mx:Label text="{sourceData.name}" x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
-	<mx:Label x="60" y="19" text="{sourceData.numPolygons} polygons" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
-	<mx:CheckBox x="64" y="42" label="Showing" fontSize="10" fontStyle="normal" selected="true" enabled="true"/>
+	<mx:Label text="{sourceData.code}" x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
+	<mx:Label x="60" y="19" text="{sourceData.num_units} polygons" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
+	<mx:CheckBox x="64" y="42" label="Show/Hide" fontSize="10" fontStyle="normal" selected="true" enabled="true" click="Application.application.toggleSourceVisibility(sourceData.resource_id)"/>
 	
 	<!--LEGEND-->
 	<mx:VBox y="70" x="7" paddingBottom="10">
@@ -24,8 +25,8 @@
 			<mx:VBox verticalGap="-5" verticalAlign="top">
 				<mx:Repeater id="legendRepeater" dataProvider="{legend}">
 					<mx:HBox verticalAlign="middle" horizontalGap="-1">
-						<components:Circle data="{legendRepeater.currentItem.statusID}" />		
-						<mx:Label text="{(legendRepeater.currentItem.statusName=='none')?'unknown':legendRepeater.currentItem.statusName}" fontFamily="DINOT-Medium" fontSize="12" color="#999999"/>				
+						<components:Circle data="{{color:legendRepeater.currentItem.color,colorizedColor:sourceData.curColor}}" />		
+						<mx:Label text="{(legendRepeater.currentItem.tag=='none')?'unknown':legendRepeater.currentItem.tag}" fontFamily="DINOT-Medium" fontSize="12" color="#999999"/>				
 					</mx:HBox>
 				</mx:Repeater>
 			</mx:VBox>		

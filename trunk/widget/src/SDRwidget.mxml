@@ -13,6 +13,11 @@
 
 <mx:Script>
 	<![CDATA[
+		import gs.TweenMax;
+		import mx.utils.ObjectProxy;
+		import com.google.maps.MapZoomEvent;
+		import mx.events.ResizeEvent;
+		import mx.binding.utils.BindingUtils;
 		import com.google.maps.Color;
 		import org.gbif.maps.CustomWMSTileLayerOverlay;
 		import org.gbif.maps.CustomWMSTileLayer;
@@ -42,7 +47,11 @@
 															                  {label:"MAP"}, 
 															                  {label:"SATELLITE"},
 															                  {label:"HYBRID"} ]);
+															                  
+		private var sourcesDic:Dictionary = new Dictionary();		
+		private var ctloGbif:CustomTileLayerOverlay;											                  
 
+		private var sourcesColors:Array = [Color.GREEN,Color.RED,Color.BLUE,Color.YELLOW];
 		
 		private function preInit():void {
 			
@@ -67,18 +76,17 @@
 							]
 				};			
 					
-			sourcesAc.addItem(source1);
-			sourcesAc.addItem(source2);
-			
+			//sourcesAc.addItem(source1);
+			//sourcesAc.addItem(source2);
+			roSdr.getSpeciesDetailsByNameId(parameters.speciesId);
 			
 			
 			scientificName=parameters.scientificName;
-			map.addEventListener(MapEvent.MAP_READY,onMapLoadingComplete);
 
 			//Get the number of records in GBIF for this taxonId
 			var httpSrv:HTTPService=new HTTPService();
 			httpSrv.resultFormat="text";
-			httpSrv.url = "http://de.mirror.gbif.org/ws/rest/occurrence/count?taxonConceptKey="+parameters.speciesId;
+			httpSrv.url = "http://de.mirror.gbif.org/ws/rest/occurrence/count?taxonConceptKey="+parameters.nub_concept_id;
 			httpSrv.addEventListener(FaultEvent.FAULT,function(event:FaultEvent):void {
 				trace(event.message);
 			});
@@ -111,34 +119,65 @@
 			
 			//Add GBIF layer
 			var ctlgbif:CustomTileLayer= new CustomTileLayer("http://maps|N|.eol.org/php/map/getEolTile.php?tile=|X|_|Y|_|Z|_"+parameters.nub_concept_id,"",23);
-			var ctlo:CustomTileLayerOverlay = new CustomTileLayerOverlay(ctlgbif);
-			ctlgbif.ctlo=ctlo;
-			ctlo.foreground.alpha=0.7;
-			//BindingUtils.bindProperty(mapCanvas.discretLoading,"visible",ctlo,"numRunningRequest");
-			map.addOverlay(ctlo);			
+			ctloGbif = new CustomTileLayerOverlay(ctlgbif);
+			ctlgbif.ctlo=ctloGbif;
+			ctloGbif.foreground.alpha=0.7;
+			BindingUtils.bindProperty(loading,"visible",ctloGbif,"numRunningRequest");
+			map.addOverlay(ctloGbif);			
 			
 			
-			//add one fake layer
-			var ctlwms:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,2,Color.RED);		
-			var ctlo2:CustomWMSTileLayerOverlay = new CustomWMSTileLayerOverlay(ctlwms);
-			ctlwms.ctlo = ctlo2;
-			ctlo2.foreground.alpha=0.82;
-			
-			//BindingUtils.bindProperty(mapCanvas.discretLoading,"visible",ctlo,"numRunningRequest");
-			
-			//ctloDic[speciesId]=ctlo;
-			map.addOverlay(ctlo2);	
+			map.addEventListener(MapZoomEvent.ZOOM_CHANGED, onMapZoomChanged);		
 			
 			
+		}
+		
+		private function onMapZoomChanged(event:MapZoomEvent):void {
+			zoomSlider.value = map.getZoom();
+		}
+		
+		private function onSdrServiceResult(event:ResultEvent):void {
+			var i:Number=0;
+			var sources:ArrayCollection=new ArrayCollection();
+			for each(var rawSource:Object in event.result as Array) {
+				var source:ObjectProxy = new ObjectProxy(rawSource);
+				var curColor:Number = sourcesColors[i];
+				i++;
+				
+				//for the legend
+				source.curColor=curColor;
+				sources.addItem(source);
 			
-			//add second fake layer
-			var ctlwms2:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,1,Color.GREEN);		
-			var ctlo3:CustomWMSTileLayerOverlay = new CustomWMSTileLayerOverlay(ctlwms2);
-			ctlwms2.ctlo = ctlo3;
-			ctlo3.foreground.alpha=0.4;
-			map.addOverlay(ctlo3);	
+				//add the layers to the map
+				var ctlwms:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,source.resource_id,source.curColor);		
+				var ctlo2:CustomWMSTileLayerOverlay = new CustomWMSTileLayerOverlay(ctlwms);
+				ctlwms.ctlo = ctlo2;
+				ctlo2.foreground.alpha=0.82;				
+				map.addOverlay(ctlo2);	
+				BindingUtils.bindProperty(loading,"visible",ctlo2,"numRunningRequest");
+				sourcesDic[source.resource_id] = ctlo2;
+					
+				
+			}
 			
-			
+			sourcesAc= sources;
+		}
+		
+		public function toggleSourceVisibility(sourceId:Number):void {
+			TweenMax.killAllTweens(true);
+			if((sourcesDic[sourceId] as CustomWMSTileLayerOverlay).foreground.alpha==0) {
+				TweenMax.to((sourcesDic[sourceId] as CustomWMSTileLayerOverlay).foreground,0.6, {alpha:0.82});
+			} else {
+				TweenMax.to((sourcesDic[sourceId] as CustomWMSTileLayerOverlay).foreground,0.6, {alpha:0});
+			}	
+		}
+		public function toggleGbifVisibility():void {
+			TweenMax.killAllTweens(true);
+			if(ctloGbif.foreground.alpha==0) {
+				TweenMax.to(ctloGbif.foreground,0.6, {alpha:0.7});
+				ctloGbif.foreground.alpha=0.7;
+			} else {
+				TweenMax.to(ctloGbif.foreground,0.6, {alpha:0});
+			}	
 		}
 		
 		private function onZoomSliderChange():void {
@@ -171,9 +210,35 @@
 			} 
 		}
 		
-		private function onMapLoadingComplete(ev: MapEvent): void {
-			loading.visible=false;
-		}
+		
+		/**
+		 * Toggle between full screen and not full screen.
+		 */ 			
+		public function toggleFullScreen():void{
+            try {
+            	var tim:Timer;
+                switch (Application.application.stage.displayState) {
+                    case StageDisplayState.FULL_SCREEN:
+                        Application.application.stage.displayState = StageDisplayState.NORMAL;
+                        tim = new Timer(1000,1);
+		            	tim.addEventListener(TimerEvent.TIMER, function(event:TimerEvent):void {	
+		            		dispatchEvent(new Event(ResizeEvent.RESIZE));
+		            	});
+                        break;
+                    default:
+                        Application.application.stage.displayState = StageDisplayState.FULL_SCREEN;
+                        tim = new Timer(1000,1);
+		            	tim.addEventListener(TimerEvent.TIMER, function(event:TimerEvent):void {	
+		            		dispatchEvent(new Event(ResizeEvent.RESIZE));
+		            	});
+                        
+                        break;
+                }
+            } catch (err:SecurityError) {
+                // ignore
+                trace(err.message);
+            }
+		}   		
 		
 	]]>
 </mx:Script>
@@ -194,16 +259,15 @@
 				mouseChildren="false" buttonMode="true" useHandCursor="true"/>
 		</mx:HBox>
 		<mx:ComboBox id="mapType" left="250" top="10" height="21" dataProvider="{mapTypes}" change="onChangeMapType(event)"/>
-		<mx:Canvas id="loading" width="120" height="20" styleName="softYellowContainerRounded" top="10" horizontalCenter="0">
+		<mx:Canvas id="loading" width="120" height="20" styleName="softYellowContainerRounded" top="10" left="374">
 			<mx:SWFLoader x="4" y="1" source="@Embed('assets/tinyLoading.swf')" width="12" height="12"/>
 			<mx:Label y="1" text="Loading data..." color="#5E5E5E" fontSize="11" fontFamily="DINOT-Medium" left="22"/>
 		</mx:Canvas>
 	</mx:Canvas>
-	<mx:Button label="view fullscreen" right="7" top="5" fontSize="12"/>
-	<mx:Button label="sources" fontWeight="normal" right="7" width="79" bottom="5" fontSize="12" click="{this.currentState='Sources'}"/>
-	<mx:Button label="follow this distribution2" bottom="5" left="7" fontSize="12"/>
-	<mx:Button label="export" fontWeight="normal" bottom="5" left="185" width="79" fontSize="12"/>
-	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="270" width="121" fontSize="12"/>
+	<mx:Button label="view fullscreen" right="7" top="5" fontSize="12" click="toggleFullScreen()"/>
+	<mx:Button label="sources" fontWeight="normal" right="7" width="79" bottom="5" fontSize="12" click="(currentState=='Sources')?currentState='':currentState='Sources';"/>
+	<mx:Button label="export" fontWeight="normal" bottom="5" left="7" width="79" fontSize="12"/>
+	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="92" width="121" fontSize="12"/>
 	<mx:Image source="{'/flickrImage.php?q='+scientificName}" left="7" top="5" width="52" height="52" />
 	<mx:HBox y="6" left="67" right="97" verticalAlign="bottom" horizontalGap="3">
 		<mx:Label text="{scientificName}" fontFamily="Georgia" fontStyle="italic" fontSize="20" fontWeight="normal" color="#393939"/>
@@ -218,4 +282,6 @@
 		<mx:Label text="occurrences in GBIF"/>
 	</mx:HBox>
 	<mx:NumberFormatter id="nf" useThousandsSeparator="true" />
+	<mx:RemoteObject id="roSdr" endpoint="../amfphp/gateway.php" destination="SDRServices" source="SDRServices"
+	 result="onSdrServiceResult(event)" fault="trace(event.fault)" />
 </mx:Application>
