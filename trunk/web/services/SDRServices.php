@@ -174,15 +174,15 @@ class SDRServices {
 	
 	public function searchForName($name,$limit=10,$offset=0) {
 		//$time_start = microtime_float();
-		$conn = pg_pconnect("host=ec2-174-129-85-138.compute-1.amazonaws.com port=5432 dbname=sdr user=postgres password=atlas",PGSQL_CONNECT_FORCE_NEW);
+		/* $conn = pg_pconnect("host=ec2-174-129-85-138.compute-1.amazonaws.com port=5432 dbname=sdr user=postgres password=atlas",PGSQL_CONNECT_FORCE_NEW);
 		$result = pg_query_params($conn, "select ns.*, n.scientific_name ".
 			"from name_summary as ns inner join scientific_name as n on ns.name_fk=n.id ".
 			"where n.scientific_name like $1  order by n.scientific_name limit $2 offset $3",array($name.'%',$limit,$offset));
 		
-		return pg_fetch_all($result);
+		return pg_fetch_all($result); */
 
 		
-		/*
+		
 	    $stmt = $this->dbHandle->prepare("select ns.*, n.scientific_name ".
 			"from name_summary as ns inner join scientific_name as n on ns.name_fk=n.id ".
 			"where n.scientific_name like :param  order by n.scientific_name limit 10 offset 0");
@@ -197,8 +197,8 @@ class SDRServices {
 	    
 	    
 	    $lala= $stmt->fetchAll(PDO::FETCH_ASSOC);		
-	    $time_end = microtime_float();
-        return($time_end - $time_start); */
+	    //$time_end = microtime_float();
+        return($time_end - $time_start); 
 	}
 	
 	
