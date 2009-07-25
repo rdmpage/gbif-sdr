@@ -101,15 +101,28 @@
 			 		});
 				}
 				return false;
-		};
+		};		
+		
 
 		var so = new SWFObject("swf/SDRwidget.swf", "swf", "100%", "500", "9"); 
 		so.addParam("allowFullScreen", "true");
 		so.addVariable("swf", "");
-		so.addVariable("api_key", "ABQIAAAAtDJGVn6RztUmxjnX5hMzjRTb-vLQlFZmc2N8bgWI8YDPp5FEVBTeJc72_716EfYqx-s8UGt88XqC9w");
 		so.addVariable("scientificName", "{/literal}{$scientificName}{literal}");
 		so.addVariable("speciesId", "{/literal}{$speciesId}{literal}");
 		so.addVariable("nub_concept_id", "{/literal}{$nub_concept_id}{literal}");
+		
+		//Use the correct Google API Key
+		var host=window.location.host;
+		if(host.search(/localhost/)>=0) {
+		    so.addVariable("api_key", "ABQIAAAAtDJGVn6RztUmxjnX5hMzjRTb-vLQlFZmc2N8bgWI8YDPp5FEVBTeJc72_716EfYqx-s8UGt88XqC9w");
+		}
+		if(host.search(/amazonaws/)>=0) {
+		    so.addVariable("api_key", "ABQIAAAAtDJGVn6RztUmxjnX5hMzjRSMhkig1Gd5B_2j4H1Xz7hsATFBFhR-0p1pzKNnQNC5NFHIaSiCY6Tc4g");
+		}
+		if(host.search(/sdr/)>=0) {
+		    so.addVariable("api_key", "ABQIAAAAtDJGVn6RztUmxjnX5hMzjRRB_s88KYOYB5xSJeaJsw9Y1UYVbxQ2juVNsqar69w_XH822Y5oqQ3HvA");
+		}		
+		
 		so.write("widgetContainer");
 
 	</script>
