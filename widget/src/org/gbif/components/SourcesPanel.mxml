@@ -17,7 +17,7 @@
 	<!--HEADER-->
 	<mx:Label text="Select your" top="10" left="10" fontFamily="DINOT-Bold" color="#999999" fontSize="13"/>
 	<mx:Label text="preferred data sources" top="25" left="10" fontSize="17" fontFamily="Georgia" fontStyle="italic" fontWeight="bold" color="#9DB7D2"/>
-	<mx:Button label="x" top="10" fontSize="10" height="18" click="{Application.application.currentState = ''}" left="200" width="20"/>
+	<mx:Button label="x" top="10" fontSize="10" height="18" click="Application.application.currentState = ''" left="200" width="20"/>
 	<mx:Image scaleContent="false" left="10" right="10" y="60">
 		<mx:source>@Embed('/assets/hRuleDashed500.png')</mx:source>
 	</mx:Image>
@@ -28,8 +28,8 @@
 			<mx:Image width="52" height="52" source="@Embed('/assets/1.jpg')" verticalCenter="0" horizontalCenter="0"/>
 		</mx:Canvas>	
 		<mx:Label text="GBIF.org"  x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
-		<mx:Label x="60" y="19" text="123.123 registers" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
-		<mx:CheckBox x="63" y="42" label="Showing" fontSize="10" fontStyle="normal" selected="true" enabled="true"/>
+		<mx:Label x="60" y="19" text="{Application.application.numOccurrences+' occurrences'}" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
+		<mx:CheckBox x="63" y="42" label="Show/Hide" fontSize="10" fontStyle="normal" selected="true" enabled="true" click="Application.application.toggleGbifVisibility()"/>
 		<mx:Image scaleContent="false" bottom="0" source="@Embed('/assets/hRuleDashed500.png')" right="0" left="0"/>
 		<mx:Image x="121.35" y="44" height="10" width="26" source="@Embed('/assets/gbifSources.jpg')"/>
 	</mx:Canvas>
@@ -38,7 +38,7 @@
 	<!--Create one repeater with real data-->
 	<mx:VBox verticalScrollPolicy="off" horizontalScrollPolicy="off" verticalGap="10" left="10" right="10" bottom="10" top="144">
 		<mx:Repeater id="myRepeater" dataProvider="{sourcesAc}" width="100%" height="100%">
-			<components:SourceItem sourceData="{myRepeater.currentItem}" legend="{myRepeater.currentItem.legend}" id="sourceData" width="100%"/>
+			<components:SourceItem sourceData="{myRepeater.currentItem}" legend="{myRepeater.currentItem.legend}" width="100%"/>
 		</mx:Repeater>			
 	</mx:VBox>
 	
