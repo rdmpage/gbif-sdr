@@ -1,7 +1,116 @@
 /* CSS file */
 
+Application{
+	border-style:solid;
+	border-thickness: 1;
+	border-color: #d6d6d6;	
+}
 
-Canvas.headerCanvas{
+Button.buttonGrey{
+	up-skin: Embed(source="ui.swf",symbol="buttonGrey_up");	
+	over-skin: Embed(source="ui.swf",symbol="buttonGrey_over");	
+	down-skin: Embed(source="ui.swf",symbol="buttonGrey_over");	
+	disabled-skin: Embed(source="ui.swf",symbol="buttonGrey_disabled");		
+	color: #878787;
+	text-roll-over-color: #333333;
+	disabled-color: #999999;
+	font-family: "DINOT-Medium";
+	font-size: 13;
+	font-weight: normal;
+}
+
+Button.noSkinButton{
+	skin: ClassReference(null);				
+	font-weight: normal;
+	font-family: "DINOT-Medium";
+	font-size: 12;
+	color: #666666;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+}
+
+Canvas.softYellowContainerRounded{
+	background-color: #f5f3ea;
+	border-style: solid;
+	corner-radius: 3;
+	border-color: #d9baae;	
+}
+
+Canvas.bkgSourcesSelector{
+	background-image: Embed(source="ui.swf",symbol="bkg_sourcesSelector");		
+}
+
+Canvas.bkgShareSelector{
+	background-image: Embed(source="ui.swf",symbol="bkg_shareSelector");		
+}
+
+CheckBox{
+	disabledIcon: Embed(source="ui.swf", symbol="CheckBox_disabledIcon");
+	downIcon: Embed(source="ui.swf", symbol="CheckBox_downIcon");
+	overIcon: Embed(source="ui.swf", symbol="CheckBox_overIcon");
+	selectedDisabledIcon: Embed(source="ui.swf", symbol="CheckBox_selectedDisabledIcon");
+	selectedDownIcon: Embed(source="ui.swf", symbol="CheckBox_selectedDownIcon");
+	selectedOverIcon: Embed(source="ui.swf", symbol="CheckBox_selectedOverIcon");
+	selectedUpIcon: Embed(source="ui.swf", symbol="CheckBox_selectedUpIcon");
+	upIcon: Embed(source="ui.swf", symbol="CheckBox_upIcon");
+	color: #777777;
+	textRollOverColor: #333333;
+	textSelectedColor:#333333;
+	textDisabledColor: #999999;
+	fontSize:12;
+	fontWeight:normal;
+	font-family: "DINOT-Medium";
+	horizontalGap:0;
+	paddingTop: -4;
+	paddingBottom: 0;
+}
+
+Button.btnZoomMore{
+	up-skin: Embed(source="ui.swf",symbol="btn_zoom_more_up");	
+	over-skin: Embed(source="ui.swf",symbol="btn_zoom_more_over");	
+	down-skin: Embed(source="ui.swf",symbol="btn_zoom_more_over");	
+	color: #4a4f33;
+	text-roll-over-color: #333333;
+	text-selected-color: #333333;
+	font-family: "DINOT-Medium";
+	font-size: 12;
+	font-weight: normal;
+	padding-top: 0; 	
+}
+
+Button.btnZoomMinus{
+	up-skin: Embed(source="ui.swf",symbol="btn_zoom_minus_up");	
+	over-skin: Embed(source="ui.swf",symbol="btn_zoom_minus_over");	
+	down-skin: Embed(source="ui.swf",symbol="btn_zoom_minus_over");	
+	color: #4a4f33;
+	text-roll-over-color: #333333;
+	text-selected-color: #333333;
+	font-family: "DINOT-Medium";
+	font-size: 12;
+	font-weight: normal;
+	padding-top: 0; 	
+}
+
+HSlider{
+	thumbDisabledSkin: Embed(source="ui.swf", symbol="SliderThumb_disabledSkin");
+	thumbDownSkin: Embed(source="ui.swf", symbol="SliderThumb_downSkin");
+	thumbOverSkin: Embed(source="ui.swf", symbol="SliderThumb_overSkin");
+	thumbUpSkin: Embed(source="ui.swf", symbol="SliderThumb_upSkin");
+	trackHighlightSkin: Embed(source="ui.swf", symbol="SliderHighlight_Skin");
+	trackSkin: Embed(source="ui.swf", symbol="SliderTrack_Skin");
+	tickColor:#FFFFFF;
+	tick-length:8;
+	tickOffset:6;
+	tickInterval:1;
+	tickThickness:1;
+	thumb-offset: 0;
+}
+
+/* END NUEVOS*/
+
+/* Canvas.headerCanvas{
 	background-color: #375381;
 	border-style: none;	
 }
@@ -306,3 +415,4 @@ ProgressBar {
    trackHeight: 10;
 }
 
+ */

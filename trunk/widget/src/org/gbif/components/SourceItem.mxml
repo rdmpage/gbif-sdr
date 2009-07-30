@@ -19,10 +19,10 @@
 	<mx:CheckBox x="64" y="42" label="Show/Hide" fontSize="10" fontStyle="normal" selected="true" enabled="true" click="Application.application.toggleSourceVisibility(sourceData.resource_id)"/>
 	
 	<!--LEGEND-->
-	<mx:VBox y="70" x="7" paddingBottom="10">
+	<mx:VBox y="61" x="7" paddingBottom="10" verticalGap="2">
 		<mx:HBox horizontalGap="12">
 			<mx:Label text="LEGEND" width="50" fontFamily="DINOT-Medium" color="#999999" textAlign="right" height="20"/>
-			<mx:VBox verticalGap="-5" verticalAlign="top">
+			<mx:VBox verticalGap="-7" verticalAlign="top">
 				<mx:Repeater id="legendRepeater" dataProvider="{legend}">
 					<mx:HBox verticalAlign="middle" horizontalGap="-1">
 						<components:Circle data="{{color:legendRepeater.currentItem.color,colorizedColor:sourceData.curColor}}" />		
@@ -31,10 +31,9 @@
 				</mx:Repeater>
 			</mx:VBox>		
 		</mx:HBox>		
-		<mx:HBox horizontalGap="12" toolTip="{sourceData.resourcename}" >
+		<mx:HBox horizontalGap="7" toolTip="{sourceData.resourcename}" >
 			<mx:Label text="CITATION" fontFamily="DINOT-Medium" color="#999999" textAlign="right" width="50"/>
 			<mx:Label text="view citation" textDecoration="underline" color="#464646" fontSize="10" fontFamily="DINOT-Medium"/>
 		</mx:HBox>
 	</mx:VBox>
-	<mx:Image scaleContent="false" bottom="0" source="@Embed('/assets/hRuleDashed500.png')" width="100%"/>
 </mx:Canvas>
