@@ -25,7 +25,7 @@
                 		</div>
                 	</div>
 			    {foreachelse}
-			        <div class="span-18 text_comment">There are no comments to this species.</div>
+			        <div class="span-17 text_comment">There are no comments to this species.</div>
 			    {/foreach}
                 
 			</ol>
@@ -53,7 +53,7 @@
 			<div class="species_details">
 				<div class="title_blue">Species Details</div>
 			    <div class="separator_small"></div>
-			    <div class="text_comment">Sorry, there is still no data available</div>
+			    <div class="text_comment_right">Sorry, there is still no data available</div>
 			</div>
 			<div class="separator6"></div>
 			<div class="related_species">
