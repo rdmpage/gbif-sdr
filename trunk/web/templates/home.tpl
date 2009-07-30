@@ -11,7 +11,7 @@
 					    <form id="searchForm" action="searchresult.php" method="GET">
     						<div class="titleContainer"><p>Search</p></div>
     						<div class="inputContainer"><input class="searchText" name="q"></div>
-    						<div class="buttonContainer"><div class="searchButton"><a href="#" onClick="$('#searchForm').submit()">Search!</a></div></div>
+    						<div class="buttonContainer"><input type="submit" class="searchButton" id="search" value="Search!"></div>
 						</form>
 					</div>
 					<a href="/speciesPage.php?id=856027&n=Anas%20penelope" class="text3">e.g. Anas penelope</a>
