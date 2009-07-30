@@ -19,9 +19,6 @@ body {
 	float: right;
 	background-image: none;
 	border: none;
-	border-bottom: 1px silver solid;
-	border-left: 1px silver solid;
-	border-right: 1px silver solid;
 }
 
 div.login_sign {
@@ -35,7 +32,7 @@ div.login_sign {
 	height: 30px;
 	width: 950px;
 	text-align: center;
-	padding-top: 20px;
+	padding-top: 10px;
 }
 
 div#wrapper {
