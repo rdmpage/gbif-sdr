@@ -9,7 +9,7 @@
 			
 			
 			{foreach key=name_fk item=result from=$results}
-			<div class="span-18 result">
+			<div class="span-18 {cycle values="result,result2"}">
 				<div class="span-2 last avatar2"><img src="/flickrImage.php?q={$result.scientific_name|escape:"url"}" width="51" height="52" /></div>
 					<div class="span-16 last">
 						<div class="span-11 column">
@@ -17,12 +17,12 @@
 							<div class="span-11 last result_list">
 								<ul>
 								    <li></li>
-  									<li><a href="">Animalia</a><img class="lista" src="/images/arrowlist.jpg"></li>
-  									<li><a href="">Chordata</a><img class="lista" src="/images/arrowlist.jpg"></li>
-  									<li><a href="">Mammalia</a><img class="lista" src="/images/arrowlist.jpg"></li>
-  									<li><a href="">Carnivora</a><img class="lista" src="/images/arrowlist.jpg"></li>
-  									<li><a href="">Felidae</a><img class="lista" src="/images/arrowlist.jpg"></li>
-   									<li><a href="" class="ultimo">Puma</a></li>
+  									<li><a href="">Kingdom</a><img class="lista" src="/images/arrowlist.jpg"></li>
+  									<li><a href="">Phylum</a><img class="lista" src="/images/arrowlist.jpg"></li>
+  									<li><a href="">Class</a><img class="lista" src="/images/arrowlist.jpg"></li>
+  									<li><a href="">Order</a><img class="lista" src="/images/arrowlist.jpg"></li>
+  									<li><a href="">Family</a><img class="lista" src="/images/arrowlist.jpg"></li>
+   									<li><a href="" class="ultimo">Genus</a></li>
 								</ul>
 							</div>	
 						</div>	
