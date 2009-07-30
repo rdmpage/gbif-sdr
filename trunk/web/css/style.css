@@ -274,7 +274,7 @@ input.checkbox {
 	width: 96px;
     background:url(images/search.jpg) repeat-x;
 	text-decoration: none;
-	line-height: 24px;
+	line-height: 22px;
 	text-align: center;
 	font-family: "Georgia";
 	font-size: 18px;
@@ -726,17 +726,6 @@ a.ultimo{
 	font-size: 20px; 
 	color: #9db7d2;
 }
-
-/*
-.title_blue_search{
- 	font-family: "Georgia";
- 	font-style: italic;
-	font-size: 20px; 
-	color: #9db7d2;
-	margin-left: 9px;
-	margin-top: 2px;
-}
-*/
 
 .title_gray{
  	font-family: "Georgia";
