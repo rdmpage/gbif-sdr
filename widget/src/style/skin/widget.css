@@ -1,11 +1,21 @@
 /* CSS file */
 
+Application{
+	border-style:solid;
+	border-thickness: 1;
+	border-color: #d6d6d6;	
+}
+
 Button {
 	fontWeight: normal;
-	cornerRadius: 0;
+	cornerRadius: 2;
 	color: #797979;
 	themeColor: #000000;
+	font-family: "DINOT-Medium";
+	borderColor: #d6d6d6;
+	font-size: 13;
 }
+
 ComboBox {
 	cornerRadius: 3;
 	fillAlphas: 0.75, 0.75, 0.75, 0.75;
@@ -19,6 +29,7 @@ ComboBox {
 	iconColor: #FFFFFF;
 	selectionColor: #9BBD88;
 }
+
 .comboBoxDropdown {
 	color: #FFFFFF;
 	borderColor: #A3A3A3;
@@ -33,4 +44,45 @@ ComboBox {
 	cornerRadius: 0;
 	textRollOverColor: #FFFFFF;
 	textSelectedColor: #FFFFFF;
+}
+
+Button.btnZoomMore{
+	up-skin: Embed(source="ui.swf",symbol="btn_zoom_more_up");	
+	over-skin: Embed(source="ui.swf",symbol="btn_zoom_more_over");	
+	down-skin: Embed(source="ui.swf",symbol="btn_zoom_more_over");	
+	color: #4a4f33;
+	text-roll-over-color: #333333;
+	text-selected-color: #333333;
+	font-family: "DINOT-Medium";
+	font-size: 12;
+	font-weight: normal;
+	padding-top: 0; 	
+}
+
+Button.btnZoomMinus{
+	up-skin: Embed(source="ui.swf",symbol="btn_zoom_minus_up");	
+	over-skin: Embed(source="ui.swf",symbol="btn_zoom_minus_over");	
+	down-skin: Embed(source="ui.swf",symbol="btn_zoom_minus_over");	
+	color: #4a4f33;
+	text-roll-over-color: #333333;
+	text-selected-color: #333333;
+	font-family: "DINOT-Medium";
+	font-size: 12;
+	font-weight: normal;
+	padding-top: 0; 	
+}
+
+HSlider{
+	thumbDisabledSkin: Embed(source="ui.swf", symbol="SliderThumb_disabledSkin");
+	thumbDownSkin: Embed(source="ui.swf", symbol="SliderThumb_downSkin");
+	thumbOverSkin: Embed(source="ui.swf", symbol="SliderThumb_overSkin");
+	thumbUpSkin: Embed(source="ui.swf", symbol="SliderThumb_upSkin");
+	trackHighlightSkin: Embed(source="ui.swf", symbol="SliderHighlight_Skin");
+	trackSkin: Embed(source="ui.swf", symbol="SliderTrack_Skin");
+	tickColor:#FFFFFF;
+	tick-length:8;
+	tickOffset:6;
+	tickInterval:1;
+	tickThickness:1;
+	thumb-offset: 0;
 }

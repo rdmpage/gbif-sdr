@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="154" height="223" styleName="bkgShareSelector" backgroundSize="100%">
+	<mx:Label x="13" text="export this map" color="#333333" fontSize="13" fontFamily="DINOT-Medium" bottom="0"/>
+	<mx:Button label="close x" top="12" fontSize="10" click="this.visible = false" styleName="noSkinButton" right="9"
+		useHandCursor="true" buttonMode="true" mouseChildren="false"/>
+	<mx:Label text="export" top="11" left="7" fontFamily="DINOT-Medium" color="#999999" fontSize="13" width="119" fontWeight="normal"/>
+	<mx:Label text="this map" top="25" left="7" fontSize="20" fontFamily="Georgia" fontStyle="italic" fontWeight="normal" color="#86A3BF"/>
+	<mx:Image scaleContent="false" left="10" right="10" y="55">
+		<mx:source>@Embed('/assets/hRuleDashed500.png')</mx:source>
+	</mx:Image>
+	<mx:Button label="KML" left="10" height="21" styleName="buttonGrey"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button2"
+ right="10" top="63"/>
+	<mx:Button label="SHP" left="10" height="21" styleName="buttonGrey"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button1"
+	right="10" top="111"/>
+	<mx:Button label="GML" left="10" height="21" styleName="buttonGrey"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button3"
+	right="10" top="135"/>
+	<mx:Button label="PDF" left="10" height="21" styleName="buttonGrey"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button4"
+	right="10" top="159"/>
+	<mx:Button label="PNG" left="10" height="21" styleName="buttonGrey"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button0"
+	right="10" top="87"/>
+</mx:Canvas>

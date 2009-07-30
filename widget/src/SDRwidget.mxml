@@ -3,11 +3,12 @@
 	creationComplete="preInit()" xmlns:components="org.gbif.components.*" horizontalScrollPolicy="off" verticalScrollPolicy="off">
 	<mx:states>
 		<mx:State name="Sources">
-			<mx:AddChild position="lastChild">
-				<components:SourcesPanel top="50" bottom="40" right="10" sourcesAc="{sourcesAc}"/>
-			</mx:AddChild>
 			<mx:SetProperty target="{map}" name="x" value="0"/>
-			<mx:SetStyle target="{canvas1}" name="right" value="255"/>
+			<mx:SetStyle target="{button1}" name="right" value="11"/>
+			<mx:AddChild position="lastChild">
+				<components:SourcesPanel filters="{[glow1]}" sourcesAc="{sourcesAc}" height="319" right="11" bottom="5"/>
+			</mx:AddChild>
+			<mx:SetProperty target="{button2}" name="width" value="120"/>
 		</mx:State>
 	</mx:states>
 
@@ -276,15 +277,14 @@
 		
 	]]>
 </mx:Script>
-	<mx:Style source="style/skin/widget.css"/>
+	<!--<mx:Style source="style/skin/widget.css"/>-->
 	<mx:Style source="style/skin/ui.css"/>
 	<mx:Style source="style/skin/fonts.css"/>
 
-	<mx:Canvas left="7" right="7" bottom="35" top="65" borderColor="#6D6D6D" borderStyle="solid" id="canvas1">
-		<maps:Map id="map" key="{parameters.api_key}" width="100%" height="100%" mapevent_mapready="init()" />
-		<mx:HBox left="10" horizontalGap="0" top="10" verticalAlign="middle" paddingLeft="3" paddingRight="6" height="21" horizontalAlign="center"
-			backgroundColor="#9BBD88" cornerRadius="3" borderStyle="solid" backgroundAlpha="0.75" borderColor="#86898B">
-			<mx:Label text="zoom" width="35" fontFamily="Arial" color="#393939" fontSize="11" height="19"/>
+	<mx:Canvas left="7" right="7" bottom="30" top="56" borderColor="#6D6D6D" borderStyle="solid" id="canvas1">
+		<maps:Map id="map" key="{parameters.api_key}" width="100%" height="100%" mapevent_mapready="init()"  y="0"/>
+		<mx:HBox left="7" horizontalGap="-6" top="6" verticalAlign="middle" paddingLeft="6" paddingRight="6" height="21" horizontalAlign="center"
+			backgroundColor="#9BBD88" cornerRadius="3" borderStyle="none" backgroundAlpha="0.75" paddingTop="3" paddingBottom="3">
 			<mx:Button styleName="btnZoomMinus" click="zoomOut()" height="14" width="14"
 				mouseChildren="false" buttonMode="true" useHandCursor="true"/>
 			<mx:HSlider id="zoomSlider" minimum="0" maximum="16" snapInterval="1" tickInterval="1" 
@@ -292,15 +292,16 @@
 			<mx:Button styleName="btnZoomMore" click="zoomIn()" height="14" width="14"
 				mouseChildren="false" buttonMode="true" useHandCursor="true"/>
 		</mx:HBox>
-		<mx:ComboBox id="mapType" left="250" top="10" height="21" dataProvider="{mapTypes}" change="onChangeMapType(event)"/>
-		<mx:Canvas id="loading" width="120" height="20" styleName="softYellowContainerRounded" top="10" left="374">
+		<mx:ComboBox id="mapType" left="250" top="10" height="21" dataProvider="{mapTypes}" change="onChangeMapType(event)" visible="false"/>
+		<mx:Canvas id="loading" width="120" height="20" styleName="softYellowContainerRounded" top="6" horizontalCenter="0">
 			<mx:SWFLoader x="4" y="1" source="@Embed('assets/tinyLoading.swf')" width="12" height="12"/>
-			<mx:Label y="1" text="Loading data..." color="#5E5E5E" fontSize="11" fontFamily="DINOT-Medium" left="22"/>
+			<mx:Label y="0" text="Loading data..." color="#5E5E5E" fontSize="11" fontFamily="DINOT-Medium" left="22"/>
 		</mx:Canvas>
 	</mx:Canvas>
-	<mx:Button label="view fullscreen" right="7" top="5" fontSize="12" click="toggleFullScreen()"/>
-	<mx:Button label="sources" fontWeight="normal" right="7" width="79" bottom="5" fontSize="12" click="(currentState=='Sources')?currentState='':currentState='Sources';"/>
-	<mx:ComboBox id="exportCombo" left="10" bottom="6" width="85" close="downloadData(event)">
+	<mx:Button label="fullscreen" right="7" top="5" fontSize="12" click="toggleFullScreen()" height="21" styleName="buttonGrey"
+		useHandCursor="true" buttonMode="true" mouseChildren="false"/>
+	<mx:Button label="source selector" right="11" bottom="5" click="(currentState=='Sources')?currentState='':currentState='Sources';" height="21" id="button1" styleName="buttonGrey" useHandCursor="true" buttonMode="true" mouseChildren="false" width="120"/>
+<!--	<mx:ComboBox id="exportCombo" left="10" bottom="5" width="85" close="downloadData(event)" height="21">
 		<mx:dataProvider>
 			<mx:ArrayCollection>
 				<mx:Object label="KML" data="KML" />
@@ -310,23 +311,31 @@
 				<mx:Object label="PDF" data="PDF" />
 			</mx:ArrayCollection>
 		</mx:dataProvider>
-	</mx:ComboBox>
-	<mx:Button label="share this map" fontWeight="normal" bottom="5" left="103" width="121" fontSize="12"/>
-	<mx:Image source="{'/flickrImage.php?q='+scientificName}" left="7" top="5" width="52" height="52" />
-	<mx:HBox y="6" left="67" right="97" verticalAlign="bottom" horizontalGap="3">
-		<mx:Label text="{scientificName}" fontFamily="Georgia" fontStyle="italic" fontSize="20" fontWeight="normal" color="#393939"/>
-		<mx:Label text="updated days ago" color="#878787"/>
+	</mx:ComboBox>-->
+	
+	<mx:Button label="share this map" bottom="5" left="135" height="21" styleName="buttonGrey"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button2" width="120"
+		click="sharePanel.visible = true"/>
+	<mx:Button label="export this map" bottom="5" left="11" height="21" styleName="buttonGrey"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button0" width="120"
+		click="exportPanel.visible = true"/>
+	<mx:Image source="{'/flickrImage.php?q='+scientificName}" left="7" top="5" width="45" height="45" />
+	<mx:HBox y="3" left="56" right="97" verticalAlign="bottom" horizontalGap="0">
+		<mx:Label text="{scientificName +','}" fontFamily="Georgia" fontStyle="italic" fontSize="24" fontWeight="normal" color="#393939" letterSpacing="-1"/>
+		<mx:Label text="updated 2 days ago" color="#878787" fontFamily="DINOT-Medium" fontSize="11" letterSpacing="0"/>
 	</mx:HBox>
 
-	<mx:HBox y="31" left="67" right="97" horizontalGap="1">
-		<mx:Label text="{sourcesAc.length +1}"/>
-		<mx:Label text="sources"/>
-		<mx:Label text="|"/>
-		<mx:Label text="{numOccurrences}"/>
-		<mx:Label text="occurrences in GBIF"/>
+	<mx:HBox y="31" left="56" right="97" horizontalGap="0">
+		<mx:Label text="{(sourcesAc.length + 1) + ' GBIF, GROMS'}" fontFamily="DINOT-Medium" fontSize="11" color="#666666"/>
+		<mx:Label text="|" width="6"/>
+		<mx:Label text="{numOccurrences +'occurrences in GBIF'}" fontFamily="DINOT-Medium" fontSize="11" color="#666666"/>
 	</mx:HBox>
 	<mx:NumberFormatter id="nf" useThousandsSeparator="true" />
 	<mx:RemoteObject id="roSdr" endpoint="../amfphp/gateway.php" destination="SDRServices" source="SDRServices"
 	 result="onSdrServiceResult(event)" fault="trace(event.fault)" />
+	<components:ExportPanel filters="{[glow1]}" id="exportPanel" left="11" bottom="5" visible="false" />
+	<components:SharePanel filters="{[glow1]}" id="sharePanel" left="135" bottom="5" visible="false" />
+
+	<mx:GlowFilter id="glow1" blurX="5" blurY="5" color="0x000000" strength=".5" quality="2" />
 
 </mx:Application>
