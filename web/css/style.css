@@ -739,7 +739,7 @@ a.ultimo{
  	font-family: "Georgia";
  	font-style: italic;
 	font-size: 20px; 
-	margin-left: 150px;
+	margin-left: 180px;
 	margin-top: 50px;
 	color: #a9a9a9;	
 }
@@ -762,10 +762,25 @@ a.ultimo{
 
 .text_comment{
 	letter-spacing: -1px;
+	color: white;
+	font-family: "Arial";
+	font-size: 14px;
+	line-height: 14px;
+	background-color: #bbd6ab;
+	border: 1px green solid;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.text_comment_right{
+	letter-spacing: -1px;
 	color: #a9a9a9;
 	font-family: "Arial";
 	font-size: 13px;
 	line-height: 14px;
+	margin-top: 50px;
+	text-align: center;
 }
 
 .view_more{
