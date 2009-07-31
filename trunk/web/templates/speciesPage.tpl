@@ -25,7 +25,7 @@
                 		</div>
                 	</div>
 			    {foreachelse}
-			        <div class="span-17 text_comment">There are no comments to this species.</div>
+			        <div class="span-17 no_result">There are no comments to this species.</div>
 			    {/foreach}
                 
 			</ol>
