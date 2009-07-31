@@ -315,10 +315,10 @@
 	
 	<mx:Button label="share this map" bottom="5" left="135" height="21" styleName="buttonGrey"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button2" width="120"
-		click="sharePanel.visible = true"/>
+		click="sharePanel.visible = true; exportPanel.visible= false;"/>
 	<mx:Button label="export this map" bottom="5" left="11" height="21" styleName="buttonGrey"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button0" width="120"
-		click="exportPanel.visible = true"/>
+		click="exportPanel.visible = true; sharePanel.visible = false"/>
 	<mx:Image source="{'/flickrImage.php?q='+scientificName}" left="7" top="5" width="45" height="45" />
 	<mx:HBox y="3" left="56" right="97" verticalAlign="bottom" horizontalGap="0">
 		<mx:Label text="{scientificName +','}" fontFamily="Georgia" fontStyle="italic" fontSize="24" fontWeight="normal" color="#393939" letterSpacing="-1"/>

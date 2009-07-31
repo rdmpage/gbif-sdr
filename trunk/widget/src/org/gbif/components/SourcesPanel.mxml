@@ -42,7 +42,8 @@
 			<components:SourceItem sourceData="{myRepeater.currentItem}" legend="{myRepeater.currentItem.legend}" width="100%"/>
 		</mx:Repeater>
 	</mx:VBox>
-	<mx:Label x="114" text="source selector" color="#333333" fontSize="13" fontFamily="DINOT-Medium" bottom="0"/>
+	<mx:Button fontSize="13" click="Application.application.currentState = ''" styleName="noSkinButton" right="11"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" label="source selector" height="20" bottom="2"/>
 	
 	
 	
