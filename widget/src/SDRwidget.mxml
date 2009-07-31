@@ -14,6 +14,7 @@
 
 <mx:Script>
 	<![CDATA[
+		import org.gbif.Event.DownloadEvent;
 		import flash.net.navigateToURL;
 		import com.google.maps.LatLngBounds;
 		import mx.managers.ToolTipManager;
@@ -101,7 +102,7 @@
 			/* map.addControl(new MapTypeControl()); */
 			map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
 			
-			
+			exportPanel.addEventListener("DOWNLOAD",downloadData);
 			
 			//Add GBIF layer
 			var ctlgbif:CustomTileLayer= new CustomTileLayer("http://maps|N|.eol.org/php/map/getEolTile.php?tile=|X|_|Y|_|Z|_"+parameters.nub_concept_id,"",23);
@@ -209,8 +210,9 @@
 			return url;
 		}
 		
-		private function downloadData(event:Event) {
-			var url:String= getDownloadUrl(ComboBox(event.target).selectedItem.data);
+		private function downloadData(event:DownloadEvent):void {
+			//var url:String= getDownloadUrl(ComboBox(event.target).selectedItem.data);
+			var url:String= getDownloadUrl(event.dType);
 			navigateToURL(new URLRequest(url));
 			
 		}

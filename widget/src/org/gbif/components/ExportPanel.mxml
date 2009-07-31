@@ -7,21 +7,28 @@
 	<mx:Image scaleContent="false" left="10" right="10" y="55">
 		<mx:source>@Embed('/assets/hRuleDashed500.png')</mx:source>
 	</mx:Image>
+	
+	<mx:Script>
+		<![CDATA[
+			import org.gbif.Event.DownloadEvent;
+		]]>
+	</mx:Script>
+	
 	<mx:Button label="KML" left="10" height="21" styleName="buttonGrey"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button2"
- right="10" top="63"/>
+ right="10" top="63" click="dispatchEvent(new DownloadEvent('DOWNLOAD', 'KML'))"/>
 	<mx:Button label="SHP" left="10" height="21" styleName="buttonGrey"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button1"
-	right="10" top="111"/>
+	right="10" top="111" click="dispatchEvent(new DownloadEvent('DOWNLOAD', 'SHP'))"/>
 	<mx:Button label="GML" left="10" height="21" styleName="buttonGrey"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button3"
-	right="10" top="135"/>
+	right="10" top="135" click="dispatchEvent(new DownloadEvent('DOWNLOAD', 'GML'))"/>
 	<mx:Button label="PDF" left="10" height="21" styleName="buttonGrey"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button4"
-	right="10" top="159"/>
+	right="10" top="159" click="dispatchEvent(new DownloadEvent('DOWNLOAD', 'PDF'))"/>
 	<mx:Button label="PNG" left="10" height="21" styleName="buttonGrey"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button0"
-	right="10" top="87"/>
+	right="10" top="87" click="dispatchEvent(new DownloadEvent('DOWNLOAD', 'PNG'))"/>
 	<mx:Button fontSize="13" click="this.visible = false" styleName="noSkinButton" right="44"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" left="11" label="export this map" height="20" bottom="2"/>
 </mx:Canvas>
