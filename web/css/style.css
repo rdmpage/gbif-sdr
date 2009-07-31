@@ -282,6 +282,20 @@ input.checkbox {
 	color: white;
 }
 
+.searchButton:hover{ 
+	border:none;
+	height: 25px;
+	width: 96px;
+    background:url(images/searchover.jpg) repeat-x;
+	text-decoration: none;
+	line-height: 22px;
+	text-align: center;
+	font-family: "Georgia";
+	font-size: 18px;
+	font-style: italic;
+	color: white;
+}
+
 .separator_lr{
 	height: 500px;
 }
@@ -557,7 +571,6 @@ a.ultimo{
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
-	font-weight: bold;
 	padding-left: 20px;
 	margin-left: 5px;
 	margin-top: 6px;
@@ -576,7 +589,6 @@ a.ultimo{
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
-	font-weight: bold;
 	text-align: right;
 	margin-top: 6px;
 	color: #999999;
@@ -594,7 +606,6 @@ a.ultimo{
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
-	font-weight: bold;
 	padding-left: 20px;
 	margin-left: 5px;
 	margin-top: 6px;
@@ -613,7 +624,6 @@ a.ultimo{
 	font-family: "Georgia";
 	font-size: 23px;
 	font-style: italic; 
-	font-weight: bold;
 	text-align: right;
 	margin-top: 6px;
 	color: #666666;
