@@ -687,14 +687,12 @@ a.ultimo{
 	margin-right: 5px;
 }
 
-
-
 .avatar{
 	border: #d6d6d6 1px solid;
 	height: 52px;
 	width: 51px;
 	margin-right: 2px;
-	margin-top: 3px;
+	margin-top: 8px;
 	float: left;
 }
 
@@ -770,7 +768,7 @@ a.ultimo{
 	color: #bfbfbf;
 }
 
-.text_comment{
+.no_result{
 	letter-spacing: -1px;
 	color: white;
 	font-family: "Arial";
@@ -781,6 +779,14 @@ a.ultimo{
 	padding-top: 5px;
 	padding-bottom: 5px;
 	text-align: center;
+}
+
+.text_comment{
+	letter-spacing: -1px;
+	color: #a9a9a9;
+	font-family: "Arial";
+	font-size: 13px;
+	line-height: 14px;
 }
 
 .text_comment_right{
