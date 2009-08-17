@@ -62,7 +62,7 @@ Implemented features:
  * additional with data from:
    * catchment / fish areas
    * known bird areas
-   * if available European states
+   * if available European states. See Global Administrative Areas (GADM): http://biogeo.berkeley.edu/gadm/
 
 == Phase 3 ==
 *Scheduled for 16. October 2009*
