@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:maps="com.google.maps.*" 
+	 currentState="loading"
+	backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#FFFFFF, #FFFFFF]" xmlns:ns1="com.vizzuality.loader.*">
+	<mx:states>
+		<mx:State name="loading">
+			<mx:AddChild position="lastChild">
+				<ns1:GeneralLoader left="0" top="0">
+				</ns1:GeneralLoader>
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+	<mx:Script>
+		<![CDATA[
+			import com.google.maps.MapEvent;
+			import com.google.maps.overlays.TileLayerOverlay;
+			import com.vizzuality.map.CustomWMSTileLayer;
+			import com.google.maps.MapType;
+			import com.google.maps.LatLng;
+			import com.google.maps.controls.MapTypeControl;
+			import com.google.maps.controls.ZoomControl;
+			import mx.collections.ArrayCollection;
+			import mx.rpc.events.ResultEvent;
+			import mx.events.IndexChangedEvent;
+			import mx.rpc.events.FaultEvent;
+					
+		[Bindable]public var namedAreasCollection:ArrayCollection = new ArrayCollection();
+		[Bindable]public var namedAreasList:ArrayCollection = new ArrayCollection();
+		
+		[Bindable]private var descriptionText: String = "";
+		[Bindable]private var areaText: String= "";
+		public var codeAreaSelected: String = "";
+		
+		
+		private function init():void {
+			
+	       var externalDomains:Array=[
+	              "ec2-174-129-85-138.compute-1.amazonaws.com:8080"];
+	        for each(var dom:String in externalDomains) {
+	            Security.allowDomain(dom);
+	            Security.loadPolicyFile("http://"+dom+"/crossdomain.xml");
+	            var request:URLRequest = new URLRequest("http://"+dom+"/crossdomain.xml");
+	            var loader:URLLoader = new URLLoader();
+	            loader.addEventListener(IOErrorEvent.IO_ERROR,function(event:IOErrorEvent):void {
+	                trace("error");
+	            });
+	        loader.load(request);                               
+                                }                               
+			
+			map.addControl(new ZoomControl());
+			map.addControl(new MapTypeControl());
+			map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
+			
+			
+			server.addEventListener(ResultEvent.RESULT,onGetNamedAreas);
+			server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
+			server.getReferences();
+		}
+
+		
+		private function onGetNamedAreas(ev:ResultEvent):void {
+			server.removeEventListener(ResultEvent.RESULT,onGetNamedAreas);
+			namedAreasCollection = new ArrayCollection(ev.result as Array);	
+			currentState="";
+		}
+		
+		
+		
+		private function updateListProviders(evt:Event):void {			
+			
+			if(combo.selectedIndex>=0) {
+				descriptionText = namedAreasCollection[combo.selectedIndex].description;
+				areaText = namedAreasCollection[combo.selectedIndex].title;
+				codeAreaSelected = namedAreasCollection[combo.selectedIndex].code;
+							
+				//loading.visible=true;
+				currentState="loading";
+				namedAreasList.source = null;
+				server.addEventListener(ResultEvent.RESULT, onGetCountries);
+				server.addEventListener(FaultEvent.FAULT,function faultTrace(ev:FaultEvent):void { trace(ev)});
+				server.getReferenceCodes(combo.selectedItem.code);
+				
+				loadingTilesBox.visible=true;
+	            map.clearOverlays();
+				var cWmsTile:CustomWMSTileLayer = new CustomWMSTileLayer(combo.selectedItem.code);
+				trace(combo.selectedItem.code);
+				var tlo:TileLayerOverlay = new TileLayerOverlay(cWmsTile);
+				tlo.addEventListener(MapEvent.TILES_LOADED,onTilesLoaded);
+				map.addOverlay(tlo);	
+			}
+			
+		}
+		
+		private function onTilesLoaded(event:MapEvent):void {
+			loadingTilesBox.visible=false;
+		}
+		
+		private function onGetCountries(event: ResultEvent):void {
+			server.removeEventListener(ResultEvent.RESULT,onGetCountries);
+			currentState="";
+			namedAreasList = new ArrayCollection(event.result as Array);
+			
+			//this.currentState = "AreaSelected";
+		}
+
+	]]>
+
+	</mx:Script>
+	<maps:Map id="map" key="lala" mapevent_mapready="init()" 
+		top="110" left="223" bottom="10" right="0"/>
+		
+        <mx:RemoteObject id="server" endpoint="http://ec2-174-129-85-138.compute-1.amazonaws.com/amfphp/gateway.php" source="NARServices" 
+                destination="NARServices">
+                <mx:method name="getReferences"/>
+                <mx:method name="getReferenceCodes"/>
+                <mx:method name="getNamedAreaDetails"/>
+        </mx:RemoteObject>
+        <mx:Image x="0" y="0" source="com/vizzuality/assets/gbif.jpg"/>
+        <mx:ComboBox x="271" y="90" id="combo" width="603" dataProvider="{namedAreasCollection}"
+        	 labelField="title" change="updateListProviders(event)" />
+        <mx:VBox width="215" top="120" left="0" height="{map.height}">
+        	<mx:Repeater id="r" dataProvider="{namedAreasList}">
+	        	<mx:Canvas width="100%" height="50" horizontalScrollPolicy="off" backgroundColor="{(r.currentIndex%2>0)?0x333333:0x123456}">
+	        		<mx:Label y="10" text="{r.currentItem.area_code}" color="#000000" fontSize="10" left="10" width="195"/>
+	        	</mx:Canvas>
+        	</mx:Repeater>
+        </mx:VBox>
+        <ns1:GenericLoader id="loadingTilesBox" visible="false" top="120" height="55" left="235" width="252" message="Loading tiles" alpha="0.6">
+        </ns1:GenericLoader>
+		
+	
+</mx:Application>
