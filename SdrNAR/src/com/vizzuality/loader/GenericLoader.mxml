@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="60" backgroundColor="#FFFFFF">
+		<mx:Script>
+			<![CDATA[
+				[Bindable]
+				public var message:String="Loading data";
+			]]>
+		</mx:Script>
+
+        <mx:ProgressBar y="37" indeterminate="true" label="" height="13" left="10" right="10" borderColor="#4C9C24"/>
+        <mx:Label x="7" y="8" text="{message}" color="#77B63E" fontSize="18"/>
+       
+</mx:Canvas>
+
