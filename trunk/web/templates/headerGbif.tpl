@@ -8,27 +8,27 @@
 
   <!-- Framework CSS -->
 
-  	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen, projection">
-  	<link rel="stylesheet" href="css/typography.css" type="text/css" media="screen, projection">
-  	<link rel="stylesheet" href="css/forms.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="css/grid.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="css/gbif.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="/css/typography.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="/css/forms.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="/css/grid.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="/css/print.css" type="text/css" media="print">
+	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="/css/gbif.css" type="text/css" media="screen, projection">
 
 
-	<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+	<script type="text/javascript" src="/js/jquery-1.3.2.js"></script>
 	
-	<script src="js/jquery.validate.js" type="text/javascript"></script>
+	<script src="/js/jquery.validate.js" type="text/javascript"></script>
 	
-	<script src="js/cmxforms.js" type="text/javascript"></script>
+	<script src="/js/cmxforms.js" type="text/javascript"></script>
 	
 		
-	<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
-	<script type="text/javascript" src="js/init.js"></script>
+	<script type="text/javascript" src="/js/jquery.simplemodal.js"></script>
+	<script type="text/javascript" src="/js/init.js"></script>
 	
 	
-  <!--[if lt IE 8]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <!--[if lt IE 8]><link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
 
 
 </head>
@@ -95,7 +95,7 @@
         				{$username} | <a id="logoutRef" onClick="$('#logout').modal()" href="#">Sign out </a>  
     			    {else}
         				<a id="login_link" href="#">Login </a>or
-        				<a href="register.php"> Sign up!</a>
+        				<a href="/register.php"> Sign up!</a>
     			    {/if}
 			    </div>	 
 			</div>

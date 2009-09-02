@@ -13,7 +13,7 @@
 	-webkit-border-radius: 5px;
 }
 #simplemodal-container a.modalCloseImg {
-	background:url('../images/x.jpg') no-repeat; 
+	background:url('/images/x.jpg') no-repeat; 
 	width:25px; 
 	height:29px; 
 	display:inline; 
