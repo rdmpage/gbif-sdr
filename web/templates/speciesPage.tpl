@@ -1,7 +1,7 @@
 {* {include file="header.tpl"}  *}
 {include file="headerGbif.tpl"} 
 
-<script type="text/javascript" src="js/swfobject.js" ></script>
+<script type="text/javascript" src="/js/swfobject.js" ></script>
 {include file="searchHForm.tpl"} 
 
 	<div class="span-24 widgetContainer" id="widgetContainer">
@@ -37,7 +37,7 @@
 					    <textarea class="span-17" name="comment" id="comment"></textarea>
 					    <input type="button" class="last commentButtonPost" value="Comment now" onclick="commentAction()"/>	
     			    {else}
-        				<div class="span-12 title_logout"><a href="#" onclick="$('#login_form').modal();return false;">Login</a> or <a href="register.php">register</a> to post your comment</div>
+        				<div class="span-12 title_logout"><a href="#" onclick="$('#login_form').modal();return false;">Login</a> or <a href="/register.php">register</a> to post your comment</div>
     			    {/if}
 				</div>
 			</form>

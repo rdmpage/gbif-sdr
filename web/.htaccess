@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule species/([0-9]+)/(.+) speciesPage.php?id=$1 [L]
+RewriteRule search/(.+) searchresults.php?q=$1 [L]
+RewriteRule api api.php [L]

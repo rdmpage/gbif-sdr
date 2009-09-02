@@ -8,33 +8,33 @@
 
   <!-- Framework CSS -->
 
-  	<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen, projection">
-  	<link rel="stylesheet" href="css/typography.css" type="text/css" media="screen, projection">
-  	<link rel="stylesheet" href="css/forms.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="css/grid.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
-<!-- 	<link rel="stylesheet" href="css/style1.css" type="text/css" media="screen, projection"> -->
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="/css/typography.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="/css/forms.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="/css/grid.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="/css/print.css" type="text/css" media="print">
+<!-- 	<link rel="stylesheet" href="/css/style1.css" type="text/css" media="screen, projection"> -->
+	<link rel="stylesheet" href="/css/style.css" type="text/css" media="screen, projection">
 
-	<!--<link rel="stylesheet" href="css/tpl/header.css" type="text/css" media="screen, projection">	
-	<link rel="stylesheet" href="css/tpl/footer.css" type="text/css" media="screen, projection">-->
-<!-- 	<link rel="stylesheet" href="css/tpl/searchHForm.css" type="text/css" media="screen, projection">	 -->
+	<!--<link rel="stylesheet" href="/css/tpl/header.css" type="text/css" media="screen, projection">	
+	<link rel="stylesheet" href="/css/tpl/footer.css" type="text/css" media="screen, projection">-->
+<!-- 	<link rel="stylesheet" href="/css/tpl/searchHForm.css" type="text/css" media="screen, projection">	 -->
 <!-- 	<link type='text/css' href='css/login.css' rel='stylesheet' media='screen' /> -->
 <!-- 	<link type='text/css' href='css/basicLogin.css' rel='stylesheet' media='screen' />	 -->
-<!-- 	<link rel="stylesheet" href="css/search.css" type="text/css" media="screen, projection"> -->
+<!-- 	<link rel="stylesheet" href="/css/search.css" type="text/css" media="screen, projection"> -->
 
-	<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+	<script type="text/javascript" src="/js/jquery-1.3.2.js"></script>
 	
-	<script src="js/jquery.validate.js" type="text/javascript"></script>
+	<script src="/js/jquery.validate.js" type="text/javascript"></script>
 	
-	<script src="js/cmxforms.js" type="text/javascript"></script>
+	<script src="/js/cmxforms.js" type="text/javascript"></script>
 	
 		
-	<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
-	<script type="text/javascript" src="js/init.js"></script>
+	<script type="text/javascript" src="/js/jquery.simplemodal.js"></script>
+	<script type="text/javascript" src="/js/init.js"></script>
 	
 	
-  <!--[if lt IE 8]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <!--[if lt IE 8]><link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
 
 
 </head>
@@ -94,10 +94,10 @@
 			<a href="/"><div class="span-1 last headerLogo"></div></a>
 			<div class="span-1 last headerList">
 				<ul>
-  					<li><a href="browse.php">BROWSE</a></li>
-  					<li><a href="contribute.php">CONTRIBUTE</a></li>
-  					<li><a href="api.php">API/Developers</a></li>
-  					<li><a href="about.php">ABOUT</a></li>
+  					<li><a href="/browse">BROWSE</a></li>
+  					<li><a href="/contribute">CONTRIBUTE</a></li>
+  					<li><a href="/api">API/Developers</a></li>
+  					<li><a href="/about">ABOUT</a></li>
 				</ul>
 			</div>
 			<div class="span-1 last headerSign">
