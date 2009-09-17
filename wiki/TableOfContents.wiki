@@ -1,19 +1,19 @@
 #summary Sidebar TOC
 
-*About*
+* *About*
   * [UseCases]
   * [Requirements]
   * [Terminology]
   * ResolutionExample	
-*Technical*
+* *Technical*
  * [Model]
  * MetadataModel	
  * [API]
  * [Roadmap]
-*Component Integration*
+* *Component Integration*
  * EcatIntegration
  * PortalIntegration
-*Vocabularies*
+* *Vocabularies*
  * OccurrenceStatus
  * [Nativeness]
  * LifeStage
