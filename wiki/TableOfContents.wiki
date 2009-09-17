@@ -1,19 +1,19 @@
 #summary Sidebar TOC
 
-* *About*
-  * [UseCases]
-  * [Requirements]
-  * [Terminology]
-  * ResolutionExample	
-* *Technical*
- * [Model]
- * MetadataModel	
- * [API]
- * [Roadmap]
-* *Component Integration*
- * EcatIntegration
- * PortalIntegration
-* *Vocabularies*
- * OccurrenceStatus
- * [Nativeness]
- * LifeStage
+ * *About*
+   * [UseCases]
+   * [Requirements]
+   * [Terminology]
+   * ResolutionExample	
+ * *Technical*
+   * [Model]
+   * MetadataModel	
+   * [API]
+   * [Roadmap]
+ * *Component Integration*
+   * [EcatIntegration]
+   * [PortalIntegration]
+ * *Vocabularies*
+   * OccurrenceStatus
+   * [Nativeness]
+   * LifeStage
