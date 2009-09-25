@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Species distribution repository</title>
 
-  <!-- Framework CSS -->
+  	<!-- Framework CSS -->
 
   	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection">
   	<link rel="stylesheet" href="/css/typography.css" type="text/css" media="screen, projection">
@@ -17,18 +17,14 @@
 	<link rel="stylesheet" href="/css/gbif.css" type="text/css" media="screen, projection">
 
 
-	<script type="text/javascript" src="/js/jquery-1.3.2.js"></script>
-	
-	<script src="/js/jquery.validate.js" type="text/javascript"></script>
-	
-	<script src="/js/cmxforms.js" type="text/javascript"></script>
-	
-		
+	<script type="text/javascript" src="/js/jquery.js"></script>	
+	<script type="text/javascript" src="/js/jquery.validate.js" ></script>	
+	<script type="text/javascript" src="/js/cmxforms.js"></script>
 	<script type="text/javascript" src="/js/jquery.simplemodal.js"></script>
 	<script type="text/javascript" src="/js/init.js"></script>
 	
 	
-  <!--[if lt IE 8]><link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  	<!--[if lt IE 8]><link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen, projection"><![endif]-->
 
 
 </head>
@@ -38,26 +34,22 @@
 	<div id="login_form" style='display:none'>
 		<div class="loginContainer">
 			<div id="status" align="left">			
-				<div class="span-10 error_msg" id="error_msg">Incorrect username/password combination</div>
-				<div class="span-10">
-					<form id="login" onkeypress="enterLogin(event)">
+				
+				<div class="span-11">
+					<form id="login" action="javascript: void login()">
 						<div class="span-4 login">
 							<label class="login">Email or username</label>
-							<input id="email" class="login" type="text" name="email">
+							<input id="email" class="login" type="text">
 						</div>
 						<div class="span-4  login1 last">
 							<label class="login">Password</label>
-							<input id="password" class="login" type="password" name="password">
+							<input id="passwordLogin" class="login" type="password">
+						</div>
+						<div class="span-11 submitLogin">
+							<input id="loginButton" class="span-3 submitButton" value="Sign in" name="Sign in" id="submit" type="submit"/>
+							<div class="span-6 error_msg" id="error_msg">Incorrect username/password combination</div>
 						</div>
 					</form>
-				</div>
-				<div class="span-11 submitLogin">
-					<!--<input class="checkbox" type="checkbox"/>
-					<p class="submit"> keep me signed in</p>
-					<p class="submit"> | </p>
-					<a class="last linkForgot" href="#">Forgot password?</a>-->
-					<input class="span-3 submitButton" value="Sign in" name="Sign in" id="submit" type="submit"  onclick='login()' />
-					<img class="ajax_loading" id="ajax_loading" src="/images/ajax-loader.gif" style="display:none">
 				</div>
 			 </div>
 		</div>	
@@ -94,7 +86,7 @@
     			    {if $username ne ""}
         				{$username} | <a id="logoutRef" onClick="$('#logout').modal()" href="#">Sign out </a>  
     			    {else}
-        				<a id="login_link" href="#">Login </a>or
+        				<a id="login_link" href="#" onclick="$('#login_form').modal()">Login </a>or
         				<a href="/register.php"> Sign up!</a>
     			    {/if}
 			    </div>	 

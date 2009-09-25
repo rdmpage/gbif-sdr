@@ -9,33 +9,37 @@
 			
 			
 			{foreach key=name_fk item=result from=$results}
-			<div class="span-18 {cycle values="result,result2"}">
-				<div class="span-2 last avatar2"><img src="/flickrImage.php?q={$result.scientific_name|escape:"url"}" width="51" height="52" /></div>
-					<div class="span-16 last">
-						<div class="span-11 column">
-							<div class="span-11 last title_result"><a href="speciesPage.php?id={$result.name_fk}&n={$result.scientific_name|escape:"url"}">{$result.scientific_name}</a></div>
-							<div class="span-11 last result_list">
-								<ul>
-								    <li></li>
-  									<li><a href="">Kingdom</a><img class="lista" src="/images/arrowlist.jpg"></li>
-  									<li><a href="">Phylum</a><img class="lista" src="/images/arrowlist.jpg"></li>
-  									<li><a href="">Class</a><img class="lista" src="/images/arrowlist.jpg"></li>
-  									<li><a href="">Order</a><img class="lista" src="/images/arrowlist.jpg"></li>
-  									<li><a href="">Family</a><img class="lista" src="/images/arrowlist.jpg"></li>
-   									<li><a href="" class="ultimo">Genus</a></li>
-								</ul>
-							</div>	
-						</div>	
-						<div class="span-2 last">
-							<div class="span-2 last sources">{$result.num_sources|default:'0'}</div>
-							<div class="span-2 last sourcesTitle">source(s)</div>
-						</div>		
-						<div class="span-3 last">
-							<div class="span-3 last ocurrences">{$result.num_occurrences|default:'?'}</div>
-							<div class="span-3 last ocurrencesTitle">ocurrences</div>
+				{if $result==null}
+					No results							
+				{else}			
+					<div class="span-18 {cycle values="result,result2"}">
+						<div class="span-2 last avatar2"><img src="/flickrImage.php?q={$result.scientific_name|escape:"url"}" width="51" height="52" /></div>
+							<div class="span-16 last">
+								<div class="span-11 column">
+									<div class="span-11 last title_result"><a href="speciesPage.php?id={$result.name_fk}&n={$result.scientific_name|escape:"url"}">{$result.scientific_name}</a></div>
+									<div class="span-11 last result_list">
+										<ul>
+										    <li></li>
+		  									<li><a href="">Kingdom</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		  									<li><a href="">Phylum</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		  									<li><a href="">Class</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		  									<li><a href="">Order</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		  									<li><a href="">Family</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		   									<li><a href="" class="ultimo">Genus</a></li>
+										</ul>
+									</div>	
+								</div>	
+								<div class="span-2 last">
+									<div class="span-2 last sources">{$result.num_sources|default:'0'}</div>
+									<div class="span-2 last sourcesTitle">source(s)</div>
+								</div>		
+								<div class="span-3 last">
+									<div class="span-3 last ocurrences">{$result.num_occurrences|default:'?'}</div>
+									<div class="span-3 last ocurrencesTitle">ocurrences</div>
+								</div>
 						</div>
-				</div>
-			</div>
+					</div>
+				{/if}
 			{foreachelse}
 		        No results
 		    {/foreach}

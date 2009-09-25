@@ -50,6 +50,7 @@ if ($_REQUEST['method'] == 'login') {
 
 if ($_REQUEST['method'] == 'logout') {
     $services->logout();
+    echo ("ok");
 }
 
 

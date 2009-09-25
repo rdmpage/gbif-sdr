@@ -4,7 +4,7 @@
  * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
  * http://docs.jquery.com/Plugins/Validation
  *
- * Copyright (c) 2006 - 2008 Jörn Zaefferer
+ * Copyright (c) 2006 - 2008 JÃ¶rn Zaefferer
  *
  * $Id: jquery.validate.js 6403 2009-06-17 14:27:16Z joern.zaefferer $
  *
@@ -256,7 +256,7 @@ $.extend($.validator, {
 		url: "Please enter a valid URL.",
 		date: "Please enter a valid date.",
 		dateISO: "Please enter a valid date (ISO).",
-		dateDE: "Bitte geben Sie ein gültiges Datum ein.",
+		dateDE: "Bitte geben Sie ein gÃ¼ltiges Datum ein.",
 		number: "Please enter a valid number.",
 		numberDE: "Bitte geben Sie eine Nummer ein.",
 		digits: "Please enter only digits",
@@ -862,6 +862,7 @@ $.extend($.validator, {
 			var transformed = {};
 			$.each(data.split(/\s/), function() {
 				transformed[this] = true;
+
 			});
 			data = transformed;
 		}
@@ -871,7 +872,7 @@ $.extend($.validator, {
 	// http://docs.jquery.com/Plugins/Validation/Validator/addMethod
 	addMethod: function(name, method, message) {
 		$.validator.methods[name] = method;
-		$.validator.messages[name] = message || $.validator.messages[name];
+		$.validator.messages[name] = message != undefined ? message : $.validator.messages[name];
 		if (method.length < 3) {
 			$.validator.addClassRules(name, $.validator.normalizeRule(name));
 		}
@@ -1129,3 +1130,4 @@ $.format = $.validator.format;
 		}
 	})
 })(jQuery);
+
