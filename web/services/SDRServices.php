@@ -9,20 +9,28 @@ class SDRServices {
 		
 	}
     
+	
     public function login($email,$pass) {
 
+        $email=pg_escape_string($email);
+        $pass=pg_escape_string($pass);
+        
         // create page view database table
-        $sql = "SELECT * FROM users WHERE email='$email' AND pass='$pass'";        
+        $sql = "SELECT * FROM users WHERE (email='$email' AND pass='$pass') OR (username='$email' AND pass='$pass')";        
         $result = pg_query($this->conn, $sql);
         if(pg_num_rows($result)<1) {
             $_SESSION['logged']=false;
             throw new Exception("user not logged in");
         } else {
+ 
             $_SESSION['logged']=true;
-            $_SESSION['user']=$result;
-    	    return $result;            
+            $res=pg_fetch_assoc($result);
+            $_SESSION['user']=$res;
+    	    return $res;           
         }
-	}
+	}	
+	
+	
 	
 	public function getComments($speciesId) {
 	    $sql="SELECT c.id,commenttext,c.created_when,username from comments as c INNER JOIN users as u ON c.user_fk=u.id  WHERE comment_on_id=$speciesId";
@@ -81,10 +89,7 @@ class SDRServices {
 	}
 	
 	
-	public function logout() {
-	    if (!$_SESSION['logged'] or $_SESSION['user']['id']!=$userId) {
-	        throw new Exception("user not logged in");
-	    }	    
+	public function logout() {	    
 	    session_destroy();
 	}	    
 	
