@@ -82,7 +82,7 @@
 				<div class="headerSign span-9 column last">
 				    <div id="loginDiv" class="login_sign">
 	    			    {if $username ne ""}
-	        				{$username} | <a id="logoutRef" onClick="$('#logout').modal()" href="#">Sign out </a>  
+	        				{$username} | <a id="logoutRef" onClick="$('#logout').modal()" href="#">Sign out</a>  
 	    			    {else}
 	        				<a id="login_link" href="#" onclick="$('#login_form').modal()">Login </a>or
 	        				<a href="/register.php"> Sign up!</a>
