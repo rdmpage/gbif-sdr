@@ -1,56 +1,60 @@
 {literal}
-	<script type="text/javascript">
-	
-		$(document).ready(function() {
-	
-			// validate signup form on keyup and submit
-	$("#signupForm").validate({
-		rules: {
-			firstname: "required",
-			lastname: "required",
-			username: {
-				required: true,
-				minlength: 2
-			},
-			password: {
-				required: true,
-				minlength: 5
-			},
-			confirm_password: {
-				required: true,
-				minlength: 5,
-				equalTo: "#password"
-			},
-			email: {
-				required: true,
-				email: true
-			},
-			topic: {
-				required: "#newsletter:checked",
-				minlength: 2
-			},
-			agree: "required"
-		},
-		messages: {
-			firstname: "Please enter your firstname",
-			lastname: "Please enter your lastname",
-			username: {
-				required: "Please enter a username",
-				minlength: "Your username must consist of at least 2 characters"
-			},
-			password: {
-				required: "Please provide a password",
-				minlength: "Your password must be at least 5 characters long"
-			},
-			confirm_password: {
-				required: "Please provide a password",
-				minlength: "Your password must be at least 5 characters long",
-				equalTo: "Please enter the same password as above "
-			},
-			email: "Please enter a valid email address",
-			agree: "Please accept our policy"
-		}
+<script type="text/javascript">
+	$.validator.setDefaults({
+		submitHandler: function() {register();}
 	});
+
+	$().ready(function() {
+	
+		$("#signupForm").validate({
+			rules: {
+				firstname: "required",
+				lastname: "required",
+				username: {
+					required: true,
+					minlength: 5
+				},
+				password: {
+					required: true,
+					minlength: 5
+				},
+				confirm_password: {
+					required: true,
+					minlength: 5,
+					equalTo: "#password"
+				},
+				mail: {
+					required: true,
+					email: true,
+					minlength: 5
+				},
+				topic: {
+					required: "#newsletter:checked",
+					minlength: 2
+				},
+				agree: "required"
+			},
+			messages: {
+				firstname: "Please enter your firstname",
+				lastname: "Please enter your lastname",
+				username: {
+					required: "Please enter a username",
+					minlength: "Your username must consist of at least 5 characters"
+				},
+				password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long"
+				},
+				confirm_password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long",
+					equalTo: "Please enter the same password as above "
+				},
+				mail: "Please enter a valid email address",
+				agree: "Please accept our policy",
+				minlength: "Your email must be at least 5 characters long"
+			}
+		});
 	
 	// propose username by combining first- and lastname
 	$("#username").focus(function() {
@@ -66,23 +70,21 @@
 		$("#confirm_password").valid();
 	});
 
-		});
-	</script>
+});
+</script>
 {/literal}
 
 		
 		<div class="span-24 ppalContainer">
-			<div class="span-18 registerContainer">
-				
-				 	<div class="title_blue">Register now in Species distribution repository, It’s easy and free</div>
-					<div class="registerInputs">
+			<div class="span-18 registerContainer first">
+			 	<div class="title_blue">Register now in Species distribution repository, It’s easy and free</div>
+				<div class="registerInputs">
 					<div class="register_14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eleifend convallis metus vitae scelerisque. Sed condimentum pellentesque nisi, ac lacinia felis sagittis bibendum. Cras tempus ipsum nec.</div>
-				
-				{if $error ne ""}
-					There has been an error!
-					{$error}
-				{/if}
-			<form class="cmxform"  method="get" action="registerSubmit.php"  id="signupForm">
+					{*{if $error ne ""}
+						There has been an error!
+						{$error}
+					{/if}*}
+					<form class="cmxform"  method="get" action="registerSubmit.php"  id="signupForm">
 						<div class="span-18 column1">
 							<div class="span-9 last">
 								<div class="title_campo"><label for="username">User name*</label></div>
@@ -94,10 +96,10 @@
 							</div>
 						</div>
 						
-
+		
 						<div class="span-9 last column2">
-							<div class="title_campo"><label for="email">e-mail*</label></div>
-							<input class="span-8 text" id="email" name="email"/>
+							<div class="title_campo"><label for="mail">e-mail*</label></div>
+							<input class="span-8 text" id="mail" name="mail"/>
 						</div>
 						
 						<div class="span-18 column1">
@@ -112,14 +114,16 @@
 						</div>
 						<div class="span-18">
 							<div class="span-4">
-								<input type="submit" class="submit_button" value="submit" id="submit" name="submit"/>
+								<input type="submit" class="submit_button" value="submit" id="submitRegister" name="submit"/>
+							</div>
+							<div class="span-10 registerError" id="registerError">
+								
 							</div>
 						</div> 
 						<div class="span-18 requiredLabel">* required fields</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
-			
 			<div class="span-6 last rightColumn">
 				<div class="register_info">
 				 	<div class="title_blue">Why I should to be registered?</div>

@@ -53,6 +53,10 @@ if ($_REQUEST['method'] == 'logout') {
     echo ("ok");
 }
 
+if ($_REQUEST['method'] == 'register') {
+    $result = $services->registerUser($_REQUEST['username'],$_REQUEST['project'],$_REQUEST['email'],$_REQUEST['password']);
+    echo $result;
+}
 
 ?>
 

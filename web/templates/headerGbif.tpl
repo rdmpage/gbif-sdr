@@ -6,8 +6,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Species distribution repository</title>
 
-  	<!-- Framework CSS -->
-
   	<link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen, projection">
   	<link rel="stylesheet" href="/css/typography.css" type="text/css" media="screen, projection">
   	<link rel="stylesheet" href="/css/forms.css" type="text/css" media="screen, projection">
@@ -34,9 +32,8 @@
 	<div id="login_form" style='display:none'>
 		<div class="loginContainer">
 			<div id="status" align="left">			
-				
 				<div class="span-11">
-					<form id="login" action="javascript: void login()">
+					<form id="loginForm" action="javascript: void login()">
 						<div class="span-4 login">
 							<label class="login">Email or username</label>
 							<input id="email" class="login" type="text">
@@ -78,18 +75,20 @@
 	<div class="container">
 	<div class="span-24" id="wrapper">
 		<div class="span-24" id="header">
-			<div class="span-20">
-				<a href="/"><img class="logoImg" src="/images/logogbif.jpg"></a>
-			</div>
-			<div class="headerSign">
-			    <div id="loginDiv" class="login_sign">
-    			    {if $username ne ""}
-        				{$username} | <a id="logoutRef" onClick="$('#logout').modal()" href="#">Sign out </a>  
-    			    {else}
-        				<a id="login_link" href="#" onclick="$('#login_form').modal()">Login </a>or
-        				<a href="/register.php"> Sign up!</a>
-    			    {/if}
-			    </div>	 
+			<div>
+				<div class="span-15 column first">
+					<a href="/"><img class="logoImg" src="/images/logogbif.jpg"></a>
+				</div>
+				<div class="headerSign span-9 column last">
+				    <div id="loginDiv" class="login_sign">
+	    			    {if $username ne ""}
+	        				{$username} | <a id="logoutRef" onClick="$('#logout').modal()" href="#">Sign out </a>  
+	    			    {else}
+	        				<a id="login_link" href="#" onclick="$('#login_form').modal()">Login </a>or
+	        				<a href="/register.php"> Sign up!</a>
+	    			    {/if}
+				    </div>	 
+				</div>
 			</div>
 			<div class="span-24 menuContainer" id="menu">
 				<ul>

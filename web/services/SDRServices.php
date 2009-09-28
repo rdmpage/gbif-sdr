@@ -80,12 +80,13 @@ class SDRServices {
 	    $res=pg_fetch_assoc($result);
 	    
 	    
-	    $user=array();
+	    /*$user=array();
 	    $user['id']=$resultId['last_value'];
 	    $user['username']=$username;
 	    $user['projectname']=$projectname;
-	    $user['email']=$email;
-	    return $user;
+	    $user['email']=$email;*/
+	    
+	    return $username;
 	}
 	
 	

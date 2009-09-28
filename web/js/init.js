@@ -75,14 +75,15 @@ function logout(){
     	url: "ajaxController.php",
     	data: dataObj,
     	cache: false,
-    	success: function(result){},
+    	success: function(result){
+    		window.location.href = '/';
+    	},
         error: function (xhr, ajaxOptions, thrownError){
                 alert(xhr.responseText + "\n" + thrownError + ajaxOptions);
         }
     });
     
-    location.reload();
-
+	return false;
 }  
 
 
@@ -104,3 +105,81 @@ function checkSearch () {
 }
 
 
+function register(){  
+	$('#registerError').hide();
+
+    var email = $("#mail").val();
+    var password = $("#password").val();
+    var username = $("#username").val();
+    var project = $("#project_name").val();
+    
+    $('#submitRegister').attr("disabled", "true");
+    $('#mail').attr("disabled", "true");
+    $('#password').attr("disabled", "true");
+    $('#username').attr("disabled", "true");
+    $('#project_name').attr("disabled", "true");
+    $('#confirm_password').attr("disabled", "true");
+    
+    $('#submitRegister').val('Checking...');
+    var dataObj = ({email : email,
+        method: 'register',
+        password: password,
+        username: username,
+        project: project
+    });
+    
+        
+    // -- Start AJAX Call --
+    $.ajax({
+    	type: "POST",
+    	url: "ajaxController.php",
+    	data: dataObj,
+    	cache: false,
+    	success: function(result){
+	        autoLogin();
+    	},
+        error:function (xhr, ajaxOptions, thrownError){
+        	$("#registerError").html('Sorry, email or username is already in use.');
+        	$("#registerError").show();
+        	$('#mail').removeAttr("disabled");
+	        $('#submitRegister').removeAttr("disabled");
+			$('#password').removeAttr("disabled");
+			$('#username').removeAttr("disabled");
+			$('#project_name').removeAttr("disabled");
+			$('#submitRegister').val('Submit');
+        }
+    });
+    return false;
+}
+
+function sendToPrincipal() {
+     window.location.href = '/';
+     clearTimeout(timerID);
+}
+
+function autoLogin() {
+	var email = $("#mail").val();
+    var password = $("#password").val();
+	
+	var dataObj = ({email : email,
+        method: 'login',
+        password: password
+        });
+        
+    // -- Start AJAX Call --
+    $.ajax({
+    	type: "POST",
+    	url: "ajaxController.php",
+    	data: dataObj,
+    	cache: false,
+    	success: function(result){
+            $('#confirmation').html('Thank for your register '+result+'.');
+	        $('#login').modal();
+	        timerID = setTimeout("sendToPrincipal()", 2000);
+    	},
+        error:function (xhr, ajaxOptions, thrownError){
+                alert('SDR' + xhr.status + "\n" + thrownError);
+        }
+    });
+    return false;
+}
