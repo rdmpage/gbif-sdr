@@ -9,8 +9,8 @@
 					<div class="span-14 searchContainer">
 					    <form id="searchForm" action="javascript: void checkSearch();" method="GET">
     						<div class="titleContainer"><p>Search</p></div>
-    						<div class="inputContainer"><input id="searchText" class="searchText" name="q"></div>
-    						<div class="buttonContainer"><input type="submit" class="searchButton" id="search" value="Search!"></div>
+    						<div class="inputContainer"><input id="searchText" class="searchText" name="q"/></div>
+    						<div class="buttonContainer"><input type="submit" class="searchButton" id="search" value="Search!"/></div>
 						</form>
 					</div>
 					<div>

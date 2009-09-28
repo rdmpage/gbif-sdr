@@ -43,6 +43,7 @@ function login(){
             
 		if(result=='invalid') {
                 //notify the user that the login was wrong
+                $('#error_msg').html('Incorrect Email/Password combination');
                 $("#error_msg").show();
                 $('#submit').removeAttr("disabled");
                 $('#email').removeAttr("disabled");
