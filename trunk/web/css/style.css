@@ -87,6 +87,13 @@ div.error_msg {
 	display:none;
 }
 
+div.registerError {
+	color: red;
+	padding-top: 20px;
+	padding-left: 20px;
+	display:none;
+}
+
 label.login {
 	font-family: Helvetica;
 	font-size: 12px;
@@ -926,7 +933,7 @@ a.ultimo{
    width: 114px;
    height: 27px;
    padding: 0px 0px 0px 0px;
-   margin-top: 29px;
+   margin-top: 15px;
    line-height: 23px;
 }
 
@@ -1005,19 +1012,21 @@ input.comment{
 	background-image: url(/images/login.jpg);
 }
 
-.login_sign{
+div.login_sign{
 	padding-left: 4px;
 	padding-top: 3px;
 	color: #FFF;
+	width: 348px;
+	text-align: right;
 }
 
-.login_sign a, .login_sign a:visited{
+div.login_sign a, div.login_sign a:visited{
 	font-family: Arial;
 	font-size: 13px;
 	color: green;
 }
 
-.login_sign a:hover{
+div.login_sign a:hover{
 	font-family: Arial;
 	font-size: 13px;
 	color: black;
