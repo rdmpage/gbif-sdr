@@ -268,28 +268,29 @@ span.specieExample {
     display: inline;	
 }
 
-.inputContainer{
+div.inputContainer{
 	height: 37px;
 	width: 360px;
 	float: left;
+	margin-top:5px;
 }
 
-.searchText{
+input.searchText{
 	height: 23px;
 	width: 360px;
     border: 1px #d6d6d6 solid; 
-	margin-top: 5px;
 	line-height: 24px;
 	float:left;
 	font-size: 15px;
+	margin-top: 0px;
 }
 
 .buttonContainer{
-	margin-top: 5px; 
     border: 1px #d6d6d6 solid; 
 	height: 25px;
 	width: 96px;
 	float: left;
+	margin-top: 5px;
 }
 
 .searchButton{ 
@@ -352,20 +353,21 @@ span.specieExample {
     display: inline;	
 }
 
-.inputContainer_index{
+div.inputContainer_index{
 	height: 37px;
 	width: 656px;
 	float: left;
+	margin-top: 5px;
 }
 
-.searchText_index{
+input.searchText_index{
 	height: 23px;
 	width: 654px;
 	border: #d6d6d6 1px solid;	
-	margin-top: 5px;
 	line-height: 24px;
 	float:left;
 	font-size: 15px;
+	margin-top:0px;
 }
 
 .buttonContainer_index{
