@@ -46,5 +46,6 @@ pgsql2shp -Patlas -fgroms.shp -hlocalhost -upostgres -gthe_geom groms "select a.
 
 Then we would have something like groms.shp,groms.dbf,groms.shx
 
-It is important to consider that the kind of shapefiles we will be working on, will be a denormalized structure with one record per distribution_unit (that can have a polygon or multipolygon geometry). All the distribution units for a species can be grouped with a name_id or something like this. Each distribution unit should have information on the occurrence_status_lifestage_nativeness, etc. but those attributes are handled on the import script
+It is important to consider that the kind of shapefiles we will be working on, will be a denormalized structure with one record per distribution_unit (that can have a polygon or multipolygon geometry). All the distribution units for a species can be grouped with a name_id or something like this. Each distribution unit should have information on the occurrence_status_lifestage_nativeness, etc. but those attributes are handled on the import script.
 
+3. Manipulate the import script to handle the shapefile mapping its attributes to SDR database. The import script is under the scripts folder in the application folder and is called import_shapefile.php . you would run it like 'php import_shapefile.php'. Edit the scripts to get instructions and modify it for your needs.
