@@ -91,9 +91,33 @@ if(pg_num_rows($result)<1) {
 
 
 //Now we will start importing into the SDR tables the different components
-//Import the new names into the DB
+//Import the new names into the DB, if they are not already on the system
 $sql="insert into name_usage select clb_usage_id,nub_usage_id from imported_ecat_names WHERE imported_ecat_names.clb_usage_id NOT IN (SELECT clb_usage_id FROM name_usage)";
 runSqlCommand($sql);
+
+//Looping through all the records in the shapefile and generate tiles
+$sql="select s.*,n.clb_usage_id as name_id from imported_shapefile as s inner join imported_ecat_names as n on s.original_name_id=n.original_name_id order by s.original_name_id";
+$result=pg_query($conn, $sql);
+
+$curDist=array();
+$curNameId=0;
+while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
+	if($curNameId!=$row['original_name_id']) {
+		//This is a new distribution
+		
+		//save first the previous distribution in case there was one
+		if ($curNameId!=0) {
+			$sql="
+			INSERT INTO distribution(clb_usage_id,resource_fk,year_start,year_end,created_when,spatial_resolution_fk,
+					spatial_scope_named_area_fk,record_base_fk,spatial_accuracy,confidence_by_source,distribution_type_fk
+					is_public,map_source)
+			";
+		}
+		
+		$curDist=array();
+	}
+}
+
 
 //THIS IS WHERE THE MAPPING TAKES PLACE IN A SQL STATEMENT
 $sql=<<<SQL
