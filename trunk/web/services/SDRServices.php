@@ -165,7 +165,7 @@ class SDRServices {
 		return $sources;	    
 	}
 	
-	public function searchForName($name,$limit=10,$offset=0) {
+	/*public function searchForName($name,$limit=10,$offset=0) {
 		$name=pg_escape_string($name);
 		if($offset=="")
 		    $offset=0;
@@ -176,7 +176,24 @@ class SDRServices {
 	    
 	    
 	    return pg_fetch_all(pg_query($this->conn, $sql));		
-	}
+	}*/
+	
+	public function searchForName($name,$limit=10,$offset=1) {
+		
+		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?q=$name&pagesize=$limit&p=$offset");
+		$res= json_decode($rsp);
+		
+		$names=array();
+		foreach($res as &$rec) {
+			$names[]=$rec->id;
+		}		
+		$sql="select clb_usage_id,count(id) as num_distributions, count(resource_fk) as num_resources from  distribution where clb_usage_id in(".implode(",",$names).") group by clb_usage_id";
+		
+		$resfromdb=pg_fetch_all(pg_query($this->conn, $sql);
+		
+		foreach()
+	}	
+	
 
 }
 
