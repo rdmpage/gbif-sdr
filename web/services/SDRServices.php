@@ -5,8 +5,7 @@ include("PolylineEncoder.php");
 class SDRServices {
 	
 	function __construct() {
-		$this->conn = pg_connect ("host=ec2-174-129-85-138.compute-1.amazonaws.com dbname=sdr user=postgres password=atlas");
-		
+		$this->conn = pg_connect ("host=ec2-174-129-85-138.compute-1.amazonaws.com dbname=sdr user=postgres password=atlas");	
 	}
     
 	
