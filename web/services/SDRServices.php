@@ -5,7 +5,7 @@ include("PolylineEncoder.php");
 class SDRServices {
 	
 	function __construct() {
-		$this->conn = pg_connect ("host=ec2-174-129-85-138.compute-1.amazonaws.com dbname=sdr user=postgres password=atlas");	
+		$this->conn = pg_connect ("host=localhost dbname=sdr user=postgres password=atlas");	
 	}
     
 	
@@ -108,7 +108,7 @@ class SDRServices {
 	}
 	
 	public function getMostPopularSpecies($limit) {
-	    $sql="select num_views,nub_concept_id, scientific_name,id from species_view_stats as svs inner join scientific_name as s on svs.species_fk=s.id order by num_views DESC limit $limit";
+	    $sql="select num_views,nub_usage_id from species_view_stats order by num_views DESC limit $limit";
         $result = pg_query($this->conn, $sql);  
         return pg_fetch_assoc($result);   
 	    
@@ -121,10 +121,11 @@ class SDRServices {
 	    $sql="select update_species_view_stats($nameId)";
         $result= pg_query($this->conn, $sql);
 
-	    
-	    $sql="select nub_concept_id,scientific_name from scientific_name where id=$nameId";
-        $result = pg_query($this->conn, $sql);  
-        return pg_fetch_assoc($result); 
+
+		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?id=$nameId");
+		$res= json_decode($rsp);
+        return $res;
+
 	    
 	}
 	
@@ -150,16 +151,34 @@ class SDRServices {
 	}
 	
 	public function getSpeciesDetailsByNameId($speciesId) {
-	    $sql="SELECT d.id,code, resourcename,resource_fk as resource_id, (select count(id) from distribution_unit where distribution_fk=d.id) as num_units from distribution as d inner join resource as r on d.resource_fk=r.id where d.name_fk=$speciesId and d.resource_fk=2";
+	    
+	    $geoserverUrl="http://ec2-174-129-85-138.compute-1.amazonaws.com:8080/geoserver";
+	    
+	    $sql="SELECT d.id,code, resourcename,resource_fk as resource_id, (select count(id) from distribution_unit where distribution_fk=d.id) as num_units from distribution as d inner join resource as r on d.resource_fk=r.id where d.clb_usage_id=$speciesId";
+
         $result = pg_fetch_all(pg_query($this->conn, $sql));
+        if(!$result) {
+            return array();
+        }
 		$sources=array();	    
 		foreach($result as $data) {	    
 			$source=array();
 			$source = $data;
 			//Add the distribution units
-			$sql2="select distinct s.id as id, tag,color from distribution_unit as du inner join status_tags as s on du.status_tags_fk=s.id where distribution_fk=".$data['id'];				
-			$source['legend'] = pg_fetch_all(pg_query($this->conn, $sql2));
-			$sources[]=$source;					    
+			$sql2="select distinct s.id as id, tag,color from distribution_unit as du inner join status_tags as s on du.status_tags_fk=s.id where distribution_fk=".$data['id'];	
+			$legend = pg_fetch_all(pg_query($this->conn, $sql2));
+			if($legend) {
+			    $source['legend'] = $legend;
+			} else {
+			    $source['legend'] = array();
+			}
+			
+			$source['png']=$geoserverUrl."/wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&".
+            				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage".
+            				"&LAYERS=sdr%3Adistributions&FORMAT=image%2FpngL&".
+            				"CQL_FILTER=id={$data['id']}$&BBOX=-180,-90,180,90";
+
+			$sources[]=$source;
 		}
 		
 		return $sources;	    
@@ -180,18 +199,47 @@ class SDRServices {
 	
 	public function searchForName($name,$limit=10,$offset=1) {
 		
-		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?q=$name&pagesize=$limit&p=$offset");
+		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?q=".urlencode($name)."&pagesize=$limit&p=$offset&image=thumb&ranks=kpcofg");
 		$res= json_decode($rsp);
 		
+		if(count($res)<1 )
+		    return array();
+		
 		$names=array();
+		$namesToQuery=array();
 		foreach($res as &$rec) {
-			$names[]=$rec->id;
+		    $id=(int)$rec->taxonID;
+		    $namesToQuery[]=$id;
+		    $names[$id]=array();
+			$names[$id]['id']=$id;
+			$names[$id]['name']=$rec->scientificName;
+			@$names[$id]['numNicheModels']=$rec->numNicheModels;
+			@$names[$id]['numOccurrences']=$rec->numOccurrences;
+			@$names[$id]['image']=$rec->imageURL;
 		}		
-		$sql="select clb_usage_id,count(id) as num_distributions, count(resource_fk) as num_resources from  distribution where clb_usage_id in(".implode(",",$names).") group by clb_usage_id";
+		$sql="select clb_usage_id,count(id) as num_distributions, count(resource_fk) as num_resources from  distribution where clb_usage_id in(".implode(",",$namesToQuery).") group by clb_usage_id";
 		
-		$resfromdb=pg_fetch_all(pg_query($this->conn, $sql);
-		
-		foreach()
+
+		$resfromdb=pg_fetch_all(pg_query($this->conn, $sql));
+		$finalResult=array();
+		if($resfromdb) {
+    		foreach($resfromdb as &$r) {
+    		    $names[(int)$r['clb_usage_id']]['numDistributions']=(int)$r['num_distributions'];
+    		    $names[(int)$r['clb_usage_id']]['numResources']=(int)$r['num_resources'];
+
+    		}
+		}
+		foreach($names as $name) {
+		    if(isset($name['id'])) {
+    		    if(!isset($name['numDistributions'])) {
+    		        $name['numDistributions']=0;
+    		        $name['numResources']=0;
+    		    }
+    		    $finalResult[]=$name;		        
+		    }		    
+		}
+
+        return $finalResult;
 	}	
 	
 

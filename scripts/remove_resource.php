@@ -6,7 +6,7 @@ $dbname="sdr";
 $user="postgres";
 $pass="";
 $psqlfol = "/usr/local/pgsql/bin";
-$resourceIdToRemove=6;
+$resourceIdToRemove=12;
 
 $sql=<<<SQL
     DELETE FROM distribution_unit WHERE distribution_fk in (SELECT id from distribution 

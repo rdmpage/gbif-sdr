@@ -8,15 +8,21 @@
 			</div>
 			
 			
-			{foreach key=name_fk item=result from=$results}
+			{foreach key=id item=result from=$results}
 				{if $result==null}
 					No results							
 				{else}			
 					<div class="span-18 {cycle values="result,result2"}">
-						<div class="span-2 last avatar2"><img src="/flickrImage.php?q={$result.scientific_name|escape:"url"}" width="51" height="52" /></div>
+						<div class="span-2 last avatar2">
+						    {if $result.imageURL==null}
+						        <img src="/images/noPicture.jpg" width="51" height="52" />
+						    {else}
+						        <img src="{$result.imageURL}" width="51" height="52" />
+						    {/if}
+						    </div>
 							<div class="span-16 last">
 								<div class="span-11 column">
-									<div class="span-11 last title_result"><a href="speciesPage.php?id={$result.name_fk}&n={$result.scientific_name|escape:"url"}">{$result.scientific_name}</a></div>
+									<div class="span-11 last title_result"><a href="speciesPage.php?id={$result.id}&n={$result.name|escape:"url"}">{$result.name}</a></div>
 									<div class="span-11 last result_list">
 										<ul>
 										    <li></li>
@@ -30,11 +36,11 @@
 									</div>	
 								</div>	
 								<div class="span-2 last">
-									<div class="span-2 last sources">{$result.num_sources|default:'0'}</div>
+									<div class="span-2 last sources">{$result.numResources|default:'0'}</div>
 									<div class="span-2 last sourcesTitle">source(s)</div>
 								</div>		
 								<div class="span-3 last">
-									<div class="span-3 last ocurrences">{$result.num_occurrences|default:'?'}</div>
+									<div class="span-3 last ocurrences">{$result.numOccurrences|default:'?'}</div>
 									<div class="span-3 last ocurrencesTitle">ocurrences</div>
 								</div>
 						</div>
