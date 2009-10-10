@@ -7,7 +7,8 @@ $services = new SDRServices;
 
 $searchName=$_REQUEST['q'];
 if(strlen($searchName)>3) {
-    $smarty->assign('results', $services->searchForName($searchName,10,0));
+    $res=$services->searchForName($searchName,10,1);
+    $smarty->assign('results', $res);
     $smarty->assign('queryString',$searchName);
     $smarty->assign('popularSpecies', $services->getMostPopularSpecies(16));
 }
