@@ -58,13 +58,15 @@
 				<div class="title_blue">Species Details</div>
 			    <div class="separator_small"></div>
 			    <div class="text_comment_right">
-			     Kingdom: {$kingdom}<br>
-			     &nbsp;&nbsp;Phylum: {$phylum}<br>
-			     &nbsp;&nbsp;&nbsp;&nbsp;Class: {$class}<br>
-			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order: {$order}<br>
-			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Family: {$family}<br>
-			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Genus: {$genus}<br>
-			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Species: {$scientificName}<br>
+			     <ul class="ListSpeciesDetails">
+			     <li class="Kingdom">Kingdom: <b>{$kingdom}</b></li> 
+			     <li class="Phylum">Phylum: <b>{$phylum}</b></li> 
+			     <li class="Class">Class: <b>{$class}</b></li> 
+			     <li class="Order">Order: <b>{$order}</b></li> 
+			     <li class="Family">Family: <b>{$family}</b></li> 
+			     <li class="Genus">Genus: <b>{$genus}</b></li> 
+			     <li class="Species">Species: <b>{$scientificName}</b></li> 
+			     </ul>
 			    </div>
 			</div>
 			<div class="separator6"></div>
