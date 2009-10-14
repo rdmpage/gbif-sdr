@@ -42,9 +42,11 @@
 		import com.google.maps.controls.ZoomControl;
 		
 		[Bindable]
-		public var scientificName:String;
+		public var scientificName:String="";
 		[Bindable]
-		public var numOccurrences:String="-";
+		public var sourcesConcatenated:String;		
+		[Bindable]
+		public var numOccurrences:String="";
 			
 		[Bindable]public var sourcesAc:ArrayCollection=new ArrayCollection();
 		
@@ -59,7 +61,28 @@
 		private var sourcesColors:Array = [Color.GREEN,Color.RED,Color.BLUE,Color.YELLOW];
 		
 		private function preInit():void {
-			//get data
+			//get data		
+			//Modify Tooltip behaviour so that it show inmediately
+			ToolTipManager.showDelay = 0;
+			ToolTipManager.hideDelay = 4000;
+			map.key="ABQIAAAAtDJGVn6RztUmxjnX5hMzjRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSPLBWm1r4y_v-I6fII4c2FT0yK6w";				
+				
+/* 			if(parameters.mapKey!=null) {
+				map.key=parameters.mapKey;
+			}	
+			if(loaderInfo.url.indexOf("localhost")>=0) {
+				map.key="ABQIAAAAtDJGVn6RztUmxjnX5hMzjRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSPLBWm1r4y_v-I6fII4c2FT0yK6w";				
+			}	 */		
+			
+			
+		}
+		
+		
+		private function init():void {
+			
+			var speciesId:String=parameters.speciesId;
+			//var speciesId:String="856027";
+			
 			roSdr.getSpeciesDetailsByNameId(parameters.speciesId);			
 			scientificName=parameters.scientificName;
 
@@ -79,19 +102,9 @@
 					trace(e);
 				}
 			});
-			httpSrv.send();			
+			httpSrv.send();					
 			
 			
-			
-			//Modify Tooltip behaviour so that it show inmediately
-			ToolTipManager.showDelay = 0;
-			ToolTipManager.hideDelay = 4000;	
-			
-			
-		}
-		
-		
-		private function init():void {
 			var zco:ZoomControlOptions=new ZoomControlOptions({
 				position: new ControlPosition(ControlPosition.ANCHOR_TOP_LEFT, 12, 12),
 				hasScrollTrack: false
@@ -125,7 +138,10 @@
 		private function onSdrServiceResult(event:ResultEvent):void {
 			var i:Number=0;
 			var sources:ArrayCollection=new ArrayCollection();
-			for each(var rawSource:Object in event.result as Array) {
+			var sour:Array=[];
+			
+			var rawSources:Array = (event.result as Array).reverse();
+			for each (var rawSource:Object in rawSources) {
 				var source:ObjectProxy = new ObjectProxy(rawSource);
 				var curColor:Number = sourcesColors[i];
 				i++;
@@ -133,6 +149,7 @@
 				//for the legend
 				source.curColor=curColor;
 				sources.addItem(source);
+				sour.push(source.code);
 			
 				//add the layers to the map
 				var ctlwms:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,source.resource_id,source.curColor);		
@@ -146,7 +163,13 @@
 				
 			}
 			
+			
 			sourcesAc= sources;
+			sourcesConcatenated=sour.join(", ");
+			
+			
+			//addd the download events
+			this.addEventListener("DOWNLOAD",downloadData,true);
 		}
 		
 		public function toggleSourceVisibility(sourceId:Number):void {
@@ -167,7 +190,7 @@
 			}	
 		}
 		
-		private var geoserverUrl:String ="http://ec2-174-129-85-138.compute-1.amazonaws.com:8080/geoserver/";
+		private var geoserverUrl:String ="http://localhost:8080/geoserver/";
 		private function getDownloadUrl(format:String):String {
 				
 			var distributionsFilter:Array = [];
@@ -182,27 +205,27 @@
 				case "PNG":
 					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
 				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
-				"&LAYERS=sdr%3Adistributions&FORMAT=image%2FpngL&"+
+				"&LAYERS=gbif%3Ageospatial_units4&FORMAT=image%2Fpng&"+
 				"CQL_FILTER="+distributionsFilterStr+"&BBOX=-180,-90,180,90";
 					break;							
 				case "KML":
 					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
 				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
-				"&LAYERS=sdr%3Adistributions&FORMAT=application%2Fvnd.google-earth.kml+XML&"+
+				"&LAYERS=gbif%3Ageospatial_units4&FORMAT=application%2Fvnd.google-earth.kml+XML&"+
 				"CQL_FILTER="+distributionsFilterStr+"&BBOX=-180,-90,180,90";
 					break;					
 				case "SHP":
-					url = geoserverUrl + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=sdr%3Adistributions" + 
-				"&outputformat=SHAPE-ZIP&REQUEST=GetFeature&CQL_FILTER=id%3D"+distributionsFilterStr;
+					url = geoserverUrl + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=gbif%3Ageospatial_units4" + 
+				"&outputformat=SHAPE-ZIP&REQUEST=GetFeature&CQL_FILTER="+distributionsFilterStr;
 					break;			
 				case "GML":
-					url = geoserverUrl + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=sdr%3Adistributions" + 
+					url = geoserverUrl + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=gbif%3Ageospatial_units4" + 
 				"&REQUEST=GetFeature&CQL_FILTER=id%3D"+distributionsFilterStr;
 					break;
 				case "PDF":
 					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
 				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
-				"&LAYERS=sdr%3Adistributions&FORMAT=application%2Fpdf&"+
+				"&LAYERS=gbif%3Ageospatial_units4&FORMAT=application%2Fpdf&"+
 				"CQL_FILTER="+distributionsFilterStr+"&BBOX=-180,-90,180,90";
 					break;
 			}	
@@ -321,16 +344,15 @@
 	<mx:Button label="export this map" bottom="5" left="11" height="21" styleName="buttonGrey"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" id="button0" width="120"
 		click="exportPanel.visible = true; sharePanel.visible = false"/>
-	<mx:Image source="{'/flickrImage.php?q='+scientificName}" left="7" top="5" width="45" height="45" />
+	<mx:Image source="{'/ecatImage.php?id='+parameters.nub_concept_id}" left="7" top="5" width="45" height="45" />
 	<mx:HBox y="3" left="56" right="97" verticalAlign="bottom" horizontalGap="0">
-		<mx:Label text="{scientificName +','}" fontFamily="Georgia" fontStyle="italic" fontSize="24" fontWeight="normal" color="#393939" letterSpacing="-1"/>
-		<mx:Label text="updated 2 days ago" color="#878787" fontFamily="DINOT-Medium" fontSize="11" letterSpacing="0"/>
+		<mx:Label text="{scientificName}" fontFamily="Georgia" fontStyle="italic" fontSize="24" fontWeight="normal" color="#393939" letterSpacing="-1"/>
 	</mx:HBox>
 
 	<mx:HBox y="31" left="56" right="97" horizontalGap="0">
-		<mx:Label text="{(sourcesAc.length + 1) + ' GBIF, GROMS'}" fontFamily="DINOT-Medium" fontSize="11" color="#666666"/>
+		<mx:Label text="{sourcesConcatenated}" fontFamily="DINOT-Medium" fontSize="11" color="#666666"/>
 		<mx:Label text="|" width="6"/>
-		<mx:Label text="{numOccurrences +'occurrences in GBIF'}" fontFamily="DINOT-Medium" fontSize="11" color="#666666"/>
+		<mx:Label text="{numOccurrences + ' occurrences in GBIF'}" fontFamily="DINOT-Medium" fontSize="11" color="#666666"/>
 	</mx:HBox>
 	<mx:NumberFormatter id="nf" useThousandsSeparator="true" />
 	<mx:RemoteObject id="roSdr" endpoint="../amfphp/gateway.php" destination="SDRServices" source="SDRServices"

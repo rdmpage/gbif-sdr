@@ -4,10 +4,10 @@ package org.gbif.Event{
 
 	public class DownloadEvent extends Event{
 		
-		public var dType:String = new String;
+		public var dType:String;
 		
-		public function DownloadEvent(type:String, dType:String, bubbles:Boolean=false, cancelable:Boolean=false){
-			
+		public function DownloadEvent(type:String, _dType:String, bubbles:Boolean=true, cancelable:Boolean=false){
+			dType=_dType;	
 			super(type, bubbles, cancelable);
 		}
 		
