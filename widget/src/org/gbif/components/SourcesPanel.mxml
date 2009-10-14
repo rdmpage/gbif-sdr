@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="220" xmlns:components="org.gbif.components.*"
-	horizontalScrollPolicy="off" styleName="bkgSourcesSelector" backgroundSize="100%">
+	horizontalScrollPolicy="off" styleName="bkgSourcesSelector" backgroundSize="100%" height="319">
 
 
 	<mx:Script>
@@ -22,26 +22,31 @@
 	<mx:Image scaleContent="false" left="10" right="10" y="55">
 		<mx:source>@Embed('/assets/hRuleDashed500.png')</mx:source>
 	</mx:Image>
-	
-	<!--GBIF-->
-	<mx:Canvas left="10" right="10" y="65" height="64" borderStyle="none" borderThickness="0" verticalScrollPolicy="off" horizontalScrollPolicy="off">
-		<mx:Canvas width="54" height="54" backgroundColor="0xFFFFFF" borderStyle="solid" borderColor="#C8C8C8">
-			<mx:Image width="52" height="52" source="@Embed('/assets/1.jpg')" verticalCenter="0" horizontalCenter="0"/>
-		</mx:Canvas>	
-		<mx:Label text="GBIF.org"  x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
-		<mx:Label x="60" y="19" text="{Application.application.numOccurrences+' occurrences'}" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
-		<mx:CheckBox x="63" y="41" label="Show/Hide" fontSize="10" fontStyle="normal" selected="true" enabled="true" click="Application.application.toggleGbifVisibility()"/>
-		<mx:Image scaleContent="false" bottom="0" source="@Embed('/assets/hRuleDashed500.png')" right="0" left="0"/>
-		<mx:Image x="165.35" y="43" height="10" width="26" source="@Embed('/assets/gbifSources.jpg')"/>
+	<mx:Canvas left="10" right="2" top="65" bottom="25" horizontalScrollPolicy="off">
+		<mx:VBox width="100%" height="100%" verticalGap="10" horizontalAlign="center" >
+			
+			<mx:Canvas height="64" borderStyle="none" borderThickness="0" verticalScrollPolicy="off" horizontalScrollPolicy="off" width="100%">
+				<mx:Canvas width="54" height="54" backgroundColor="0xFFFFFF" borderStyle="solid" borderColor="#C8C8C8">
+					<mx:Image width="52" height="52" source="@Embed('/assets/1.jpg')" verticalCenter="0" horizontalCenter="0"/>
+				</mx:Canvas>	
+				<mx:Label text="GBIF.org"  x="60" fontFamily="DINOT-Medium" fontSize="16" color="#6D6D6D"/>
+				<mx:Label x="60" y="19" text="{Application.application.numOccurrences+' occurrences'}" fontFamily="DINOT-Medium" color="#ADADAD" fontSize="12" fontWeight="normal"/>
+				<mx:CheckBox x="63" y="41" label="Show/Hide" fontSize="10" fontStyle="normal" selected="true" enabled="true" click="Application.application.toggleGbifVisibility()"/>
+				<mx:Image scaleContent="false" bottom="0" source="@Embed('/assets/hRuleDashed500.png')" right="0" left="0"/>
+				<mx:Image x="165.35" y="43" height="10" width="26" source="@Embed('/assets/gbifSources.jpg')"/>
+			</mx:Canvas>
+			
+			<!--OTHERS-->
+			<!--Create one repeater with real data-->
+			<mx:VBox verticalScrollPolicy="off" horizontalScrollPolicy="off" verticalGap="10" width="100%">
+				<mx:Repeater id="myRepeater" dataProvider="{sourcesAc}" width="100%" height="100%">
+					<components:SourceItem horizontalScrollPolicy="off" verticalScrollPolicy="off" sourceData="{myRepeater.currentItem}" legend="{myRepeater.currentItem.legend}" width="100%"/>
+				</mx:Repeater>
+			</mx:VBox>
+			
+		</mx:VBox>
 	</mx:Canvas>
-	
-	<!--OTHERS-->
-	<!--Create one repeater with real data-->
-	<mx:VBox verticalScrollPolicy="off" horizontalScrollPolicy="off" verticalGap="10" left="10" right="10" top="138" bottom="64">
-		<mx:Repeater id="myRepeater" dataProvider="{sourcesAc}" width="100%" height="100%">
-			<components:SourceItem sourceData="{myRepeater.currentItem}" legend="{myRepeater.currentItem.legend}" width="100%"/>
-		</mx:Repeater>
-	</mx:VBox>
+	<!--GBIF-->
 	<mx:Button fontSize="13" click="Application.application.currentState = ''" styleName="noSkinButton" right="11"
 		useHandCursor="true" buttonMode="true" mouseChildren="false" label="source selector" height="20" bottom="2"/>
 	
