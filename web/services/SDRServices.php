@@ -108,9 +108,9 @@ class SDRServices {
 	}
 	
 	public function getMostPopularSpecies($limit) {
-	    $sql="select num_views,nub_usage_id from species_view_stats order by num_views DESC limit $limit";
-        $result = pg_query($this->conn, $sql);  
-        return pg_fetch_assoc($result);   
+	    $sql="select nub_usage_id,num_views from species_view_stats order by num_views DESC limit $limit";
+        //$result = 
+        return pg_fetch_all(pg_query($this->conn, $sql)); 
 	    
 	    
 	}
@@ -215,17 +215,18 @@ class SDRServices {
 			$names[$id]['name']=$rec->scientificName;
 			@$names[$id]['numNicheModels']=$rec->numNicheModels;
 			@$names[$id]['numOccurrences']=$rec->numOccurrences;
-			@$names[$id]['image']=$rec->imageURL;
-		}		
-		$sql="select clb_usage_id,count(id) as num_distributions, count(resource_fk) as num_resources from  distribution where clb_usage_id in(".implode(",",$namesToQuery).") group by clb_usage_id";
+			@$names[$id]['imageURL']=$rec->imageURL;
+		}	
+		$sql="select n.nub_usage_id,count(id) as num_distributions, count(resource_fk) as num_resources 
+        from  distribution as d inner join name_usage as n on d.clb_usage_id=n.clb_usage_id where n.nub_usage_id in(".implode(",",$namesToQuery).") group by n.nub_usage_id";
 		
-
+        error_log($sql);
 		$resfromdb=pg_fetch_all(pg_query($this->conn, $sql));
 		$finalResult=array();
 		if($resfromdb) {
     		foreach($resfromdb as &$r) {
-    		    $names[(int)$r['clb_usage_id']]['numDistributions']=(int)$r['num_distributions'];
-    		    $names[(int)$r['clb_usage_id']]['numResources']=(int)$r['num_resources'];
+    		    $names[(int)$r['nub_usage_id']]['numDistributions']=(int)$r['num_distributions'];
+    		    $names[(int)$r['nub_usage_id']]['numResources']=(int)$r['num_resources'];
 
     		}
 		}

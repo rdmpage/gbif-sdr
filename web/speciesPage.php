@@ -20,11 +20,18 @@ $speciesData = $services->getGbifDetailsByNameId($speciesId);
 
 $smarty->assign('popularSpecies', $services->getMostPopularSpecies(4));
 $smarty->assign('speciesId', $speciesId);
-$smarty->assign('nub_concept_id', $speciesData['nub_concept_id']);
-$smarty->assign('scientificName', $speciesData['scientific_name']);
+$smarty->assign('nub_concept_id', $speciesId);
+$smarty->assign('scientificName', $speciesData->scientificName);
+$smarty->assign('imageURL', $speciesData->imageURL);
 $smarty->assign('comments',$services->getComments($speciesId));
 
 
+$smarty->assign('kingdom', $speciesData->kingdom);
+$smarty->assign('phylum', $speciesData->phylum);
+$smarty->assign('class', $speciesData->class);
+$smarty->assign('order', $speciesData->order);
+$smarty->assign('family', $speciesData->family);
+$smarty->assign('genus', $speciesData->genus);
 
 
 $smarty->display('speciesPage.tpl');

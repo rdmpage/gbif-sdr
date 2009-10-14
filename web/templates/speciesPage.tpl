@@ -57,14 +57,22 @@
 			<div class="species_details">
 				<div class="title_blue">Species Details</div>
 			    <div class="separator_small"></div>
-			    <div class="text_comment_right">Sorry, there is still no data available</div>
+			    <div class="text_comment_right">
+			     Kingdom: {$kingdom}<br>
+			     &nbsp;&nbsp;Phylum: {$phylum}<br>
+			     &nbsp;&nbsp;&nbsp;&nbsp;Class: {$class}<br>
+			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order: {$order}<br>
+			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Family: {$family}<br>
+			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Genus: {$genus}<br>
+			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Species: {$scientificName}<br>
+			    </div>
 			</div>
 			<div class="separator6"></div>
 			<div class="related_species">
 			<div class="title_blue">Popular Species</div>
 			    <div class="separator_small"></div>
-			    {foreach key=id item=species from=$popularSpecies}
-			        <div class="avatar"><a href="speciesPage.php?id={$species.id}&n={$species.scientific_name|escape:"url"}"><img src="/flickrImage.php?q={$species.scientific_name|escape:"url"}" alt="{$species.scientific_name}" title="{$species.scientific_name}" width="51" height="52"></a></div>
+			    {foreach key=nub_usage_id item=spec from=$popularSpecies}
+			        <div class="avatar"><a href="speciesPage.php?id={$spec.nub_usage_id}"><img src="/ecatImage.php?id={$spec.nub_usage_id}" width="51" height="52"></a></div>
 			    {/foreach}
 				<a href="" class="view_more">view more</a>
 			</div>		

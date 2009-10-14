@@ -56,8 +56,8 @@
 			<div class="popular_species">
 				<div class="title_blue">Most popular species</div>
 			    <div class="separator_small"></div>
-			    {foreach key=id item=species from=$popularSpecies}
-			        <div class="avatar"><a href="speciesPage.php?id={$species.id}&n={$species.scientific_name|escape:"url"}"><img src="/flickrImage.php?q={$species.scientific_name|escape:"url"}" alt="{$species.scientific_name}" title="{$species.scientific_name}" width="51" height="52"></a></div>
+			    {foreach key=nub_usage_id item=spec from=$popularSpecies}
+			        <div class="avatar"><a href="speciesPage.php?id={$spec.nub_usage_id}"><img src="/ecatImage.php?id={$spec.nub_usage_id}" width="51" height="52"></a></div>
 			    {/foreach}
 
 			</div>
