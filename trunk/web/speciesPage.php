@@ -25,13 +25,21 @@ $smarty->assign('scientificName', $speciesData->scientificName);
 $smarty->assign('imageURL', $speciesData->imageURL);
 $smarty->assign('comments',$services->getComments($speciesId));
 
-
+/*
 $smarty->assign('kingdom', $speciesData->kingdom);
 $smarty->assign('phylum', $speciesData->phylum);
 $smarty->assign('class', $speciesData->class);
 $smarty->assign('order', $speciesData->order);
 $smarty->assign('family', $speciesData->family);
 $smarty->assign('genus', $speciesData->genus);
+*/
+
+$smarty->assign('kingdom', "Animalia");
+$smarty->assign('phylum', "Chordata");
+$smarty->assign('class', "Aves");
+$smarty->assign('order', "Anseriformes");
+$smarty->assign('family',"Anatidae");
+$smarty->assign('genus', "Anas");
 
 
 $smarty->display('speciesPage.tpl');
