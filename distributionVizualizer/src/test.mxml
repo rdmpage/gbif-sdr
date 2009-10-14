@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onInit(event);" xmlns:view="org.vizzuality.view.*">
+        
+        <mx:Script>
+                <![CDATA[
+                	import org.vizzuality.view.SpeciesMapContainer;
+                	import gs.easing.Elastic;
+                	import mx.controls.Image;
+                	import org.papervision3d.materials.MovieMaterial;
+                	import org.papervision3d.materials.BitmapMaterial;
+                	import org.papervision3d.materials.BitmapAssetMaterial;
+                	import org.papervision3d.events.InteractiveScene3DEvent;
+                	import gs.TweenMax;
+                	import org.vizzuality.v3d.MapContainer;
+					import mx.core.UIComponent;
+					import org.papervision3d.cameras.Camera3D;
+					import org.papervision3d.render.BasicRenderEngine;
+					import org.papervision3d.objects.DisplayObject3D;
+					import org.papervision3d.scenes.Scene3D;
+					import org.papervision3d.view.Viewport3D;
+					
+					import org.papervision3d.materials.ColorMaterial;
+					import org.papervision3d.objects.primitives.Plane;
+					
+					private var renderer:BasicRenderEngine = new BasicRenderEngine();
+					private var scene:Scene3D = new Scene3D();
+					private var camera:Camera3D = new Camera3D;
+					private var viewport:Viewport3D;
+					
+					private static var MP_WIDTH:Number = 880;
+					private static var MP_HEIGHT:Number = 495;
+					
+					private var angle:int = 0;
+					private var lastViewed:MapContainer;
+					                        
+					[Embed(source="img/fakeMapBkg.jpg")] private var fakeMapBkg:Class; 					                        
+					                        
+					protected function onInit( event:Event ) : void {
+					
+					        viewport = new Viewport3D(canvasPv3D.width, canvasPv3D.height, true, true);
+					        viewport.addEventListener(MouseEvent.CLICK,gotoPanel);
+					        
+					        // these 3 lines are key to putting Papervision in Flex
+					        var uicomp:UIComponent = new UIComponent();
+					        canvasPv3D.addChild( uicomp );
+					        uicomp.addChild( viewport );
+					
+					        camera.z = 0;
+					        camera.zoom = 2;
+							
+					        addMapContainer(fakeMapBkg,0);
+					        addMapContainer(fakeMapBkg,-550);
+					        addMapContainer(fakeMapBkg,-1100);
+					        
+					        // update the scene every frame
+					        canvasPv3D.addEventListener(Event.ENTER_FRAME,onEnterFrame);
+					}
+					
+					private function addMapContainer(m:Class,y:Number):void{
+						
+						var img:MovieClip = new MovieClip();
+						img.addChild((new m));
+						
+						var mat:MovieMaterial = new MovieMaterial(img,true);
+						mat.interactive = true;
+						mat.animated = true;
+						MovieMaterial(mat).movie.alpha = .35;						
+						
+						var mp:MapContainer = new MapContainer(mat,MP_WIDTH, MP_HEIGHT, 4, 4);
+						mp.z = 30;
+						mp.y = y;
+												
+						mp.addEventListener( InteractiveScene3DEvent.OBJECT_PRESS, gotoPanel)
+						scene.addChild(mp);
+						
+					}
+					
+					private function onEnterFrame( event : Event ):void {
+					        					        
+					        // render the scene on every frame
+					        renderer.renderScene(scene,camera,viewport);
+					}
+					
+					private function gotoPanel(e:InteractiveScene3DEvent):void{
+							if(lastViewed){
+								TweenMax.to(lastViewed, 1, {z: 30,ease:Elastic.easeOut});
+								TweenMax.to(((lastViewed).material as MovieMaterial).movie, .5, {alpha: .35});
+							}
+							lastViewed = e.target as MapContainer;
+							if(e.target is MapContainer){
+								TweenMax.to(camera, .5, {y: e.target.y});
+								TweenMax.to((e.target as MapContainer), 1, {z: 19,ease:Elastic.easeOut,onComplete:showSpeciesContainer});
+								TweenMax.to(((e.target as MapContainer).material as MovieMaterial).movie, .5, {alpha: 1});
+							}
+					}
+					
+					pri
+					
+					private function showSpeciesContainer():void{
+						var sp:SpeciesMapContainer = new SpeciesMapContainer();
+						sp.setStyle("horizontalCenter",0);
+						sp.setStyle("verticalCenter",0);
+						sp.alpha = 0.5;
+						this.addChild(sp);
+					}
+				]]>
+        </mx:Script>
+        
+        <mx:Canvas id="canvasPv3D" width="100%" height="100%"/>
+        
+</mx:Application>
