@@ -82,6 +82,7 @@
 					}
 					
 					private function gotoPanel(e:InteractiveScene3DEvent):void{
+							hideSpeciesContainer();
 							if(lastViewed){
 								TweenMax.to(lastViewed, 1, {z: 30,ease:Elastic.easeOut});
 								TweenMax.to(((lastViewed).material as MovieMaterial).movie, .5, {alpha: .35});
@@ -94,18 +95,18 @@
 							}
 					}
 					
-					pri
+					private function hideSpeciesContainer():void{
+						TweenMax.to(sp, 0, {autoAlpha: 0});
+					}
 					
 					private function showSpeciesContainer():void{
-						var sp:SpeciesMapContainer = new SpeciesMapContainer();
-						sp.setStyle("horizontalCenter",0);
-						sp.setStyle("verticalCenter",0);
-						sp.alpha = 0.5;
-						this.addChild(sp);
+						sp.visible = true;
+						TweenMax.to(sp, .5, {alpha: 1});
 					}
 				]]>
         </mx:Script>
         
         <mx:Canvas id="canvasPv3D" width="100%" height="100%"/>
+        <view:SpeciesMapContainer id="sp" verticalCenter="0" horizontalCenter="0" visible="false" alpha="0"/>
         
 </mx:Application>
