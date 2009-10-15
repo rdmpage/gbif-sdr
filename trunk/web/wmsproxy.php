@@ -18,16 +18,17 @@ $url="http://localhost:8080/geoserver/wms?transparent=true&WIDTH=256&SRS=EPSG%3A
 
 
 if ($_REQUEST['resource_id']=="1") {
-	$url.="&LAYERS=sdr%3Ana_distribution";
+	$url.="&LAYERS=gbif%3Ageospatial_units4";
 } else {
-	$url.="&LAYERS=sdr%3Adistributions";
+	$url.="&LAYERS=gbif%3Ageospatial_units4";
 }
 
 
 //&SLD=http%3A%2F%2Flocalhost%2FdynamicSLD.php%3Fresource%3D".$_REQUEST['resource_id']."%26species_id%3D".$_REQUEST['species_id'];
 
-$url.="&CQL_FILTER=gbif_id%3D".$_REQUEST['species_id']."%20and%20resource_id%3D".$_REQUEST['resource_id'];
+$url.="&CQL_FILTER=nub_usage_id%3D".$_REQUEST['species_id']."%20and%20resource_id%3D".$_REQUEST['resource_id'];
 $url.="&BBOX=".$_REQUEST['bbox'];
+
 
 $data=file_get_contents($url);	
 

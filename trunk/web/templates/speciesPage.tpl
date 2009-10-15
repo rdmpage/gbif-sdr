@@ -51,21 +51,23 @@
 	        <div class="contributors">
 				<div class="title_blue">Contributors</div>
 				<div class="separator_small"></div>
-			    <div class="avatar"><img src="/images/sources/1.jpg"></div>
+				{foreach key=id item=source from=$sources}
+			        <div class="avatar"><img src="/images/sources/{$source.resource_id}.jpg"></div>
+			    {/foreach}    
 			</div>
 			<div class="separator6"></div>		
 			<div class="species_details">
-				<div class="title_blue">Species Details</div>
+				<div class="title_blue">Taxonomy</div>
 			    <div class="separator_small"></div>
 			    <div class="text_comment_right">
 			     <ul class="ListSpeciesDetails">
-			     <li class="Kingdom">Kingdom: <b>{$kingdom}</b></li> 
-			     <li class="Phylum">Phylum: <b>{$phylum}</b></li> 
-			     <li class="Class">Class: <b>{$class}</b></li> 
-			     <li class="Order">Order: <b>{$order}</b></li> 
-			     <li class="Family">Family: <b>{$family}</b></li> 
-			     <li class="Genus">Genus: <b>{$genus}</b></li> 
-			     <li class="Species">Species: <b>{$scientificName}</b></li> 
+			     {if $kingdom}<li class="Kingdom">Kingdom: <b>{$kingdom}</b></li>{/if}
+			     {if $phylum}<li class="Phylum">Phylum: <b>{$phylum}</b></li> {/if}
+			     {if $class}<li class="Class">Class: <b>{$class}</b></li> {/if}
+			     {if $order}<li class="Order">Order: <b>{$order}</b></li> {/if}
+			     {if $family}<li class="Family">Family: <b>{$family}</b></li> {/if}
+			     {if $genus}<li class="Genus">Genus: <b>{$genus}</b></li> {/if}
+			     {if $scientificName}<li class="Species">Species: <b>{$scientificName}</b></li> {/if}
 			     </ul>
 			    </div>
 			</div>
