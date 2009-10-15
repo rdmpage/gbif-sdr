@@ -682,7 +682,8 @@ a.ultimo{
 
 .contributors{
 	background-color: #f7f7f7;
-	height: 211px;
+	height: auto;
+	width: 223px;
 	padding-left: 5px;
     border: #d6d6d6 1px solid;
     line-height: 0px;
@@ -691,6 +692,8 @@ a.ultimo{
 
 .species_details{
 	background-color: #f7f7f7;
+	height: auto;
+	width: 223px;
 	height: 160px;
 	padding-left: 5px;
 	border: #d6d6d6 1px solid;
@@ -698,6 +701,8 @@ a.ultimo{
 
 .related_species{
 	background-color: #f7f7f7;
+	height: auto;
+	width: 223px;
 	height: 129px;
 	padding-left: 5px;
 	border: #d6d6d6 1px solid;
