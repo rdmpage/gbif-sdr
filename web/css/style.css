@@ -682,7 +682,7 @@ a.ultimo{
 
 .contributors{
 	background-color: #f7f7f7;
-	height: 111px;
+	height: auto;
 	padding-left: 5px;
     border: #d6d6d6 1px solid;
     line-height: 0px;
