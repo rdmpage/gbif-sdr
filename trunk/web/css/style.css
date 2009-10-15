@@ -688,6 +688,7 @@ a.ultimo{
     border: #d6d6d6 1px solid;
     line-height: 0px;
     padding-bottom: 9px;
+    margin-bottom: 7px;
 }
 
 .species_details{
@@ -697,6 +698,7 @@ a.ultimo{
 	height: 160px;
 	padding-left: 5px;
 	border: #d6d6d6 1px solid;
+	margin-bottom: 7px;
 }
 
 .related_species{
@@ -1114,4 +1116,12 @@ div.login_sign a:hover{
 	float: right;
 }
 
+div.textcontainer {
+    font-family: "Arial";
+	font-size: 15px; 
+	color: #333333;
+	padding-right: 5px;
+}
 
+div.textcontainer p {
+}

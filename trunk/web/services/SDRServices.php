@@ -173,7 +173,7 @@ class SDRServices {
 			    $source['legend'] = array();
 			}
 			
-			$source['png']=$geoserverUrl."/wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&".
+			//$source['png']=$geoserverUrl."/wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&".
             				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage".
             				"&LAYERS=sdr%3Adistributions&FORMAT=image%2FpngL&".
             				"CQL_FILTER=id={$data['id']}$&BBOX=-180,-90,180,90";
@@ -199,7 +199,7 @@ class SDRServices {
 	
 	public function searchForName($name,$limit=10,$offset=1) {
 		
-		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?q=".urlencode($name)."&pagesize=$limit&p=$offset&image=thumb&ranks=kpcofg");
+		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?q=".urlencode($name)."&pagesize=$limit&p=$offset&image=thumb&ranks=kpcofg&rating=0");
 		$res= json_decode($rsp);
 		
 		if(count($res)<1 )
