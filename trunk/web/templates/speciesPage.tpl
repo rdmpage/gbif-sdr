@@ -48,7 +48,7 @@
 		</div>
 		
 		<div class="span-6 last rightColumn">
-	        <div class="contributors">
+	        <div class="span-1 contributors">
 				<div class="title_blue">Contributors</div>
 				<div class="separator_small"></div>
 				{foreach key=id item=source from=$sources}
@@ -56,7 +56,7 @@
 			    {/foreach}    
 			</div>
 			<div class="separator6"></div>		
-			<div class="species_details">
+			<div class="span-1 species_details">
 				<div class="title_blue">Taxonomy</div>
 			    <div class="separator_small"></div>
 			    <div class="text_comment_right">
@@ -72,7 +72,7 @@
 			    </div>
 			</div>
 			<div class="separator6"></div>
-			<div class="related_species">
+			<div class="span-1 related_species">
 			<div class="title_blue">Popular Species</div>
 			    <div class="separator_small"></div>
 			    {foreach key=nub_usage_id item=spec from=$popularSpecies}
