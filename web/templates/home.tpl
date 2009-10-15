@@ -15,7 +15,7 @@
 					</div>
 					<div>
 						<span class="column first span-6"><p id="lengthError"></p></span>
-						<span class="column last span-6 specieExample"><a href="/speciesPage.php?id=856027&n=Anas%20penelope" class="text3">e.g. Anas penelope</a></span>
+						<span class="column last span-6 specieExample"><a href="/speciesPage.php?id=13809813&n=Anas%20penelope" class="text3">e.g. Anas penelope</a></span>
 					</div>
 				</div>
 			

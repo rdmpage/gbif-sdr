@@ -17,21 +17,20 @@ if (file_exists("cache/".$savefile)) {
 
 $url = "http://ecat-ws.gbif.org/ws/usage/?id=".$_REQUEST['id'];
 
-$rsp = file_get_contents($url);
-$rsp_obj = json_decode($rsp);
+@$rsp = file_get_contents($url);
+if($rsp!="") {
+    $rsp_obj = json_decode($rsp);
+    if (count($rsp_obj->images)>0) {
+        $pic = file_get_contents($rsp_obj->images[0]); 
+        file_put_contents("cache/$savefile", $pic);
 
-#
-# display the photo title (or an error if it failed)
-#
-
-if (count($rsp_obj->images)>0) {
-    $pic = file_get_contents($rsp_obj->images[0]); 
-    file_put_contents("cache/$savefile", $pic);
-	
-}else{
-	//echo "Call failed!";
-	$pic = file_get_contents("images/noPicture.jpg"); 
+    } else {
+        $pic = file_get_contents("images/noPicture.jpg");
+    }
+} else {
+    $pic = file_get_contents("images/noPicture.jpg");
 }
+
 
 Header("Cache-Control: must-revalidate");
 $offset = 60 * 60 * 24 * 300;

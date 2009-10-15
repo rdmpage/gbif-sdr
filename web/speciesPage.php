@@ -10,7 +10,7 @@ if (!isset($_REQUEST['id'])) {
 
 
 $speciesId=$_REQUEST['id'];
-$speciesName=$_REQUEST['n'];
+@$speciesName=$_REQUEST['n'];
 
 $services = new SDRServices;
 
