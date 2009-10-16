@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onInit(event);" xmlns:view="org.vizzuality.view.*">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	creationComplete="onInit(event);" xmlns:view="org.vizzuality.view.*"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off">
+        
+        <mx:Style source="skin/general.css" />
+        <mx:Style source="skin/Fonts.css" />
         
         <mx:Script>
                 <![CDATA[
+                	import mx.managers.FocusManager;
+                	import com.adobe.serialization.json.JSON;
+                	import mx.collections.ArrayCollection;
+                	import mx.rpc.events.ResultEvent;
+                	import mx.rpc.http.mxml.HTTPService;
+                
+                	import mx.controls.Alert;
+                	import org.vizzuality.event.ChangePanelEvent;
+                	import mx.effects.easing.Back;
+                	import mx.effects.easing.Cubic;
                 	import org.vizzuality.view.SpeciesMapContainer;
                 	import gs.easing.Elastic;
                 	import mx.controls.Image;
@@ -26,12 +41,17 @@
 					private var scene:Scene3D = new Scene3D();
 					private var camera:Camera3D = new Camera3D;
 					private var viewport:Viewport3D;
+					private var arrSpeciesPlanes:Array = new Array();
+					
 					
 					private static var MP_WIDTH:Number = 880;
 					private static var MP_HEIGHT:Number = 495;
 					
 					private var angle:int = 0;
 					private var lastViewed:MapContainer;
+					private var c:Number = 0;
+					private var totalC:Number = 0;
+					private var gf:GlowFilter = new GlowFilter(0x000000,.1,10,10,2);
 					                        
 					[Embed(source="img/fakeMapBkg.jpg")] private var fakeMapBkg:Class; 					                        
 					                        
@@ -48,15 +68,44 @@
 					        camera.z = 0;
 					        camera.zoom = 2;
 							
-					        addMapContainer(fakeMapBkg,0);
-					        addMapContainer(fakeMapBkg,-550);
-					        addMapContainer(fakeMapBkg,-1100);
+							var httpsrv:HTTPService = new HTTPService();
+							httpsrv.resultFormat = "text";
+							httpsrv.url = "http://dev.gbif:8888/fake.json";
+							httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
+							httpsrv.send();
 					        
 					        // update the scene every frame
 					        canvasPv3D.addEventListener(Event.ENTER_FRAME,onEnterFrame);
+					        
+					        //other stuff
+					        this.addEventListener(KeyboardEvent.KEY_UP, keyboardSpecie);
+					        sp.addEventListener("prevSpecie",gotoSpecie);
+					        sp.addEventListener("nextSpecie",gotoSpecie);
 					}
 					
-					private function addMapContainer(m:Class,y:Number):void{
+					private function callService():void{
+						var httpsrv:HTTPService = new HTTPService();
+						httpsrv.resultFormat = "text";
+						httpsrv.url = "http://dev.gbif:8888/fake.json";
+						httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
+						httpsrv.send();
+					}
+					
+					private function handleResult(e:ResultEvent):void{
+						var resultObj:Object = JSON.decode(String(e.result));				
+						var resultAc:ArrayCollection = new ArrayCollection(resultObj.species as Array);
+						for each ( var o:Object in resultAc){
+							if(o.commonName == ""){
+								o.commonName = o.scientificName;
+								o.scientificName = "";
+							}
+							addMapContainer(fakeMapBkg,c,(c*-550),o.nub_usage_id,o.commonName,o.scientificName,o.imageURL);
+							c++;
+						}
+						totalC +=resultAc.length;
+					}
+					
+					private function addMapContainer(m:Class,i:Number,y:Number,nid:Number,cName:String,sName:String,iURL:String):void{
 						
 						var img:MovieClip = new MovieClip();
 						img.addChild((new m));
@@ -66,12 +115,15 @@
 						mat.animated = true;
 						MovieMaterial(mat).movie.alpha = .35;						
 						
-						var mp:MapContainer = new MapContainer(mat,MP_WIDTH, MP_HEIGHT, 4, 4);
+						var mp:MapContainer = new MapContainer(i,nid,cName,sName,iURL,mat,MP_WIDTH, MP_HEIGHT, 4, 4);
 						mp.z = 30;
 						mp.y = y;
+						mp.useOwnContainer = true;
+						mp.filters = [gf];
 												
 						mp.addEventListener( InteractiveScene3DEvent.OBJECT_PRESS, gotoPanel)
 						scene.addChild(mp);
+						arrSpeciesPlanes.push(mp);
 						
 					}
 					
@@ -84,29 +136,77 @@
 					private function gotoPanel(e:InteractiveScene3DEvent):void{
 							hideSpeciesContainer();
 							if(lastViewed){
-								TweenMax.to(lastViewed, 1, {z: 30,ease:Elastic.easeOut});
+								TweenMax.to(lastViewed, .5, {z: 30,ease:Back.easeOut});
 								TweenMax.to(((lastViewed).material as MovieMaterial).movie, .5, {alpha: .35});
 							}
 							lastViewed = e.target as MapContainer;
 							if(e.target is MapContainer){
 								TweenMax.to(camera, .5, {y: e.target.y});
-								TweenMax.to((e.target as MapContainer), 1, {z: 19,ease:Elastic.easeOut,onComplete:showSpeciesContainer});
+								TweenMax.to((e.target as MapContainer), .5, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
 								TweenMax.to(((e.target as MapContainer).material as MovieMaterial).movie, .5, {alpha: 1});
+							}
+							if(lastViewed.index == totalC - 1){
+								callService();
 							}
 					}
 					
+					private function gotoSpecie(e:ChangePanelEvent):void{
+							hideSpeciesContainer();
+							if(lastViewed){
+								TweenMax.to(lastViewed, .5, {z: 30,ease:Back.easeOut});
+								TweenMax.to(((lastViewed).material as MovieMaterial).movie, .5, {alpha: .35});
+							}
+							TweenMax.to(camera, .5, {y: (arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).y})							
+							TweenMax.to((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer), .5, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
+							TweenMax.to(((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).material as MovieMaterial).movie, .5, {alpha: 1});
+							lastViewed = arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer;
+							if(lastViewed.index == totalC - 1){
+								callService();
+							}
+					}
+					
+					private function keyboardSpecie(e:KeyboardEvent):void{
+						var ev:ChangePanelEvent;
+						if(e.keyCode == 38){
+							ev = new ChangePanelEvent("foo", -1);
+						}else if(e.keyCode == 40){
+							ev = new ChangePanelEvent("foo", 1);
+						}
+						if(e.keyCode == 38 || e.keyCode == 40){
+							gotoSpecie(ev);
+						}
+					}
+					
 					private function hideSpeciesContainer():void{
-						TweenMax.to(sp, 0, {autoAlpha: 0});
+						if(lastViewed){
+							lastViewed.filters = [gf];
+							TweenMax.to(sp, 0, {autoAlpha: 0});
+						}
 					}
 					
 					private function showSpeciesContainer():void{
+						sp.cName = lastViewed.commonName;
+						sp.sName = lastViewed.scientificName;
+						sp.imgURL = lastViewed.imgURL;
+						if(arrSpeciesPlanes[lastViewed.index + 1]){
+							sp.nextSpecieName = (arrSpeciesPlanes[lastViewed.index + 1] as MapContainer).commonName;
+						}
+						if(arrSpeciesPlanes[lastViewed.index - 1]){
+							sp.prevSpecieName = (arrSpeciesPlanes[lastViewed.index - 1] as MapContainer).commonName;
+						}
+						lastViewed.filters = [];
 						sp.visible = true;
 						TweenMax.to(sp, .5, {alpha: 1});
 					}
+					
 				]]>
         </mx:Script>
-        
-        <mx:Canvas id="canvasPv3D" width="100%" height="100%"/>
-        <view:SpeciesMapContainer id="sp" verticalCenter="0" horizontalCenter="0" visible="false" alpha="0"/>
+        <mx:Image source="@Embed('skin/assets/appBkg.jpg')" verticalCenter="0" />
+        <mx:Canvas id="canvasPv3D" width="100%" height="100%">
+                <mx:Image source="@Embed('skin/assets/logoGBIF.png')" bottom="20" left="20"/>
+                <mx:Image source="@Embed('skin/assets/logoVIZZ.png')" bottom="7" right="25"/>
+        </mx:Canvas>
+        <view:SpeciesMapContainer id="sp" verticalCenter="0" 
+        	horizontalCenter="0" visible="false" alpha="0"/>
         
 </mx:Application>

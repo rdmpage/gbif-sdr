@@ -1,4 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="802" height="452" backgroundColor="#FF0000">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="802" height="630" xmlns:view="org.vizzuality.view.*"
+	filters="{[gf]}" xmlns:maps="com.google.maps.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.google.maps.LatLng;
+			import com.google.maps.MapType;
+			import com.google.maps.MapEvent;
+			import org.vizzuality.event.ChangePanelEvent;
+			
+			[Bindable] public var cName:String = "";
+			[Bindable] public var sName:String = "";
+			[Bindable] public var imgURL:String = "";
+			[Bindable] public var nextSpecieName:String = "";
+			[Bindable] public var prevSpecieName:String = "";
+			
+			private function onMapReady(e:MapEvent):void{
+				map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:GlowFilter id="gf" color="0x000000" alpha=".2" quality="2" blurX="15" blurY="15" />
+	
+	<mx:Canvas  width="722" height="532" verticalCenter="0" horizontalCenter="0" 
+		styleName="blueBkg" backgroundSize="100%">
+		<mx:Image source="@Embed('/skin/assets/upArrow.gif')" right="13" top="16"/>
+		<mx:Image source="@Embed('/skin/assets/downArrow.gif')" right="13" bottom="16"/>
+		<mx:Button label="{prevSpecieName.toUpperCase()}" styleName="nullButton" 
+			fontFamily="Helvetica" color="#FFFFFF"  
+			right="7" width="140" top="12" fontWeight="normal" 
+			buttonMode="true" mouseChildren="false" useHandCursor="true"
+			click="dispatchEvent(new ChangePanelEvent('prevSpecie',-1));" textAlign="left"/>
+		<mx:Button label="{nextSpecieName.toUpperCase()}" styleName="nullButton" 
+			fontFamily="Helvetica" color="#FFFFFF"  
+			right="7" width="140" bottom="8" fontWeight="normal" 
+			buttonMode="true" mouseChildren="false" useHandCursor="true"
+			click="dispatchEvent(new ChangePanelEvent('nextSpecie',1));" textAlign="left"/>
+		<mx:HBox x="182" y="6" verticalAlign="bottom" horizontalGap="0">
+			<mx:Label text="{cName}" fontFamily="Helvetica" fontWeight="bold" color="#FFFFFF" fontSize="26" letterSpacing="-2"/>
+			<mx:Label text="{(sName!='')?'('+sName+')':''}" fontFamily="Helvetica" fontWeight="normal" color="#FFFFFF" fontSize="12" letterSpacing="-1" fontStyle="normal" paddingBottom="2"/>
+		</mx:HBox>
+		<mx:HBox verticalAlign="bottom" horizontalGap="4" left="33" bottom="14">
+			<mx:Image source="@Embed('skin/assets/btnTwitter.png')"/>
+			<mx:Image source="@Embed('skin/assets/btnFacebook.png')"/>
+			<mx:Image source="@Embed('skin/assets/btnDigg.png')"/>
+		</mx:HBox>
+	</mx:Canvas>
+	
+	<mx:Canvas  width="802" height="452" backgroundColor="#FF0000" verticalCenter="0" horizontalCenter="0">
+		<maps:Map id="map" width="100%" height="100%" 
+			mapevent_mapready="onMapReady(event)"
+			key="ABQIAAAAXucQwXp28TiGqramtQ-1nhSKsqInoXKWn48StRNTFQeokPz5AxRSX59iyx4w8RIYDpm9fawKM_okSw" />
+	</mx:Canvas>
+	
+	<view:ImageContainer x="75" imgURL="{imgURL}"/>
+	
 	
 </mx:Canvas>
