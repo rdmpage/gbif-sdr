@@ -152,7 +152,7 @@
 				sour.push(source.code);
 			
 				//add the layers to the map
-				var ctlwms:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,source.resource_id,source.curColor);		
+				var ctlwms:CustomWMSTileLayer = new CustomWMSTileLayer(parameters.nub_concept_id,source.resource_id,source.curColor,source.d_type);		
 				var ctlo2:CustomWMSTileLayerOverlay = new CustomWMSTileLayerOverlay(ctlwms);
 				ctlwms.ctlo = ctlo2;
 				ctlo2.foreground.alpha=0.82;				
