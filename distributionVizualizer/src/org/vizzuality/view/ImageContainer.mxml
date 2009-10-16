@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="144" height="144"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	styleName="ImageContainerBkg" backgroundSize="100%" creationComplete="init()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.core.UIComponent;
+			
+			[Bindable] public var cMask:Shape = new Shape();
+			[Bindable] public var imgURL:String = new String();
+			
+			private function init():void{
+				cMask.graphics.lineStyle(0);
+				cMask.graphics.beginFill(0x000000);
+				cMask.graphics.drawCircle(72,72,67);
+				this.rawChildren.addChild(cMask)
+			}
+			
+		]]>
+	</mx:Script>
+	<mx:SWFLoader source="@Embed('/skin/assets/loadAnimation2.swf')" verticalCenter="0" horizontalCenter="0" />
+	<mx:Image source="{imgURL}" mask="{cMask}" />
+</mx:Canvas>
