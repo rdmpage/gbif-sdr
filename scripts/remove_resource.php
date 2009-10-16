@@ -41,12 +41,6 @@ SQL;
 runSqlCommand($sql);
 
 $sql=<<<SQL
-    delete from name_usage where 
-        clb_usage_id in (select clb_usage_id from distribution where resource_fk=$resourceIdToRemove)
-SQL;
-runSqlCommand($sql);
-
-$sql=<<<SQL
     delete from defined_area_unit where distribution_unit_fk in 
     (select du.id from distribution_unit as du inner join distribution as d on du.distribution_fk=d.id WHERE d.resource_fk=$resourceIdToRemove)
 SQL;
@@ -117,6 +111,12 @@ delete from distribution WHERE id in (
 select d.id from distribution as d left join name_usage as n on d.clb_usage_id=n.clb_usage_id
 where n.clb_usage_id is null
 )
+SQL;
+runSqlCommand($sql);
+
+$sql=<<<SQL
+    delete from name_usage where clb_usage_id in  (
+        select distinct n.clb_usage_id from name_usage as n left join distribution as d on n.clb_usage_id=d.clb_usage_id where d.id is null)
 SQL;
 runSqlCommand($sql);
 
