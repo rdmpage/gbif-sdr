@@ -4,6 +4,7 @@
 
 To handle the import and update of different sources, a set of PHP script to be run as command line had been developed. Following is a description on them and how to use them.
 Most of the scripts needs editing to be used for a particular source, so ebfore running them please adjust them as needed. Documentation is available as comments inside the script.
+All scripts are available under the script folder on the root structure of the application.
 
 
 = remove_resource.php =
@@ -36,4 +37,16 @@ You need to adapt the script for paths and so on.
 ===Example use===
 {{{
 php import_canadensys.php
+}}}
+
+= import_groms.php =
+Script developed to import GROMS. This script is intentioanlly long to demonstrate how to use it with other source. If you want to import shapefiles datasets, like GROMS.
+Inside this script you need to specify metadata of the dataset, mappings to the SDR model, etc.
+Copy this script and adapt it for the new datasource. The number of mappings requiered make it very coimplicate to create a generic script, so we hope this way we can give you the most flexibility.
+
+You need to adapt the script for paths and so on.
+
+===Example use===
+{{{
+php import_groms.php
 }}}
