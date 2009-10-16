@@ -166,6 +166,14 @@ echo ("\n\nFINISHED!!!\n\n");
 runSqlCommand("DROP TABLE imported_ecat_names");
 runSqlCommand("DROP TABLE imported_shapefile");
 
+
+runSqlCommand("vacuum analyze resource");
+runSqlCommand("vacuum analyze distribution");
+runSqlCommand("vacuum analyze status_tags");
+runSqlCommand("vacuum analyze distribution_unit");
+runSqlCommand("vacuum analyze name_usage");
+
+
 function runSqlCommand($command) {
     global $psqlfol,$host,$dbname,$user,$pass;
     exec("$psqlfol/psql -h$host -d$dbname -U$user -c\"$command\"");

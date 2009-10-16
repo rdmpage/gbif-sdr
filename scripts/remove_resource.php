@@ -120,7 +120,12 @@ $sql=<<<SQL
 SQL;
 runSqlCommand($sql);
 
-
+runSqlCommand("vacuum analyze resource");
+runSqlCommand("vacuum analyze distribution");
+runSqlCommand("vacuum analyze status_tags");
+runSqlCommand("vacuum analyze distribution_unit");
+runSqlCommand("vacuum analyze defined_area_unit");
+runSqlCommand("vacuum analyze name_usage");
 
 function runSqlCommand($command) {
     global $psqlfol,$host,$dbname,$user,$pass;
