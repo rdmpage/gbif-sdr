@@ -249,8 +249,10 @@ class SDRServices {
 	
 	//API
 	public function getDistributionsByLatLng($lat,$lng) {
-	    $sql="select * from sdr_2_view where the_geom && setsrid(makepoint(0,0),4326) limit 10";
+	    $sql="select distinct id,nub_usage_id from sdr_2_view where the_geom && setsrid(makepoint(0,0),4326) and nub_usage_id is not null";
 	    
+	    
+	    $sql="select distinct id,nub_usage_id from sdr_1_view where the_geom && setsrid(makepoint(0,0),4326) and nub_usage_id is not null";
 	    
 	    
 	}
