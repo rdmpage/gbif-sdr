@@ -23,7 +23,7 @@ $smarty->assign('popularSpecies', $services->getMostPopularSpecies(4));
 $smarty->assign('speciesId', $speciesId);
 $smarty->assign('nub_concept_id', $speciesId);
 $smarty->assign('scientificName', $speciesData->scientificName);
-$smarty->assign('imageURL', $speciesData->imageURL);
+@$smarty->assign('imageURL', $speciesData->imageURL);
 $smarty->assign('comments',$services->getComments($speciesId));
 
 
