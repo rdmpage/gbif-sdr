@@ -70,6 +70,7 @@ runSqlCommand("\COPY imported_ecat_names FROM '$namesResolved'");
 echo ("imported_ecat_names written in the DB.\n\n");
 
 runSqlCommand("ALTER TABLE imported_dwc_distribution ADD COLUMN id serial");
+runSqlCommand("insert into name_usage(clb_usage_id,nub_usage_id ) select clb_usage_id,nub_usage_id from imported_ecat_names");
 
 
 //create the new resource if it does not exist
