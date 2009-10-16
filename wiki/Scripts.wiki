@@ -3,12 +3,24 @@
 = Introduction =
 
 To handle the import and update of different sources, a set of PHP script to be run as command line had been developed. Following is a description on them and how to use them.
+Most of the scripts needs editing to be used for a particular source, so ebfore running them please adjust them as needed. Documentation is available as comments inside the script.
 
 
 = remove_resource.php =
 Remove a resource specified as a first parameter. It will remove all its data in the SDR DB. That includes all the names used by it (name_usage) that are not used by any other source. Definetly try to clean as much as possible the database any trace of the source. This script should be used before updating a resource.
+It does not delete features stored in the Named Area Repository as this might be useful for other sources in the future.
 
 ===Example use===
 {{{
 php remove_resource.php CANADENSYS
+}}}
+
+= import_nar_source.php =
+This script is used to import new Named Area References into the Named Area Repository. For example a set of provinces in a country used by a specific datasource. Normally you first need to use this script to import a Darwin Core style distribution. 
+
+You need to adapt the script for paths and so on.
+
+===Example use===
+{{{
+php import_nar_source.php
 }}}
