@@ -152,9 +152,7 @@ class SDRServices {
 	
 	public function getSpeciesDetailsByNameId($speciesId) {
 	    
-	    $geoserverUrl="http://ec2-174-129-85-138.compute-1.amazonaws.com:8080/geoserver";
-	    
-	    $sql="SELECT d.id,code, resourcename,resource_fk as resource_id, (select count(id) from distribution_unit where distribution_fk=d.id) as num_units from distribution as d inner join resource as r on d.resource_fk=r.id inner join name_usage as n on d.clb_usage_id=n.clb_usage_id where n.nub_usage_id=$speciesId";
+	    $sql="SELECT d.id,code,d.distribution_type_fk as d_type, resourcename,resource_fk as resource_id, (select count(id) from distribution_unit where distribution_fk=d.id) as num_units from distribution as d inner join resource as r on d.resource_fk=r.id inner join name_usage as n on d.clb_usage_id=n.clb_usage_id where n.nub_usage_id=$speciesId";
 
         $result = pg_fetch_all(pg_query($this->conn, $sql));
         if(!$result) {
@@ -242,6 +240,24 @@ class SDRServices {
 
         return $finalResult;
 	}	
+	
+	
+	
+	
+	
+	
+	
+	//API
+	public function getDistributionsByLatLng($lat,$lng) {
+	    $sql="select * from sdr_2_view where the_geom && setsrid(makepoint(0,0),4326) limit 10";
+	    
+	    
+	    
+	}
+	
+	
+	
+	
 	
 
 }
