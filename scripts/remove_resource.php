@@ -6,7 +6,33 @@ $dbname="sdr";
 $user="postgres";
 $pass="";
 $psqlfol = "/usr/local/pgsql/bin";
-$resourceIdToRemove=14;
+$conn = pg_connect ("host=$host dbname=$dbname user=$user password=$pass");
+
+if(isset($argv[1]) && $argv[1]!="") {
+    $resourceCode=$argv[1];
+} else {
+    echo ("You have to pass as single parameter the code of the resource to delete (ex. GROMS).\n\n");
+    exit(); 
+}
+
+
+
+
+
+//create the new resource if it does not exist
+$sql="SELECT id from resource WHERE code='$resourceCode'";
+
+$result = pg_query($conn, $sql);
+if(pg_num_rows($result)<1) {
+    echo ("There is no resource named  $resourceCode.\n\n");
+    exit();
+} else {
+    $res=pg_fetch_assoc($result);
+    $resourceIdToRemove=$res['id'];
+    echo ("$resourceCode = $resourceIdToRemove.\n\n");
+}
+
+
 
 $sql=<<<SQL
     DELETE FROM distribution_unit WHERE distribution_fk in (SELECT id from distribution 
@@ -16,8 +42,7 @@ runSqlCommand($sql);
 
 $sql=<<<SQL
     delete from name_usage where 
-        clb_usage_id in (select clb_usage_id from distribution where resource_fk=$resourceIdToRemove) and 
-        clb_usage_id not in (select clb_usage_id from distribution where resource_fk<>$resourceIdToRemove)
+        clb_usage_id in (select clb_usage_id from distribution where resource_fk=$resourceIdToRemove)
 SQL;
 runSqlCommand($sql);
 

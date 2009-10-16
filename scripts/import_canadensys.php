@@ -181,7 +181,7 @@ runSqlCommand("ALTER TABLE distribution_unit DROP COLUMN temp_id");
 
 
 
-*/
+
 echo ("\n\nFINISHED!!!\n\n");
 runSqlCommand("DROP TABLE imported_ecat_names");
 runSqlCommand("DROP TABLE imported_shapefile");
