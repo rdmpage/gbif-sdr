@@ -95,7 +95,7 @@ runSqlCommand($sql);
 //dead defined_area_unit
 $sql=<<<SQL
 delete from defined_area_unit where id in (
-select da.id from defined_area_unit as da left join distribution_unit as du on da.distribution_unit_fk=du.id where du.id is null)
+select da.id from defined_area_unit as da left join distribution_unit as du on da.distribution_unit_fk=du.id where du.id is null
 )
 SQL;
 runSqlCommand($sql);
