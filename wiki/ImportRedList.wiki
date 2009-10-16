@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Just a bit of documentation on the steps done while importing a sample red list dataset.
+
+1) Download from http://www.iucnredlist.org/resources/spatial/mammals/
+
+2) /usr/local/pgsql/bin/shp2pgsql -s4326 -i -WLATIN1 -I -c all_GMA_CARNIVORA.shp imported_shapefile | /usr/local/pgsql/bin/psql -hlocalhost -dsdr -Upostgres
+
+3) create table temp_red_list as select distinct sci_name as "taxonID",sci_name as "sciName",authority, "family",order_,engl_name,citation  from imported_shapefile
+
+4) COPY temp_red_list TO '/tmp/red_list_carnivora';
+
+5) send to markus
