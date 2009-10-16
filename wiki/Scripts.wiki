@@ -50,3 +50,13 @@ You need to adapt the script for paths and so on.
 {{{
 php import_groms.php
 }}}
+
+= import_red_list_carnivora.php =
+Import script for the Red List, as pusblished on the website (from 2008). It has extensive mappings between their tags for occurrence,seasonality and nativeness. All the shapefiles from this source could be done like this. It is a good template for other imports.
+
+You need to adapt the script for paths and so on.
+
+===Example use===
+{{{
+php import_red_list_carnivora.php
+}}}
