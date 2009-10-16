@@ -18,9 +18,22 @@ php remove_resource.php CANADENSYS
 = import_nar_source.php =
 This script is used to import new Named Area References into the Named Area Repository. For example a set of provinces in a country used by a specific datasource. Normally you first need to use this script to import a Darwin Core style distribution. 
 
-You need to adapt the script for paths and so on.
+You need to adapt the script for paths and so on. 
 
 ===Example use===
 {{{
 php import_nar_source.php
+}}}
+
+= import_canadensys.php =
+Script developed to import the CANADENSYS example dataset. Before running this script you need to import the NAR resource (explained above).
+This script is intentioanlly long to demonstrate how to use it with other source. If you want to import a Darwin Core Distribution style files.
+Inside this script you need to specify metadata of the dataset, mappings to the SDR model, etc.
+Copy this script and adapt it for the new datasource. The number of mappings requiered make it very coimplicate to create a generic script, so we hope this way we can give you the most flexibility.
+
+You need to adapt the script for paths and so on.
+
+===Example use===
+{{{
+php import_canadensys.php
 }}}
