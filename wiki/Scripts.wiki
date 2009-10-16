@@ -1,0 +1,14 @@
+#Description of the different scripts generated for SDR
+
+= Introduction =
+
+To handle the import and update of different sources, a set of PHP script to be run as command line had been developed. Following is a description on them and how to use them.
+
+
+= remove_resource.php =
+Remove a resource specified as a first parameter. It will remove all its data in the SDR DB. That includes all the names used by it (name_usage) that are not used by any other source. Definetly try to clean as much as possible the database any trace of the source. This script should be used before updating a resource.
+
+===Example use===
+{{{
+php remove_resource.php CANADENSYS
+}}}
