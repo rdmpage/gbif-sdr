@@ -23,15 +23,17 @@ package org.gbif.maps
 		private var speciesId:Number;
 		private var resource_id:Number;
 		private var colorizeColor:Number;
+		private var d_type:String;
 		
 		
 		public var ctlo:CustomWMSTileLayerOverlay;
 		
-		public function CustomWMSTileLayer(speciesId:Number,resource_id:Number,colorizeColor:Number=NaN)
+		public function CustomWMSTileLayer(speciesId:Number,resource_id:Number,colorizeColor:Number=NaN,_d_type="1")
 		{
 				this.speciesId=speciesId;
 				this.resource_id=resource_id;
 				this.colorizeColor= colorizeColor;
+				this.d_type= _d_type;
 			
 			var copyrightCollection:CopyrightCollection = new CopyrightCollection();
 			copyrightCollection.addCopyright(new Copyright("ennefox", new LatLngBounds(new LatLng(-180, 90), new LatLng(180, -90)), 21,"ennefox"));			
@@ -69,7 +71,7 @@ package org.gbif.maps
            	var UR:LatLng = new LatLng(YToL(zoomLevel,tileIndexUR.y),XToL(zoomLevel,tileIndexUR.x));
            	bbox =  dd2MercMetersLng(LL.lngRadians())+","+dd2MercMetersLat(LL.latRadians()) + "," + dd2MercMetersLng(UR.lngRadians())+","+dd2MercMetersLat(UR.latRadians());
           	
-           	tileUrl = "/wmsproxy.php?resource_id="+resource_id+"&species_id="+speciesId+"&x=|X|&y=|Y|&z=|Z|&bbox=" + bbox;
+           	tileUrl = "/wmsproxy.php?resource_id="+resource_id+"&d_type="+d_type+"&species_id="+speciesId+"&x=|X|&y=|Y|&z=|Z|&bbox=" + bbox;
            	
            	tileUrl = tileUrl.replace("|X|",tile.x);	
            	tileUrl = tileUrl.replace("|Y|",tile.y);	
