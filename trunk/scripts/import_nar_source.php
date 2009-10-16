@@ -105,6 +105,9 @@ runSqlCommand("ALTER TABLE named_area_geom DROP COLUMN temp_id");
 
 runSqlCommand("DROP TABLE imported_areas_shapefile");
 
+runSqlCommand("vacuum analyze named_area");
+runSqlCommand("vacuum analyze named_area_geom");
+
 
 echo ("\n\nFINISHED!!!\n\n");
 

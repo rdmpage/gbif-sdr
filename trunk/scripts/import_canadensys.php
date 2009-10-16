@@ -32,6 +32,7 @@ $conn = pg_connect ("host=$host dbname=$dbname user=$user password=$pass");
 
 echo ("\n\nStarting import script...\n\n");
 
+runSqlCommand("DROP TABLE imported_dwc_distribution");
 
 $sql=<<<SQL
 CREATE TABLE imported_dwc_distribution
@@ -178,6 +179,12 @@ runSqlCommand($sql);
 runSqlCommand("ALTER TABLE distribution_unit DROP COLUMN temp_id");
 
 
+runSqlCommand("vacuum analyze resource");
+runSqlCommand("vacuum analyze distribution");
+runSqlCommand("vacuum analyze status_tags");
+runSqlCommand("vacuum analyze distribution_unit");
+runSqlCommand("vacuum analyze defined_area_unit");
+runSqlCommand("vacuum analyze name_usage");
 
 
 
@@ -185,7 +192,6 @@ runSqlCommand("ALTER TABLE distribution_unit DROP COLUMN temp_id");
 
 echo ("\n\nFINISHED!!!\n\n");
 runSqlCommand("DROP TABLE imported_ecat_names");
-runSqlCommand("DROP TABLE imported_shapefile");
 runSqlCommand("DROP TABLE imported_dwc_distribution");
 
 function runSqlCommand($command) {
