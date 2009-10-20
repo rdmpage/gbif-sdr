@@ -14,7 +14,7 @@ $originalNameIdField="name_id";
 
 //metadata
 $resourceName="2008 IUCN Red List of Threatened Species";
-$resourceCode="RED LIST";
+$resourceCode="RED_LIST2008";
 $resourceUuid="a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a17";
 
 $distribution_type=2;   //1=NamedArea,2=Geometry,3=Raster/Grid
@@ -138,13 +138,13 @@ select distinct
     WHEN new_pres=14 THEN 'Historical' ELSE
     new_pres||'' END as tag, 
 
-    CASE WHEN new_pres=1 THEN 1 
-    WHEN new_pres=2 THEN 1
-    WHEN new_pres=3 THEN 2
-    WHEN new_pres=4 THEN 2
-    WHEN new_pres=5 THEN 3
-    WHEN new_pres=6 THEN 2
-    WHEN new_pres=14 THEN 2 ELSE
+    CASE WHEN new_pres=1 THEN 1 -- Extant = present
+    WHEN new_pres=2 THEN 2  -- Probably Extant = present
+    WHEN new_pres=3 THEN 2 -- Possibly Extant = doubtful
+    WHEN new_pres=4 THEN 2  -- Possibly Extinct = doubtful
+    WHEN new_pres=5 THEN 3  -- Extinct (post-1500) = absent
+    WHEN new_pres=6 THEN 2  -- Presence Uncertain = doubtful
+    WHEN new_pres=14 THEN 2 ELSE  -- Historical = doubtful
     new_pres END as occurrence_status_fk 
 
     from imported_shapefile
