@@ -1,0 +1,15 @@
+/* CSS file */
+
+Canvas.blueBkg{
+	background-image: Embed(source="general.swf",symbol="blueBkg");	
+}
+
+Canvas.ImageContainerBkg{
+	background-image: Embed(source="general.swf",symbol="ImgContainerBkg");	
+}
+
+Button.nullButton{
+	skin: ClassReference(null);
+	padding-left: 0;
+	text-roll-over-color: #FFFFFF;
+}
