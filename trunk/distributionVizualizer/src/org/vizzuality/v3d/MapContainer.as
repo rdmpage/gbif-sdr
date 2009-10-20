@@ -17,7 +17,7 @@ package org.vizzuality.v3d
 			this.commonName = commonName;
 			this.scientificName = scientificName;
 			this.imgURL = imgURL;
-			this.nubid = nubid;
+			this.nubid = nubId;
 			super(material, width, height, segmentsW, segmentsH);
 		}
 		

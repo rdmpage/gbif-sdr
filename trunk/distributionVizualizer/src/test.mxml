@@ -58,7 +58,7 @@
 					protected function onInit( event:Event ) : void {
 					
 					        viewport = new Viewport3D(canvasPv3D.width, canvasPv3D.height, true, true);
-					        viewport.addEventListener(MouseEvent.CLICK,gotoPanel);
+					        viewport.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS,gotoPanel);
 					        
 					        // these 3 lines are key to putting Papervision in Flex
 					        var uicomp:UIComponent = new UIComponent();
@@ -70,14 +70,14 @@
 							
 							var httpsrv:HTTPService = new HTTPService();
 							httpsrv.resultFormat = "text";
-							httpsrv.url = "http://dev.gbif:8888/fake.json";
+							httpsrv.url = "/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0";
 							httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
 							httpsrv.send();
 					        
 					        // update the scene every frame
 					        canvasPv3D.addEventListener(Event.ENTER_FRAME,onEnterFrame);
 					        
-					        //other stuff
+					        //other stuff 
 					        this.addEventListener(KeyboardEvent.KEY_UP, keyboardSpecie);
 					        sp.addEventListener("prevSpecie",gotoSpecie);
 					        sp.addEventListener("nextSpecie",gotoSpecie);
@@ -86,7 +86,7 @@
 					private function callService():void{
 						var httpsrv:HTTPService = new HTTPService();
 						httpsrv.resultFormat = "text";
-						httpsrv.url = "http://dev.gbif:8888/fake.json";
+						httpsrv.url = "/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/1";
 						httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
 						httpsrv.send();
 					}
@@ -145,7 +145,7 @@
 								TweenMax.to((e.target as MapContainer), .5, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
 								TweenMax.to(((e.target as MapContainer).material as MovieMaterial).movie, .5, {alpha: 1});
 							}
-							if(lastViewed.index == totalC - 1){
+							if(lastViewed.index == totalC - 2){
 								callService();
 							}
 					}
@@ -188,6 +188,7 @@
 						sp.cName = lastViewed.commonName;
 						sp.sName = lastViewed.scientificName;
 						sp.imgURL = lastViewed.imgURL;
+						sp.nubid = lastViewed.nubid;
 						if(arrSpeciesPlanes[lastViewed.index + 1]){
 							sp.nextSpecieName = (arrSpeciesPlanes[lastViewed.index + 1] as MapContainer).commonName;
 						}

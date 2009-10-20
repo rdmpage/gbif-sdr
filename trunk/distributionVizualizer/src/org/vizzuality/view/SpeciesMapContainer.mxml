@@ -4,6 +4,8 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import com.google.maps.LatLngBounds;
+			import com.google.maps.overlays.GroundOverlay;
 			import com.google.maps.LatLng;
 			import com.google.maps.MapType;
 			import com.google.maps.MapEvent;
@@ -17,7 +19,31 @@
 			
 			private function onMapReady(e:MapEvent):void{
 				map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
+				
+				
 			}
+			
+			public function set nubid(val:Number):void {
+				var overlayUrl:String="http://localhost:8080/geoserver/wms?transparent=true&WIDTH=1024&SRS=EPSG%3A900913&HEIGHT=1024&STYLES=" + 
+						"&FORMAT=image%2Fpng&TILED=true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap" + 
+						"&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&LAYERS=gbif%3Asdr_2_view" + 
+						"&CQL_FILTER=nub_usage_id%3D"+val+"%20and%20resource_id%3D27&BBOX=-20037508.3428,-20037508.3428,20037508.3428,20037508.3428";
+				
+				map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
+				map.clearOverlays();
+				var testLoader:Loader = new Loader();
+  				var urlRequest:URLRequest = new URLRequest(overlayUrl);
+  				testLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event):void {
+    				var groundOverlay:GroundOverlay = new GroundOverlay(
+        				testLoader,
+        				new LatLngBounds(new LatLng(-85,-180), new LatLng(85,180)));
+    				map.addOverlay(groundOverlay);
+  				});
+  				testLoader.load(urlRequest);  		
+				
+				
+			}
+			
 			
 		]]>
 	</mx:Script>
