@@ -14,7 +14,7 @@ if ($_REQUEST['method'] == 'addComment') {
 	$image = md5( $lowercase );
 
     $result = $services->addComment($_SESSION['user']['id'],$comment,$_REQUEST['speciesId']);
-    
+    error_log($result);
     if ($result) {
         ?>
     	<div class="span-18 comments">
