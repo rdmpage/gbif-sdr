@@ -1,6 +1,6 @@
 <?php
 
-$cacheFolder="/mnt/cache";
+$cacheFolder="/mnt/";
 
 $savefile = $_REQUEST['x'] . "_" . $_REQUEST['y'] . "_". $_REQUEST['z'] . "_". $_REQUEST['species_id'] . "_". $_REQUEST['resource_id'] . ".png";
 
