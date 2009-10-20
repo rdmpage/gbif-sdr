@@ -7,7 +7,7 @@ $user="postgres";
 $pass="";
 $psqlfol = "/usr/local/pgsql/bin";
 $shpfile = "/Users/jatorre/Desktop/groms_shp/groms.shp";
-$namesResolved = "/Users/jatorre/Desktop/gromsnames/groms_resolved_names.txt";
+$namesResolved = "/Users/jatorre/Desktop/gromsnames/ids_groms.txt";
 
 //Mapping
 $originalNameIdField="name_id";

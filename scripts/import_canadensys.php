@@ -7,7 +7,7 @@ $user="postgres";
 $pass="";
 $psqlfol = "/usr/local/pgsql/bin";
 $dwc_distribution = "/Users/jatorre/Desktop/canada/dwc/distribution.txt";
-$namesResolved = "/Users/jatorre/Desktop/canada/canada_map.txt";
+$namesResolved = "/Users/jatorre/Desktop/canada/ids_canadensys.txt";
 $namedAreasShp = "/Users/jatorre/Desktop/province/PROVINCE.SHP";
 
 //The dwc_distribution files come in this format: (WE ARE NOT USING THE meta.xml file sorry :( )
