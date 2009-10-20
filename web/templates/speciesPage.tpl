@@ -124,6 +124,9 @@
 		so.addParam("allowFullScreen", "true");
 		so.addVariable("swf", "");
 		so.addVariable("scientificName", "{/literal}{$scientificName}{literal}");
+		{if $smarty.get.source neq ""}
+			so.addVariable("source", "{/literal}{$smarty.get.source}{literal}");
+		{/if}
 		so.addVariable("speciesId", "{/literal}{$speciesId}{literal}");
 		so.addVariable("nub_concept_id", "{/literal}{$nub_concept_id}{literal}");
 		
