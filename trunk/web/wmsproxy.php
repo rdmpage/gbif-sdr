@@ -1,8 +1,10 @@
 <?php
 
+$cacheFolder="/mnt/cache";
+
 $savefile = $_REQUEST['x'] . "_" . $_REQUEST['y'] . "_". $_REQUEST['z'] . "_". $_REQUEST['species_id'] . "_". $_REQUEST['resource_id'] . ".png";
 
-if (file_exists("cache/".$savefile)) {
+if (file_exists($cacheFolder."cache/".$savefile)) {
 	Header("Cache-Control: must-revalidate");
 	$offset = 60 * 60 * 24 * 300;
 	$ExpStr = "Expires: " . gmdate("D, d M Y H:i:s", time() + $offset) . " GMT";
@@ -10,7 +12,7 @@ if (file_exists("cache/".$savefile)) {
 	header('Content-type: image/png');
 	//ob_clean();
 	flush();	
-	readfile("cache/".$savefile);
+	readfile($cacheFolder."cache/".$savefile);
 	exit;		
 }
 
@@ -48,7 +50,7 @@ echo $data;
 
 //only cache if the zoom level is smaller than 7
 if ($_REQUEST['z']<6) {
-    file_put_contents("cache/$savefile", $data);
+    file_put_contents($cacheFolder."cache/$savefile", $data);
 }
 
 
