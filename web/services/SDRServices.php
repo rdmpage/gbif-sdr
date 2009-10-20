@@ -159,7 +159,7 @@ class SDRServices {
 			where n.nub_usage_id=$speciesId";
 			
 		if ($source!="") {
-		    $sql.=" AND r.code=$source";
+		    $sql.=" AND r.code='$source'";
 		}	
 
         $result = pg_fetch_all(pg_query($this->conn, $sql));
