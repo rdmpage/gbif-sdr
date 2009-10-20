@@ -102,7 +102,7 @@ class SDRServices {
 	    
         $sql="INSERT INTO comments(user_fk,commenttext,comment_type_fk,comment_on_id) VALUES($userId,'$comment',1,'$speciesId')";
         $result= pg_query($this->conn, $sql);
-        return null;
+        return $result;
 
 	    
 	}
