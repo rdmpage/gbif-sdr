@@ -257,6 +257,38 @@ class SDRServices {
 	    
 	}
 	
+	public function getDistributionsBySource($sourceCode,$offset) {
+	    $sourceCode=pg_escape_string($sourceCode);
+	    $sql="select s.resourcename, s.code,s.id from resource as s where s.code='$sourceCode'";
+        $source = pg_fetch_assoc(pg_query($this->conn, $sql));
+        if(!$source) {
+            return null;
+        }
+
+        $species=array();
+        $sql="select d.clb_usage_id,n.nub_usage_id from distribution as d inner join name_usage as n on d.clb_usage_id=n.clb_usage_id where d.resource_fk={$source['id']} limit 10 offset $offset";
+        $result = pg_fetch_all(pg_query($this->conn, $sql));
+        foreach($result as &$rec) {
+    		$sp=array();
+    		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?id=".$rec['clb_usage_id']);
+    		$res= json_decode($rsp);   
+    		$sp['nub_usage_id']=(int)$rec['nub_usage_id'];
+    		$sp['scientificName']=$res->scientificName;
+    		//$sp['commonName']=$res->vernacularNames[0];
+    		$sp['commonName']="";
+    		$sp['imageURL']=$res->imageURL;
+    		
+    		$species[]=$sp;
+        }
+        $result=array();
+        $result['species']=$species;
+        $result['sourceId']=$source['id'];
+        $result['source']=$source['resourcename'];
+        
+		return $result;
+		
+	}
+	
 	
 	
 	

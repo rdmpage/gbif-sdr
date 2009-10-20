@@ -33,6 +33,7 @@ echo ("\n\nStarting import script...\n\n");
 //Delete in case there was a previous import table there
 runSqlCommand("DROP TABLE imported_shapefile");
 
+
 //Import the shapefile into PostGIS as a new table called imported_shapefile.
 //Adjust path to shp2pgsql, the SRS of the Shapefile and the encoding. (normally 4326, LATIN1)
 exec("$psqlfol/shp2pgsql -s4326 -i -WUTF8 -I -c $shpfile imported_shapefile | $psqlfol/psql -h$host -d$dbname -U$user");
@@ -98,17 +99,20 @@ $sql="insert into name_usage select clb_usage_id,nub_usage_id from imported_ecat
 runSqlCommand($sql);
 
 
+/*
+null,-- (creat_year||'01'||'01')::timestamp, !!!!!disbale this as it would create duplicqte records
+null, -- mapsource,  !!!!!disbale this as it would create duplicqte records
+*/
 
 $sql=<<<SQL
     insert into distribution(
-            clb_usage_id,name_fk,original_name_id,created_when,map_source, distribution_type_fk,spatial_resolution_fk, 
+            clb_usage_id,name_fk,original_name_id, distribution_type_fk,spatial_resolution_fk, 
             spatial_accuracy,record_base_fk,confidence_by_source,is_public,resource_fk)
     select distinct 
         clb_usage_id,
         clb_usage_id as name_fk,
         ims.original_name_id, 
-        (creat_year||'01'||'01')::timestamp, 
-        mapsource, 
+
         $distribution_type as distribution_type_fk,
         $spatial_resolution as spatial_resolution_fk, 
         $spatial_accuracy as spatial_accuracy, 
