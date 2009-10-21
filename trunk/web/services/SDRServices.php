@@ -264,10 +264,10 @@ class SDRServices {
 	//API
 	public function getDistributionsByLatLng($lat,$lng) {
 	    $sql="select distinct id,nub_usage_id from sdr_2_view where the_geom && setsrid(makepoint(0,0),4326) and nub_usage_id is not null";
-	    
+	    $res1=pg_fetch_all(pg_query($this->conn, $sql)); 
 	    
 	    $sql="select distinct id,nub_usage_id from sdr_1_view where the_geom && setsrid(makepoint(0,0),4326) and nub_usage_id is not null";
-	    
+	    return array_merge(pg_fetch_all(pg_query($this->conn, $sql)),$res1); 
 	    
 	}
 	
@@ -301,6 +301,11 @@ class SDRServices {
         
 		return $result;
 		
+	}
+	
+	public function getSources() {
+	    $sql="select r.resourcename, r.code,r.id, count(d.id) as num_distributions from resource as r inner join distribution as d on r.id=d.resource_fk group by r.id,resourcename,code";
+	    return pg_fetch_all(pg_query($this->conn, $sql)); 
 	}
 	
 	
