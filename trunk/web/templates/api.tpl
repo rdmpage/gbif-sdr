@@ -39,7 +39,11 @@
 		    	<li><b>getSources:</b><br> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSources">
 		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSources</a></li>	        	
 
+		    	<li><b>getDistributionUnitsByLatLng:</b><br> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionUnitsByLatLng/30/10">
+		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionUnitsByLatLng/30/10</a></li>
+
 	        	</ul>
+	
 				
 	        	<div class="span-24 title_blue">Examples</div>
 				<p>To demonstrate the use of the API we have developed an application that lets you visualize the different
