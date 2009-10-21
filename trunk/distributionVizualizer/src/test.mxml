@@ -88,7 +88,7 @@
 						httpsrv.resultFormat = "text";
 						httpsrv.url = " http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/"+offset;
 						//httpsrv.url = "fake.json";
-						offset++;
+						offset+=10;
 						httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
 						httpsrv.send();
 					}
