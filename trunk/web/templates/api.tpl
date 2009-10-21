@@ -42,6 +42,10 @@
 		    	<li><b>getDistributionUnitsByLatLng:</b><br> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionUnitsByLatLng/30/10">
 		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionUnitsByLatLng/30/10</a></li>
 
+		    	<li><b>getSpeciesDistributionUnitsById:</b><br> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDistributionUnitsById/13149503">
+		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDistributionUnitsById/13149503</a></li>
+
+
 	        	</ul>
 	
 				
