@@ -205,7 +205,7 @@ class SDRServices {
 	
 	public function searchForName($name,$limit=10,$offset=1) {
 		
-		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?q=".urlencode($name)."&pagesize=$limit&p=$offset&image=thumb&ranks=kpcofg&rating=0");
+		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?q=".urlencode($name)."&pagesize=$limit&p=$offset&image=true&ranks=kpcofg&rating=0");
 		$res= json_decode($rsp);
 		
 		if(count($res)<1 )
@@ -222,6 +222,12 @@ class SDRServices {
 			@$names[$id]['numNicheModels']=$rec->numNicheModels;
 			@$names[$id]['numOccurrences']=$rec->numOccurrences;
 			@$names[$id]['imageURL']=$rec->imageURL;
+			@$names[$id]['genus']=$rec->genus;
+			@$names[$id]['class']=$rec->class;
+			@$names[$id]['phylum']=$rec->phylum;
+			@$names[$id]['kingdom']=$rec->kingdom;
+			@$names[$id]['family']=$rec->family;
+			@$names[$id]['order']=$rec->order;
 		}	
 		$sql="select n.nub_usage_id,count(id) as num_distributions, count(resource_fk) as num_resources 
         from  distribution as d inner join name_usage as n on d.clb_usage_id=n.clb_usage_id where n.nub_usage_id in(".implode(",",$namesToQuery).") group by n.nub_usage_id";
