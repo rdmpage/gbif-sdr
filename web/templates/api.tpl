@@ -26,15 +26,18 @@
 
 	        	</ul>					
 	        	<div class="span-24 title_blue">Data API</div>
-				<p>Some more documentation needed. Also some services are not documented here for the moment.</p><br><br>
+				<p>All services are available as JSON and AMF. To use the services in AMF please contact <a href="mailto:jatorre@vizzuality.com">jatorre@vizzuality.com</a></p><br><br>
 				<ul>
-	        	<li>getSpeciesDetailsByNameId: <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738">
+	        	<li><b>getSpeciesDetailsByNameId:</b><br> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738">
 		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738</a></li>
-		    	<li>getSpeciesDetailsByNameId (only CANADENSYS): <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738/CANADENSYS">
+		    	<li><b>getSpeciesDetailsByNameId (only CANADENSYS):</b><br> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738/CANADENSYS">
 		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738/CANADENSYS</a></li>	        	
 
-		    	<li>getDistributionsBySource (RED_LIST2008): <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0">
+		    	<li><b>getDistributionsBySource (RED_LIST2008):</b><br> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0">
 		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0</a></li>	        	
+
+		    	<li><b>getSources:</b><br> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSources">
+		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSources</a></li>	        	
 
 	        	</ul>
 				
