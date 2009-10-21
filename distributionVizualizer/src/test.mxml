@@ -57,9 +57,18 @@
 					private var offset:Number = 0;
 					private var gf:GlowFilter = new GlowFilter(0x000000,.1,10,10,2);
 					                        
-					[Embed(source="img/fakeMapBkg.jpg")] private var fakeMapBkg:Class; 					                        
+					[Embed(source="img/fakeMapBkg.jpg")] private var fakeMapBkg:Class; 			
+					
+					public var dataEndPoint:String="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/";			// 	                        
+					public var wmsproxy:String="http://localhost/wmsbig.php";	 	//                                
 					                        
 					protected function onInit( event:Event ) : void {
+						if(parameters.dataEndPoint!=null) {
+							dataEndPoint=parameters.dataEndPoint;
+						}
+						if(parameters.wmsproxy!=null) {
+							wmsproxy=parameters.wmsproxy;
+						}
 					
 					        viewport = new Viewport3D(canvasPv3D.width, canvasPv3D.height, true, true);
 					        viewport.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS,gotoPanel);
@@ -83,12 +92,14 @@
 					}
 					
 					private function callService():void{
-						TweenMax.to(quietLoading, .3, {alpha: 1});
+						TweenMax.to(quietLoading, .3, {autoAlpha: 1});
 						var httpsrv:HTTPService = new HTTPService();
 						httpsrv.resultFormat = "text";
-						httpsrv.url = " http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/"+offset;
+
+						httpsrv.url = dataEndPoint +"json.php/SDRServices.getDistributionsBySource/RED_LIST2008/"+offset;
 						//httpsrv.url = "fake.json";
 						offset+=10;
+
 						httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
 						httpsrv.send();
 					}
