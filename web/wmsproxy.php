@@ -16,7 +16,7 @@ if (file_exists($cacheFolder."cache/".$savefile)) {
 	exit;		
 }
 
-$url="http://localhost:8080/geoserver/wms?transparent=true&WIDTH=256&SRS=EPSG%3A900913&HEIGHT=256&STYLES=&FORMAT=image%2Fpng&TILED=true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage";
+$url="http://ec2-174-129-77-94.compute-1.amazonaws.com:8080/geoserver/wms?transparent=true&WIDTH=256&SRS=EPSG%3A900913&HEIGHT=256&STYLES=&FORMAT=image%2Fpng&TILED=true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage";
 
 
 if ($_REQUEST['d_type']=="1") {
