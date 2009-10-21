@@ -130,5 +130,49 @@ same with sdr_2_view
 5. Apply and save
 
 == Configure the app. ==
-All configurations are done in the /var/www/config.php file. It should all be obvious.
+All configurations are done in the /var/www/config.php file. It should all be obvious. In any case this is how it looks mine:
 
+{{{
+/** 
+ * The base configurations of SDR.
+**/
+
+/** The name of the database for Runnity */
+define('DB_NAME', 'sdr');
+
+/** PostgreSQL database username */
+define('DB_USER', 'postgres');
+
+/** PostgreSQL database password */
+define('DB_PASSWORD', 'atlas');
+
+/** PostgreSQL hostname */
+define('DB_HOST', 'localhost');
+
+/** GEOSERVER URL */
+define('GEOSERVER_URL', 'http://ec2-174-129-72-225.compute-1.amazonaws.com:8080/geoserver/');
+
+/** GEOSERVER URL */
+define('DATA_URL', 'http://ec2-174-129-72-225.compute-1.amazonaws.com/amfphp/');
+
+/** Caching folder */
+define('CACHE_FOLDER', '/mnt/cache');
+
+/** Google API Key */
+define('GMAP_KEY', 'ABQIAAAAtDJGVn6RztUmxjnX5hMzjRTMIXXlucu2Ks7-zsUmwIpJXyeIkxRdivKNzcwjA_1UQlGO796sRIEM_A');
+
+
+/** WMS proxies */
+define('WMS_PROXY', 'http://ec2-174-129-72-225.compute-1.amazonaws.com/wmsproxy.php');
+define('WMS_BIG_PROXY', 'http://ec2-174-129-72-225.compute-1.amazonaws.com/wmsbig.php');
+
+/** ECAT services */
+define('ECAT_SERVICES', 'http://ecat-ws.gbif.org/ws/')
+
+}}}
+
+*Comment* You have to create the cache folder (/mnt/cache) and give it 777 permissions
+{{{
+mkdir /mnt/cache
+chmod 777 /mnt/cache/
+}}}
