@@ -70,7 +70,12 @@
 			//Modify Tooltip behaviour so that it show inmediately
 			ToolTipManager.showDelay = 0;
 			ToolTipManager.hideDelay = 4000;
-			map.key=parameters.api_key;
+				
+ 			if(parameters.api_key!=null) {
+				map.key=parameters.api_key;
+			}	else {
+				map.key="ABQIAAAAtDJGVn6RztUmxjnX5hMzjRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSPLBWm1r4y_v-I6fII4c2FT0yK6w";				
+			}
 			
 			if (parameters.source!=null) {
 				sourceFilter=parameters.source;
