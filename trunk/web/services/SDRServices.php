@@ -1,11 +1,11 @@
 <?php
-
-include("PolylineEncoder.php");
+require_once($_SERVER['DOCUMENT_ROOT'] ."/config.php");
+//include("PolylineEncoder.php");
 
 class SDRServices {
 	
 	function __construct() {
-		$this->conn = pg_connect ("host=localhost dbname=sdr user=postgres password=atlas");	
+		$this->conn = pg_connect ("host=".DB_HOST." dbname=".DB_NAME." user=".DB_USER." password=".DB_PASSWORD);	
 	}
     
 	
@@ -122,7 +122,7 @@ class SDRServices {
         $result= pg_query($this->conn, $sql);
 
 
-		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?id=$nameId");
+		$rsp = file_get_contents(ECAT_SERVICES."usage/?id=$nameId");
 		$res= json_decode($rsp);
         return $res;
 
@@ -205,7 +205,7 @@ class SDRServices {
 	
 	public function searchForName($name,$limit=10,$offset=1) {
 		
-		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?q=".urlencode($name)."&pagesize=$limit&p=$offset&image=true&ranks=kpcofg&rating=0");
+		$rsp = file_get_contents(ECAT_SERVICES."usage/?q=".urlencode($name)."&pagesize=$limit&p=$offset&image=true&ranks=kpcofg&rating=0");
 		$res= json_decode($rsp);
 		
 		if(count($res)<1 )
@@ -300,7 +300,7 @@ class SDRServices {
         $result = pg_fetch_all(pg_query($this->conn, $sql));
         foreach($result as &$rec) {
     		$sp=array();
-    		$rsp = file_get_contents("http://ecat-ws.gbif.org/ws/usage/?id=".$rec['clb_usage_id']);
+    		$rsp = file_get_contents(ECAT_SERVICES ."usage/?id=".$rec['clb_usage_id']);
     		$res= json_decode($rsp);   
     		$sp['nub_usage_id']=(int)$rec['nub_usage_id'];
     		$sp['scientificName']=$res->scientificName;
