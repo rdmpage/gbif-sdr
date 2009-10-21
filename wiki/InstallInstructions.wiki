@@ -63,9 +63,10 @@ apt-get install php5 libapache2-mod-php5 apache2-prefork-dev libapr1-dev php5-gd
 cd /mnt
 wget http://174.129.77.94/sdr.sql.gz
 gunzip sdr.sql.gz
+psql -hlocalhost -Upostgres -dsdr -f /mnt/sdr.sql
 }}}
 
-= Install the app. =
+== Install the app. ==
 {{{
 apt-get install subversion
 cd /var/www/
@@ -73,3 +74,9 @@ rm *
 svn checkout http://gbif-sdr.googlecode.com/svn/trunk/web .
 chmod 777 templates_c/
 }}}
+
+== Configure the app. ==
+All configurations are done in the /var/www/config.php file. It should all be obvious.
+
+
+
