@@ -28,7 +28,7 @@ package org.gbif.maps
 		
 		public var ctlo:CustomWMSTileLayerOverlay;
 		
-		public function CustomWMSTileLayer(speciesId:Number,resource_id:Number,colorizeColor:Number=NaN,_d_type="1")
+		public function CustomWMSTileLayer(speciesId:Number,resource_id:Number,colorizeColor:Number=NaN,_d_type:String="1")
 		{
 				this.speciesId=speciesId;
 				this.resource_id=resource_id;
