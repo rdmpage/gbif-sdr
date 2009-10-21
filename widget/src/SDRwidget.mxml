@@ -61,6 +61,9 @@
 		private var sourcesDic:Dictionary = new Dictionary();		
 		private var ctloGbif:CustomTileLayerOverlay;	
 		private var sourceFilter:String;
+		
+		public var ecatServices:String="http://ecat-ws.gbif.org/ws/";
+		public var geoserverEndPoint:String="http://ec2-174-129-77-94.compute-1.amazonaws.com:8080/geoserver/";
 												                  
 
 		private var sourcesColors:Array = [Color.GREEN,Color.RED,Color.BLUE,Color.YELLOW];
@@ -80,12 +83,18 @@
 			if (parameters.source!=null) {
 				sourceFilter=parameters.source;
 			}
+			if(parameters.ecatServices!=null) {
+				ecatServices=parameters.ecatServices;
+			}
+			if(parameters.geoserverEndPoint!=null) {
+				geoserverEndPoint=parameters.geoserverEndPoint;
+			}
 			
 			
 	        var httpsrv:HTTPService = new HTTPService();
 	        httpsrv.resultFormat = "text";
 	        //httpsrv.url = "http://data.gbif.org/species/classificationSearch?view=json&allowUnconfirmed=false&providerId=2";
-	        httpsrv.url = "http://ecat-ws.gbif.org/ws/usage/?id="+parameters.speciesId;
+	        httpsrv.url = ecatServices+"usage/?id="+parameters.speciesId;
 	        httpsrv.addEventListener(ResultEvent.RESULT,onResultGbif);
 	        httpsrv.send(); 
 			
@@ -216,7 +225,6 @@
 			}	
 		}
 		
-		private var geoserverUrl:String ="http://ec2-174-129-77-94.compute-1.amazonaws.com:8080/geoserver/";
 		private function getDownloadUrl(format:String):String {
 				
 			var distributionsFilter:Array = [];
@@ -229,27 +237,27 @@
 			var url:String;
 			switch (format) {
 				case "PNG":
-					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
+					url = geoserverEndPoint + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
 				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
 				"&LAYERS=gbif%3Asdr_1_view,gbif%3Asdr_2_view&FORMAT=image%2Fpng&"+
 				"CQL_FILTER="+distributionsFilterStr+";"+distributionsFilterStr+"&BBOX=-180,-90,180,90";
 					break;							
 				case "KML":
-					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
+					url = geoserverEndPoint + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
 				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
 				"&LAYERS=gbif%3Asdr_1_view,gbif%3Asdr_2_view&FORMAT=application%2Fvnd.google-earth.kml+XML&"+
 				"CQL_FILTER="+distributionsFilterStr+";"+distributionsFilterStr+"&BBOX=-180,-90,180,90";
 					break;					
 				case "SHP":
-					url = geoserverUrl + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=gbif%3Asdr_1_view,gbif%3Asdr_2_view" + 
+					url = geoserverEndPoint + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=gbif%3Asdr_1_view,gbif%3Asdr_2_view" + 
 				"&outputformat=SHAPE-ZIP&REQUEST=GetFeature&CQL_FILTER="+distributionsFilterStr+";"+distributionsFilterStr;
 					break;			
 				case "GML":
-					url = geoserverUrl + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=gbif%3Asdr_1_view,gbif%3Asdr_2_view" + 
+					url = geoserverEndPoint + "ows?SERVICE=WFS&VERSION=1.0.0&typeName=gbif%3Asdr_1_view,gbif%3Asdr_2_view" + 
 				"&REQUEST=GetFeature&CQL_FILTER=id%3D"+distributionsFilterStr+";"+distributionsFilterStr;
 					break;
 				case "PDF":
-					url = geoserverUrl + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
+					url = geoserverEndPoint + "wms?WIDTH=1024&HEIGHT=1024&SRS=EPSG%3A4326&"+
 				"STYLES=&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage"+
 				"&LAYERS=gbif%3Asdr_1_view,gbif%3Asdr_2_view&FORMAT=application%2Fpdf&"+
 				"CQL_FILTER="+distributionsFilterStr+";"+distributionsFilterStr+"&BBOX=-180,-90,180,90";
