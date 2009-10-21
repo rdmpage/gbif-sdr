@@ -43,10 +43,11 @@ createdb geodb    (with password atlas)
 createlang -dgeodb plpgsql
 psql -dgeodb -f /usr/share/postgresql/8.4/contrib/postgis.sql
 psql -dgeodb -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
+psql -dgeodb
+     select postgis_lib_version();      --> You should get 1.4.0
+\q
 exit
 }}}
-
-
 
 
 
