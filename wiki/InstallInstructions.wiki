@@ -46,10 +46,30 @@ psql -dgeodb -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
 psql -dgeodb
      select postgis_lib_version();      --> You should get 1.4.0
 \q
+dropdb geodb
+createdb sdr
 exit
+
 }}}
 
+= Install Apache, PHP and so on... =
+{{{
+apt-get install php5 libapache2-mod-php5 apache2-prefork-dev libapr1-dev php5-gd php5-pgsql
+}}}
 
+== install the db ==
 
+{{{
+cd /mnt
+wget http://174.129.77.94/sdr.sql.gz
+gunzip sdr.sql.gz
+}}}
 
-
+= Install the app. =
+{{{
+apt-get install subversion
+cd /var/www/
+rm *
+svn checkout http://gbif-sdr.googlecode.com/svn/trunk/web .
+chmod 777 templates_c/
+}}}
