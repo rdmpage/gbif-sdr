@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:maps="com.google.maps.*" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#F2F2F2, #F2F2F2]" 
-	creationComplete="preInit()" xmlns:components="org.gbif.components.*" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+	creationComplete="preInit()" xmlns:components="org.gbif.components.*" horizontalScrollPolicy="off" verticalScrollPolicy="off" currentState="Sources">
 	<mx:states>
 		<mx:State name="Sources">
 			<mx:SetProperty target="{map}" name="x" value="0"/>
