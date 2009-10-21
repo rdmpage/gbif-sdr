@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] ."/config.php");
 
 $savefile = $_REQUEST['x'] . "_" . $_REQUEST['y'] . "_". $_REQUEST['z'] . "_". $_REQUEST['species_id'] . "_". $_REQUEST['resource_id'] . ".png";
 
-if (file_exists(CACHE_FOLDER."cache/".$savefile)) {
+if (file_exists(CACHE_FOLDER.$savefile)) {
 	Header("Cache-Control: must-revalidate");
 	$offset = 60 * 60 * 24 * 300;
 	$ExpStr = "Expires: " . gmdate("D, d M Y H:i:s", time() + $offset) . " GMT";
@@ -11,7 +11,7 @@ if (file_exists(CACHE_FOLDER."cache/".$savefile)) {
 	header('Content-type: image/png');
 	//ob_clean();
 	flush();	
-	readfile(CACHE_FOLDER."cache/".$savefile);
+	readfile(CACHE_FOLDER.$savefile);
 	exit;		
 }
 
