@@ -1,0 +1,54 @@
+#In this page we go through all the process of install all SDR components in an EC2 instance
+
+= Introduction =
+
+To document how to install the SDR project we will create a new EC2 instance based on Ubuntu and install all the requiered packages and software. Here is the list of commands that were executed on the server
+
+
+= Opening a new instance =
+This process is not described here as there is plenty of documentation out there. The EC2 instance will be based on Ubuntu 9.04 as taken from http://alestic.com/ (ami-ccf615a5) We are gonna use a c1.medium instance type. Then we connect to the server.
+
+
+= Install PostgreSql 8.4 and PostGIS 1.4.0 =
+{{{
+apt-get update
+apt-get install vim
+vim /etc/apt/sources.list
+  add deb http://ppa.launchpad.net/pitti/postgresql/ubuntu jaunty main
+          deb-src http://ppa.launchpad.net/pitti/postgresql/ubuntu jaunty main
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8683D8A2
+sudo apt-get update
+sudo apt-get install postgresql-8.4
+sudo sed -i.bak -e 's/port = 5433/port = 5432/' \
+    /etc/postgresql/8.4/main/postgresql.conf
+
+sudo /etc/init.d/postgresql-8.4 stop
+sudo /etc/init.d/postgresql-8.4 start
+apt-get install postgresql-server-dev-8.4 libpq-dev
+apt-get install libgeos-dev
+wget http://postgis.refractions.net/download/postgis-1.4.0.tar.gz
+apt-get install proj
+tar xvfz postgis-1.4.0.tar.gz
+cd postgis-1.4.0
+./configure
+make
+make install
+sudo su postgres
+psql
+      ALTER user postgres WITH PASSWORD 'atlas';
+      \q
+
+createdb geodb    (with password atlas)
+createlang -dgeodb plpgsql
+psql -dgeodb -f /usr/share/postgresql/8.4/contrib/postgis.sql
+psql -dgeodb -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
+exit
+}}}
+
+
+
+
+
+
+
