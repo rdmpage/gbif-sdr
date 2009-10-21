@@ -26,12 +26,12 @@
 									<div class="span-11 last result_list">
 										<ul>
 										    <li></li>
-		  									<li><a href="">Kingdom</a><img class="lista" src="/images/arrowlist.jpg"></li>
-		  									<li><a href="">Phylum</a><img class="lista" src="/images/arrowlist.jpg"></li>
-		  									<li><a href="">Class</a><img class="lista" src="/images/arrowlist.jpg"></li>
-		  									<li><a href="">Order</a><img class="lista" src="/images/arrowlist.jpg"></li>
-		  									<li><a href="">Family</a><img class="lista" src="/images/arrowlist.jpg"></li>
-		   									<li><a href="" class="ultimo">Genus</a></li>
+		  									<li><a href="">{$result.kingdom}</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		  									<li><a href="">{$result.phylum}</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		  									<li><a href="">{$result.class}</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		  									<li><a href="">{$result.order}</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		  									<li><a href="">{$result.family}</a><img class="lista" src="/images/arrowlist.jpg"></li>
+		   									<li><a href="" class="ultimo">{$result.genus}</a></li>
 										</ul>
 									</div>	
 								</div>	
