@@ -232,7 +232,7 @@ class SDRServices {
 		$sql="select n.nub_usage_id,count(id) as num_distributions, count(resource_fk) as num_resources 
         from  distribution as d inner join name_usage as n on d.clb_usage_id=n.clb_usage_id where n.nub_usage_id in(".implode(",",$namesToQuery).") group by n.nub_usage_id";
 		
-        error_log($sql);
+
 		$resfromdb=pg_fetch_all(pg_query($this->conn, $sql));
 		$finalResult=array();
 		if($resfromdb) {
