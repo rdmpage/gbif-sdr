@@ -8,7 +8,7 @@
 
 <script type="text/javascript" src="/js/swfobject.js" ></script>
 </head>
-<body>
+<body bottommargin="0" leftmargin="0" marginheight="0" marginwidth="0" rightmargin="0" topmargin="0">
 	<div class="span-24 widgetContainer" id="widgetContainer">
 		Alternative content...
 	</div>
