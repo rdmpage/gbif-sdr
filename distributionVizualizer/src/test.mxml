@@ -8,6 +8,8 @@
         
         <mx:Script>
                 <![CDATA[
+                	import mx.utils.ObjectUtil;
+                
                 	import mx.managers.FocusManager;
                 	import com.adobe.serialization.json.JSON;
                 	import mx.collections.ArrayCollection;
@@ -45,7 +47,8 @@
 					
 					
 					private static var MP_WIDTH:Number = 880;
-					private static var MP_HEIGHT:Number = 495;
+					private static var MP_HEIGHT:Number = 688;
+					private static var TWEEN_TIME:Number = 0.5;
 					
 					private var angle:int = 0;
 					private var lastViewed:MapContainer;
@@ -68,12 +71,7 @@
 					        camera.z = 0;
 					        camera.zoom = 2;
 							
-							var httpsrv:HTTPService = new HTTPService();
-							httpsrv.resultFormat = "text";
-							httpsrv.url = "/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0";
-							httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
-							httpsrv.send();
-					        
+					        callService();
 					        // update the scene every frame
 					        canvasPv3D.addEventListener(Event.ENTER_FRAME,onEnterFrame);
 					        
@@ -84,9 +82,10 @@
 					}
 					
 					private function callService():void{
+						TweenMax.to(quietLoading, .3, {alpha: 1});
 						var httpsrv:HTTPService = new HTTPService();
 						httpsrv.resultFormat = "text";
-						httpsrv.url = "/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/1";
+						httpsrv.url = "/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0";
 						httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
 						httpsrv.send();
 					}
@@ -103,15 +102,28 @@
 							c++;
 						}
 						totalC +=resultAc.length;
+						TweenMax.to(quietLoading, .3, {autoAlpha: 0});
+												
 					}
 					
 					private function addMapContainer(m:Class,i:Number,y:Number,nid:Number,cName:String,sName:String,iURL:String):void{
 						
-						var img:MovieClip = new MovieClip();
-						img.addChild((new m));
+						function copyBitmap(target: DisplayObject):Bitmap{
+						  // Create the bitmap data object with the right size.
+						  var data : BitmapData = new BitmapData(target.width, target.height, true, 0);
+						  // Draw the target object into the bitmap data.
+						  data.draw(target);
+						  // Create a new bitmap object associated with this data.
+						  var bitmap: Bitmap = new Bitmap(data);
+						  return bitmap;
+						}
 						
-						var mat:MovieMaterial = new MovieMaterial(img,true);
-						mat.interactive = true;
+						var img:MovieClip = new MovieClip();
+						img.addChild(copyBitmap(fakeSp)); 						
+						
+						/* var mat:MovieMaterial = new MovieMaterial(mc,true); */
+						var mat:MovieMaterial = new MovieMaterial(img,true,true,true);
+						mat.interactive = true; 
 						mat.animated = true;
 						MovieMaterial(mat).movie.alpha = .35;						
 						
@@ -125,6 +137,13 @@
 						scene.addChild(mp);
 						arrSpeciesPlanes.push(mp);
 						
+						if(c==0){
+							lastViewed = mp;
+							TweenMax.to(camera, TWEEN_TIME, {y: mp.y});
+							TweenMax.to(mp, TWEEN_TIME, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
+							TweenMax.to((mp.material as MovieMaterial).movie, TWEEN_TIME, {alpha: 1});
+						}
+						
 					}
 					
 					private function onEnterFrame( event : Event ):void {
@@ -134,31 +153,33 @@
 					}
 					
 					private function gotoPanel(e:InteractiveScene3DEvent):void{
-							hideSpeciesContainer();
-							if(lastViewed){
-								TweenMax.to(lastViewed, .5, {z: 30,ease:Back.easeOut});
-								TweenMax.to(((lastViewed).material as MovieMaterial).movie, .5, {alpha: .35});
-							}
-							lastViewed = e.target as MapContainer;
-							if(e.target is MapContainer){
-								TweenMax.to(camera, .5, {y: e.target.y});
-								TweenMax.to((e.target as MapContainer), .5, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
-								TweenMax.to(((e.target as MapContainer).material as MovieMaterial).movie, .5, {alpha: 1});
-							}
-							if(lastViewed.index == totalC - 2){
-								callService();
+							if(lastViewed != e.target){
+								hideSpeciesContainer();
+								if(lastViewed){
+									TweenMax.to(lastViewed, TWEEN_TIME, {z: 30,ease:Back.easeOut});
+									TweenMax.to(((lastViewed).material as MovieMaterial).movie, TWEEN_TIME, {alpha: .35});
+								}
+								lastViewed = e.target as MapContainer;
+								if(e.target is MapContainer){
+									TweenMax.to(camera, TWEEN_TIME, {y: e.target.y});
+									TweenMax.to((e.target as MapContainer), TWEEN_TIME, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
+									TweenMax.to(((e.target as MapContainer).material as MovieMaterial).movie, TWEEN_TIME, {alpha: 1});
+								}
+								if(lastViewed.index == totalC - 2){
+									callService();
+								}
 							}
 					}
 					
 					private function gotoSpecie(e:ChangePanelEvent):void{
 							hideSpeciesContainer();
 							if(lastViewed){
-								TweenMax.to(lastViewed, .5, {z: 30,ease:Back.easeOut});
-								TweenMax.to(((lastViewed).material as MovieMaterial).movie, .5, {alpha: .35});
+								TweenMax.to(lastViewed, TWEEN_TIME, {z: 30,ease:Back.easeOut});
+								TweenMax.to(((lastViewed).material as MovieMaterial).movie, TWEEN_TIME, {alpha: .35});
 							}
-							TweenMax.to(camera, .5, {y: (arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).y})							
-							TweenMax.to((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer), .5, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
-							TweenMax.to(((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).material as MovieMaterial).movie, .5, {alpha: 1});
+							TweenMax.to(camera, TWEEN_TIME, {y: (arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).y})							
+							TweenMax.to((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer), TWEEN_TIME, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
+							TweenMax.to(((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).material as MovieMaterial).movie, TWEEN_TIME, {alpha: 1});
 							lastViewed = arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer;
 							if(lastViewed.index == totalC - 1){
 								callService();
@@ -197,17 +218,39 @@
 						}
 						lastViewed.filters = [];
 						sp.visible = true;
-						TweenMax.to(sp, .5, {alpha: 1});
+						TweenMax.to(sp, TWEEN_TIME, {alpha: 1});
+						
+						//HACK
+						focusManager.setFocus(sp.bt);
 					}
+					
+					private function showInfoOverlay(e:MouseEvent):void{
+						TweenMax.to(io, .5, {autoAlpha:1});
+					}
+					
+					public function hideInfoOverlay(e:MouseEvent):void{
+						TweenMax.to(io, .5, {autoAlpha:0});
+					}					
 					
 				]]>
         </mx:Script>
         <mx:Image source="@Embed('skin/assets/appBkg.jpg')" verticalCenter="0" />
+        <mx:Image source="@Embed('skin/assets/logoGBIF.png')" bottom="20" left="20"/>
+        <mx:Image source="@Embed('skin/assets/logoVIZZ.png')" bottom="7" right="20"/>        
         <mx:Canvas id="canvasPv3D" width="100%" height="100%">
-                <mx:Image source="@Embed('skin/assets/logoGBIF.png')" bottom="20" left="20"/>
-                <mx:Image source="@Embed('skin/assets/logoVIZZ.png')" bottom="7" right="25"/>
         </mx:Canvas>
+        <view:QuietLoading id="quietLoading" right="10" top="10" />
+        <view:FakeSpeciesMapContainer id="fakeSp" visible="false" includeInLayout="false" />
         <view:SpeciesMapContainer id="sp" verticalCenter="0" 
         	horizontalCenter="0" visible="false" alpha="0"/>
+        	
+        <mx:VBox right="20" top="170">
+        	<mx:Button styleName="helpButton" width="16" height="16" 
+        	useHandCursor="true" mouseChildren="false" buttonMode="true"
+        	click="showInfoOverlay(event)"/>
+        	<mx:Button styleName="playButton" width="16" height="16" toggle="true"
+        	useHandCursor="true" mouseChildren="false" buttonMode="true"/>
+        </mx:VBox>
+        <view:InfoOverlay id="io" visible="false" alpha="0"/>
         
 </mx:Application>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="80" height="30">
+	<mx:SWFLoader source="@Embed('/skin/assets/loadAnimation2.swf')" verticalCenter="0"  width="16" height="16" x="5"/>
+	<mx:Label x="24" y="9" text="Loading..." fontFamily="Helvetica" fontSize="11" color="#3C3C3C"/>
+</mx:Canvas>

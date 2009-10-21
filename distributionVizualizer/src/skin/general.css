@@ -8,8 +8,43 @@ Canvas.ImageContainerBkg{
 	background-image: Embed(source="general.swf",symbol="ImgContainerBkg");	
 }
 
+Canvas.InfoContainer{
+	background-image: Embed(source="general.swf",symbol="bkgInfo");
+}
+
 Button.nullButton{
 	skin: ClassReference(null);
 	padding-left: 0;
+	text-roll-over-color: #FFFFFF;
+}
+
+
+
+
+
+
+Button.helpButton{
+	up-skin: Embed(source="general.swf",symbol="helpButton_up");	
+	over-skin: Embed(source="general.swf",symbol="helpButton_over");	
+	down-skin: Embed(source="general.swf",symbol="helpButton_over");	
+}
+
+Button.playButton{
+	up-skin: Embed(source="general.swf",symbol="playButton_up");	
+	over-skin: Embed(source="general.swf",symbol="playButton_over");	
+	down-skin: Embed(source="general.swf",symbol="playButton_over");
+	selected-up-skin: Embed(source="general.swf",symbol="pauseButton_up");
+	selected-over-skin:	Embed(source="general.swf",symbol="pauseButton_over");
+	selected-down-skin: Embed(source="general.swf",symbol="pauseButton_over");
+}
+
+
+
+
+
+Button.orangeButton{
+	up-skin: Embed(source="general.swf",symbol="orangeButton_up");	
+	over-skin: Embed(source="general.swf",symbol="orangeButton_over");	
+	down-skin: Embed(source="general.swf",symbol="orangeButton_over");
 	text-roll-over-color: #FFFFFF;
 }

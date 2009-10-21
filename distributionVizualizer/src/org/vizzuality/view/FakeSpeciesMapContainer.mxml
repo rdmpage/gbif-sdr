@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="802" height="630" xmlns:view="org.vizzuality.view.*"
-	filters="{[gf]}" xmlns:maps="com.google.maps.*">
+	xmlns:maps="com.google.maps.*">
 	
 	<mx:Script>
 		<![CDATA[
-			import com.google.maps.LatLngBounds;
-			import com.google.maps.overlays.GroundOverlay;
 			import com.google.maps.LatLng;
 			import com.google.maps.MapType;
 			import com.google.maps.MapEvent;
@@ -17,37 +15,8 @@
 			[Bindable] public var nextSpecieName:String = "";
 			[Bindable] public var prevSpecieName:String = "";
 			
-			private function onMapReady(e:MapEvent):void{
-				map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
-				
-			}
-			
-			public function set nubid(val:Number):void {
-				var overlayUrl:String="http://localhost:8080/geoserver/wms?transparent=true&WIDTH=1024&SRS=EPSG%3A900913&HEIGHT=1024&STYLES=" + 
-						"&FORMAT=image%2Fpng&TILED=true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap" + 
-						"&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&LAYERS=gbif%3Asdr_2_view" + 
-						"&CQL_FILTER=nub_usage_id%3D"+val+"%20and%20resource_id%3D27&BBOX=-20037508.3428,-20037508.3428,20037508.3428,20037508.3428";
-				
-				map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
-				map.clearOverlays();
-				var testLoader:Loader = new Loader();
-  				var urlRequest:URLRequest = new URLRequest(overlayUrl);
-  				testLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event):void {
-    				var groundOverlay:GroundOverlay = new GroundOverlay(
-        				testLoader,
-        				new LatLngBounds(new LatLng(-85,-180), new LatLng(85,180)));
-    				map.addOverlay(groundOverlay);
-  				});
-  				testLoader.load(urlRequest);  		
-				
-				
-			}
-			
-			
 		]]>
 	</mx:Script>
-	
-	<mx:GlowFilter id="gf" color="0x000000" alpha=".2" quality="2" blurX="15" blurY="15" />
 	
 	<mx:Canvas  width="722" height="532" verticalCenter="0" horizontalCenter="0" 
 		styleName="blueBkg" backgroundSize="100%">
@@ -74,13 +43,9 @@
 		</mx:HBox>
 	</mx:Canvas>
 	
-	<mx:Canvas  width="802" height="452" backgroundColor="#FF0000" verticalCenter="0" horizontalCenter="0">
-		<maps:Map id="map" width="100%" height="100%" 
-			mapevent_mapready="onMapReady(event)"
-			key="ABQIAAAAXucQwXp28TiGqramtQ-1nhSKsqInoXKWn48StRNTFQeokPz5AxRSX59iyx4w8RIYDpm9fawKM_okSw" />
-	</mx:Canvas>
+	<mx:Image source="@Embed('img/fakeMapBkg.jpg')"  width="802" height="452" verticalCenter="0" horizontalCenter="0" />
 	
-	<view:ImageContainer x="75" imgURL="{imgURL}"/>
+	<view:ImageContainer x="75" imgURL="{imgURL}" hasLoader="false"/>
 	
 	
 </mx:Canvas>

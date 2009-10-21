@@ -9,6 +9,7 @@
 			
 			[Bindable] public var cMask:Shape = new Shape();
 			[Bindable] public var imgURL:String = new String();
+			[Bindable] public var hasLoader:Boolean = true;
 			
 			private function init():void{
 				cMask.graphics.lineStyle(0);
@@ -19,6 +20,6 @@
 			
 		]]>
 	</mx:Script>
-	<mx:SWFLoader source="@Embed('/skin/assets/loadAnimation2.swf')" verticalCenter="0" horizontalCenter="0" />
+	<mx:SWFLoader source="@Embed('/skin/assets/loadAnimation2.swf')" verticalCenter="0" horizontalCenter="0" visible="{hasLoader}" />
 	<mx:Image source="{imgURL}" mask="{cMask}" />
 </mx:Canvas>

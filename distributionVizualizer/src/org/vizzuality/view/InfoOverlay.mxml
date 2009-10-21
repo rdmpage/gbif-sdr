@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" backgroundColor="#000000" backgroundAlpha="0.75">
+	<mx:Script>
+		<![CDATA[
+			import mx.core.Application;
+		]]>
+	</mx:Script>
+	<mx:Canvas width="756" height="249" 
+		styleName="InfoContainer" backgroundSize="100%" horizontalCenter="0" verticalCenter="0">
+		<mx:Label x="25" y="34" text="3 Ways to navigate" fontFamily="Helvetica" color="#FF3300" fontSize="18" fontWeight="bold"/>
+		<mx:Label x="494" y="34" text="About this visualizer" fontFamily="Helvetica" color="#666666" fontSize="18" fontWeight="bold" selectable="false"/>
+		<mx:Image x="25" y="73" source="@Embed('skin/assets/waysNav.jpg')"/>
+		<mx:Text x="494" y="72" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a arcu eu sapien bibendum vulputate. Donec nec ipsum lacus, vel venenatis velit. Integer arcu leo, aliquet in tempor in, pharetra vitae eros. Nullam tortor nibh, facilisis vitae viverra in. " fontFamily="Helvetica" fontSize="12" color="#666666" width="237" height="153"/>
+	</mx:Canvas>
+	<mx:Button label="Continue exploring" styleName="orangeButton"
+		useHandCursor="true" buttonMode="true" mouseChildren="false" 
+		fontFamily="Helvetica" fontSize="18" color="#FFFFFF" width="245" 
+		height="53" horizontalCenter="195" verticalCenter="122"
+		click="Application.application.hideInfoOverlay(event)"/>
+</mx:Canvas>
