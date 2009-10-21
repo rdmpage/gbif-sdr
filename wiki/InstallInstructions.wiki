@@ -64,6 +64,7 @@ cd /mnt
 wget http://174.129.77.94/sdr.sql.gz
 gunzip sdr.sql.gz
 psql -hlocalhost -Upostgres -dsdr -f /mnt/sdr.sql
+vacuumdb -hlocalhost -Upostgres sdr
 }}}
 
 == Install the app. ==
@@ -74,6 +75,57 @@ rm *
 svn checkout http://gbif-sdr.googlecode.com/svn/trunk/web .
 chmod 777 templates_c/
 }}}
+
+== Install geoserver ==
+{{{
+cd /root
+wget http://downloads.sourceforge.net/project/geoserver/GeoServer/1.7.7/geoserver-1.7.7-bin.zip?use_mirror=ovh
+apt-get install unzip
+unzip geoserver-1.7.7-bin.zip
+mv geoserver-1.7.7 /var/
+sudo apt-get install sun-java6-jre sun-java6-plugin sun-java6-fonts
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
+nohup /var/geoserver-1.7.7/bin/startup.sh &
+}}}
+Now we have to configure geoserver. Basically it means configuring the PostGIS DB, creating 2 feature types and a style.
+
+1 New namespace : gbif --> http://gbif.org
+2 New DataStore : Feature Data Set ID: postgis , namespace: gbif connection params to sdr db.
+3. New Style: StyleID= polygonbyattribute SLD:
+{{{
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>Default Polygon</Name>
+    <UserStyle>
+      <Title>Default polygon style</Title>
+      <Abstract>A sample style that just draws out a solid gray interior with a black 1px outline</Abstract>
+      <FeatureTypeStyle>
+        <Rule>
+          <Title>Polygon</Title>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill"><ogc:PropertyName>color</ogc:PropertyName></CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#333333</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+}}}
+
+4. New feature Type: postgis::sdr_1_view with style= polygonbyattribute
+same with sdr_2_view
+
+5. Apply and save
 
 == Configure the app. ==
 All configurations are done in the /var/www/config.php file. It should all be obvious.
