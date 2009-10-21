@@ -54,6 +54,7 @@
 					private var lastViewed:MapContainer;
 					private var c:Number = 0;
 					private var totalC:Number = 0;
+					private var offset:Number = 0;
 					private var gf:GlowFilter = new GlowFilter(0x000000,.1,10,10,2);
 					                        
 					[Embed(source="img/fakeMapBkg.jpg")] private var fakeMapBkg:Class; 					                        
@@ -85,7 +86,9 @@
 						TweenMax.to(quietLoading, .3, {alpha: 1});
 						var httpsrv:HTTPService = new HTTPService();
 						httpsrv.resultFormat = "text";
-						httpsrv.url = "/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0";
+						httpsrv.url = " http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/"+offset;
+						//httpsrv.url = "fake.json";
+						offset++;
 						httpsrv.addEventListener(ResultEvent.RESULT,handleResult);
 						httpsrv.send();
 					}
@@ -109,11 +112,8 @@
 					private function addMapContainer(m:Class,i:Number,y:Number,nid:Number,cName:String,sName:String,iURL:String):void{
 						
 						function copyBitmap(target: DisplayObject):Bitmap{
-						  // Create the bitmap data object with the right size.
 						  var data : BitmapData = new BitmapData(target.width, target.height, true, 0);
-						  // Draw the target object into the bitmap data.
 						  data.draw(target);
-						  // Create a new bitmap object associated with this data.
 						  var bitmap: Bitmap = new Bitmap(data);
 						  return bitmap;
 						}
