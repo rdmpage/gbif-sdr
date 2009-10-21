@@ -55,6 +55,8 @@ exit
 = Install Apache, PHP and so on... =
 {{{
 apt-get install php5 libapache2-mod-php5 apache2-prefork-dev libapr1-dev php5-gd php5-pgsql
+sudo apt-get install curl php5-cli
+sudo service apache2 restart
 }}}
 
 == install the db ==
@@ -129,6 +131,4 @@ same with sdr_2_view
 
 == Configure the app. ==
 All configurations are done in the /var/www/config.php file. It should all be obvious.
-
-
 
