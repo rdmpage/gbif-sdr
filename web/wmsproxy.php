@@ -1,10 +1,9 @@
 <?php
-
-$cacheFolder="/mnt/";
+require_once($_SERVER['DOCUMENT_ROOT'] ."/config.php");
 
 $savefile = $_REQUEST['x'] . "_" . $_REQUEST['y'] . "_". $_REQUEST['z'] . "_". $_REQUEST['species_id'] . "_". $_REQUEST['resource_id'] . ".png";
 
-if (file_exists($cacheFolder."cache/".$savefile)) {
+if (file_exists(CACHE_FOLDER."cache/".$savefile)) {
 	Header("Cache-Control: must-revalidate");
 	$offset = 60 * 60 * 24 * 300;
 	$ExpStr = "Expires: " . gmdate("D, d M Y H:i:s", time() + $offset) . " GMT";
@@ -12,11 +11,11 @@ if (file_exists($cacheFolder."cache/".$savefile)) {
 	header('Content-type: image/png');
 	//ob_clean();
 	flush();	
-	readfile($cacheFolder."cache/".$savefile);
+	readfile(CACHE_FOLDER."cache/".$savefile);
 	exit;		
 }
 
-$url="http://ec2-174-129-77-94.compute-1.amazonaws.com:8080/geoserver/wms?transparent=true&WIDTH=256&SRS=EPSG%3A900913&HEIGHT=256&STYLES=&FORMAT=image%2Fpng&TILED=true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage";
+$url=GEOSERVER_URL."wms?transparent=true&WIDTH=256&SRS=EPSG%3A900913&HEIGHT=256&STYLES=&FORMAT=image%2Fpng&TILED=true&TILESORIGIN=-180%2C-90&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage";
 
 
 if ($_REQUEST['d_type']=="1") {
@@ -50,7 +49,7 @@ echo $data;
 
 //only cache if the zoom level is smaller than 7
 if ($_REQUEST['z']<6) {
-    file_put_contents($cacheFolder."cache/$savefile", $data);
+    file_put_contents(CACHE_FOLDER.$savefile, $data);
 }
 
 
