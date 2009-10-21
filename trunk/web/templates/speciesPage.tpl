@@ -127,6 +127,10 @@
 		{/literal}{if $smarty.get.source neq ""}{literal}
 			so.addVariable("source", "{/literal}{$smarty.get.source}{literal}");
 		{/literal}{/if}{literal}
+		
+		{/literal}{if $smarty.get.location neq ""}{literal}
+			so.addVariable("location", "{/literal}{$smarty.get.location}{literal}");
+		{/literal}{/if}{literal}		
 		so.addVariable("speciesId", "{/literal}{$speciesId}{literal}");
 		so.addVariable("nub_concept_id", "{/literal}{$nub_concept_id}{literal}");
 		
