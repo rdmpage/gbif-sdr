@@ -99,7 +99,7 @@ function checkSearch () {
 	$('#lengthError').html('');
 	var searchValue = $("#searchText").val();
 	if (searchValue.length > 3) {
-		window.location.href = 'searchResult.php?q=' + searchValue;
+		window.location.href = 'searchresult.php?q=' + searchValue;
 	} else {
 		$('#lengthError').html('*Sorry, not enough characters, at least 4.');
 	}
