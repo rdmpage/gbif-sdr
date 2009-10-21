@@ -26,7 +26,7 @@
 
 	        	</ul>					
 	        	<div class="span-24 title_blue">Data API</div>
-				<p>Some more documentation needed</p><br><br>
+				<p>Some more documentation needed. Also some services are not documented here for the moment.</p><br><br>
 				<ul>
 	        	<li>getSpeciesDetailsByNameId: <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738">
 		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738</a></li>
@@ -37,7 +37,10 @@
 		http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0</a></li>	        	
 
 	        	</ul>
+				
 	        	<div class="span-24 title_blue">Examples</div>
+				<p>To demonstrate the use of the API we have developed an application that lets you visualize the different
+					distributions available from the IUCN Red List (carnivora).</p><br><br>
 			</div>
 			
 			
