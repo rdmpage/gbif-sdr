@@ -262,11 +262,11 @@ class SDRServices {
 	
 	
 	//API
-	public function getDistributionsByLatLng($lat,$lng) {
-	    $sql="select distinct id,nub_usage_id from sdr_2_view where the_geom && setsrid(makepoint(0,0),4326) and nub_usage_id is not null limit 10";
+	public function getDistributionUnitsByLatLng($lat,$lng) {
+	    $sql="select distinct id,nub_usage_id,map_source,resourcename,code,resource_id,identifier,name,start_day_in_year,end_day_in_year,tag,color from sdr_2_view where the_geom && setsrid(makepoint($lat,$lng),4326) and nub_usage_id is not null limit 10";
 	    $res1=pg_fetch_all(pg_query($this->conn, $sql)); 
 	    
-	    $sql="select distinct id,nub_usage_id from sdr_1_view where the_geom && setsrid(makepoint(0,0),4326) and nub_usage_id is not null limit 10";
+	    $sql="select distinct id,nub_usage_id,map_source,resourcename,code,resource_id,identifier,name,start_day_in_year,end_day_in_year,tag,color from sdr_1_view where the_geom && setsrid(makepoint($lat,$lng),4326) and nub_usage_id is not null limit 10";
 	    return array_merge(pg_fetch_all(pg_query($this->conn, $sql)),$res1); 
 	    
 	}
