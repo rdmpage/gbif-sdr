@@ -53,19 +53,24 @@
 					private var angle:int = 0;
 					private var lastViewed:MapContainer;
 					private var c:Number = 0;
+					private var cc:Number = 0;
 					private var totalC:Number = 0;
 					private var offset:Number = 0;
 					private var gf:GlowFilter = new GlowFilter(0x000000,.1,10,10,2);
 					                        
+					private var resultAc:ArrayCollection = new ArrayCollection();
+					private var t:Timer = new Timer(100,0);
+					private var slideShowTimer:Timer = new Timer(10000,0);
+					                        
 					[Embed(source="img/fakeMapBkg.jpg")] private var fakeMapBkg:Class; 			
 					
 					public var dataEndPoint:String="http://ec2-174-129-77-94.compute-1.amazonaws.com/amfphp/";			// 	                        
-					public var wmsproxy:String="http://localhost/wmsbig.php";	 	//                                
-					                        
+					public var wmsproxy:String="http://ec2-174-129-77-94.compute-1.amazonaws.com/wmsbig.php";	 	//                                
+
 					protected function onInit( event:Event ) : void {
 						if(parameters.dataEndPoint!=null) {
 							dataEndPoint=parameters.dataEndPoint;
-						}
+						}  
 						if(parameters.wmsproxy!=null) {
 							wmsproxy=parameters.wmsproxy;
 						}
@@ -89,6 +94,8 @@
 					        this.addEventListener(KeyboardEvent.KEY_UP, keyboardSpecie);
 					        sp.addEventListener("prevSpecie",gotoSpecie);
 					        sp.addEventListener("nextSpecie",gotoSpecie);
+					        
+					        slideShowTimer.addEventListener(TimerEvent.TIMER,nextPanel);
 					}
 					
 					private function callService():void{
@@ -104,20 +111,53 @@
 						httpsrv.send();
 					}
 					
-					private function handleResult(e:ResultEvent):void{
-						var resultObj:Object = JSON.decode(String(e.result));				
-						var resultAc:ArrayCollection = new ArrayCollection(resultObj.species as Array);
-						for each ( var o:Object in resultAc){
+					private function addOne(e:TimerEvent):void{
+						var o:Object = new Object();
+						o = resultAc.getItemAt(cc);
+						if(o.commonName == ""){
+							o.commonName = o.scientificName;
+							o.scientificName = "";
+						}
+
+						addMapContainer(fakeMapBkg,c,(c*-550),o.nub_usage_id,o.commonName,o.scientificName,o.imageURL);
+						cc++;
+						if(cc<resultAc.length){
+							o = resultAc.getItemAt(cc);
+
 							if(o.commonName == ""){
 								o.commonName = o.scientificName;
 								o.scientificName = "";
 							}
-							addMapContainer(fakeMapBkg,c,(c*-550),o.nub_usage_id,o.commonName,o.scientificName,o.imageURL);
-							c++;
+							fakeSp.cName = o.commonName;
+							fakeSp.sName = o.scientificName;
 						}
-						totalC +=resultAc.length;
-						TweenMax.to(quietLoading, .3, {autoAlpha: 0});
-												
+
+						if(cc==resultAc.length){
+							t.stop();
+							cc=0;
+							totalC +=resultAc.length-1;
+						}
+						c++;
+					}
+					
+					private function handleResult(e:ResultEvent):void{
+						var resultObj:Object = JSON.decode(String(e.result));				
+						resultAc = new ArrayCollection(resultObj.species as Array);
+						
+						t = new Timer(100,0);
+						t.addEventListener(TimerEvent.TIMER,addOne);
+						
+						var o:Object = resultAc.getItemAt(0);
+						if(o.commonName == ""){
+							o.commonName = o.scientificName;
+							o.scientificName = "";
+						}
+						fakeSp.cName = o.commonName;
+						fakeSp.sName = o.scientificName;
+						
+						t.start();
+						
+						TweenMax.to(quietLoading, .3, {autoAlpha: 0});							
 					}
 					
 					private function addMapContainer(m:Class,i:Number,y:Number,nid:Number,cName:String,sName:String,iURL:String):void{
@@ -183,17 +223,19 @@
 					}
 					
 					private function gotoSpecie(e:ChangePanelEvent):void{
-							hideSpeciesContainer();
-							if(lastViewed){
-								TweenMax.to(lastViewed, TWEEN_TIME, {z: 30,ease:Back.easeOut});
-								TweenMax.to(((lastViewed).material as MovieMaterial).movie, TWEEN_TIME, {alpha: .35});
-							}
-							TweenMax.to(camera, TWEEN_TIME, {y: (arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).y})							
-							TweenMax.to((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer), TWEEN_TIME, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
-							TweenMax.to(((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).material as MovieMaterial).movie, TWEEN_TIME, {alpha: 1});
-							lastViewed = arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer;
-							if(lastViewed.index == totalC - 1){
-								callService();
+							if(lastViewed.index >= 0 && lastViewed.index < totalC){
+								hideSpeciesContainer();
+								if(lastViewed){
+									TweenMax.to(lastViewed, TWEEN_TIME, {z: 30,ease:Back.easeOut});
+									TweenMax.to(((lastViewed).material as MovieMaterial).movie, TWEEN_TIME, {alpha: .35});
+								}
+								TweenMax.to(camera, TWEEN_TIME, {y: (arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).y})							
+								TweenMax.to((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer), TWEEN_TIME, {z: 19,ease:Back.easeOut,onComplete:showSpeciesContainer});
+								TweenMax.to(((arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer).material as MovieMaterial).movie, TWEEN_TIME, {alpha: 1});
+								lastViewed = arrSpeciesPlanes[lastViewed.index + e.nextItem] as MapContainer;
+								if(lastViewed.index == totalC - 2){
+									callService();
+								}
 							}
 					}
 					
@@ -243,6 +285,19 @@
 						TweenMax.to(io, .5, {autoAlpha:0});
 					}					
 					
+					private function switchSlideShow(e:MouseEvent):void{
+						if(slideShowTimer.running){
+							slideShowTimer.stop();
+						}else{
+							slideShowTimer.start();	
+						}
+					}
+					
+					private function nextPanel(e:TimerEvent):void{
+						var ev:ChangePanelEvent = new ChangePanelEvent("foo", 1);
+						gotoSpecie(ev);
+					}
+					
 				]]>
         </mx:Script>
         <mx:Image source="@Embed('skin/assets/appBkg.jpg')" verticalCenter="0" />
@@ -260,7 +315,8 @@
         	useHandCursor="true" mouseChildren="false" buttonMode="true"
         	click="showInfoOverlay(event)"/>
         	<mx:Button styleName="playButton" width="16" height="16" toggle="true"
-        	useHandCursor="true" mouseChildren="false" buttonMode="true"/>
+        	useHandCursor="true" mouseChildren="false" buttonMode="true"
+        	click="switchSlideShow(event)"/>
         </mx:VBox>
         <view:InfoOverlay id="io" visible="false" alpha="0"/>
         
