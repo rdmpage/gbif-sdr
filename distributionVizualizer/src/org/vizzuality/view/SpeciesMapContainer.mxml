@@ -36,7 +36,7 @@
         				new LatLngBounds(new LatLng(-85,-180), new LatLng(85,180)));
     				map.addOverlay(groundOverlay);
   				});
-  				testLoader.load(urlRequest);  		
+  				//testLoader.load(urlRequest);  		
 				
 				
 			}
@@ -62,8 +62,9 @@
 			buttonMode="true" mouseChildren="false" useHandCursor="true"
 			click="dispatchEvent(new ChangePanelEvent('nextSpecie',1));" textAlign="left"/>
 		<mx:HBox x="182" y="6" verticalAlign="bottom" horizontalGap="0">
-			<mx:Label text="{cName}" fontFamily="Helvetica" fontWeight="bold" color="#FFFFFF" fontSize="26" letterSpacing="-2"/>
-			<mx:Label text="{(sName!='')?'('+sName+')':''}" fontFamily="Helvetica" fontWeight="normal" color="#FFFFFF" fontSize="12" letterSpacing="-1" fontStyle="normal" paddingBottom="2"/>
+			<mx:Label text="{cName}" fontFamily="Helvetica" fontWeight="bold" color="#FFFFFF" fontSize="26" letterSpacing="-2" width="360" truncateToFit="true"/>
+			<mx:Label text="{(sName!='')?'('+sName+')':''}" fontFamily="Helvetica" fontWeight="normal" color="#FFFFFF" fontSize="12" 
+				letterSpacing="-1" fontStyle="normal" paddingBottom="2" visible="false" includeInLayout="false"/>
 		</mx:HBox>
 		<mx:HBox verticalAlign="bottom" horizontalGap="4" left="33" bottom="14">
 			<mx:Image source="@Embed('skin/assets/btnTwitter.png')"/>
