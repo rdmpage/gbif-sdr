@@ -36,7 +36,7 @@
         				new LatLngBounds(new LatLng(-85,-180), new LatLng(85,180)));
     				map.addOverlay(groundOverlay);
   				});
-  				//testLoader.load(urlRequest);  		
+  				testLoader.load(urlRequest);  		
 				
 				
 			}
