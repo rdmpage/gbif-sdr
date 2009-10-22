@@ -271,6 +271,7 @@
 						}
 						lastViewed.filters = [];
 						sp.visible = true;
+						TweenMax.to(sp.loadingCanvas,.1,{autoAlpha:1});
 						TweenMax.to(sp, TWEEN_TIME, {alpha: 1});
 						
 						//HACK

@@ -4,6 +4,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import gs.TweenMax;
 			import mx.core.Application;
 			import com.google.maps.LatLngBounds;
 			import com.google.maps.overlays.GroundOverlay;
@@ -19,8 +20,7 @@
 			[Bindable] public var prevSpecieName:String = "";
 			
 			private function onMapReady(e:MapEvent):void{
-				map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);
-				
+				map.setCenter(new LatLng(30,0),2,MapType.PHYSICAL_MAP_TYPE);				
 			}
 			
 			public function set nubid(val:Number):void {
@@ -35,6 +35,7 @@
         				testLoader,
         				new LatLngBounds(new LatLng(-85,-180), new LatLng(85,180)));
     				map.addOverlay(groundOverlay);
+    				TweenMax.to(loadingCanvas,.5,{autoAlpha:0});
   				});
   				testLoader.load(urlRequest);  		
 				
@@ -77,9 +78,13 @@
 		<maps:Map id="map" width="100%" height="100%" 
 			mapevent_mapready="onMapReady(event)"
 			key="ABQIAAAAXucQwXp28TiGqramtQ-1nhSKsqInoXKWn48StRNTFQeokPz5AxRSX59iyx4w8RIYDpm9fawKM_okSw" />
+		<mx:Canvas id="loadingCanvas" backgroundColor="#000000" backgroundAlpha=".3" width="100%" height="100%">
+			<mx:SWFLoader source="@Embed('/skin/assets/loadAnimation2.swf')" verticalCenter="0" horizontalCenter="0" width="90" height="90"/>
+		</mx:Canvas>
 	</mx:Canvas>
 	
 	<view:ImageContainer x="75" imgURL="{imgURL}"/>
+	
 	
 	
 </mx:Canvas>
