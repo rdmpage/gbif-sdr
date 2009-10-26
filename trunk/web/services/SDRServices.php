@@ -276,10 +276,10 @@ class SDRServices {
 	}
 	
 	public function getSpeciesDistributionUnitsById($id) {
-	    $sql="select id,map_source,resourcename,code,resource_id,identifier,name,start_day_in_year,end_day_in_year,tag,color,st_asgeojson(the_geom,4) FROM sdr_2_view where nub_usage_id=$id";
+	    $sql="select id,map_source,resourcename,code,resource_id,identifier,name,start_day_in_year,end_day_in_year,tag,color,st_asgeojson(the_geom,4) as geojson FROM sdr_2_view where nub_usage_id=$id";
 	    $res1=pg_fetch_all(pg_query($this->conn, $sql)); 
 
-   	    $sql="select id,map_source,resourcename,code,resource_id,identifier,name,start_day_in_year,end_day_in_year,tag,color,st_asgeojson(the_geom,4) FROM sdr_1_view where nub_usage_id=$id";
+   	    $sql="select id,map_source,resourcename,code,resource_id,identifier,name,start_day_in_year,end_day_in_year,tag,color,st_asgeojson(the_geom,4) as geojson FROM sdr_1_view where nub_usage_id=$id";
 	    if ($res1) {
      	    return array_merge(pg_fetch_all(pg_query($this->conn, $sql)),$res1);	     
 	    } else {
