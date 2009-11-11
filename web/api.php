@@ -1,5 +1,5 @@
 <?php
-
+require 'config.php';
 require 'controller.php';
 
 $smarty->assign('section', 'api');
