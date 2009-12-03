@@ -20,9 +20,9 @@
 					The parameter <b>location</b> zooms the map to the specified location as geocoded by Google services (optional)<br>
 					<br><br>Examples:</p>
 				<ul>
-				    <li><b>All sources for a species:</b> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/widget.php?id=13809813">http://ec2-174-129-77-94.compute-1.amazonaws.com/widget.php?id=13809813</a></li> 	        		
-	        		<li><b>Only one specific source:</b> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/widget.php?id=13809813&source=GROMS">http://ec2-174-129-77-94.compute-1.amazonaws.com/widget.php?id=13809813&source=GROMS</a></li>
-	        		<li><b>Only one specific source in Canada:</b> <a href="http://ec2-174-129-77-94.compute-1.amazonaws.com/widget.php?id=13900738&location=Canada&source=CANADENSYS">http://ec2-174-129-77-94.compute-1.amazonaws.com/widget.php?id=13900738&location=Canada&source=CANADENSYS</a></li>
+				    <li><b>All sources for a species:</b> <a href="http://{$smarty.server.SERVER_NAME}/widget.php?id=13809813">http://{$smarty.server.SERVER_NAME}/widget.php?id=13809813</a></li> 	        		
+	        		<li><b>Only one specific source:</b> <a href="http://{$smarty.server.SERVER_NAME}/widget.php?id=13809813&source=GROMS">http://{$smarty.server.SERVER_NAME}/widget.php?id=13809813&source=GROMS</a></li>
+	        		<li><b>Only one specific source in Canada:</b> <a href="http://{$smarty.server.SERVER_NAME}/widget.php?id=13900738&location=Canada&source=CANADENSYS">http://{$smarty.server.SERVER_NAME}/widget.php?id=13900738&location=Canada&source=CANADENSYS</a></li>
 
 	        	</ul>					
 	        	<div class="span-24 title_blue">Data API</div>
