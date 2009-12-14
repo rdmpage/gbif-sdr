@@ -41,8 +41,12 @@ There is a geoserver installation in place in GBIF that can be reused. Follow th
  * New feature Type: postgis::shapefiles  with style= polygonByStatus
  * Apply and save
 
+= Testing =
 
+It is possible to test that the app is runnig directly and using it, but a call like this could also be used:
 
-
+{{{
+http://localhost/amfphp/json.php/GROMSServices.getTaxon//0
+}}}
 
 
