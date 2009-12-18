@@ -1,4 +1,5 @@
 #summary An example of data loading at different resolutions
+#sidebar TableOfContents
 <wiki:toc max_depth="3" />
 
 = Introduction =
