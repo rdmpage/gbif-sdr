@@ -1,8 +1,6 @@
 #sidebar TableOfContents
 
-= Introduction =
-
-Species distributions are created and published in multiple formats in Internet. The Species Distribution Repository supports 2:
+Species distributions are created and published in multiple formats in Internet. SDR supports 2:
 
  * Polygon based distributions
  * Predefined Areas
