@@ -1,3 +1,7 @@
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
+
 == Species Distribution Repository (SDR) ==
 
 Species distributions or ranges are a very fundamental information for biodiversity studies and conservation. Without knowledge of where species are most of the envision biodiversity services  are not possible. Most of the information on species distributions comes from:
