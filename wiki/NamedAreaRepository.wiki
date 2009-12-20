@@ -1,4 +1,7 @@
 #summary Information on the Named Area Repository
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
 
 = Introduction =
 
