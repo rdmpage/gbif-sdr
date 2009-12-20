@@ -2,12 +2,24 @@
 
 = Introduction =
 
-Add your content here.
+Species distributions are created and published in multiple formats in Internet. The Species Distribution Repository supports 2:
 
+ * Polygon based distributions
+ * Predefined Areas
 
-= Details =
+Additionally SDR visualization API supports the overlaying of GBIF primary data and in the future niche models produced from GBIF primary data.
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= Polygon based distributions / Range maps =
+
+These are very often called Species Range maps. Normally created by taxonomist applying their implied knowledge about the distribution of species. 
+
+== Imported sources ==
+2 sources have been imported for testing purposes:
+
+ * Part of the mammals project from the IUCN Red List. http://www.iucnredlist.org/initiatives/mammals
+ * Global Registry of Migratory Species http://groms.gbif.org/
+
+Specific scripts had been developed to import them. Check out ImportSourcesShapefile for general instruction and specific ones.
+
+ * [ImportRedList Red List]
+ * [ImportGROMSprocedure GROMS]
