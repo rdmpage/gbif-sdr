@@ -2,6 +2,7 @@
 
  * *About*
    * [About Intro]
+   * [DataSources]
  * *Technical*
    * [GeospatialDataStore]
    * NamedAreaRepository	
