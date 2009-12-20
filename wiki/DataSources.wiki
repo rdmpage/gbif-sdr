@@ -1,7 +1,5 @@
 #sidebar TableOfContents
 
-#summary Datasources types in SDR and already imported
-
 = Introduction =
 
 Species distributions are created and published in multiple formats in Internet. The Species Distribution Repository supports 2:
