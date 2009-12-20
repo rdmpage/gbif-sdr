@@ -7,7 +7,10 @@
 
 Add your content here.
 
+= Model =
 
-= Details =
+= Managing scripts =
+
+= Database model =
 
 [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/model.png]
