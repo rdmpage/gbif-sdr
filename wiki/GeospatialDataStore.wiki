@@ -1,4 +1,7 @@
 #summary The geospatial data store and the common data model
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
 
 = Introduction =
 
