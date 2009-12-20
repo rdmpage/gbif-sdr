@@ -1,15 +1,9 @@
 #summary Sidebar TOC
 
- * *About*
-   * [UseCases]
-   * [Requirements]
-   * [Terminology]
-   * ResolutionExample	
  * *Technical*
-   * [Model]
-   * MetadataModel	
+   * [GeospatialDataStore]
+   * NamedAreaRepository	
    * [API]
-   * [Roadmap]
  * *Component Integration*
    * [EcatIntegration]
    * [PortalIntegration]
@@ -17,3 +11,9 @@
    * OccurrenceStatus
    * [Nativeness]
    * LifeStage
+ * *Old documents*
+   * [UseCases]
+   * [Requirements]
+   * [Terminology]
+   * ResolutionExample	
+   * [Roadmap]
