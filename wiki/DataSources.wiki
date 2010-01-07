@@ -21,3 +21,13 @@ Specific scripts had been developed to import them. Check out ImportSourcesShape
 
  * [ImportRedList Red List]
  * [ImportGROMSprocedure GROMS]
+
+= Predefined Areas =
+
+To import this kind of species distribution sources an extension for Darwin core was created and a set of darwin core vocabularies. 
+
+ * [http://spreadsheets.google.com/pub?key=r4I1G8E7mDIgY_kt9Rxyc8A&gid=2 Species distribution extension]
+ * [http://spreadsheets.google.com/pub?key=tVs-UWMXnkD3slwIE8T336w&gid=3 Vocabulary for Occurrence Status]
+ * [http://spreadsheets.google.com/pub?key=tVs-UWMXnkD3slwIE8T336w&gid=5 Life stage vocabulary]
+
+To import this kind of data we use the Darwin Core Checklist Archive format described at: http://code.google.com/p/gbif-ecat/wiki/DwCArchive
