@@ -34,4 +34,4 @@ To import this kind of data we use the Darwin Core Checklist Archive format desc
 
 == 2.1) Imported sources ==
 
-For testing the whole system we imported one source from CANADENSYS
+For testing the whole system we imported one source from CANADENSYS. You can read more about the way this sources are imported at ImportCanadensysLikeSourcesEcatIntegration . Finally here is a link to the import script for CANADENSYS http://code.google.com/p/gbif-sdr/source/browse/trunk/scripts/import_canadensys.php
