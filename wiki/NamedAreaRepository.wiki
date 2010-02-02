@@ -3,4 +3,14 @@
 
 The Named Area Repository (NAR) is a datastore to keep geometries of areas that are used for describing species distributions. If a source specify that a certain species is present in Spain, NAR can be used to retrieve the geometry for Spain. There are multiple References imported into the Named Area Repository, like ISO2 Country Names, TDWG areas, etc.
 
+== API ==
+The most interesting part of SDR is the set of services that it exposes and that enable the import of region, or named area, based distribution. There is more details about it on the [http://sdr.gbif.org/api.php API/Developers page] and o the [API] page in the documentation.
+
+== Import of new data sources in the Named Area Repository ==
+
+To facilitate the import of new data sources a set of scripts had been developed. The scripts have enough comments inside to easily adapt them for new import sources. You can find more details on the ManagingScripts section.
+
+== Visualization ==
 There is an application to visualize the existing sources in NAR. Check it out to see what is existing [http://sdr.gbif.org/nar/ Named Area Repository Visualizer]
+
+[http://gbifsdr.s3.amazonaws.com/sdrScreenshot.png]
