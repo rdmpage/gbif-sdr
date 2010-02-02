@@ -8,6 +8,7 @@
    * [ManagingScripts]
    * NamedAreaRepository	
    * [API]
+   * [InstallInstructions]
  * *Component Integration*
    * [EcatIntegration]
    * [PortalIntegration]
