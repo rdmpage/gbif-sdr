@@ -5,11 +5,9 @@
 
 = Introduction =
 
-Add your content here.
+The geospatial data store in SDR consist of a PostGIS database. The database model is constructed with the purpose of keeping original sources and a common data model to access all of them.
 
-= Model =
-
-= Managing scripts =
+The data on the model is introduced by using a set of scripts described in ManagingScripts. 
 
 = Database model =
 
