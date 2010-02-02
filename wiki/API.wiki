@@ -42,17 +42,13 @@ getSpeciesDistributionUnitsById:
 http://sdr.gbif.org/amfphp/json.php/SDRServices.getSpeciesDistributionUnitsById/13149503
 }}}
 
-==OGC Services==
+== OGC Services/Geoserver ==
 For biodiversity we have the problem that we have millions of species and thousands of datasets.
 Ideally each of them become a separate layer in OGC services (WMS/WFS), which is not doable.
 
 Each dataset could become a layer in oGC and clients will have to use a filter. This is not widely supported.
 An open problem. What can be registered with INSPIRE???
 
-=== Specific Layers===
-For specific aggregated layers this is possible.
-Potential candidates for layers relevant to be published in INSPIRE:
- * IUCN redlist species
- * species richness layer
-   * specific by kingdom or orders/families
- * newly discovered species
+For SDR we have used Geoserver as the OGC wrapper. The URL of Geoserver is: [http://ogc.gbif.org] Unfortunately the Tomcat installation there is often broken due to massive harvesting by Google.
+
+=== Available layers ===
