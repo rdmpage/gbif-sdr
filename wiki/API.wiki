@@ -1,26 +1,46 @@
 #summary The API of the SDR
 #sidebar TableOfContents
 
-<wiki:toc max_depth="3" />
-
 = Introduction =
-This is the API that is derived from the requirements
+The SDR API consist of 2 kinds of services:
 
-= API =
+*Widget/Visualization API:* Allows you to embed our visualization widgets on your project page, blog, etc.
 
- * List of species occurring from a query with spatial, temporal (change over time, seasonal) components (presence only)
- * List of higher groups from a query (as above) 
- * List of species with conflicting distribution (e.g. have layers that conflict)
- * Taxonomic query - where does this taxon live? (e.g. family...)
- * Browsing the SDR using a specific taxonomy (E.g. ITIS)
- * Spatial overview of biodiversity in area report - (endemic species etc)
- * Species richness
- * Using a reference list (e.g. IUCN red list) get those that meet filter parameters (spatial, temporal etc)
+*Data API:* Access programatically the data from the project.
 
-== REST services ==
-All services respond in JSON at least. Preferrably XML and AMF on top.
+= Widget visualization API =
 
+You can embed the visualization widget displayed on these pages. For the moment you need to use the species ID provided by GBIF (nub_usage_id) as provided by the ECAT services.
 
+{{{
+The parameter id is always required.
+The parameter source filter only by one specific source (optional)
+The parameter location zooms the map to the specified location as geocoded by Google services (optional)
+
+Examples:
+All sources for a species: http://sdr.gbif.org/widget.php?id=13809813
+Only one specific source: http://sdr.gbif.org/widget.php?id=13809813&source=GROMS
+Only one specific source in Canada: http://sdr.gbif.org/widget.php?id=13900738&location=Canada&source=CANADENSYS
+}}}
+
+= Data API =
+
+All services are available as JSON and AMF. To use the services in AMF please contact jatorre@vizzuality.com
+
+{{{
+getSpeciesDetailsByNameId:
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738
+getSpeciesDetailsByNameId (only CANADENSYS):
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738/CANADENSYS
+getDistributionsBySource (RED_LIST2008):
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0
+getSources:
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getSources
+getDistributionUnitsByLatLng:
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getDistributionUnitsByLatLng/30/10
+getSpeciesDistributionUnitsById:
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getSpeciesDistributionUnitsById/13149503
+}}}
 
 ==OGC Services==
 For biodiversity we have the problem that we have millions of species and thousands of datasets.
