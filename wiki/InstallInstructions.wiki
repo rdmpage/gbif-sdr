@@ -1,4 +1,5 @@
 #In this page we go through all the process of install all SDR components in an EC2 instance
+#sidebar TableOfContents
 
 = Introduction =
 
