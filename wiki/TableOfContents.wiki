@@ -5,6 +5,7 @@
    * [DataSources]
  * *Technical*
    * [GeospatialDataStore]
+   * [ManagingScripts]
    * NamedAreaRepository	
    * [API]
  * *Component Integration*
