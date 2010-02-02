@@ -9,6 +9,8 @@ The geospatial data store in SDR consist of a PostGIS database. The database mod
 
 The data on the model is introduced by using a set of scripts described in ManagingScripts. 
 
+Check out the vocabularies section for lookup tables on the model.
+
 = Database model =
 
 [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/model.png]
