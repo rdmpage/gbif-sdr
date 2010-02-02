@@ -1,16 +1,6 @@
 #summary Information on the Named Area Repository
 #sidebar TableOfContents
 
-<wiki:toc max_depth="3" />
+The Named Area Repository (NAR) is a datastore to keep geometries of areas that are used for describing species distributions. If a source specify that a certain species is present in Spain, NAR can be used to retrieve the geometry for Spain. There are multiple References imported into the Named Area Repository, like ISO2 Country Names, TDWG areas, etc.
 
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+There is an application to visualize the existing sources in NAR. Check it out to see what is existing [http://sdr.gbif.org/nar/ Named Area Repository Visualizer]
