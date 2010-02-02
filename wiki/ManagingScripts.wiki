@@ -3,4 +3,61 @@
 
 = Introduction =
 
-Add your content here.
+To handle the import and update of different sources, a set of PHP script to be run as command line had been developed. Following is a description on them and how to use them.
+Most of the scripts needs editing to be used for a particular source, so ebfore running them please adjust them as needed. Documentation is available as comments inside the script.
+All scripts are available under the script folder on the root structure of the application.
+
+
+= remove_resource.php =
+Remove a resource specified as a first parameter. It will remove all its data in the SDR DB. That includes all the names used by it (name_usage) that are not used by any other source. Definetly try to clean as much as possible the database any trace of the source. This script should be used before updating a resource.
+It does not delete features stored in the Named Area Repository as this might be useful for other sources in the future.
+
+===Example use===
+{{{
+php remove_resource.php CANADENSYS
+}}}
+
+= import_nar_source.php =
+This script is used to import new Named Area References into the Named Area Repository. For example a set of provinces in a country used by a specific datasource. Normally you first need to use this script to import a Darwin Core style distribution. 
+
+You need to adapt the script for paths and so on. 
+
+===Example use===
+{{{
+php import_nar_source.php
+}}}
+
+= import_canadensys.php =
+Script developed to import the CANADENSYS example dataset. Before running this script you need to import the NAR resource (explained above).
+This script is intentioanlly long to demonstrate how to use it with other source. If you want to import a Darwin Core Distribution style files.
+Inside this script you need to specify metadata of the dataset, mappings to the SDR model, etc.
+Copy this script and adapt it for the new datasource. The number of mappings requiered make it very coimplicate to create a generic script, so we hope this way we can give you the most flexibility.
+
+You need to adapt the script for paths and so on.
+
+===Example use===
+{{{
+php import_canadensys.php
+}}}
+
+= import_groms.php =
+Script developed to import GROMS. This script is intentioanlly long to demonstrate how to use it with other source. If you want to import shapefiles datasets, like GROMS.
+Inside this script you need to specify metadata of the dataset, mappings to the SDR model, etc.
+Copy this script and adapt it for the new datasource. The number of mappings requiered make it very coimplicate to create a generic script, so we hope this way we can give you the most flexibility.
+
+You need to adapt the script for paths and so on.
+
+===Example use===
+{{{
+php import_groms.php
+}}}
+
+= import_red_list_carnivora.php =
+Import script for the Red List, as pusblished on the website (from 2008). It has extensive mappings between their tags for occurrence,seasonality and nativeness. All the shapefiles from this source could be done like this. It is a good template for other imports.
+
+You need to adapt the script for paths and so on.
+
+===Example use===
+{{{
+php import_red_list_carnivora.php
+}}}
