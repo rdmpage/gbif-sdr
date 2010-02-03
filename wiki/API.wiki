@@ -52,3 +52,25 @@ An open problem. What can be registered with INSPIRE???
 For SDR we have used Geoserver as the OGC wrapper. The URL of Geoserver is: [http://ogc.gbif.org] Unfortunately the Tomcat installation there is often broken due to massive harvesting by Google.
 
 === Available layers ===
+In Geoserver 2 different layers had been registered:
+ 
+ * 1: Resources based on polygons
+ * 2: Resources based on Named Areas
+
+The reason to separate them is that they live in different parts of the data model and although it is possible to union them in a single SQL Union statement, the performance it is quite poor.
+
+The join of all resources can be joined as:
+
+{{{
+CREATE OR REPLACE VIEW geospatial_units2 AS 
+ SELECT distribution.id, name_usage.nub_usage_id, distribution.map_source, resource.resourcename, resource.code, occurrence_status.identifier, occurrence_status.name, distribution_unit.start_day_in_year, distribution_unit.end_day_in_year, status_tags.tag, named_area_geom.the_geom
+   FROM distribution, name_usage, resource, distribution_unit
+   LEFT JOIN status_tags ON distribution_unit.status_tags_fk = status_tags.id, defined_area_unit, named_area_geom, occurrence_status, named_area
+  WHERE distribution.resource_fk = resource.id AND distribution.clb_usage_id = name_usage.clb_usage_id AND distribution_unit.distribution_fk = distribution.id AND distribution_unit.occurrence_status_fk = occurrence_status.id AND defined_area_unit.distribution_unit_fk = distribution_unit.id AND defined_area_unit.named_area_fk = named_area_geom.id AND defined_area_unit.named_area_fk = named_area.id AND distribution.is_public = true AND distribution.distribution_type_fk = 1
+UNION 
+ SELECT distribution.id, name_usage.nub_usage_id, distribution.map_source, resource.resourcename, resource.code, occurrence_status.identifier, occurrence_status.name, distribution_unit.start_day_in_year, distribution_unit.end_day_in_year, status_tags.tag, distribution_unit.interpreted_geom AS the_geom
+   FROM distribution, name_usage, resource, distribution_unit
+   LEFT JOIN status_tags ON distribution_unit.status_tags_fk = status_tags.id, occurrence_status
+  WHERE distribution.resource_fk = resource.id AND distribution.clb_usage_id = name_usage.clb_usage_id AND distribution_unit.distribution_fk = distribution.id AND distribution_unit.occurrence_status_fk = occurrence_status.id AND distribution.is_public = true AND distribution.distribution_type_fk = 2;
+
+}}}
