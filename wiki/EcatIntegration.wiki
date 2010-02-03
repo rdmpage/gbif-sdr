@@ -11,7 +11,7 @@ The following has been identified as a possible link between the SDR project and
 
 Please see http://code.google.com/p/gbif-ecat/wiki/WebserviceAPI for details.
 
-=Possible Services used by SDR if available=
+=== Possible Services used by SDR if available ===
 
  # {{{Resolving Taxonomies}}}
  # {{{NameUsage Navigation}}}
