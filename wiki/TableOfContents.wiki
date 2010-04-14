@@ -3,7 +3,7 @@
  * *About*
    * [About Intro]
    * [DataSources]
-* *UserContribution*
+ * *UserContribution*
    * [How to contribute data Intro]
  * *Technical*
    * [GeospatialDataStore]
