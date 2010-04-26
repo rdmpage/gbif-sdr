@@ -4,7 +4,7 @@
    * [About Intro]
    * [DataSources]
  * *User contribution*
-   * [How to contribute data Intro]
+   * [ContributeData]
  * *Technical*
    * [GeospatialDataStore]
    * [ManagingScripts]
