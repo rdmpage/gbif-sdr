@@ -11,6 +11,14 @@ The integration between SDR and ECAT is present in multiple places in SDR descri
 
 == Resolving taxonomies prior to import new distributions ==
 
+SDR imports data from multiple resources, but needs to present them in a coherent way. This presents the challenge of resolving multiple taxonomies and link it with the primary data from the GBIF network. To do this task SDR depends on the use of ECAT services to resolve taxonomies and provide the taxonomic information backbone.
+
+At the end of the day, SDR only holds a NameUsage ID linked to the geospatial information of the species distribution. The ECAT services holds all the taxonomic information and SDR use those services to get any taxonomy information from it using the NameUsage ID. The process of obtaining this NameUsage ID at the import of data is what we call the taxonomy resolution. You can read more about the NameUsage IDs
+
+In its most simple definition this process involves sending all names used in a species distribution resource (like the Red List) to the ECAT resolution service. The result of this resolution is the same names together with NameUsage IDs to be used within SDR.
+
+Lets go trough it with an example. We will be using a resource called CANADENSYS. The data given by the resource is a 
+
 
 == Navigation services inside SDR ==
 
