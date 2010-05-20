@@ -2,7 +2,12 @@
 #sidebar TableOfContents
 <wiki:toc max_depth="3" />
 
+= Integration of SDR and the GBIF data portal =
+
 The following section describes the possible connection between the SDR project and the GBIF data portal. This is only a list of possible interactions.
+
+
+[https://vizzuality.s3.amazonaws.com/sdr/sdrwidget.png]
 
 = Possible connections between SDR and the GBIF data portal =
 
