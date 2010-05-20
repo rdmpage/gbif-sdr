@@ -1,6 +1,5 @@
 #summary Notes on integration with the portal.
 #sidebar TableOfContents
-<wiki:toc max_depth="3" />
 
 = Integration of SDR and the GBIF data portal =
 
