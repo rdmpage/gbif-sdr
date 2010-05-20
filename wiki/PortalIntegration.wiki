@@ -86,37 +86,6 @@ The taxon or species page allows the user to visualize the widget described on 1
 - NotCovered: describe a mask<br>
 - NotCovered: The user chooses to add a country, and is presented with the ability to select a country on the map.  A confirmation of "do you want to confirm sprecies X lives in this country?", user selects yes and the data is saved.
 
-== Publishing data into the SDR ==
-
-=== 3.0 User with collection of shapefiles ===
-
-==== 3.0.1 Shapefiles are in an unknown format ====
-The user contacts the helpdesk and negotiates the manual delivery of the shapefiles.  The metadata about this collection are authored, and a custom transformation of the data is done.  A load of these data are produced.  The scripts for the transformation and load of these data are stored and the same procedure can be run against the data repeatedly - e.g. should the input data be updated and a more up-to.date version is available.
-
-==== 3.0.2 Shapefiles are in a format known to the SDR ====
-The location (e.g. URL) of the shapefile collection is registered.  Metadata is authored about the collection and the shapefiles are harvested and loaded into the SDR.
-
-=== 3.1 A spatial database owner with a collection of polygons ===
-An export into the format described in 3.0.2 is recommended.
-
-=== 3.2 NotCovered: A collection of primary data (e.g. GBIF portal index) ===
-A clustering algorithm *might* allow the point data to be synthesised into polygons, or a raster or various rasters for differing resolutions can be generated.  Potentially this could be registered as a source and loaded in to the distribution repository.  
-
-=== 3.3 A Darwin Core distribution extension with named areas is used with a Taxon Core  ===
-The user will register this data through ECAT.
-Named areas have to be existing in the Names Area Repository (NAR) beforehand and the supplied gbif:namedArea and gbif:namedAreaReference has to confirm to the IDs listed by the NAR.
-
-=== 3.4 NotCovered: A gridded data source ===
-A user has a raster format of data.  The user follows the same as use case 3.0, although the shape files are some format of raster file.  The resolution of the raster file can be declared.
-
-=== 3.4.1 NotCovered: User has generated predicted distributed in a raster using e.g. a modeling approach ===
-User registers this data and can indicate that it is machine generated.  The user can define the resolution that the data was generated, and can optionally link to metadata about the modeling approach.  An indication of the confidence can be supplied.
-
-=== 3.5 Textual information (e.g. a paragraph about a single species) ===
-Users publishing natural language texts/paragraphs about distributions of species. The texts need to be registered as darwin core archives with ECAT. The text is visualised together with a map on species pages, but not converted to spatial maps. Described also on 2.5
-
-=== 3.6 Holder of presence and absence data ===
-All above use cases can have presence and absence data, defined by the occurrence status
 
 == Analysis ==
 
