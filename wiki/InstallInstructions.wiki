@@ -64,7 +64,7 @@ sudo service apache2 restart
 
 {{{
 cd /mnt
-wget http://174.129.77.94/sdr.sql.gz
+wget http://vizzuality.com.s3.amazonaws.com/sdr.sql.gz
 gunzip sdr.sql.gz
 psql -hlocalhost -Upostgres -dsdr -f /mnt/sdr.sql
 vacuumdb -hlocalhost -Upostgres sdr
