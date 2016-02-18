@@ -12,7 +12,7 @@ All this information is now currently published on different websites and in mul
 
 The purpose of the Species Distribution Repository is to provide a common places where all these different sources can be aggregated and transformed into a common data model/format. On top of this common data model a set of visualization APIs and data APIs had been developed to allow programatic access and sharing of the data.
 
-![](http://gbifsdr.s3.amazonaws.com/sdrScreenshot.png)
+![Screenshot](http://gbifsdr.s3.amazonaws.com/sdrScreenshot.png)
 
 Technically SDR is a;
 
