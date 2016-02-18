@@ -1,6 +1,6 @@
 # Species Distribution Repository (SDR)
 
-This repository is base don a export from Google Code, the README is based on the “About.wiki” file.
+This repository is based on an export from Google Code, the README is based on the “About.wiki” file.
 
 Species distributions or ranges are a very fundamental information for biodiversity studies and conservation. Without knowledge of where species are most of the envision biodiversity services  are not possible. Most of the information on species distributions comes from:
 
@@ -12,7 +12,7 @@ All this information is now currently published on different websites and in mul
 
 The purpose of the Species Distribution Repository is to provide a common places where all these different sources can be aggregated and transformed into a common data model/format. On top of this common data model a set of visualization APIs and data APIs had been developed to allow programatic access and sharing of the data.
 
-[!http://gbifsdr.s3.amazonaws.com/VisitWebsite.png]
+[!](http://gbifsdr.s3.amazonaws.com/sdrScreenshot.png)
 
 Technically SDR is a;
 
