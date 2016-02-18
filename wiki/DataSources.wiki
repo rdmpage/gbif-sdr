@@ -1,0 +1,37 @@
+#sidebar TableOfContents
+
+Species distributions are created and published in multiple formats in Internet. SDR supports 2:
+
+ * Polygon based distributions
+ * Predefined Areas
+
+Additionally SDR visualization API supports the overlaying of GBIF primary data and in the future niche models produced from GBIF primary data.
+
+= 1) Polygon based distributions / Range maps =
+
+These are very often called Species Range maps. Normally created by taxonomist applying their implied knowledge about the distribution of species. 
+
+== 1.1) Imported sources ==
+2 sources have been imported for testing purposes:
+
+ * Part of the mammals project from the IUCN Red List. http://www.iucnredlist.org/initiatives/mammals
+ * Global Registry of Migratory Species http://groms.gbif.org/
+
+Specific scripts had been developed to import them. Check out ImportSourcesShapefile for general instruction and specific ones.
+
+ * [ImportRedList Red List]
+ * [ImportGROMSprocedure GROMS]
+
+= 2) Predefined Areas =
+
+To import this kind of species distribution sources an extension for Darwin core was created and a set of darwin core vocabularies. 
+
+ * [http://spreadsheets.google.com/pub?key=r4I1G8E7mDIgY_kt9Rxyc8A&gid=2 Species distribution extension]
+ * [http://spreadsheets.google.com/pub?key=tVs-UWMXnkD3slwIE8T336w&gid=3 Vocabulary for Occurrence Status]
+ * [http://spreadsheets.google.com/pub?key=tVs-UWMXnkD3slwIE8T336w&gid=5 Life stage vocabulary]
+
+To import this kind of data we use the Darwin Core Checklist Archive format described at: http://code.google.com/p/gbif-ecat/wiki/DwCArchive
+
+== 2.1) Imported sources ==
+
+For testing the whole system we imported one source from CANADENSYS. You can read more about the way this sources are imported at ImportCanadensysLikeSourcesEcatIntegration . Finally here is a link to the import script for CANADENSYS http://code.google.com/p/gbif-sdr/source/browse/trunk/scripts/import_canadensys.php

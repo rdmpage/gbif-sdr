@@ -1,0 +1,26 @@
+#summary Sidebar TOC
+
+ * *About*
+   * [About Intro]
+   * [DataSources]
+ * *Data contribution*
+   * [ContributeData]
+ * *Technical*
+   * [GeospatialDataStore]
+   * [ManagingScripts]
+   * NamedAreaRepository	
+   * [API]
+   * [InstallInstructions]
+ * *Component Integration*
+   * [EcatIntegration]
+   * [PortalIntegration]
+ * *Vocabularies*
+   * OccurrenceStatus
+   * [Nativeness]
+   * LifeStage
+ * *Old documents*
+   * [UseCases]
+   * [Requirements]
+   * [Terminology]
+   * ResolutionExample	
+   * [Roadmap]

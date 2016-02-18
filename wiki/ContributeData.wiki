@@ -1,0 +1,10 @@
+= Introduction =
+
+if you want to see your data in the project you have to contact helpdesk@gbif.org
+
+The project accepts data distributions in the following formats:
+
+Shapefiles: Normally the shapefiles will have one record per distribution_unit (a population or a part of the distribution with a specific status) with a geometry of MULTIPOLYGON. But any kind of format can be considered.
+
+Darwin Core Distribution Extension: by using Named Areas (like counties, countries, TDWG areas, etc.), a Darwin Core Distribution file can be generated attached to a core darwin core document. This kind of format will be imported very quickly. It might be that you need to provide a shapefile with the Named Areas used in the distribution extension, like provinces or states for a specific country that we dont have already improted
+Please contact us to analyze your dataset and work with you on the best way to incorporate it

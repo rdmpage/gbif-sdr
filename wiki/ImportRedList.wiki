@@ -1,0 +1,52 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Just a bit of documentation on the steps done while importing a sample red list dataset.
+
+1) Download from http://www.iucnredlist.org/resources/spatial/mammals/
+
+2) /usr/local/pgsql/bin/shp2pgsql -s4326 -i -WLATIN1 -I -c all_GMA_CARNIVORA.shp imported_shapefile | /usr/local/pgsql/bin/psql -hlocalhost -dsdr -Upostgres
+
+3) 
+
+{{{
+select distinct 
+CASE WHEN subspecies is not null THEN sci_name ||' '||subspecies ELSE sci_name END as "taxonID",
+CASE WHEN subspecies is not null THEN sci_name ||' '||subspecies ELSE sci_name END as "sciName",
+subspecies,authority, "family",order_,engl_name,citation, 
+CASE WHEN subspecies is not null THEN 'subspecies' ELSE 'species' END as rank  from imported_shapefile
+}}}
+
+4) COPY temp_red_list TO '/tmp/red_list_carnivora';
+
+5) send to markus with the wollowing meta.xml file descriptor
+
+{{{
+<?xml version='1.0' encoding='utf-8'?>
+<archive xmlns="http://rs.tdwg.org/dwc/text/">
+  <core encoding="UTF-8" fieldsTerminatedBy="\t" linesTerminatedBy="\n" fieldsEnclosedBy='' ignoreHeaderLines="0" rowType="http://rs.tdwg.org/dwc/terms/Taxon">
+    <files>
+      <location>names.txt</location>
+    </files>
+    <id index="0" />
+    <field index="1" term="http://rs.tdwg.org/dwc/terms/scientificName"/>
+    <field index="2" term="http://rs.tdwg.org/dwc/terms/infraspecificEpithet"/>
+    <field index="3" term="http://rs.tdwg.org/dwc/terms/scientificNameAuthorship"/>
+    <field index="4" term="http://rs.tdwg.org/dwc/terms/family"/>
+    <field index="5" term="http://rs.tdwg.org/dwc/terms/order"/>
+    <field index="8" term="http://rs.tdwg.org/dwc/terms/taxonRank"/>
+    <field default="Animalia" term="http://rs.tdwg.org/dwc/terms/kingdom"/>
+    <field default="ICZN" term="http://rs.tdwg.org/dwc/terms/nomenclaturalCode"/>
+  </core>
+
+  <extension encoding="UTF-8" fieldsTerminatedBy="\t" linesTerminatedBy="\n" fieldsEnclosedBy='' ignoreHeaderLines="0" rowType="http://rs.gbif.org/terms/1.0/VernacularName">
+    <files>
+      <location>names.txt</location>
+    </files>
+    <coreid index="0" />
+    <field index="6" term="http://rs.tdwg.org/dwc/terms/vernacularName"/>
+    <field default="EN" term="http://purl.org/dc/terms/language"/>
+  </extension>
+</archive>
+}}}

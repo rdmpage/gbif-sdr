@@ -1,0 +1,17 @@
+#summary An example of data loading at different resolutions
+#sidebar TableOfContents
+<wiki:toc max_depth="3" />
+
+= Introduction =
+This is an example walkthrough of distribution data about a single species being loaded into the species distribution repository (SDR).
+3 arbitrary resolutions have been selected for the sake of this example, but are not indicative of any fixed resolutions the SDR may adopt.
+In this example, green indicates presence, and red indicates absence; no further metadata about the species or providers are given.
+
+= Scenarios =
+
+The following depicts 3 scenarios the data held in the SDR might depict when captured in 3 differing resolutions (!LowRes, !MedRes, !HiRes). These scenarios will be discussed to detail the SDR functionality when degrading data from high resolution to low resolution, how conflict of information will be handled at differing resolutions through the functionality of the API.
+
+||  || *Scenario 0* || *Scenario 2* || *Scenario 3* || 
+|| *!LowRes* || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-world.png]|| Countries of presence and absence ||
+|| *!MedRes* ||  || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-us.png] || US States of presence and absence ||
+|| *!HiRes* || || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] || [http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/example-northeast.png] ||  Polygon data covering parts *but not all of* New Hampshire, Connecticut, Massachusetts, Vermont, New Hamsphire, New Brunswick and Maine ||

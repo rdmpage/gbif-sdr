@@ -1,0 +1,37 @@
+#summary Requirements derived and linked to the numbered use cases
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
+
+= Introduction =
+This page details the requirements that are derived from the use cases.  The use case is always linked to by it's number.
+
+= Requirements =
+==Widget==
+=== Visualisation of distributions ===
+Distributions need to be visualised in a way that users are informed about:
+ * resource/dataset
+ * absent/present
+ * nativeness
+ * lifestage
+ * seasonal data
+
+== Publishing==
+=== 3.0.1===
+Incoming shapefiles have scientific names attached to them which potentially are not covered by ECAT yet.
+SDR needs to resolve the ECAT NUB id for each name, in the case of already registered checklists with ECAT, e.g. birdlife, SDR will supply the resourceKey for it and ECAT will return the proper NameUsage ID.
+
+== Named Area Repository (NAR) ==
+A place where named area codes can be registered with spatial polygons that describe them.
+A single Named Area code is not globally unique, so it requires the combination with the source where the named area is taken from to uniquely identify an area.
+
+ * website listing all available named area references together with their identifier to be used
+   * for each named area reference a list of available areas codes needs to be shown and downloadable as a CSV file
+
+== API ==
+see [API]
+
+
+= Notes =
+  * Publishing the layers in a spatial catalogue
+  * Accuracy is not going to be captured along with resolution at this stage

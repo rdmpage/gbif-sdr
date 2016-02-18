@@ -1,0 +1,30 @@
+#summary Terminology used in the distribution project
+#sidebar TableOfContents
+<wiki:toc max_depth="3" />
+
+<dl>
+<dt>*Degrading resolution*</dt>
+<dd>The process of taking data captured to a high resolution and making it appropriate to use at a lower resolution.  This may be for technical performance reasons for visualisation for example, or to take finely detailed information (e.g. the distribution of a species over a city) and derive statements on a lower resolution (e.g. if it exists in the city, it also exists in the country to which that city belongs)</dd>
+
+<dt>*Spatial scope*</dt>
+<dd>This defines the valid bounds to which a spatial statement is valid.  For example, a description of a species distribution across a State, but not mention neighboring States would define it's spatial scope as it's State only</dd>
+
+<dt>*Confidence*</dt>
+<dd>A qualifier to indicate how factual the statement is.  Distributions derived from a model _might_ have a lower confidence than those derived from factual occurrence data</dd>
+
+<dt>*Spatial accuracy*</dt>
+<dd>The precision of the spatial data.</dd>
+
+<dt>*Basis of record*</dt>
+<dd>A term to indicate how the distribution came to exist.  It might state that it was derived from occurrence data, or might indicate that it was gleaned through local expert opinion etc</dd>
+
+<dt>*Spatial resolution*</dt>
+<dd>Effectively describes the level of detail described in the spatial data.  Data captured to describe the distribution around a city is of higher spatial resolution that simply stating that the species exists in a country</dd>
+
+
+<dt>*Species Distribution*</dt>
+<dd>The (merged) distribution of a "species" as defined by an ECAT NUB Name Usage, i.e. not taking into account subjective synonyms, only lexical and nomenclatural groups.</dd>
+
+See also [OccurrenceStatus] vocabulary
+
+</dl>

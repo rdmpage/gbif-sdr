@@ -1,0 +1,16 @@
+#summary The geospatial data store and the common data model
+#sidebar TableOfContents
+
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+The geospatial data store in SDR consist of a PostGIS database. The database model is constructed with the purpose of keeping original sources and a common data model to access all of them.
+
+The data on the model is introduced by using a set of scripts described in ManagingScripts. 
+
+Check out the vocabularies section for lookup tables on the model.
+
+= Database model =
+
+[http://gbif-sdr.googlecode.com/svn/trunk/sdr-docs/images/model.png]

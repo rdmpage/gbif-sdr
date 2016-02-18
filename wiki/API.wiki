@@ -1,0 +1,76 @@
+#summary The API of the SDR
+#sidebar TableOfContents
+
+= Introduction =
+The SDR API consist of 2 kinds of services:
+
+*Widget/Visualization API:* Allows you to embed our visualization widgets on your project page, blog, etc.
+
+*Data API:* Access programatically the data from the project.
+
+= Widget visualization API =
+
+You can embed the visualization widget displayed on these pages. For the moment you need to use the species ID provided by GBIF (nub_usage_id) as provided by the ECAT services.
+
+{{{
+The parameter id is always required.
+The parameter source filter only by one specific source (optional)
+The parameter location zooms the map to the specified location as geocoded by Google services (optional)
+
+Examples:
+All sources for a species: http://sdr.gbif.org/widget.php?id=13809813
+Only one specific source: http://sdr.gbif.org/widget.php?id=13809813&source=GROMS
+Only one specific source in Canada: http://sdr.gbif.org/widget.php?id=13900738&location=Canada&source=CANADENSYS
+}}}
+
+= Data API =
+
+All services are available as JSON and AMF. To use the services in AMF please contact jatorre@vizzuality.com
+
+{{{
+getSpeciesDetailsByNameId:
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738
+getSpeciesDetailsByNameId (only CANADENSYS):
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getSpeciesDetailsByNameId/13900738/CANADENSYS
+getDistributionsBySource (RED_LIST2008):
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getDistributionsBySource/RED_LIST2008/0
+getSources:
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getSources
+getDistributionUnitsByLatLng:
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getDistributionUnitsByLatLng/30/10
+getSpeciesDistributionUnitsById:
+http://sdr.gbif.org/amfphp/json.php/SDRServices.getSpeciesDistributionUnitsById/13149503
+}}}
+
+== OGC Services/Geoserver ==
+For biodiversity we have the problem that we have millions of species and thousands of datasets.
+Ideally each of them become a separate layer in OGC services (WMS/WFS), which is not doable.
+
+Each dataset could become a layer in oGC and clients will have to use a filter. This is not widely supported.
+An open problem. What can be registered with INSPIRE???
+
+For SDR we have used Geoserver as the OGC wrapper. The URL of Geoserver is: [http://ogc.gbif.org] Unfortunately the Tomcat installation there is often broken due to massive harvesting by Google.
+
+=== Available layers ===
+In Geoserver 2 different layers had been registered:
+ 
+ * 1: Resources based on polygons
+ * 2: Resources based on Named Areas
+
+The reason to separate them is that they live in different parts of the data model and although it is possible to union them in a single SQL Union statement, the performance it is quite poor.
+
+The join of all resources can be joined as:
+
+{{{
+CREATE OR REPLACE VIEW geospatial_units2 AS 
+ SELECT distribution.id, name_usage.nub_usage_id, distribution.map_source, resource.resourcename, resource.code, occurrence_status.identifier, occurrence_status.name, distribution_unit.start_day_in_year, distribution_unit.end_day_in_year, status_tags.tag, named_area_geom.the_geom
+   FROM distribution, name_usage, resource, distribution_unit
+   LEFT JOIN status_tags ON distribution_unit.status_tags_fk = status_tags.id, defined_area_unit, named_area_geom, occurrence_status, named_area
+  WHERE distribution.resource_fk = resource.id AND distribution.clb_usage_id = name_usage.clb_usage_id AND distribution_unit.distribution_fk = distribution.id AND distribution_unit.occurrence_status_fk = occurrence_status.id AND defined_area_unit.distribution_unit_fk = distribution_unit.id AND defined_area_unit.named_area_fk = named_area_geom.id AND defined_area_unit.named_area_fk = named_area.id AND distribution.is_public = true AND distribution.distribution_type_fk = 1
+UNION 
+ SELECT distribution.id, name_usage.nub_usage_id, distribution.map_source, resource.resourcename, resource.code, occurrence_status.identifier, occurrence_status.name, distribution_unit.start_day_in_year, distribution_unit.end_day_in_year, status_tags.tag, distribution_unit.interpreted_geom AS the_geom
+   FROM distribution, name_usage, resource, distribution_unit
+   LEFT JOIN status_tags ON distribution_unit.status_tags_fk = status_tags.id, occurrence_status
+  WHERE distribution.resource_fk = resource.id AND distribution.clb_usage_id = name_usage.clb_usage_id AND distribution_unit.distribution_fk = distribution.id AND distribution_unit.occurrence_status_fk = occurrence_status.id AND distribution.is_public = true AND distribution.distribution_type_fk = 2;
+
+}}}

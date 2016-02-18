@@ -1,0 +1,62 @@
+= Introduction =
+
+The following page describe the process used to import the data from the GROMS DB into SDR. This procedure will need to be automated through the use of scripts, so this will be the basis for something like this.
+
+
+1. Generate a list of nub_concept_ids fro which GROMS has distribution data. This will be used to import into the distribution table:
+
+In GROMS DB
+{{{
+create table temp as select gbif_id as temp_gbif_name_id,sn.scientifiname as scientific_name from species_names as sn inner join accessexport as a on sn.species_id=a.species_id where gbif_id is not null;
+
+COPY temp TO '/tmp/groms_nub_concepts_ids.txt';
+
+drop table temp;
+}}}
+
+2. Export the geometries table with related metadata into a dump, creating first a temp table.
+
+{{{
+create table temp_dist_units as select gbif_id as temp_gbif_name_id, status,("start" *30) as start_day_in_year, ("end"*30) as end_day_in_year, 6 as nativeness_fk,1 as occurrence_status_fk, null as life_stage_fk, the_geom as interpreted_geom from shapefiles as s inner join species_names as sn on s.species_id=sn.species_id;
+
+pg_dump -hlocalhost -Upostgres -ttemp_dist_units groms > temp_dist_units.sql
+
+drop table temp_dist_units;
+}}}
+
+3. Now we have to import into SDR
+
+{{{
+psql -hlocalhost -dsdr -Upostgres < temp_dist_units.sql
+
+CREATE TABLE temp_groms_gbif_names_ids
+(
+   nub_concept_id integer,
+   scientific_name character varying(255)
+) WITH (OIDS=FALSE)
+;
+COPY temp_groms_gbif_names_ids FROM '/tmp/groms_nub_concepts_ids.txt';
+
+}}}
+
+4. Create the distribution records from the names by linking to the scientific_name table.
+{{{
+
+insert into distribution_unit(occurrence_status_fk,status_tags_fk,start_day_in_year,end_day_in_year,distribution_fk,nativeness_fk,interpreted_geom)
+select tdu.occurrence_status_fk,st.id as status_tags_fk,start_day_in_year,end_day_in_year, d.id as distribution_fk,nativeness_fk,interpreted_geom from temp_dist_units as tdu inner join scientific_name as sn on tdu.temp_gbif_name_id=sn.nub_concept_id inner join distribution as d on sn.id=d.name_fk and d.resource_fk=2 right join status_tags as st on tdu.status=st.tag;
+
+}}}
+
+5. Import the distribution units 
+{{{
+insert into distribution_unit(occurrence_status_fk,start_day_in_year,end_day_in_year,distribution_fk,nativeness_fk,life_stage_fk,interpreted_geom)
+select occurrence_status_fk,start_day_in_year,end_day_in_year, d.id as distribution_fk,nativeness_fk,null as life_stage_fk,interpreted_geom from temp_dist_units as tdu inner join scientific_name as sn on tdu.temp_gbif_name_id=sn.nub_concept_id inner join distribution as d on sn.id=d.name_fk and d.resource_fk=2
+
+}}}
+
+6. Clean tables
+
+{{{
+drop table temp_dist_units;
+drop table temp_groms_gbif_names_ids;
+}}}

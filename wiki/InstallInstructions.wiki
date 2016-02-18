@@ -1,0 +1,179 @@
+#summary In this page we go through all the process of install all SDR components in an EC2 instance
+#sidebar TableOfContents
+
+= Introduction =
+
+To document how to install the SDR project we will create a new EC2 instance based on Ubuntu and install all the requiered packages and software. Here is the list of commands that were executed on the server
+
+
+= Opening a new instance =
+This process is not described here as there is plenty of documentation out there. The EC2 instance will be based on Ubuntu 9.04 as taken from http://alestic.com/ (ami-ccf615a5) We are gonna use a c1.medium instance type. Then we connect to the server.
+
+
+= Install PostgreSql 8.4 and PostGIS 1.4.0 =
+{{{
+apt-get update
+apt-get install vim
+vim /etc/apt/sources.list
+  add deb http://ppa.launchpad.net/pitti/postgresql/ubuntu jaunty main
+          deb-src http://ppa.launchpad.net/pitti/postgresql/ubuntu jaunty main
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8683D8A2
+sudo apt-get update
+sudo apt-get install postgresql-8.4
+sudo sed -i.bak -e 's/port = 5433/port = 5432/' \
+    /etc/postgresql/8.4/main/postgresql.conf
+
+sudo /etc/init.d/postgresql-8.4 stop
+sudo /etc/init.d/postgresql-8.4 start
+apt-get install postgresql-server-dev-8.4 libpq-dev
+apt-get install libgeos-dev
+wget http://postgis.refractions.net/download/postgis-1.4.0.tar.gz
+apt-get install proj
+tar xvfz postgis-1.4.0.tar.gz
+cd postgis-1.4.0
+./configure
+make
+make install
+sudo su postgres
+psql
+      ALTER user postgres WITH PASSWORD 'atlas';
+      \q
+
+createdb geodb    (with password atlas)
+createlang -dgeodb plpgsql
+psql -dgeodb -f /usr/share/postgresql/8.4/contrib/postgis.sql
+psql -dgeodb -f /usr/share/postgresql/8.4/contrib/spatial_ref_sys.sql
+psql -dgeodb
+     select postgis_lib_version();      --> You should get 1.4.0
+\q
+dropdb geodb
+createdb sdr
+exit
+
+}}}
+
+= Install Apache, PHP and so on... =
+{{{
+apt-get install php5 libapache2-mod-php5 apache2-prefork-dev libapr1-dev php5-gd php5-pgsql
+sudo apt-get install curl php5-cli
+sudo service apache2 restart
+}}}
+
+== install the db ==
+
+{{{
+cd /mnt
+wget http://vizzuality.com.s3.amazonaws.com/sdr.sql.gz
+gunzip sdr.sql.gz
+psql -hlocalhost -Upostgres -dsdr -f /mnt/sdr.sql
+vacuumdb -hlocalhost -Upostgres sdr
+}}}
+
+== Install the app. ==
+{{{
+apt-get install subversion
+cd /var/www/
+rm *
+svn checkout http://gbif-sdr.googlecode.com/svn/trunk/web .
+chmod 777 templates_c/
+}}}
+
+== Install geoserver ==
+{{{
+cd /root
+wget http://downloads.sourceforge.net/project/geoserver/GeoServer/1.7.7/geoserver-1.7.7-bin.zip?use_mirror=ovh
+apt-get install unzip
+unzip geoserver-1.7.7-bin.zip
+mv geoserver-1.7.7 /var/
+sudo apt-get install sun-java6-jre sun-java6-plugin sun-java6-fonts
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
+nohup /var/geoserver-1.7.7/bin/startup.sh &
+}}}
+Now we have to configure geoserver. Basically it means configuring the PostGIS DB, creating 2 feature types and a style.
+
+1 New namespace : gbif --> http://gbif.org
+2 New DataStore : Feature Data Set ID: postgis , namespace: gbif connection params to sdr db.
+3. New Style: StyleID= polygonbyattribute SLD:
+{{{
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc"
+  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>Default Polygon</Name>
+    <UserStyle>
+      <Title>Default polygon style</Title>
+      <Abstract>A sample style that just draws out a solid gray interior with a black 1px outline</Abstract>
+      <FeatureTypeStyle>
+        <Rule>
+          <Title>Polygon</Title>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill"><ogc:PropertyName>color</ogc:PropertyName></CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#333333</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+}}}
+
+4. New feature Type: postgis::sdr_1_view with style= polygonbyattribute
+same with sdr_2_view
+
+5. Apply and save
+
+== Configure the app. ==
+All configurations are done in the /var/www/config.php file. It should all be obvious. In any case this is how it looks mine:
+
+{{{
+/** 
+ * The base configurations of SDR.
+**/
+
+/** The name of the database for Runnity */
+define('DB_NAME', 'sdr');
+
+/** PostgreSQL database username */
+define('DB_USER', 'postgres');
+
+/** PostgreSQL database password */
+define('DB_PASSWORD', 'atlas');
+
+/** PostgreSQL hostname */
+define('DB_HOST', 'localhost');
+
+/** GEOSERVER URL */
+define('GEOSERVER_URL', 'http://ec2-174-129-72-225.compute-1.amazonaws.com:8080/geoserver/');
+
+/** GEOSERVER URL */
+define('DATA_URL', 'http://ec2-174-129-72-225.compute-1.amazonaws.com/amfphp/');
+
+/** Caching folder */
+define('CACHE_FOLDER', '/mnt/cache');
+
+/** Google API Key */
+define('GMAP_KEY', 'ABQIAAAAtDJGVn6RztUmxjnX5hMzjRTMIXXlucu2Ks7-zsUmwIpJXyeIkxRdivKNzcwjA_1UQlGO796sRIEM_A');
+
+
+/** WMS proxies */
+define('WMS_PROXY', 'http://ec2-174-129-72-225.compute-1.amazonaws.com/wmsproxy.php');
+define('WMS_BIG_PROXY', 'http://ec2-174-129-72-225.compute-1.amazonaws.com/wmsbig.php');
+
+/** ECAT services */
+define('ECAT_SERVICES', 'http://ecat-ws.gbif.org/ws/')
+
+}}}
+
+*Comment* You have to create the cache folder (/mnt/cache) and give it 777 permissions
+{{{
+mkdir /mnt/cache
+chmod 777 /mnt/cache/
+}}}

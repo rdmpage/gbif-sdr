@@ -1,0 +1,52 @@
+#summary installation instruction of the GROMS project
+
+= Introduction =
+
+In this page we go through all the process of install the GROMS project at GBIF. 
+The project has the following dependencies:
+
+ * PHP 5
+ * Postgresql/Postgis 1.4
+ * Geoserver
+
+The installation of this requirements is omitted here and could be followed on the SDR InstallIntructions
+
+= Database =
+
+The database has already been installed on the GBIF server and it is a read only database.
+
+= PHP code and application =
+
+To download the application can be checout directly from the SVN repository like:
+
+{{{
+svn checkout http://vizzuality.googlecode.com/svn/trunk/GROMS2/src/php groms
+}}} 
+
+this will enable easy updates when necessary.
+
+After checkout the config.php file needs to be adapted for the new environment.
+
+Also is necessary that the templates_c and the cache folder are writtable.
+
+Be sure to replace all the localhost with the final URL, like 'http://groms.gbif.org"
+
+= Geoserver configuration =
+
+There is a geoserver installation in place in GBIF that can be reused. Follow the next intructions.
+
+ * New namespace : groms --> http://gbif.org 
+ * New DataStore : Feature Data Set ID: postgis , namespace: gbif connection params to groms db. 
+ * New Style: StyleID= polygonByStatus Take the contents of the SLD from http://vizzuality.googlecode.com/svn/trunk/GROMS2/sld/polygonByStatus.sld
+ * New feature Type: postgis::shapefiles  with style= polygonByStatus
+ * Apply and save
+
+= Testing =
+
+It is possible to test that the app is runnig directly and using it, but a call like this could also be used:
+
+{{{
+http://localhost/amfphp/json.php/GROMSServices.getTaxon//0
+}}}
+
+

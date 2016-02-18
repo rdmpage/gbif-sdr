@@ -1,0 +1,124 @@
+#summary Notes on integration with the portal.
+#sidebar TableOfContents
+
+= Integration of SDR and the GBIF data portal =
+
+The following section describes the possible connection between the SDR project and the GBIF data portal. This is only a list of possible interactions.
+
+
+[https://vizzuality.s3.amazonaws.com/sdr/sdrwidget.png]
+
+= Possible connections between SDR and the GBIF data portal =
+
+ * Widget for display on species page to show the range maps available for them. 
+ * Tile generated (same as per EOL) overlays are required only.
+ * Consider continuing research on alpha shapes for extracting polygon data.
+ * Setup a geospatial portal to hold "interesting biodiversity layers".  Species richness, endangered species etc: this could become an interesting way to present GBIF data to the world through a set of predefined layers registered on an OGC service.
+
+
+
+#summary Use cases considered on the project. Includes the ones covered by the current project and others that are not covered.
+#sidebar TableOfContents
+
+<wiki:toc max_depth="4" />
+
+= Use Cases =
+In some parts of the document there is the word *NotCovered* to indicate that a particular use/case or functionality is not covered on the current contract but that it will be desirable.
+
+*Note to authors:* Do not modify existing use case numbers as they are linked from elsewhere in the documentation
+
+== Widgets ==
+The next use cases are split in Country,Provider and Global. The widget that will be developed is a single product that adapts to those different scenarios.
+
+=== 0.0 Widget Basics ===
+The widget will support the next functionality (regardless of the context where it is used):
+-Display  different sources distributions in the project  FOR A PARTICULAR TAXON. This could be polygons, grids or whatever other format is considered necessary. The taxon could be in any taxonomic level, so that means higher taxonomy.<br>
+-Display of primary data within the GBIF network for the particular taxon.<br>
+-Creation of a dynamic legend to explain the different distribution sources and their different status within their units (feeding, wintering, present, absent, etc.) The legend will provide also required citation<br>
+-Possibility to change the visibility of the different layers on the map.<br>
+-User can download in formats (Image, KML, GML, PDF, PNG, JPEG)<br>
+-The widget provides information on the project and how to embed it on other websites<br>
+- NotCovered: writable access will require redirtect to the SDR website<br>
+- NotCovered: multilingual support<br>
+- The widget can be configured to be used with a specific taxonomy if the ECAT services provide that functionality.<br>
+- Visualizations of niche model: If a project provides their niche modeling based on OGC services it will be possible to configure the widget to display it together with the rest of the data.<br>
+- NotCovered: storage or interpretation of niche models as species distributions. It could be possible to analyze niche models and understand them using thresholds. A new set of metadata would need to be created to describe them and the widget should be able to activate and deactivate these layers.<br>
+
+=== 1.0 Country===
+An owner of a country specific website may include a widget to visualise a single distribution of a species or higher taxon within the country.  The widget will be loaded focused on the particular country. An extension to this use case is to offer the same for arbitrary locations, and possibly limited to bounding box searches.  This use case is targeted at offering services to the participant nodes of GBIF.  
+
+- NotCovered: provide country specific statistics on the GBIF data for the country.<br>
+
+=== 1.1 Data source specific widget ===
+A source from the project, like the Fauna Europeae, could be interested in visualizing his dataset within his website. The widget will be then reconfigured to only display data from this specific provider. It will also include primary data.This use case is considered critical to motivate different projects to provide data for the SDR. 
+
+=== 1.2 Global widget ===
+If not loaded for a specific country or data source, the widget will be able to display worldwide and all sources together for a certain taxon. The typical use case for this is the GBIF data portal or the EOL website. It will allow the display of all the distributions data sources for a specific taxon and taxonomy.
+
+== SDR Web site ==
+
+=== 2.0 Home ===
+The user can find information about the project,see general stats (number stored), <br>
+- NotCovered: multilingual support
+
+=== 2.1 Browse ===
+Using a sceintific name taxonomic browsing tool, the user can navigate to the taxonomy.  The taxonomy browser will use a column view display with icons and common names if available from the ECAT services in GBIF.
+
+=== 2.2 Searching ===
+Users can search using scientific name or common name, datasets, The service will be a google like search. Depends on the availability of the service by ECAT to provide this kind of search. Once the search is done a list with the different taxa is displayed and the user can get to the taxon page.
+
+=== 2.3 Registration ===
+The registration allow the user to make comments in the taxon page.<br>
+- NotCovered: the user can make spatial comments to the distributions<br>
+- NotCovered: users are handled together with the GBIF infrastructure trough a Single Sign On Service.
+
+
+=== 2.4 Log In ===
+Allow the user to log in to the system.
+
+=== 2.5 Taxon page ===
+The taxon or species page allows the user to visualize the widget described on 1.0. The widget ont he SDR website will be configured as global widget, as described in 1.2. The taxon page contains:<br>
+- Display the widget in global model for the particular taxon<br>
+- Display user comments for the distributions of this taxon.<br>
+- User can supply free text comments on the distribution for a taxon.  <br>
+- Display aditional information like text distributions taken from web services like ECAT. All this information depends on what data is available at the time of implementation.
+- NotCovered: the user can make spatial comments to the distributions<br>
+- NotCovered: describe a mask<br>
+- NotCovered: The user chooses to add a country, and is presented with the ability to select a country on the map.  A confirmation of "do you want to confirm sprecies X lives in this country?", user selects yes and the data is saved.
+
+
+== Analysis ==
+
+=== 4.0  NotCovered: Coverage of primary data ===
+Allowing to determine % coverage of primary data with the distribution
+Ability to discover gaps in the primary data
+
+=== 4.1 NotCovered: Coverage statistics ===
+User can find land coverage, ecosystem coverage etc for a species.  
+
+=== 4.2 NotCovered: Publishing derived layers ===
+Layers like endangered or invasive species, species richness etc are not linked to a single species.
+Analysis to produce potentially interesting layers like:
+ * country maps: only showing country areas
+ * tdwg area maps: only showing country areas
+ * species richness
+
+== Web service users ==
+
+=== 5.1 User can discover layer of interest from an OGC catalogue service ===
+TODO.
+
+Publishing for example endangered species layer?
+Invasive species?
+Derived richness layer?
+INSPIRE?
+
+=== 5.2 List of species present ===
+TODO - move this to a better group.  It is not a web service alone.  
+At a certain point, polygon or bounding box, allowing for addition of certain additional filters (temporal, life stage sources, endangered species) 
+
+== Named Area Registry (NAR) ==
+
+=== 6.1 NAR web services===
+
+=== 6.2 NAR web site===

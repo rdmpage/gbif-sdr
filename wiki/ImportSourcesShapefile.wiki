@@ -1,0 +1,51 @@
+#summary How to import shapefile sources
+
+= Introduction =
+
+New produce to import sources now that we are linked to ECAT. We will use GROMS as an example.
+
+1. Export the names of the datasource into Darwin Core Style for Markus to be able to import them and provide nub_concepts_id
+
+We export the accepted names and synonyms together:
+
+{{{
+create table groms_names_export as
+select species_id as taxonid,null as acceptedtaxonid,animal_class,family,scientifiname,authors, 'ACCEPTED' as taxonomicstatus from accessexport
+union
+select round(random()*100000000) as taxonid,species_id as acceptedtaxonid, null as animal_class,null as family,synonym as scientifiname,null as authors, 'SYNONYM' as taxonomicstatus from accessexport where length(trim(synonym))>0
+
+COPY groms_names_export TO '/tmp/gromsnameswithsynonym.txt' NULL as ''
+}}}
+
+This file needs to be sent to Markus with a file descriptor like this one:
+
+{{{
+<?xml version='1.0' encoding='utf-8'?>
+<archive xmlns="http://rs.tdwg.org/dwc/text/">
+  <core encoding="UTF-8" fieldsTerminatedBy="\t" linesTerminatedBy="\n" fieldsEnclosedBy='' ignoreHeaderLines="0" rowType="http://rs.tdwg.org/dwc/terms/Taxon">
+    <files>
+      <location>gromsnameswithsynonym.txt</location>
+    </files>
+    <id index="0" term="http://rs.tdwg.org/dwc/terms/taxonID"/>
+    <field index="1" term="http://rs.tdwg.org/dwc/terms/acceptedTaxonID"/>
+	<field index="2" term="http://rs.tdwg.org/dwc/terms/class"/>
+	<field index="3" term="http://rs.tdwg.org/dwc/terms/family"/>
+	<field index="4" term="http://rs.tdwg.org/dwc/terms/scientificName"/>
+    <field index="5" term="http://rs.tdwg.org/dwc/terms/scientificNameAuthorship"/>
+	<field index="6" term="http://rs.tdwg.org/dwc/terms/taxonomicStatus"/>
+	<field default="Animalia" term="http://rs.tdwg.org/dwc/terms/kingdom"/>
+  </core>
+</archive>
+}}}
+
+2. We would have a shapefile normally. In the case of GROM we actually have a PostGIS database. So for the shake of clarity we will first export it as shapefile and then import it back again.
+
+{{{
+pgsql2shp -Patlas -fgroms.shp -hlocalhost -upostgres -gthe_geom groms "select a.species_id as name_id,source_year as creat_year,(monthstart::int*30) as start_day, (monthend::int*30) as end_day, status,a.mapsource, the_geom from shapefiles as s inner join accessexport as a on s.species_id=a.species_id"
+}}}
+
+Then we would have something like groms.shp,groms.dbf,groms.shx
+
+It is important to consider that the kind of shapefiles we will be working on, will be a denormalized structure with one record per distribution_unit (that can have a polygon or multipolygon geometry). All the distribution units for a species can be grouped with a name_id or something like this. Each distribution unit should have information on the occurrence_status_lifestage_nativeness, etc. but those attributes are handled on the import script.
+
+3. Manipulate the import script to handle the shapefile mapping its attributes to SDR database. The import script is under the scripts folder in the application folder and is called import_shapefile.php . you would run it like 'php import_shapefile.php'. Edit the scripts to get instructions and modify it for your needs.
